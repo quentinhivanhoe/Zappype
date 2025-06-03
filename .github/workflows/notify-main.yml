@@ -1,3 +1,5 @@
+name: notify main release
+
 on:
     push:
         branches:
@@ -13,5 +15,5 @@ jobs:
                     DISCORD_WEBHOOK: ${{ secrets.WEBHOOK_MAIN }}
                 uses: Ilshidur/action-discord@master
                 with:
-                    args: 'hello people that from me mario'
+                    args: 'Hello server new released from the main branch'
 
