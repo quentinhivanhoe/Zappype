@@ -25,6 +25,7 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
+	rm -f $(BUILD)
 
 re: fclean all
 
