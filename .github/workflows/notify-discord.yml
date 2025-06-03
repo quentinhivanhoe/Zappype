@@ -1,0 +1,15 @@
+on:
+    push:
+        branches:
+            - main
+jobs:
+    notify-discord:
+        name: "notify-discord channel"
+        runs-on: ubuntu-latest
+        steps:
+            -   name: "push message"
+                id: push_message
+                uses: Ilshidur/action-discord@master
+                with:
+                    args: 'hello people that from me mario'
+
