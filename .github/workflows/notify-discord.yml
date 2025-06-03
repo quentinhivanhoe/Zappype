@@ -9,6 +9,8 @@ jobs:
         steps:
             -   name: "push message"
                 id: push_message
+                env:
+                    DISCORD_WEBHOOK: ${{ secrets.WEBHOOK_MAIN }}
                 uses: Ilshidur/action-discord@master
                 with:
                     args: 'hello people that from me mario'
