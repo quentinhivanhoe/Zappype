@@ -15,5 +15,5 @@ jobs:
                     DISCORD_WEBHOOK: ${{ secrets.WEBHOOK_MAIN }}
                 uses: Ilshidur/action-discord@master
                 with:
-                    args: 'Hello server new released from the main branch'
+                    args: " ${{ github.event.commits.message }}"
 
