@@ -23,36 +23,49 @@ jobs:
         needs: set_repo_name
         if: needs.set_repo_name.outputs.repoActual == needs.set_repo_name.outputs.repoTrigered
         runs-on: ubuntu-latest
+        steps:
+            -   name: "set web hook"
+                id: set_web_hook
+                run: echo "toto"
+    notify-discord:
+        name: "notify-discord channel"
+        runs-on: ubuntu-latest
+        needs: check_repo
         env:
             MAIN: "main"
             SERVER: "main-server"
             CLIENT: "main-client"
             IA: "main-ia"
-        outputs:
-            webHook: ${{ steps.set_web_hook.outputs.web_hook }}
         steps:
-            -   name: "set web hook"
-                id: set_web_hook
-                run: |
-                    echo ${{ github.ref_name }}
-                    if [ ${{ github.ref_name }} == ${{ env.MAIN }} ]; then
-                        echo "web_hook=${{ secrets.WEBHOOK_MAIN }}" >> "$GITHUB_OUTPUT"
-                    elif [ ${{ github.ref_name}} == ${{ env.SERVER }} ]; then
-                        echo "web_hook=${{ secrets.WEBHOOK_SERVER}}" >> "$GITHUB_OUTPUT"
-                    elif [ ${{ github.ref_name}} == ${{ env.CLIENT}} ]; then
-                        echo "web_hook=${{ secrets.WEBHOOK_CLIENT}}" >> "$GITHUB_OUTPUT"
-                    else
-                        echo "web_hook=${{ secrets.WEBHOOK_IA }}" >> "$GITHUB_OUTPUT"
-                    fi
-    notify-discord:
-        name: "notify-discord channel"
-        runs-on: ubuntu-latest
-        needs: check_repo
-        steps:
-            -   name: "push message"
-                id: push_message
+            -   name: "log main"
+                id: log_main
+                if: ${{ github.ref_name == env.MAIN }}
                 env:
-                    DISCORD_WEBHOOK: ${{ needs.check_repo.outputs.webHook }}
+                    DISCORD_WEBHOOK: ${{ secrets.WEBHOOK_MAIN}}
+                uses: Ilshidur/action-discord@master
+                with:
+                    args: "${{ github.event.commits.message }}"
+            -   name: "log server"
+                id: log_server
+                if: ${{ github.ref_name == env.SERVER }}
+                env:
+                    DISCORD_WEBHOOK: ${{ secrets.WEBHOOK_SERVER}}
+                uses: Ilshidur/action-discord@master
+                with:
+                    args: "${{ github.event.commits.message }}"
+            -   name: "log client"
+                id: log_client
+                if: ${{ github.ref_name == env.CLIENT }}
+                env:
+                    DISCORD_WEBHOOK: ${{ secrets.WEBHOOK_CLIENT}}
+                uses: Ilshidur/action-discord@master
+                with:
+                    args: "${{ github.event.commits.message }}"
+            -   name: "log ia"
+                id: log_ia
+                if: ${{ github.ref_name == env.IA }}
+                env:
+                    DISCORD_WEBHOOK: ${{ secrets.WEBHOOK_IA}}
                 uses: Ilshidur/action-discord@master
                 with:
                     args: "${{ github.event.commits.message }}"
