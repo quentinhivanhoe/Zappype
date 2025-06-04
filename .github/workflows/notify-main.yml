@@ -10,11 +10,6 @@ jobs:
     set_repo_name:
         name: "set repo name"
         runs-on: ubuntu-latest
-        env:
-            MAIN: "main"
-            SERVER: "main-server"
-            CLIENT: "main-client"
-            IA: "main-ia"
         outputs:
             repoTrigered: ${{ steps.set_repo.outputs.repo_trigered }}
             repoActual: ${{ steps.set_repo.outputs.repo_actual }}
@@ -34,9 +29,10 @@ jobs:
             CLIENT: "main-client"
             IA: "main-ia"
         outputs:
-            webHook: ${{ steps.check_repo.outputs.web_hook }}
+            webHook: ${{ steps.set_web_hook.outputs.web_hook }}
         steps:
-            -   name: "test"
+            -   name: "set web hook"
+                id: set_web_hook
                 run: |
                     echo ${{ github.ref_name }}
                     if [ ${{ github.ref_name }} == ${{ env.MAIN }} ]; then
