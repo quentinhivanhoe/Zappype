@@ -2,7 +2,7 @@ name: notify main release
 on:
     push:
         branches:
-            - main
+            - 'main*'
 env:
     REPO: quentinhivanhoe/Zappype
     MIRROR_URL: git@github.com:EpitechPromo2028/B-YEP-400-RUN-4-1-zappy-loic.rabearivelo.git
@@ -10,6 +10,11 @@ jobs:
     set_repo_name:
         name: "set repo name"
         runs-on: ubuntu-latest
+        env:
+            MAIN: "main"
+            SERVER: "main-server"
+            CLIENT: "main-client"
+            IA: "main-ia"
         outputs:
             repoTrigered: ${{ steps.set_repo.outputs.repo_trigered }}
             repoActual: ${{ steps.set_repo.outputs.repo_actual }}
@@ -23,9 +28,26 @@ jobs:
         needs: set_repo_name
         if: needs.set_repo_name.outputs.repoActual == needs.set_repo_name.outputs.repoTrigered
         runs-on: ubuntu-latest
+        env:
+            MAIN: "main"
+            SERVER: "main-server"
+            CLIENT: "main-client"
+            IA: "main-ia"
+        outputs:
+            webHook: ${{ steps.check_repo.outputs.web_hook }}
         steps:
             -   name: "test"
-                run: echo "toto"
+                run: |
+                    echo ${{ github.ref_name }}
+                    if [ ${{ github.ref_name }} == ${{ env.MAIN }} ]; then
+                        echo "web_hook=${{ secrets.WEBHOOK_MAIN }}" >> "$GITHUB_OUTPUT"
+                    elif [ ${{ github.ref_name}} == ${{ env.SERVER }} ]; then
+                        echo "web_hook=${{ secrets.WEBHOOK_SERVER}}" >> "$GITHUB_OUTPUT"
+                    elif [ ${{ github.ref_name}} == ${{ env.CLIENT}} ]; then
+                        echo "web_hook=${{ secrets.WEBHOOK_CLIENT}}" >> "$GITHUB_OUTPUT"
+                    else
+                        echo "web_hook=${{ secrets.WEBHOOK_IA }}" >> "$GITHUB_OUTPUT"
+                    fi
     notify-discord:
         name: "notify-discord channel"
         runs-on: ubuntu-latest
@@ -34,7 +56,7 @@ jobs:
             -   name: "push message"
                 id: push_message
                 env:
-                    DISCORD_WEBHOOK: ${{ secrets.WEBHOOK_MAIN }}
+                    DISCORD_WEBHOOK: ${{ needs.check_repo.outputs.webHook }}
                 uses: Ilshidur/action-discord@master
                 with:
                     args: "${{ github.event.commits.message }}"
