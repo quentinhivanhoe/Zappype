@@ -18,7 +18,7 @@ bool check_event(void)
 
 void server_loop(void)
 {
-    while (1) {
+    while (my_server()->running == true) {
         if (poll(my_server()->info.fds, my_server()->info.fd_count, -1) < 0) {
             perror("poll");
             break;
@@ -79,6 +79,7 @@ int setup_server(void)
         close(my_server()->info.server_fd);
         return -1;
     }
+    my_server()->running = true;
     return 0;
 }
 

@@ -9,10 +9,14 @@
 
 int main(int argc, char **argv)
 {
+    signal(SIGINT, signal_handler);
+    memset(my_server(), 0, sizeof(server_t));
     my_server()->info.fd_count = 0;
-    if (argc > 1) {
-        my_server()->info.port = atoi(argv[1]);
-    }
+    det_params(argc, argv);
+    check_params();
+    if (my_server()->params.debug_mode == true)
+        print_params();
+    my_server()->info.port = my_server()->params.port;
     if (setup_server() < 0)
         return EXIT_FAILURE;
     printf("Server listening on port %d...\n", my_server()->info.port);
@@ -20,10 +24,6 @@ int main(int argc, char **argv)
     my_server()->info.fds[0].events = POLLIN;
     my_server()->info.fd_count = 1;
     server_loop();
-    for (int i = 0; i < my_server()->info.fd_count; i++) {
-        if (my_server()->info.fds[i].fd >= 0) {
-            close(my_server()->info.fds[i].fd);
-        }
-    }
+    clean_server();
     return EXIT_SUCCESS;
 }
