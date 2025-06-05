@@ -5,28 +5,25 @@
 ## Makefile
 ##
 
-SRC 	= $(shell find ./src -type f -name "*.c")
-OBJ 	= $(SRC:.c=.o)
-NAME 	= zappy_server
-CFLAGS 	= -Wall -Wextra -Werror -I./includes
-BUILD	= Dev
+SRC = $(shell find . -type f -name "*.c")
+
+OBJ = $(SRC:.c=.o)
+
+NAME = zappy_server
+
+CFLAGS = -Wall -Wextra -Werror -I./includes
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(BUILD)
+$(NAME): $(OBJ)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
-	@mv $(OBJ) $(BUILD)
-
-$(BUILD):
-	@mkdir -p $(BUILD)
 
 clean:
 	rm -f $(OBJ)
+	rm -rf *.log
 
 fclean: clean
 	rm -f $(NAME)
-	rm -f $(BUILD)
-
 re: fclean all
 
 .PHONY: all clean fclean re
