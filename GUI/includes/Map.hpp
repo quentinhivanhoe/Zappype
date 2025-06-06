@@ -21,6 +21,7 @@ namespace Zappy
     public:
         Map();
         ~Map();
+        void init();
         std::vector<Team> getTeams() const {return this->_teams;};
         std::vector<IObject> getStones() const {return this->_stones;};
         std::vector<IObject> getFoods() const {return this->_foods;};

@@ -19,7 +19,7 @@ namespace Zappy
     private:
         
         std::vector<Buttons> _buttons;
-        Network networkInfo;
+        Network _networkInfo;
         sf::RenderWindow _window;
         Map _map;
     public:
@@ -29,6 +29,7 @@ namespace Zappy
         void run();
         std::vector<Buttons> getButtons() const {return this->_buttons;};
         Map getMap() const {return this->_map;};
+        Network getNetwork() const {return this->_networkInfo;};
     };
 }
 

@@ -14,6 +14,7 @@ namespace Zappy
     {
     private:
         GUI *_gui;
+        /*manque les attirubut du serv*/
     public:
         Network(/* args */);
         ~Network();
