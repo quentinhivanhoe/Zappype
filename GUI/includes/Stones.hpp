@@ -17,15 +17,6 @@ namespace Zappy
         Stones(std::string name, std::string type, double density);
         ~Stones();
     };
-    
-    Stones::Stones(std::string name, std::string type, double density)
-    {
-    }
-    
-    Stones::~Stones()
-    {
-    }
-    
 }
 
 #endif /* !STONES_HPP_ */

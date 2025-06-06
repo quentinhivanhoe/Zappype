@@ -7,31 +7,28 @@
 
 #ifndef GUI_HPP_
     #define GUI_HPP_
-    #include "Player.hpp"
     #include "Buttons.hpp"
-    #include "Interfaces/IObject.hpp"
     #include "Network.hpp"
+    #include "Map.hpp"
+
 namespace Zappy
 {
     class Network;
     class GUI
     {
     private:
-        std::vector<Player> _teams;
+        
         std::vector<Buttons> _buttons;
-        std::vector<IObject> _stones;
-        std::vector<IObject> _foods;
         Network networkInfo;
+        sf::RenderWindow _window;
+        Map _map;
     public:
-        GUI(/* args */);
+        GUI();
         ~GUI();
         void init();
         void run();
-        std::vector<Player> getTeams() const {return this->_teams;};
         std::vector<Buttons> getButtons() const {return this->_buttons;};
-        std::vector<IObject> getStones() const {return this->_stones;};
-        std::vector<IObject> getFoods() const {return this->_foods;};
-
+        Map getMap() const {return this->_map;};
     };
 }
 

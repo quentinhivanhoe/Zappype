@@ -8,6 +8,7 @@
 #ifndef AOBJECT_HPP_
     #define AOBJECT_HPP_
     #include "../Interfaces/IObject.hpp"
+    #include "SFML/Graphics.hpp"
 
 namespace Zappy
 {
@@ -17,6 +18,8 @@ namespace Zappy
         std::string _type;
         std::string _name;
         double _density;
+        sf::RectangleShape shape;
+        sf::Color color;
     public:
         AObject(/* args */);
         ~AObject();

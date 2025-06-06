@@ -9,6 +9,8 @@
     #define PLAYER_HPP_
     #include "iostream"
     #include "SFML/Graphics.hpp"
+    #include "Math/Vector2D.hpp"
+    #include "Actions.hpp"
 namespace Zappy 
 {
     class Player
@@ -17,10 +19,20 @@ namespace Zappy
         std::string _teamName;
         size_t _id;
         size_t _level;
-        std::string _actions;
+        std::vector<Actions> _actions;
         size_t _lifespan;
-        sf::Clock _clock;
+        sf::Color _color;
+        Vector2D _pos;
     public:
+        sf::RectangleShape shape;
+        sf::Clock _clock;
+        std::string getTeamName() const {return this->_teamName;};
+        size_t getID() const {return this->_id;};
+        size_t getLevel() const {return this->_level;};
+        size_t getLifespan() const {return this->_lifespan;};
+        std::vector<Actions> getAction() const {return this->_actions;};
+        Vector2D getPos() const {return this->_pos;};
+        sf::Color getColor() const {return this->_color;};
         Player(/* args */);
         ~Player();
     }; 
