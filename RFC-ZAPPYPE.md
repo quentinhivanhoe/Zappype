@@ -1,5 +1,5 @@
 # RFC Zappy
-zappy is networking simulation of game of life. Zappy is composed of a server, IA and GUI client. In the game zappy the world is named trantor is spherical world who live trantorian (IA). The trantorian goal's it to feeds themselves, looking for stones and evolves. All the logical part is ruled by the server and the GUI client is there to watch trantorian. To talk to the server a protocol is set up, and this RFC explain how to implement and use it. There is to protocol one to IA client and one to GUI client.
+zappy is networking simulation of game of life. Zappy is composed of a server, IA client and GUI client. In the game zappy the world is named trantor is spherical world who live trantorian (IA). The trantorian goal's it to feeds themselves, looking for stones and evolves. All the logical part is ruled by the server and the GUI client is there to watch trantorian. To talk to the server a protocol is set up, and this RFC explain how to implement and use it. There is one protocol for IA client and one for GUI client.
 
 ## RFC specification
 - **protocol type:** text-based protocol
@@ -8,7 +8,7 @@ zappy is networking simulation of game of life. Zappy is composed of a server, I
 - **socket type:** TCP
 _response will be more detailed later_
 
-## commands - IA client
+## protocol - IA client
 all the commands are text-based, each command must end with a line feed. IA protocol commands have time limits called `F` who is the time the server will take to execute another command. Response can be only text-based to inform the IA or response with value, for example and response can be a text like that `[value_1, value_2, ..., value_n]` or `text: value`.
 
 ## forward - move up one tile
@@ -79,7 +79,7 @@ all the commands are text-based, each command must end with a line feed. IA prot
 
 ## broadcast - broadcast
 **description**
-> send a message to all trantorian alive, the message send to other trantorian is composed by the orientation (where come from the message) and the text, the response to other trantorian is detailled below.
+> send a message to all trantorian alive, the message send to other trantorian is composed by the orientation (where come from the message) and the `text`, the response to other trantorian is detailled below.
 
 **request** 
 >	broadcast `text` \<LF>
@@ -191,3 +191,200 @@ all the commands are text-based, each command must end with a line feed. IA prot
 > elevation underway
 > current level: `K`
 > ko\<LF>
+
+## protocol - GUI client
+like IA protocol, GUI protocol is text-based protocol but there is no time limits. Some request and response are send with value, there is a `symbol table`. GUI protocol is there to implement a streaming of trantor world, each trantorian is attach by GUI client, that's not mean you can only watch that trantorian you are attach by. When a GUI client is attached to a trantor i can freely see that trantor world's
+
+## symbol table
+symbol	| 	Meaning								|
+--------|---------------------------------------|
+X		|	width or horizontal position		|
+Y		|	height or vertical position			|
+q0		|	resource 0 (food) quantity			|
+q1		|	resource 1 (linemate) quantity		|
+q2		|	resource 2 (deraumere) quantity		|
+q3		|	resource 3 (sibur) quantity			|
+q4		|	resource 4 (mendiane) quantity		|
+q5		|	resource 5 (phiras) quantity		|
+q6		|	resource 6 (thystame) quantity		|
+n		|	player number						|
+O		|	orientation: 1(N), 2(E), 3(S), 4(W)	|
+L		|	Player or incantation level			|
+e		|	egg number							|
+T		|	Time unit							|
+N		|	Name of the team					|
+R		|	incantation result					|
+M		|	message								|
+i		|	resource number						|
+
+## Client request
+there is some request the client can ask and some the server send it to inform the client that an event occurred, ended. We gonna detail the request client can send to the server.
+
+## msz - map size
+### description
+> command to send at connection of the GUI client to the server. Server response with the `width` and the `height` of the map
+### request
+> msz\<LF>
+### response
+> msz `X` `Y`\<LF>
+
+## bct - content of a tile
+### description
+> this command is useful when a client request to see the content of a certain tile. The client send this request with the position vertical and horizontal of the tile. If the position send by the client is invalid an error message will be send back server response is composed of the horizontal position, vertical position, and resources on the tile
+### request
+> bct `X`-`Y`\<LF>
+### response
+> bct `X` `Y` `q0` ... `q6`\<LF>
+
+## mct - content of the map (all the tiles)
+### description
+> this command is send to update all the map, the server will send multiple response like `bct` command. To know how much response will be send you to calculate the number of the tile. To calculate the `tiles number` you have to a make a quick calculation: `map width` * `map height`.
+### request
+> mct\<LF>
+### response
+> bct `X` `Y` `q0` ... `q6`\<LF> * `tiles number`
+
+## ppo - player's position
+### description
+> client can request a certain player position, the client need to specify the player number
+### request
+> ppo #`n`\<LF>
+### response
+> ppo #`n` `X` `Y` `O`\<LF>
+
+## plv- player's level
+### description
+> client can request player level
+### request
+> plv #`n`\<LF>
+### response
+> plv #`n` `L`\<LF>
+
+## plv- player's inventory
+### description
+> client can request player inventory
+### request
+> plin#`n`\<LF>
+### response
+> plv #`n` `X` `Y` `q0` ... `q6`\<LF>
+
+## sgt- time unit request
+### description
+> _command not understand_
+### request
+> sgt\<LF>
+### response
+> sgt `T`\<LF>
+
+## sst - time unit modification
+### description
+> _command not understand_
+### request
+> sst `T`\<LF>
+### response
+> sst `T`\<LF>
+
+## server request
+The server send automatically some response to the client, the reason is to keep client informed about event on the trantor world.
+
+## pnw - connection of a new player
+### description
+> a new trantorian is connected
+### response
+> pnw #`n` `X` `Y` `O` `L` `N`\<LF>
+
+## pex - expulsion
+### description
+> signal the GUI if a player gets ex pulsed from a tile and which player by is `id`
+### response
+> pex #`n`\<LF>
+
+## pbc - broadcast
+### description
+> signal the GUI if a player broadcast a message, the response is composed by the `player number` and the message
+### response
+> pbc #`n` `M`\<LF>
+
+## pic - start of an incantation (by the first player)
+### description
+> signal the GUI if a player start an incantation the response is composed by the `vertical and horizontal position`, `player level` and `player number` of all player who participate at the incantation
+### response
+> pic `X` `Y` `L` #`n` #`n` ...\<LF>
+
+## pie - end of incantation
+### description
+> signal the GUI the `result` of he first incantation started, precise the `horizontal and vertical position`
+### response
+> pie `X` `Y` `R`\<LF>
+
+## pfk - egg laying by the player
+### description
+> inform the GUI client that a trantorian have `fork` and drop an egg on the ground, the `player number` is specify in the response
+### response
+> pfk #`n`<LF>
+
+## pdr - resource dropping
+### description
+> signal the GUI a player drop some resources. In the response the `player number` is specify and the `number of resources` dropped
+### response
+> pdr #`n` `i`\<LF>
+
+## pgt - resource collecting
+### description
+> signal the GUI that a player collect resources. In the response the `player number` is specify and the `number of resoruces` collected
+### response
+> pgt #`n` `i`\<LF>
+
+## pdi - death of a player
+### description
+> signal the GUI the death of player precised by the `player number``
+### response
+> pdi #`n`\<LF>
+
+## enw - an egg was laid by a player
+### description
+> signal the GUI a player laid an egg  on the ground and precise the `egg number`, who is the player by his `player number` and the `horizontal and vertical position`.
+### response
+> enw #`e` #`n` `X` `Y`\<LF>
+
+## enw - an egg was laid by a player
+### description
+> signal the GUI a player laid an egg  on the ground and precise the `egg number`, who is the player by his `player number` and the `horizontal and vertical position`.
+### response
+> enw #`e` #`n` `X` `Y`\<LF>
+
+## ebo - player connecting for an egg
+### description
+> _need more information about that command_
+### response
+> ebo #`e`\<LF>              
+
+## edi - death of an egg
+### description
+> signal the GUI an egg died, specify which egg died by his `egg number`
+### response
+> edi #`e`\<LF>
+
+## seg - end of game
+### description
+> signal the end of the game. The game ended when there is no more trantorian on trantor, and precise the last `team` alive
+### response
+> seg `N`\<LF>
+
+## smg - message from the server
+### description
+> the server send a `message` to inform the client, it can be a warning message, error message or informative message.
+### response
+> smg `M`\<LF>
+
+### suc - unknown command
+### description
+> your command can't be interpreted because it is not implemented in the protocol
+### response
+> suc\<LF>
+
+## sbp -  command parameter
+### description
+> client send a valid command but with bad parameters.
+### response
+> sbp\<LF>
