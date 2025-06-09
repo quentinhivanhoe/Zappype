@@ -1,7 +1,7 @@
 name: notify for new opened
 on:
-    issues:
-        types: [opened]
+    issue_comment:
+        types: [created]
 env:
     REPO: quentinhivanhoe/Zappype
 jobs:
