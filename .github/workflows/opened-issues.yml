@@ -28,16 +28,15 @@ jobs:
     issue_opened:
         needs: check_repo
         runs-on: ubuntu-latest
-        env:
-            ISSUE_ID: ${{ github.event.issue.id }}
-            ISSUE_ASSIGNEES: ${{ github.event.issue.assignee }}
-            ISSUE_TITLE: ${{ github.event.issue.title}}
-            ISSUE_BODY: ${{ github.event.issue.body }}
         steps:
             -   name: "notify server"
                 id: notify_server
                 if: contains(github.event.issue, 'server')
                 env:
+                    ISSUE_ID: ${{ github.event.issue.id }}
+                    ISSUE_ASSIGNEES: ${{ github.event.issue.assignee }}
+                    ISSUE_TITLE: ${{ github.event.issue.title}}
+                    ISSUE_BODY: ${{ github.event.issue.body }}
                     DISCORD_WEBHOOK: ${{ secrets.WEBHOOK_SERVER}}
                 uses: Ilshidur/action-discord@master
                 with:
