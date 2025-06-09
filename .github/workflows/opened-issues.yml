@@ -1,7 +1,7 @@
 name: notify for new opened
 on:
     issues:
-        types: [opened]
+        types: [opened, edited, deleted]
 env:
     REPO: quentinhivanhoe/Zappype
 jobs:
@@ -30,7 +30,7 @@ jobs:
         runs-on: ubuntu-latest
         env:
             ISSUE_ID: ${{ github.event.issue.id }}
-            ISSUE_ASSIGNEES: ${{ github.event.issue.assignees }}
+            ISSUE_ASSIGNEES: ${{ github.event.issue.assignee }}
             ISSUE_TITLE: ${{ github.event.issue.title}}
             ISSUE_BODY: ${{ github.event.issue.body }}
         steps:
