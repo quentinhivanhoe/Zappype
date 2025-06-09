@@ -30,6 +30,7 @@ jobs:
     notify-discord:
         name: "notify-discord channel"
         runs-on: ubuntu-latest
+        needs: check_repo
         steps:
             -   name: "log main"
                 id: log_main
