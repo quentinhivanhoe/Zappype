@@ -29,6 +29,9 @@ jobs:
         needs: check_repo
         runs-on: ubuntu-latest
         steps:
+            -   name: "test"
+                id: test
+                run: echo "${{ github.event.issue.labels }}"
             -   name: "notify server"
                 id: notify_server
                 if: contains(github.event.issue.labels, 'server')
