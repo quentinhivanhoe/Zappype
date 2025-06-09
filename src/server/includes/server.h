@@ -23,6 +23,7 @@
     #define MAX_CLIENTS 5
     #define BUFFER_SIZE 1024
     #define PORT 8080
+    #define OBJECT_DEFINED 7
 
 
 typedef struct params_functions_s {
@@ -31,9 +32,8 @@ typedef struct params_functions_s {
 } params_functions_t;
 
 typedef struct info_s {
-    int server_fd;
-    struct pollfd fds[MAX_CLIENTS + 1];
-    int fd_count;
+    struct pollfd *fds;
+    nfds_t fd_count;
     int port;
     struct sockaddr_in address;
 } info_t;
@@ -53,6 +53,80 @@ typedef struct server_s {
     params_t params;
     bool running;
 } server_t;
+
+typedef uint64_t obj_t;
+
+typedef enum object_index_e {
+    FOOD,
+    LINEMATE,
+    DERAUMERE,
+    SIBUR,
+    MENDIANE,
+    PHIRAS,
+    THYSTAME
+} obj_idx_t;
+
+typedef enum direction_e {
+    NORTH = 1,
+    EAST = 2,
+    SOUTH = 3,
+    WEST = 4
+} dir_t;
+
+typedef enum trantorian_status_e {
+    ALIVE,
+    DEAD,
+    EGG,
+    FROZEN
+} trn_stat_t;
+
+typedef struct position_s {
+    uint64_t x;
+    uint64_t y;
+    dir_t dir;
+} pos_t;
+
+typedef struct trantorian_s {
+    pos_t pos;
+    uint8_t lvl;
+    obj_t inventory[OBJECT_DEFINED];
+    char *team;
+    size_t wait_time;
+    size_t clock;
+    size_t food_bar;
+    trn_stat_t stat;
+    int socket
+} trn_t;
+
+typedef struct tile_s {
+    obj_t content[OBJECT_DEFINED];
+} tile_t;
+
+typedef enum client_type_e {
+    GUI,
+    IA,
+    EGG,
+    SERVER
+} cli_type_t;
+
+typedef union client_u {
+    int socket;
+    trn_t inhb;
+} cli_t;
+
+typedef struct client_list_s {
+    cli_type_t type;
+    cli_t data;
+    struct cliet_list_s *next;
+} cli_lst_t;
+
+
+typedef struct trantor_s {
+    tile_t **map;
+    info_t network;
+    params_t param;
+    cli_lst_t *inhabitant;
+} trantor_t;
 
 extern const params_functions_t params_functions[];
 void add_clients(int new_fd);

@@ -1,7 +1,7 @@
 name: notify for new opened
 on:
-    issue_comment:
-        types: [created]
+    issues:
+        types: [opened, edited, deleted]
 env:
     REPO: quentinhivanhoe/Zappype
 jobs:
@@ -28,17 +28,19 @@ jobs:
     issue_opened:
         needs: check_repo
         runs-on: ubuntu-latest
-        env:
-            ISSUE_ID: ${{ github.event.issue.id }}
-            ISSUE_ASSIGNEES: ${{ github.event.issue.assignees }}
-            ISSUE_TITLE: ${{ github.event.issue.title}}
-            ISSUE_BODY: ${{ github.event.issue.body }}
         steps:
+            -   name: "test"
+                id: test
+                run: echo "${{ github.event.issue.labels }}"
             -   name: "notify server"
                 id: notify_server
-                if: contains(github.event.issue, 'server')
+                if: contains(github.event.issue.labels, 'server')
                 env:
+                    ISSUE_ID: ${{ github.event.issue.id }}
+                    # ISSUE_ASSIGNEES: ${{ github.event.issue.assignee }}
+                    ISSUE_TITLE: ${{ github.event.issue.title}}
+                    ISSUE_BODY: ${{ github.event.issue.body }}
                     DISCORD_WEBHOOK: ${{ secrets.WEBHOOK_SERVER}}
                 uses: Ilshidur/action-discord@master
                 with:
-                    args: "issue opened(${{ env.ISSUE_ID}}): ${{ env.ISSUE_TITLE }}\n${{ env.ISSUE_BODY }}\n\nAssigned to: ${{ env.ISSUE_ASSIGNEES }}"
+                    args: "issue opened(${{ env.ISSUE_ID}}): ${{ env.ISSUE_TITLE }}\n${{ env.ISSUE_BODY }}"
