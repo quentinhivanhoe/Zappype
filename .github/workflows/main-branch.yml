@@ -4,7 +4,8 @@ on:
         branches:
             - 'main'
 env:
-    MIRROR_URL: git://github.com/EpitechPromo2028/B-YEP-400-RUN-4-1-zappy-loic.rabearivelo.git
+    REPO: quentinhivanhoe/Zappype
+    MIRROR_URL: git@github.com:EpitechPromo2028/B-YEP-400-RUN-4-1-zappy-loic.rabearivelo.git
 jobs:
     set_repo_name:
         name: "set repo name"
@@ -16,12 +17,11 @@ jobs:
             -   name: "check repo name"
                 id: set_repo
                 run: |
-                    echo "repo_trigered=${{ github.repositoryUrl }}" >> "$GITHUB_OUTPUT"
-                    echo "repo_actual=${{ env.MIRROR_URL }}" >> "$GITHUB_OUTPUT"
-                    echo "${{ github.repositoryUrl }}"
+                    echo "repo_trigered=${{ github.repository }}" >> "$GITHUB_OUTPUT"
+                    echo "repo_actual=${{ env.REPO }}" >> "$GITHUB_OUTPUT"
     check_repo:
         needs: set_repo_name
-        if: needs.set_repo_name.outputs.repoActual != needs.set_repo_name.outputs.repoTrigered
+        if: needs.set_repo_name.outputs.repoActual == needs.set_repo_name.outputs.repoTrigered
         runs-on: ubuntu-latest
         steps:
             -   name: "set web hook"
