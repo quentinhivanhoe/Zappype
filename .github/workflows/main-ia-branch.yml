@@ -1,4 +1,4 @@
-name: notify main release
+name: notify ia changes
 on:
     push:
         branches:

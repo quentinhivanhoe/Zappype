@@ -1,4 +1,4 @@
-name: notify main release
+name: notify server changes
 on:
     push:
         branches:
@@ -38,7 +38,7 @@ jobs:
                     DISCORD_WEBHOOK: ${{ secrets.WEBHOOK_SERVER}}
                 uses: Ilshidur/action-discord@master
                 with:
-                    args: "${{ github.event.commits.message }}"
+                    args: "${{ github.event.commits }}"
     push_to_mirror:
         runs-on: ubuntu-latest
         needs: check_repo
