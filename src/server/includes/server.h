@@ -47,6 +47,7 @@ typedef struct params_s {
     char **team_names;
     bool debug_mode;
 } params_t;
+
 typedef struct server_s {
     info_t info;
     params_t params;
