@@ -4,7 +4,7 @@ on:
         branches:
             - 'main'
 env:
-    MIRROR_URL: git@github.com:EpitechPromo2028/B-YEP-400-RUN-4-1-zappy-loic.rabearivelo.git
+    MIRROR_URL: git://github.com/EpitechPromo2028/B-YEP-400-RUN-4-1-zappy-loic.rabearivelo.git
 jobs:
     set_repo_name:
         name: "set repo name"
