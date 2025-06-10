@@ -13,7 +13,7 @@ void add_clients(int new_fd)
     my_server()->info.fds[my_server()->info.fd_count].fd = new_fd;
     my_server()->info.fds[my_server()->info.fd_count].events = POLLIN;
     (my_server()->info.fd_count)++;
-    dprintf(new_fd, "Welcome to the server! You are client #%d\n",
+    dprintf(new_fd, "Welcome to the server! You are client #%ld\n",
         my_server()->info.fd_count - 1);
 }
 
@@ -23,7 +23,7 @@ void handle_new_connection(void)
     socklen_t addr_len = sizeof(client_addr);
     int new_fd;
 
-    new_fd = accept(my_server()->info.server_fd,
+    new_fd = accept(my_server()->info.fds[0].fd,
     (struct sockaddr *)&client_addr, &addr_len);
     if (new_fd < 0) {
         perror("accept");
@@ -34,7 +34,7 @@ void handle_new_connection(void)
         close(new_fd);
         return;
     }
-    printf("New connection from %s:%d (client #%d)\n",
+    printf("New connection from %s:%d (client #%ld)\n",
         inet_ntoa(client_addr.sin_addr),
         ntohs(client_addr.sin_port),
         my_server()->info.fd_count - 1);
@@ -68,7 +68,7 @@ void handle_client_data(int i)
 void remove_client(int i)
 {
     close(my_server()->info.fds[i].fd);
-    if (i < (my_server()->info.fd_count - 1)) {
+    if ((nfds_t)i < (my_server()->info.fd_count - 1)) {
         memmove(&my_server()->info.fds[i], &my_server()->info.fds[i + 1],
         sizeof(struct pollfd) * (my_server()->info.fd_count - i - 1));
     }
