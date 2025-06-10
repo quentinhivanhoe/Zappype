@@ -24,7 +24,7 @@ namespace Zappy
             Map _map;
             sf::Event _event;
         public:
-            GUI();
+            GUI(const std::string& ip = "127.0.0.1", size_t port = 8000);
             ~GUI();
             void init();
             void run();
