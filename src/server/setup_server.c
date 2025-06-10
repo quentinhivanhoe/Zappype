@@ -91,9 +91,9 @@ int setup_server(void)
     return 0;
 }
 
-trt_t *my_server(void)
+server_t *my_server(void)
 {
-    static trt_t server;
+    static server_t server;
 
     return &server;
 }
