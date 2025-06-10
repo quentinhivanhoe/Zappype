@@ -13,7 +13,7 @@ void add_clients(int new_fd)
     my_server()->info.fds[my_server()->info.fd_count].fd = new_fd;
     my_server()->info.fds[my_server()->info.fd_count].events = POLLIN;
     (my_server()->info.fd_count)++;
-    dprintf(new_fd, "Welcome to the server! You are client #%ld\n",
+    dprintf(new_fd, "Welcome to the server! You are client #%lu\n",
         my_server()->info.fd_count - 1);
 }
 
@@ -34,7 +34,7 @@ void handle_new_connection(void)
         close(new_fd);
         return;
     }
-    printf("New connection from %s:%d (client #%ld)\n",
+    printf("New connection from %s:%d (client #%lu)\n",
         inet_ntoa(client_addr.sin_addr),
         ntohs(client_addr.sin_port),
         my_server()->info.fd_count - 1);
