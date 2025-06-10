@@ -7,10 +7,12 @@
 
 #ifndef PLAYER_HPP_
     #define PLAYER_HPP_
-    #include "iostream"
-    #include "SFML/Graphics.hpp"
+    #include <memory>
+    #include <iostream>
+    #include <SFML/Graphics.hpp>
     #include "Math/Vector2D.hpp"
     #include "Actions.hpp"
+    #include "Interfaces/IObject.hpp"
 namespace Zappy 
 {
     class Player
@@ -23,14 +25,14 @@ namespace Zappy
         size_t _lifespan;
         sf::Color _color;
         Vector2D _pos;
-        std::vector<IObject> _stones;
-        std::vector<IObject> _foods;
+        std::vector<std::shared_ptr<IObject>> _stones;
+        std::vector<std::shared_ptr<IObject>> _foods;
     public:
         sf::RectangleShape shape;
         sf::Clock _clock;
         /*GETTER*/
-        std::vector<IObject> getStones() const {return this->_stones;};
-        std::vector<IObject> getFoods() const {return this->_foods;};
+        std::vector<std::shared_ptr<IObject>> getStones() const {return this->_stones;};
+        std::vector<std::shared_ptr<IObject>> getFoods() const {return this->_foods;};
         std::string getTeamName() const {return this->_teamName;};
         size_t getID() const {return this->_id;};
         size_t getLevel() const {return this->_level;};
@@ -39,12 +41,12 @@ namespace Zappy
         Vector2D getPos() const {return this->_pos;};
         sf::Color getColor() const {return this->_color;};
         /*SETTER*/
-        void setTeamName(std::string teamName) {this->_teamName;};
-        void setId(size_t id) {this->_id;};
-        void setLevel(size_t level) {this->_level;};
-        void setLifeSpan(size_t lifeSpan) {this->_lifespan;};
-        void setColor(sf::Color color) {this->_color;};
-        void setPos(Vector2D pos) {this->_pos;};
+        void setTeamName(std::string teamName) {this->_teamName = teamName;};
+        void setId(size_t id) {this->_id = id;};
+        void setLevel(size_t level) {this->_level = level;};
+        void setLifeSpan(size_t lifeSpan) {this->_lifespan = lifeSpan;};
+        void setColor(sf::Color color) {this->_color = color;};
+        void setPos(Vector2D pos) {this->_pos = pos;};
         Player(/* args */);
         ~Player();
     }; 

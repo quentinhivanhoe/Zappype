@@ -20,11 +20,11 @@ namespace Zappy
     };
     class Stones : public AObject
     {
-    private:
-        StoneType _type;
-    public:
-        Stones(std::string name, std::string type, double density);
-        ~Stones();
+        private:
+            StoneType _type;
+        public:
+            Stones(std::string name, std::string type, double density);
+            ~Stones();
     };
 }
 

@@ -7,6 +7,7 @@
 
 #ifndef MAP_HPP_
     #define MAP_HPP_
+    #include <memory>
     #include "Interfaces/IObject.hpp"
     #include "Team.hpp"
 
@@ -16,15 +17,15 @@ namespace Zappy
     {
     private:
         std::vector<Team> _teams;
-        std::vector<IObject> _stones;
-        std::vector<IObject> _foods;
+        std::vector<std::shared_ptr<IObject>> _stones;
+        std::vector<std::shared_ptr<IObject>> _foods;
     public:
         Map();
         ~Map();
         void init();
         std::vector<Team> getTeams() const {return this->_teams;};
-        std::vector<IObject> getStones() const {return this->_stones;};
-        std::vector<IObject> getFoods() const {return this->_foods;};
+        std::vector<std::shared_ptr<IObject>> getStones() const {return this->_stones;};
+        std::vector<std::shared_ptr<IObject>> getFoods() const {return this->_foods;};
     };
     
    

@@ -12,14 +12,14 @@ namespace Zappy
 {
     class Team
     {
-    private:
-        std::vector<Player> _players;
-        std::string _teamName;
-    public:
-        Team(std::string teamName);
-        ~Team();
-        std::vector<Player> getPlayer() const {return this->_players;};
-        std::string getTeamName() const {return this->_teamName;};
+        private:
+            std::vector<Player> _players;
+            std::string _teamName;
+        public:
+            Team(std::string teamName);
+            ~Team();
+            std::vector<Player> getPlayer() const {return this->_players;};
+            std::string getTeamName() const {return this->_teamName;};
     };
 }
 

@@ -12,14 +12,14 @@ namespace Zappy
 {
     class IObject
     {
-    public:
-        virtual ~IObject(){};
-        virtual std::string getType() const = 0;
-        virtual std::string getName() const = 0;
-        virtual double getDensity() const = 0;
-        virtual void setType(std::string type) = 0;
-        virtual void setName(std::string name) = 0;
-        virtual void setDensity(double density) = 0;
+        public:
+            virtual ~IObject(){};
+            virtual std::string getType() const = 0;
+            virtual std::string getName() const = 0;
+            virtual double getDensity() const = 0;
+            virtual void setType(std::string type) = 0;
+            virtual void setName(std::string name) = 0;
+            virtual void setDensity(double density) = 0;
     };
 }
 

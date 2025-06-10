@@ -17,5 +17,6 @@ Zappy::Actions::~Actions()
 
 void Zappy::Actions::function(const int& param)
 {
+    (void)param;
     this->_function();
 }

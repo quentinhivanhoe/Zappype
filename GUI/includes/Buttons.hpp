@@ -7,22 +7,17 @@
 
 #ifndef BUTTONS_HPP_
     #define BUTTONS_HPP_
-class Buttons
-{
-private:
-    /* data */
-public:
-    Buttons(/* args */);
-    ~Buttons();
-};
 
-Buttons::Buttons(/* args */)
+namespace Zappy
 {
-}
-
-Buttons::~Buttons()
-{
-}
-
+    class Buttons
+    {
+    private:
+        /* data */
+    public:
+        inline Buttons(/* args */) = default;
+        inline ~Buttons() = default;
+    };
+} // namespace Zappy
 
 #endif /* !BUTTONS_HPP_ */

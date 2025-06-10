@@ -7,29 +7,31 @@
 
 #ifndef GUI_HPP_
     #define GUI_HPP_
-    #include "Buttons.hpp"
+    #include <memory>
     #include "Network.hpp"
+    #include "Buttons.hpp"
     #include "Map.hpp"
 
 namespace Zappy
 {
-    class Network;
     class GUI
     {
-    private:
-        
-        std::vector<Buttons> _buttons;
-        Network _networkInfo;
-        sf::RenderWindow _window;
-        Map _map;
-    public:
-        GUI();
-        ~GUI();
-        void init();
-        void run();
-        std::vector<Buttons> getButtons() const {return this->_buttons;};
-        Map getMap() const {return this->_map;};
-        Network getNetwork() const {return this->_networkInfo;};
+        private:
+
+            std::vector<std::shared_ptr<Buttons>> _buttons;
+            std::shared_ptr<Network> _networkInfo;
+            sf::RenderWindow _window;
+            Map _map;
+            sf::Event _event;
+        public:
+            GUI();
+            ~GUI();
+            void init();
+            void run();
+            void handleWindowEvents();
+            std::vector<std::shared_ptr<Buttons>> getButtons() const {return this->_buttons;};
+            Map getMap() const {return this->_map;};
+            std::shared_ptr<Network> getNetwork() const {return this->_networkInfo;};
     };
 }
 

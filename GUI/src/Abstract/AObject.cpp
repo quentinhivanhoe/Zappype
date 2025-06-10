@@ -5,9 +5,8 @@
 ** AObject
 */
 
-#include "../includes/Abstracts/AObject.hpp"
+#include "../../includes/Abstracts/AObject.hpp"
 
-   
 Zappy::AObject::AObject(/* args */)
 {
 }
@@ -15,4 +14,3 @@ Zappy::AObject::AObject(/* args */)
 Zappy::AObject::~AObject()
 {
 }
-    
