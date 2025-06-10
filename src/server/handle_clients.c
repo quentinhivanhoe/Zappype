@@ -29,7 +29,7 @@ void handle_new_connection(void)
         perror("accept");
         return;
     }
-    if (my_server()->info.fd_count >= MAX_CLIENTS + 1) {
+    if (my_server()->info.fd_count >= my_server()->params.max_clients + 1) {
         dprintf(new_fd, "Server is full. Try again later.\n");
         close(new_fd);
         return;
