@@ -20,7 +20,6 @@ int main(int argc, char **argv)
     if (setup_server() < 0)
         return EXIT_FAILURE;
     printf("Server listening on port %d...\n", my_server()->info.port);
-    my_server()->info.fds[0].fd = my_server()->info.server_fd;
     my_server()->info.fds[0].events = POLLIN;
     my_server()->info.fd_count = 1;
     server_loop();

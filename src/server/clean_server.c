@@ -10,7 +10,7 @@
 
 void clean_server(void)
 {
-    for (int i = 0; i < my_server()->info.fd_count; i++) {
+    for (nfds_t i = 0; i < my_server()->info.fd_count; i++) {
         if (my_server()->info.fds[i].fd >= 0) {
             close(my_server()->info.fds[i].fd);
         }

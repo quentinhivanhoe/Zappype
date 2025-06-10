@@ -29,6 +29,7 @@ void append_team_names(int argc, char **argv, int i)
         team_count++;
         i++;
     }
+    my_server()->params.team_nbr = team_count;
     my_server()->params.team_names[team_count] = NULL;
 }
 

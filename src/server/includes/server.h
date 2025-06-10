@@ -43,8 +43,10 @@ typedef struct params_s {
     size_t width;
     size_t height;
     size_t frequency;
+    size_t cli_per_team;
     size_t max_clients;
     char **team_names;
+    size_t team_nbr;
     bool debug_mode;
 } params_t;
 
@@ -95,7 +97,7 @@ typedef struct trantorian_s {
     size_t clock;
     size_t food_bar;
     trn_stat_t stat;
-    int socket
+    int socket;
 } trn_t;
 
 typedef struct tile_s {
@@ -105,7 +107,6 @@ typedef struct tile_s {
 typedef enum client_type_e {
     GUI,
     IA,
-    EGG,
     SERVER
 } cli_type_t;
 
@@ -123,16 +124,17 @@ typedef struct client_list_s {
 
 typedef struct trantor_s {
     tile_t **map;
-    info_t network;
-    params_t param;
+    info_t info;
+    params_t params;
     cli_lst_t *inhabitant;
-} trantor_t;
+    bool running;
+} trt_t;
 
 extern const params_functions_t params_functions[];
 void add_clients(int new_fd);
 void server_loop(void);
 bool handle_event(int i);
-server_t *my_server(void);
+trt_t *my_server(void);
 int setup_server(void);
 void clean_server(void);
 void handle_new_connection(void);

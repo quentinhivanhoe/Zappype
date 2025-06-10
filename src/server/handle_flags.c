@@ -90,5 +90,5 @@ void add_clients_nb(int argc, char **argv, int i)
         fprintf(stderr, "Invalid clients number: %s\n", argv[i + 1]);
         exit(EXIT_FAILURE);
     }
-    my_server()->params.max_clients = atoi(argv[i + 1]);
+    my_server()->params.cli_per_team = atoi(argv[i + 1]);
 }

@@ -38,6 +38,7 @@ void det_params(int argc, char **argv)
     for (int i = 0; i < argc; i++) {
         execute_function(argc, argv, i);
     }
+    my_server()->params.max_clients *= my_server()->params.team_nbr;
 }
 
 void check_params(void)

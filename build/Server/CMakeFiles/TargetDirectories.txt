@@ -1,0 +1,5 @@
+/home/qh/Epitech/project/B4/YED/Zappype/build/Server/CMakeFiles/edit_cache.dir
+/home/qh/Epitech/project/B4/YED/Zappype/build/Server/CMakeFiles/rebuild_cache.dir
+/home/qh/Epitech/project/B4/YED/Zappype/build/Server/src/server/CMakeFiles/zappy_server.dir
+/home/qh/Epitech/project/B4/YED/Zappype/build/Server/src/server/CMakeFiles/edit_cache.dir
+/home/qh/Epitech/project/B4/YED/Zappype/build/Server/src/server/CMakeFiles/rebuild_cache.dir

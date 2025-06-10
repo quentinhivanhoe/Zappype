@@ -9,7 +9,7 @@
 
 bool check_event(void)
 {
-    for (int i = 0; i < my_server()->info.fd_count; i++) {
+    for (nfds_t i = 0; i < my_server()->info.fd_count; i++) {
         if (!handle_event(i))
             return false;
     }
@@ -19,7 +19,7 @@ bool check_event(void)
 void server_loop(void)
 {
     while (my_server()->running == true) {
-        if (poll(my_server()->info.fds, my_server()->info.fd_count, -1) < 0) {
+        if (poll(my_server()->info.fds, my_server()->info.fd_count, 50000) < 0) {
             perror("poll");
             break;
         }
@@ -38,7 +38,7 @@ bool handle_event(int i)
             remove_client(i);
         } else {
             perror("Server socket error");
-            close(my_server()->info.server_fd);
+            close(my_server()->info.fds[0].fd);
             return false;
         }
         return true;
@@ -61,31 +61,39 @@ static void setup_address(void)
 
 int setup_server(void)
 {
-    my_server()->info.server_fd = socket(AF_INET, SOCK_STREAM, 0);
-    if (my_server()->info.server_fd < 0) {
+    size_t size = my_server()->params.max_clients;
+    nfds_t count = my_server()->info.fd_count;
+
+    if (size <= 0) {
+        fprintf(stderr, "the maximum of clients must be > 0\n");
+        return -1;
+    }
+    my_server()->info.fds = malloc(sizeof(struct pollfd) * size);
+    my_server()->info.fds[count].fd = socket(AF_INET, SOCK_STREAM, 0);
+    if (my_server()->info.fds[0].fd < 0) {
         perror("socket failed");
         return -1;
     }
     setup_address();
-    if (bind(my_server()->info.server_fd,
+    if (bind(my_server()->info.fds[count].fd,
     (struct sockaddr *)&my_server()->info.address,
     sizeof(my_server()->info.address)) < 0) {
         perror("bind failed");
-        close(my_server()->info.server_fd);
+        close(my_server()->info.fds[count].fd);
         return -1;
     }
-    if (listen(my_server()->info.server_fd, MAX_CLIENTS) < 0) {
+    if (listen(my_server()->info.fds[count].fd, MAX_CLIENTS) < 0) {
         perror("listen");
-        close(my_server()->info.server_fd);
+        close(my_server()->info.fds[count].fd);
         return -1;
     }
     my_server()->running = true;
     return 0;
 }
 
-server_t *my_server(void)
+trt_t *my_server(void)
 {
-    static server_t server;
+    static trt_t server;
 
     return &server;
 }
