@@ -18,6 +18,8 @@ add_executable(zappy_server
     ./is_num.c
     ./retrieve_flags.c
     ./signal.c
+    ./handle_gui.c
+    ./gui_commands_1.c
 )
 
 target_include_directories(zappy_server PRIVATE includes)

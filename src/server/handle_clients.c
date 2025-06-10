@@ -6,6 +6,7 @@
 */
 
 #include "./includes/server.h"
+#include "./includes/handle_gui.h"
 
 
 void add_clients(int new_fd)
@@ -13,7 +14,7 @@ void add_clients(int new_fd)
     my_server()->info.fds[my_server()->info.fd_count].fd = new_fd;
     my_server()->info.fds[my_server()->info.fd_count].events = POLLIN;
     (my_server()->info.fd_count)++;
-    dprintf(new_fd, "Welcome to the server! You are client #%lu\n",
+    dprintf(new_fd, "Welcome to the server! You are client #%u\n",
         my_server()->info.fd_count - 1);
 }
 
@@ -34,7 +35,7 @@ void handle_new_connection(void)
         close(new_fd);
         return;
     }
-    printf("New connection from %s:%d (client #%lu)\n",
+    printf("New connection from %s:%d (client #%u)\n",
         inet_ntoa(client_addr.sin_addr),
         ntohs(client_addr.sin_port),
         my_server()->info.fd_count - 1);
@@ -57,7 +58,13 @@ void handle_client_data(int i)
         remove_client(i);
     } else {
         buffer[nbytes] = '\0';
-        printf("Received from client #%d: %s", i, buffer);
+        // printf("Received from client #%d: %s", i, buffer);
+        // if (is_valid_command(buffer)) {
+        //     dprintf(my_server()->info.fds[i].fd, "Command '%s' accepted\n", buffer);
+        // } else {
+        //     dprintf(my_server()->info.fds[i].fd, "Invalid command: %s\n", buffer);
+        // }
+        dispatch_command(my_server()->info.fds[i].fd, buffer);
         sprintf(resp, "Server received: %s", buffer);
         if (write(my_server()->info.fds[i].fd, resp, strlen(resp)) < 0) {
             perror("write");
