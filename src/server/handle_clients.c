@@ -10,11 +10,24 @@
 
 void add_clients(int new_fd)
 {
-    my_server()->info.fds[my_server()->info.fd_count].fd = new_fd;
-    my_server()->info.fds[my_server()->info.fd_count].events = POLLIN;
+    int free_slots = -1;
+
+    for (nfds_t i = 1; i < my_server()->params.max_clients; i++) {
+        if (my_server()->info.fds[i].fd == -1) {
+            free_slots = i;
+            break;
+        }
+    }
+    if (free_slots == -1) {
+        fprintf(stderr, "No free slots available for new client.\n");
+        close(new_fd);
+        return;
+    }
+    my_server()->info.fds[free_slots].fd = new_fd;
+    my_server()->info.fds[free_slots].events = POLLIN;
     (my_server()->info.fd_count)++;
-    dprintf(new_fd, "Welcome to the server! You are client #%lu\n",
-        my_server()->info.fd_count - 1);
+    dprintf(new_fd, "Welcome to the server! You are client #%d\n",
+        free_slots);
 }
 
 void handle_new_connection(void)
@@ -68,9 +81,7 @@ void handle_client_data(int i)
 void remove_client(int i)
 {
     close(my_server()->info.fds[i].fd);
-    if ((nfds_t)i < (my_server()->info.fd_count - 1)) {
-        memmove(&my_server()->info.fds[i], &my_server()->info.fds[i + 1],
-        sizeof(struct pollfd) * (my_server()->info.fd_count - i - 1));
-    }
+    my_server()->info.fds[i].fd = -1;
+    my_server()->info.fds[i].events = 0;
     my_server()->info.fd_count--;
 }

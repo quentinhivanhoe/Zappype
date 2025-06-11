@@ -9,7 +9,7 @@
 
 bool check_event(void)
 {
-    for (nfds_t i = 0; i < my_server()->info.fd_count; i++) {
+    for (nfds_t i = 0; i < my_server()->params.max_clients; i++) {
         if (!handle_event(i))
             return false;
     }
@@ -19,7 +19,8 @@ bool check_event(void)
 void server_loop(void)
 {
     while (my_server()->running == true) {
-        if (poll(my_server()->info.fds, my_server()->info.fd_count, 50000) < 0) {
+        if (poll(my_server()->info.fds,
+        my_server()->params.max_clients, 50000) < 0) {
             perror("poll");
             break;
         }
@@ -65,10 +66,12 @@ int setup_server(void)
     nfds_t count = my_server()->info.fd_count;
 
     if (size <= 0) {
-        fprintf(stderr, "the maximum of clients must be > 0\n");
+        fprintf(stderr, "the maximum of clients must be great than 0\n");
         return -1;
     }
-    my_server()->info.fds = malloc(sizeof(struct pollfd) * size);
+    my_server()->info.fds = calloc(size, sizeof(struct pollfd));
+    for (nfds_t i = 0; i < size; i++)
+        my_server()->info.fds[i].fd = -1;
     my_server()->info.fds[count].fd = socket(AF_INET, SOCK_STREAM, 0);
     if (my_server()->info.fds[0].fd < 0) {
         perror("socket failed");
