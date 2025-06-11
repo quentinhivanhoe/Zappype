@@ -23,8 +23,10 @@ namespace Zappy
             sf::RenderWindow _window;
             sf::Texture tile_texture;
             sf::Sprite tile;
+            float tile_scale = 0.25;
             Map _map;
             sf::Event _event;
+
         public:
             GUI();
             ~GUI();
@@ -34,6 +36,7 @@ namespace Zappy
             void handleWindowEvents();
             std::vector<std::shared_ptr<Buttons>> getButtons() const {return this->_buttons;};
             Map getMap() const {return this->_map;};
+            float getTileScale() const {return this->tile_scale;};
             std::shared_ptr<Network> getNetwork() const {return this->_networkInfo;};
     };
 }

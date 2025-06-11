@@ -12,8 +12,8 @@ Zappy::GUI::GUI(/* args */)
     this->tile_texture = sf::Texture();
     this->tile_texture.loadFromFile("../GUI/assets/map.png");
     this->tile = sf::Sprite(tile_texture);
-    this->tile.setScale(0.25, 0.25);
-    this->_map = Map(Vector2D(5.0, 5.0));
+    this->tile.setScale(this->getTileScale(), this->getTileScale());
+    this->_map = Map(Vector2D(4.0, 4.0));
     this->run();
 }
     
@@ -53,12 +53,14 @@ void Zappy::GUI::display_map()
 
     for (size_t j = 0; j < this->getMap().getSize().getY() + 1; j++){
         for (int i = 0; i < this->getMap().getSize().getX(); i++){
-            offset.setX(offset.getX() - 120);
-            offset.setY(offset.getY() + 70);
+            offset.setX(offset.getX() - tile_texture.getSize().x  * this->getTileScale() / (2));
+            offset.setY(offset.getY() + tile_texture.getSize().y  * this->getTileScale() / (2) - 18);
             this->tile.setPosition(offset.getX(), offset.getY());
             this->_window.draw(this->tile);
         }
-        offset = Vector2D(1920/2 + (120 * j), 0 + (70 * j));
+        offset = Vector2D(
+        (1920/2 + (tile_texture.getSize().x * this->getTileScale() / 2) * j),
+        (0 + (tile_texture.getSize().y * this->getTileScale() / 2 - 18) * j));
     }
 }
 
