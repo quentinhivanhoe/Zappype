@@ -10,21 +10,26 @@
 
 static const char *gui_commands[] = {
     "msz\n",
-    "mct\n",
-    "bct\n",
+    // "bct\n",
+    // "mct\n",
+    "tna\n",
     "ppo\n",
-    "spn\n",
-    "spp\n",
+    // "plv\n",
+    // "pin\n",
+    // "sgt\n",
+    // "sst\n",
+    // "spn\n",
     NULL
 };
 
 static const gui_command_entry_t gui_command_table[] = {
     { "msz\n", handle_msz },
-    { "mct\n", handle_mct },
-    { "bct\n", handle_bct },
+    { "tna\n", handle_tna },
+    // { "mct\n", handle_mct },
+    // { "bct\n", handle_bct },
     { "ppo\n", handle_ppo },
-    { "spn\n", handle_spn },
-    { "spp\n", handle_spp },
+    // { "spn\n", handle_spn },
+    // { "spp\n", handle_spp },
     { NULL, NULL }
 };
 

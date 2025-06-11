@@ -7,33 +7,21 @@
 
 #include <stdio.h>
 #include <unistd.h>
+#include "./includes/server.h"
 
 void handle_msz(int client_fd)
 {
-    dprintf(client_fd, "Execution of command: msz\n");
+    dprintf(client_fd, "msz %zu %zu\n", my_server()->params.width,
+                                    my_server()->params.height);
 }
 
-void handle_mct(int client_fd)
+void handle_tna(int client_fd)
 {
-    dprintf(client_fd, "Execution of command: mct\n");
+    if (my_server()->params.team_names) {
+        for (size_t i = 0; my_server()->params.team_names[i] != NULL; i++) {
+            dprintf(client_fd, "tna %s\n", my_server()->params.team_names[i]);
+        }
+    }
 }
 
-void handle_bct(int client_fd)
-{
-    dprintf(client_fd, "Execution of command: bct\n");
-}
-
-void handle_ppo(int client_fd)
-{
-    dprintf(client_fd, "Execution of command: ppo\n");
-}
-
-void handle_spn(int client_fd)
-{
-    dprintf(client_fd, "Execution of command: spn\n");
-}
-
-void handle_spp(int client_fd)
-{
-    dprintf(client_fd, "Execution of command: spp\n");
-}
+void handle_ppo(int client_fd, )

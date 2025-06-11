@@ -58,14 +58,7 @@ void handle_client_data(int i)
         remove_client(i);
     } else {
         buffer[nbytes] = '\0';
-        // printf("Received from client #%d: %s", i, buffer);
-        // if (is_valid_command(buffer)) {
-        //     dprintf(my_server()->info.fds[i].fd, "Command '%s' accepted\n", buffer);
-        // } else {
-        //     dprintf(my_server()->info.fds[i].fd, "Invalid command: %s\n", buffer);
-        // }
         dispatch_command(my_server()->info.fds[i].fd, buffer);
-        sprintf(resp, "Server received: %s", buffer);
         if (write(my_server()->info.fds[i].fd, resp, strlen(resp)) < 0) {
             perror("write");
         }

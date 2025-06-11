@@ -11,7 +11,7 @@
 
 typedef void (*command_handler_t)(int);
 
-typedef struct gui_command_entry_s{
+typedef struct gui_command_entry_s {
     const char *key;
     command_handler_t handler;
 } gui_command_entry_t;
@@ -25,5 +25,6 @@ void handle_bct(int client_fd);
 void handle_ppo(int client_fd);
 void handle_spn(int client_fd);
 void handle_spp(int client_fd);
+void handle_tna(int client_fd);
 
 #endif

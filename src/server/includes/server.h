@@ -75,7 +75,7 @@ typedef enum direction_e {
     WEST = 4
 } dir_t;
 
-typedef enum trantorian_status_e {
+ty-edef enum trantorian_status_e {
     ALIVE,
     DEAD,
     EGG,
