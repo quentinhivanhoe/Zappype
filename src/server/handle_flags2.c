@@ -13,7 +13,7 @@ void append_team_names(int argc, char **argv, int i)
     size_t team_count = 0;
     char **new_team_names;
 
-    while (i < argc && argv[i][0] != '-') {
+    for (; i < argc && argv[i][0] != '-'; i++) {
         new_team_names = realloc(my_server()->params.team_names,
         sizeof(char *) * (team_count + 2));
         if (!new_team_names) {
@@ -27,9 +27,8 @@ void append_team_names(int argc, char **argv, int i)
             exit(EXIT_FAILURE);
         }
         team_count++;
-        i++;
     }
-    my_server()->params.team_nbr = team_count;
+    my_server()->params.team_nbr = team_count + 1;
     my_server()->params.team_names[team_count] = NULL;
 }
 

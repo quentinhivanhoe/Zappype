@@ -60,38 +60,60 @@ static void setup_address(void)
     my_server()->info.address.sin_port = htons(my_server()->info.port);
 }
 
-int setup_server(void)
+static void alloc_server(void)
 {
     size_t size = my_server()->params.max_clients;
+
+    my_server()->info.fds = calloc(size, sizeof(struct pollfd));
+    my_server()->info.clients = calloc(size, sizeof(client_t));
+}
+
+static void set_default_fd(void)
+{
+    for (nfds_t i = 0; i < my_server()->params.max_clients; i++)
+        my_server()->info.fds[i].fd = -1;
+}
+
+static int bind_server(void)
+{
+    if (bind(my_server()->info.fds[my_server()->info.fd_count].fd,
+    (struct sockaddr *)&my_server()->info.address,
+    sizeof(my_server()->info.address)) < 0) {
+        perror("bind failed");
+        close(my_server()->info.fds[my_server()->info.fd_count].fd);
+        return -1;
+    }
+    if (listen(my_server()->info.fds[my_server()->info.fd_count].fd,
+    my_server()->params.max_clients) < 0) {
+        perror("listen");
+        close(my_server()->info.fds[my_server()->info.fd_count].fd);
+        return -1;
+    }
+    my_server()->running = true;
+    return 0;
+}
+
+int setup_server(void)
+{
     nfds_t count = my_server()->info.fd_count;
 
-    if (size <= 0) {
+    if (my_server()->params.max_clients <= 0) {
         fprintf(stderr, "the maximum of clients must be great than 0\n");
         return -1;
     }
-    my_server()->info.fds = calloc(size, sizeof(struct pollfd));
-    for (nfds_t i = 0; i < size; i++)
-        my_server()->info.fds[i].fd = -1;
+    alloc_server();
+    if (!my_server()->info.fds || !my_server()->info.clients) {
+        perror("calloc failed");
+        return -1;
+    }
+    set_default_fd();
     my_server()->info.fds[count].fd = socket(AF_INET, SOCK_STREAM, 0);
     if (my_server()->info.fds[0].fd < 0) {
         perror("socket failed");
         return -1;
     }
     setup_address();
-    if (bind(my_server()->info.fds[count].fd,
-    (struct sockaddr *)&my_server()->info.address,
-    sizeof(my_server()->info.address)) < 0) {
-        perror("bind failed");
-        close(my_server()->info.fds[count].fd);
-        return -1;
-    }
-    if (listen(my_server()->info.fds[count].fd, MAX_CLIENTS) < 0) {
-        perror("listen");
-        close(my_server()->info.fds[count].fd);
-        return -1;
-    }
-    my_server()->running = true;
-    return 0;
+    return bind_server();
 }
 
 server_t *my_server(void)
