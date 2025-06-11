@@ -5,7 +5,7 @@
 ** registration
 */
 
-#include "./includes/server.h"
+#include "../includes/server.h"
 
 
 static size_t count_gui_clients(void)
