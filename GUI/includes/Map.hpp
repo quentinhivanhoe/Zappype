@@ -9,6 +9,7 @@
     #define MAP_HPP_
     #include <memory>
     #include "Interfaces/IObject.hpp"
+    #include "Tile.hpp"
     #include "Team.hpp"
 
 namespace Zappy
@@ -17,16 +18,14 @@ namespace Zappy
     {
     private:
         std::vector<Team> _teams;
-        std::vector<std::shared_ptr<IObject>> _stones;
-        std::vector<std::shared_ptr<IObject>> _foods;
+        std::vector<std::vector<std::shared_ptr<Tile>>> _tiles;
         Vector2D size;
     public:
         Map();
         ~Map();
         void init();
         std::vector<Team> getTeams() const {return this->_teams;};
-        std::vector<std::shared_ptr<IObject>> getStones() const {return this->_stones;};
-        std::vector<std::shared_ptr<IObject>> getFoods() const {return this->_foods;};
+        std::vector<std::vector<std::shared_ptr<Tile>>> getTiles() const {return this->_tiles;};
     };
     
    
