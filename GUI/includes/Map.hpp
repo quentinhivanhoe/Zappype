@@ -19,6 +19,7 @@ namespace Zappy
         std::vector<Team> _teams;
         std::vector<std::shared_ptr<IObject>> _stones;
         std::vector<std::shared_ptr<IObject>> _foods;
+        Vector2D size;
     public:
         Map();
         ~Map();

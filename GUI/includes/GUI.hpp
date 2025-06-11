@@ -8,6 +8,7 @@
 #ifndef GUI_HPP_
     #define GUI_HPP_
     #include <memory>
+    #include "SFML/Graphics.hpp"
     #include "Network.hpp"
     #include "Buttons.hpp"
     #include "Map.hpp"
@@ -17,10 +18,11 @@ namespace Zappy
     class GUI
     {
         private:
-
             std::vector<std::shared_ptr<Buttons>> _buttons;
             std::shared_ptr<Network> _networkInfo;
             sf::RenderWindow _window;
+            sf::Texture tile_texture;
+            sf::Sprite tile;
             Map _map;
             sf::Event _event;
         public:
@@ -28,6 +30,7 @@ namespace Zappy
             ~GUI();
             void init();
             void run();
+            void display_map();
             void handleWindowEvents();
             std::vector<std::shared_ptr<Buttons>> getButtons() const {return this->_buttons;};
             Map getMap() const {return this->_map;};
