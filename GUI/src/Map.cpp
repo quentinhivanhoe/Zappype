@@ -7,8 +7,9 @@
 
 #include "../includes/Map.hpp"
 
-Zappy::Map::Map(/* args */)
+Zappy::Map::Map(Vector2D size)
 {
+    _size = size;
 }
     
 Zappy::Map::~Map()

@@ -19,17 +19,15 @@ namespace Zappy
     private:
         std::vector<Team> _teams;
         std::vector<std::vector<std::shared_ptr<Tile>>> _tiles;
-        Vector2D size;
+        Vector2D _size;
     public:
-        Map();
+        Map(Vector2D size = Vector2D(5.0, 5.0));
         ~Map();
         void init();
+        Vector2D getSize() const {return this->_size;};
         std::vector<Team> getTeams() const {return this->_teams;};
         std::vector<std::vector<std::shared_ptr<Tile>>> getTiles() const {return this->_tiles;};
     };
-    
-   
-    
 }
 
 #endif /* !MAP_HPP_ */
