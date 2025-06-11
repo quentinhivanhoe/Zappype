@@ -7,14 +7,27 @@
 
 #include "./includes/server.h"
 
-
 void add_clients(int new_fd)
 {
-    my_server()->info.fds[my_server()->info.fd_count].fd = new_fd;
-    my_server()->info.fds[my_server()->info.fd_count].events = POLLIN;
+    int free_slots = -1;
+
+    for (nfds_t i = 1; i < my_server()->params.max_clients + 1; i++) {
+        if (my_server()->info.fds[i].fd == -1) {
+            free_slots = i;
+            break;
+        }
+    }
+    if (free_slots == -1) {
+        fprintf(stderr, "No free slots available for new client.\n");
+        close(new_fd);
+        return;
+    }
+    my_server()->info.fds[free_slots].fd = new_fd;
+    my_server()->info.fds[free_slots].events = POLLIN;
     (my_server()->info.fd_count)++;
-    dprintf(new_fd, "Welcome to the server! You are client #%lu\n",
-        my_server()->info.fd_count - 1);
+    dprintf(new_fd, "Welcome to the server! You are client #%d\n",
+        free_slots);
+    my_server()->info.clients[free_slots].type = UNDEFINED;
 }
 
 void handle_new_connection(void)
@@ -41,11 +54,25 @@ void handle_new_connection(void)
     add_clients(new_fd);
 }
 
+void parse_data(char *buffer, int i)
+{
+    char resp[BUFFER_SIZE + 30];
+
+    if (my_server()->info.clients[i].type == UNDEFINED) {
+        det_teams(buffer, i);
+    } else {
+        printf("Received from client #%d: %s", i, buffer);
+        sprintf(resp, "Server received: %s", buffer);
+        if (write(my_server()->info.fds[i].fd, resp, strlen(resp)) < 0) {
+            perror("write");
+        }
+    }
+}
+
 void handle_client_data(int i)
 {
     char buffer[BUFFER_SIZE];
     int nbytes;
-    char resp[BUFFER_SIZE + 30];
 
     nbytes = read(my_server()->info.fds[i].fd, buffer, sizeof(buffer) - 1);
     if (nbytes <= 0) {
@@ -57,20 +84,14 @@ void handle_client_data(int i)
         remove_client(i);
     } else {
         buffer[nbytes] = '\0';
-        printf("Received from client #%d: %s", i, buffer);
-        sprintf(resp, "Server received: %s", buffer);
-        if (write(my_server()->info.fds[i].fd, resp, strlen(resp)) < 0) {
-            perror("write");
-        }
+        parse_data(buffer, i);
     }
 }
 
 void remove_client(int i)
 {
     close(my_server()->info.fds[i].fd);
-    if ((nfds_t)i < (my_server()->info.fd_count - 1)) {
-        memmove(&my_server()->info.fds[i], &my_server()->info.fds[i + 1],
-        sizeof(struct pollfd) * (my_server()->info.fd_count - i - 1));
-    }
+    my_server()->info.fds[i].fd = -1;
+    my_server()->info.fds[i].events = 0;
     my_server()->info.fd_count--;
 }

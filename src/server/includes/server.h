@@ -52,6 +52,12 @@ void handle_new_connection(void);
 void handle_client_data(int i);
 void remove_client(int i);
 
+/* Registration process*/
+
+void register_gui_client(int i);
+void process_ia_connection(int i, int team_index);
+void register_ia_client(int i, char *team_name);
+void det_teams(char *buffer, int i);
 /* UTIL */
 bool is_num(const char *str);
 
