@@ -67,8 +67,8 @@ void process_ia_connection(int i, int team_index)
     dprintf(my_server()->info.fds[i].fd,
         "You are now registered as an IA in team '%s'.\n",
         my_server()->params.team_names[team_index]);
-    dprintf(my_server()->info.fds[i].fd, "ID: %d\n", i);
-    dprintf(my_server()->info.fds[i].fd, "Map size X: %zu, Y: %zu\n",
+    dprintf(my_server()->info.fds[i].fd, "%d\n", i);
+    dprintf(my_server()->info.fds[i].fd, "%zu %zu\n",
         my_server()->params.width, my_server()->params.height);
 }
 
