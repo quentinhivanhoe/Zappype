@@ -71,6 +71,7 @@ void Zappy::Parser::manageMSZ([[maybe_unused]] std::vector<std::string> args, [[
         return;
     }
     network->setMapSize({std::stoi(args[1]), std::stoi(args[2])});
+    Parser::showArgs(args);
 }
 
 void Zappy::Parser::manageBCT([[maybe_unused]] std::vector<std::string> args, [[maybe_unused]] Zappy::Network *network)
@@ -100,6 +101,7 @@ void Zappy::Parser::manageSPN([[maybe_unused]] std::vector<std::string> args, [[
         return;
     }
     network->setPlayerNb(std::stoi(args[1]));
+    Parser::showArgs(args);
 }
 
 void Zappy::Parser::manageSPI([[maybe_unused]] std::vector<std::string> args, [[maybe_unused]] Zappy::Network *network)
