@@ -18,7 +18,7 @@ bool check_event(void)
 
 void server_loop(void)
 {
-    double start_time = get_elapsed_time_units_from_start();
+    __attribute_maybe_unused__ double start_time = get_time();
 
     while (my_server()->running == true) {
         if (poll(my_server()->info.fds,

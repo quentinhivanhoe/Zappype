@@ -53,8 +53,9 @@ void register_gui_client(int i)
         return;
     }
     my_server()->info.clients[i].data.gui_client = my_server()->info.fds[i].fd;
-    dprintf(my_server()->info.fds[i].fd,
+    dprintf(2,
         "You are now registered as a GUI client.\n");
+    dprintf(my_server()->info.clients[i].data.gui_client, "ok\n");
     my_server()->info.clients[i].type = GUI;
     return;
 }

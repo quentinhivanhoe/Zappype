@@ -8,7 +8,6 @@
 #include "../includes/server.h"
 #include "../includes/gui.h"
 
-
 void add_clients(int new_fd)
 {
     int free_slots = -1;
@@ -50,8 +49,7 @@ void handle_new_connection(void)
     }
     if (my_server()->params.debug_mode)
         dprintf(2, "New connection from %s:%d (client #%lu)\n",
-        inet_ntoa(client_addr.sin_addr),
-        ntohs(client_addr.sin_port),
+        inet_ntoa(client_addr.sin_addr), ntohs(client_addr.sin_port),
         my_server()->info.fd_count - 1);
     add_clients(new_fd);
 }
