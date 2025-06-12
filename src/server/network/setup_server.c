@@ -63,9 +63,11 @@ static void setup_address(void)
 static void alloc_server(void)
 {
     size_t size = my_server()->params.max_clients;
+    size_t len_map = my_server()->params.width * my_server()->params.height;
 
     my_server()->info.fds = calloc(size, sizeof(struct pollfd));
     my_server()->info.clients = calloc(size, sizeof(client_t));
+    my_server()->map = init_map(len_map);
 }
 
 static void set_default_fd(void)

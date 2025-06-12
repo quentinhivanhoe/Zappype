@@ -21,4 +21,5 @@ void clean_server(void)
     free(my_server()->info.clients);
     free(my_server()->info.fds);
     free(my_server()->params.team_names);
+    free(my_server()->map);
 }

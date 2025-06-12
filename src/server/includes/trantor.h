@@ -23,6 +23,7 @@ typedef enum object_index_e {
     THYSTAME
 } obj_idx_t;
 
+
 typedef enum direction_e {
     NORTH = 1,
     EAST = 2,
@@ -59,5 +60,7 @@ typedef struct tile_s {
     obj_t content[OBJECT_DEFINED];
 } tile_t;
 
+extern const float density_table[OBJECT_DEFINED + 1];
 
+tile_t *init_map(size_t len_map);
 #endif /* !TRANTOR_H_ */
