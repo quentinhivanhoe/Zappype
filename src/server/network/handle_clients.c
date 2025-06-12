@@ -8,7 +8,6 @@
 #include "../includes/server.h"
 #include "../includes/gui.h"
 
-
 void add_clients(int new_fd)
 {
     int free_slots = -1;
@@ -63,7 +62,7 @@ void parse_data(char *buffer, int i)
         det_teams(buffer, i);
     } else {
         printf("Received from client #%d: %s", i, buffer);
-        dispatch_command(my_server()->info.fds[i].fd, buffer);
+        dispatch_command(i, buffer);
         sprintf(resp, "Server received: %s", buffer);
         if (write(my_server()->info.fds[i].fd, resp, strlen(resp)) < 0) {
             perror("write");
