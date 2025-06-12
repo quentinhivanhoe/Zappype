@@ -13,6 +13,7 @@
     #include "Network.hpp"
     #include "Buttons.hpp"
     #include "Map.hpp"
+    #include "Items.hpp"
 
 namespace Zappy
 {
@@ -20,6 +21,8 @@ namespace Zappy
     {
         private:
             std::vector<std::shared_ptr<Buttons>> _buttons;
+            std::vector<std::shared_ptr<Items>> _items;
+            std::vector<std::string> spritePaths;
             std::shared_ptr<Network> _networkInfo;
             sf::RenderWindow _window;
 
@@ -33,9 +36,11 @@ namespace Zappy
             GUI();
             ~GUI();
             void init();
+            void initPaths();
             void run();
             void display_map();
             void display_sky();
+            void display_objects();
             void handleWindowEvents();
             std::vector<std::shared_ptr<Buttons>> getButtons() const {return this->_buttons;};
             Map getMap() const {return this->_map;};

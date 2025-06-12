@@ -21,7 +21,22 @@ Zappy::GUI::~GUI()
 
 void Zappy::GUI::init()
 {
+    initPaths();
+    for (int i = 0; i != 8; i++) {
+        this->_items.push_back(std::make_shared<Items>(this->spritePaths[i], i));
+    }
+}
 
+void Zappy::GUI::initPaths()
+{
+    this->spritePaths.push_back("../assets/egg_filed.png");
+    this->spritePaths.push_back("../assets/food_filed.png");
+    this->spritePaths.push_back("../assets/cristal_filed.png");
+    this->spritePaths.push_back("../assets/cristal_filed.png");
+    this->spritePaths.push_back("../assets/cristal_filed.png");
+    this->spritePaths.push_back("../assets/cristal_filed.png");
+    this->spritePaths.push_back("../assets/cristal_filed.png");
+    this->spritePaths.push_back("../assets/cristal_filed.png");
 }
 
 void Zappy::GUI::handleWindowEvents(  )
@@ -65,4 +80,9 @@ void Zappy::GUI::display_map()
 void Zappy::GUI::display_sky()
 {
     this->_window.draw(this->sky.getSprite());
+}
+
+void Zappy::GUI::display_objects()
+{
+
 }
