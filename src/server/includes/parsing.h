@@ -26,4 +26,17 @@ typedef struct params_s {
     bool debug_mode;
 } params_t;
 
+void add_port(int argc, char **argv, int i);
+void add_width(int argc, char **argv, int i);
+void add_height(int argc, char **argv, int i);
+void add_frequency(int argc, char **argv, int i);
+void add_clients_nb(int argc, char **argv, int i);
+void add_team_names(int argc, char **argv, int i);
+void set_debug_mode(int argc, char **argv, int i);
+void print_usage(int argc, char **argv, int i);
+void append_team_names(int argc, char **argv, int i);
+void check_params(void);
+void det_params(int argc, char **argv);
+void print_params(void);
+
 #endif /* !PARSING_H_ */

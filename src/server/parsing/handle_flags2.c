@@ -5,7 +5,7 @@
 ** handle_flags2
 */
 
-#include "./includes/server.h"
+#include "../includes/server.h"
 
 
 void append_team_names(int argc, char **argv, int i)

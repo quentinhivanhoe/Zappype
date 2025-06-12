@@ -10,15 +10,15 @@ add_compile_options(
 
 add_executable(zappy_server
     ./main.c
-    ./clean_server.c
-    ./handle_flags.c
-    ./handle_flags2.c
-    ./setup_server.c
-    ./handle_clients.c
-    ./is_num.c
-    ./retrieve_flags.c
-    ./signal.c
-    ./registration.c
+    ./network/clean_server.c
+    ./parsing/handle_flags.c
+    ./parsing/handle_flags2.c
+    ./network/setup_server.c
+    ./network/handle_clients.c
+    ./logical/is_num.c
+    ./parsing/retrieve_flags.c
+    ./network/signal.c
+    ./network/registration.c
 )
 
 target_include_directories(zappy_server PRIVATE includes)

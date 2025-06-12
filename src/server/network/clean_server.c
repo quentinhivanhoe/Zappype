@@ -5,7 +5,7 @@
 ** clean_server
 */
 
-#include "./includes/server.h"
+#include "../includes/server.h"
 
 
 void clean_server(void)

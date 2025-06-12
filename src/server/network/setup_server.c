@@ -5,7 +5,7 @@
 ** setup_server
 */
 
-#include "./includes/server.h"
+#include "../includes/server.h"
 
 bool check_event(void)
 {

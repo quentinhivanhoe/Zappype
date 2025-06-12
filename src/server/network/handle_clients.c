@@ -5,7 +5,7 @@
 ** handle_clients
 */
 
-#include "./includes/server.h"
+#include "../includes/server.h"
 
 void add_clients(int new_fd)
 {

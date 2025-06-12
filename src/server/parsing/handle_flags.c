@@ -5,7 +5,7 @@
 ** handle_flags
 */
 
-#include "./includes/server.h"
+#include "../includes/server.h"
 
 
 void add_port(int argc, char **argv, int i)

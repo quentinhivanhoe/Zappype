@@ -5,7 +5,8 @@
 ** retrieve_flags
 */
 
-#include "./includes/server.h"
+#include "../includes/server.h"
+#include "../includes/parsing.h"
 
 const params_functions_t params_functions[] = {
     {"-p", &add_port},
