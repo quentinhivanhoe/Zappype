@@ -63,7 +63,7 @@ void parse_data(char *buffer, int i)
         det_teams(buffer, i);
     } else {
         dprintf(STDERR_FILENO, "Command start ton be handled\n");
-        dispatch_command(my_server()->info.fds[i].fd, buffer);
+        dispatch_command(i, buffer);
     }
 }
 
