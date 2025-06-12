@@ -9,6 +9,7 @@
     #define GUI_HPP_
     #include <memory>
     #include "SFML/Graphics.hpp"
+    #include "Drawable.hpp"
     #include "Network.hpp"
     #include "Buttons.hpp"
     #include "Map.hpp"
@@ -22,16 +23,10 @@ namespace Zappy
             std::shared_ptr<Network> _networkInfo;
             sf::RenderWindow _window;
 
-            //faire une classe pour ça ptet//        
-            sf::Texture tile_texture;
-            sf::Sprite tile;
+            Drawable tile = Drawable("../GUI/assets/map.png");
             float tile_scale = 0.25;
             Map _map;
-
-            sf::Texture sky_texture;
-            sf::Sprite sky;
-
-            //----------------------------//
+            Drawable sky = Drawable("../GUI/assets/sky.jpg");
             sf::Event _event;
 
         public:
