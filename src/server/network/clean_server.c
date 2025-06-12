@@ -19,4 +19,5 @@ void clean_server(void)
         free(my_server()->params.team_names[i]);
     }
     free(my_server()->params.team_names);
+    free(my_server()->map);
 }
