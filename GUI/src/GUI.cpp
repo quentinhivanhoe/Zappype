@@ -8,7 +8,7 @@
 
 Zappy::GUI::GUI(const std::string &ip, size_t port)
 {
-    this->_networkInfo = std::make_shared<Network>();
+    this->_networkInfo = std::make_shared<Network>(this);
     this->_networkInfo->establishConnection(ip, port);
     this->_networkInfo->initProcess();
     // this->_window.create(sf::VideoMode(1920, 1080, 8), "Zappy GUI", sf::Style::Close);

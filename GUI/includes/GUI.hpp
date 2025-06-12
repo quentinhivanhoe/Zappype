@@ -14,6 +14,7 @@
 
 namespace Zappy
 {
+    class Network;
     class GUI
     {
         private:

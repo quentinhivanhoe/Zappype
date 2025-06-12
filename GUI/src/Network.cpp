@@ -6,11 +6,14 @@
 */
 
 #include "../includes/Network.hpp"
-#include "iostream"
-
     
-Zappy::Network::Network(/* args */)
+Zappy::Network::Network(Zappy::GUI *gui)
 {
+    if (!gui)
+        throw Error("Gui not provided", "Network init");
+    this->_gui = gui;
+    this->_mapSize = {-1, -1};
+    this->_playerNb = -1;
 }
 
 Zappy::Network::~Network()
@@ -29,11 +32,11 @@ void Zappy::Network::send(std::string message)
 
 std::string Zappy::Network::receive()
 {
-    char array[4096];
+    std::array<char, 4096> recievedArray;
     size_t nb_bytes;
-    if (_socket.receive(array, sizeof(array), nb_bytes) == sf::Socket::Done) {
-        std::cout << array << std::endl;
-        return std::string(array);
+    if (_socket.receive(recievedArray.data(), recievedArray.size(), nb_bytes) == sf::Socket::Done) {
+        recievedArray[nb_bytes] = '\0';
+        return std::string(recievedArray.data());
     }
     throw Error("Error", "Network Recieve function");
     return "error";
@@ -45,15 +48,15 @@ void Zappy::Network::establishConnection(std::string ip, size_t socket)
     this->_status = _socket.connect(ipAddress, socket);
     if (this->_status != sf::Socket::Done)
         throw Error("Error", "Network Init function");
-    std::cout << "FROM SERVER:" << this->receive() << std::endl;
+    std::cout << "WELCOME MESSAGE FROM SERVER:" << this->receive() << std::endl;
 }
 
 void Zappy::Network::initProcess()
 {
     this->askToServer("Team");
     this->askToServer("PlayerNb");
-    this->askToServer("PlayersInfo");
     this->askToServer("MapSize");
+    this->askToServer("PlayersInfo");
     this->askToServer("MapContent");
     std::cout << "Initialisation process sucess" << std::endl;
 }
@@ -75,25 +78,53 @@ void Zappy::Network::askToServer(const std::string& command)
 
 void Zappy::Network::askTeam()
 {
-    std::cout << "Asking for teams..." << std::endl;
+    this->send("GRAPHIC\n");
 }
 
 void Zappy::Network::askPlayerNb()
 {
-    std::cout << "Asking for players number..." << std::endl;
+    this->send("spn\n");
+    std::string recievedString = this->receive();
+    Parser parser;
+    std::vector<std::string> args = Parser::parseLine(recievedString, ' ');
+    parser.manageResponse(args, this);
 }
 
 void Zappy::Network::askPlayersInfo()
 {
-    std::cout << "Asking for players info..." << std::endl;
+    if (this->_playerNb < 0) {
+        std::cout << "Must have player number set before asking for players info." << std::endl;
+        return;
+    }
+    this->send("spi\n");
+    Parser parser;
+    for (int i = 0; i < this->_playerNb; i++) {
+        std::string recievedString = this->receive();
+        std::vector<std::string> args = Parser::parseLine(recievedString, ' ');
+        parser.manageResponse(args, this);
+    }
 }
 
 void Zappy::Network::askMapSize()
 {
-    std::cout << "Asking for map size..." << std::endl;
+    this->send("msz\n");
+    std::string recievedString = this->receive();
+    Parser parser;
+    std::vector<std::string> args = Parser::parseLine(recievedString, ' ');
+    parser.manageResponse(args, this);
 }
 
 void Zappy::Network::askMapContent()
 {
-    std::cout << "Asking for map content..." << std::endl;
+    if (this->_mapSize.x <= 0 || this->_mapSize.y <= 0) {
+        std::cout << "Must have map size set before asking for content." << std::endl;
+        return;
+    }
+    this->send("mct\n");
+    Parser parser;
+    for (int i = 0; i < this->_mapSize.x * this->_mapSize.y; i++) {
+        std::string recievedString = this->receive();
+        std::vector<std::string> args = Parser::parseLine(recievedString, ' ');
+        parser.manageResponse(args, this);
+    }
 }
