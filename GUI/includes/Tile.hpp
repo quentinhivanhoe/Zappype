@@ -26,11 +26,14 @@ namespace Zappy
     private:
         size_t _id;
         std::vector<size_t> _items;
+        Vector2D _pos;
     public:
         Tile(size_t id = -1);
         ~Tile();
         size_t getNItem(Item name);
         void setNItem(Item name, size_t value);
+        Vector2D getPos() const {return this->_pos;};
+        void setPos(Vector2D pos) {this->_pos = pos;};
     }; 
 }
 

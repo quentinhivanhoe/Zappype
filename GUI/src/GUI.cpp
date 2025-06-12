@@ -84,5 +84,5 @@ void Zappy::GUI::display_sky()
 
 void Zappy::GUI::display_objects()
 {
-
+    
 }
