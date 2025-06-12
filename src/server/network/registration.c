@@ -7,7 +7,6 @@
 
 #include "../includes/server.h"
 
-
 static size_t count_gui_clients(void)
 {
     size_t count = 0;
@@ -55,8 +54,8 @@ void register_gui_client(int i)
     }
     my_server()->info.clients[i].type = GUI;
     my_server()->info.clients[i].data.gui_client = my_server()->info.fds[i].fd;
-    dprintf(my_server()->info.fds[i].fd,
-        "You are now registered as a GUI client.\n");
+    if (my_server()->params.debug_mode == true)
+        dprintf(2, "Client %d is now registered as a GUI client.\n", i + 1);
     return;
 }
 
@@ -64,8 +63,8 @@ void process_ia_connection(int i, int team_index)
 {
     my_server()->info.clients[i].type = IA;
     my_server()->info.clients[i].data.ia_client.team_id = team_index;
-    dprintf(my_server()->info.fds[i].fd,
-        "You are now registered as an IA in team '%s'.\n",
+    if (my_server()->params.debug_mode == true)
+        dprintf(2, "Client %d is now registered in team '%s'.\n", i + 1,
         my_server()->params.team_names[team_index]);
     dprintf(my_server()->info.fds[i].fd, "%d\n", i);
     dprintf(my_server()->info.fds[i].fd, "%zu %zu\n",

@@ -27,8 +27,7 @@ void add_clients(int new_fd)
     my_server()->info.fds[free_slots].fd = new_fd;
     my_server()->info.fds[free_slots].events = POLLIN;
     (my_server()->info.fd_count)++;
-    dprintf(new_fd, "Welcome to the server! You are client #%d\n",
-        free_slots);
+    dprintf(new_fd, "WELCOME\n");
     my_server()->info.clients[free_slots].type = UNDEFINED;
 }
 
