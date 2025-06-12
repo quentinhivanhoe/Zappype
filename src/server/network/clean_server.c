@@ -18,5 +18,7 @@ void clean_server(void)
     for (int i = 0; my_server()->params.team_names[i] != NULL; i++) {
         free(my_server()->params.team_names[i]);
     }
+    free(my_server()->info.clients);
+    free(my_server()->info.fds);
     free(my_server()->params.team_names);
 }
