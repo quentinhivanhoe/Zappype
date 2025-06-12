@@ -61,12 +61,16 @@ void dispatch_command(int client_fd, const char *input)
         free(line);
         return;
     }
-    for (int i = 0; gui_command_table[i].key != NULL; i++) {
-        if (strncmp(gui_command_table[i].key, token, strlen(token)) == 0) {
-            char **args = split_args(input);
-            gui_command_table[i].handler(client_fd, args);
-            free(line);
-            return;
+    for (nfds_t i = 0; i < my_server()->params.max_clients; i++) {
+        if (my_server()->info.clients[i].type == GUI) {
+            for (int i = 0; gui_command_table[i].key != NULL; i++) {
+                if (strncmp(gui_command_table[i].key, token, strlen(token)) == 0) {
+                    char **args = split_args(input);
+                    gui_command_table[i].handler(client_fd, args);
+                    free(line);
+                    return;
+                }
+            }
         }
     }
     dprintf(client_fd, "Invalid command: %s", input);

@@ -49,7 +49,7 @@ void handle_new_connection(void)
         close(new_fd);
         return;
     }
-    printf("New connection from %s:%d (client #%lu)\n",
+    printf("New connection from %s:%d (client #%u)\n",
         inet_ntoa(client_addr.sin_addr),
         ntohs(client_addr.sin_port),
         my_server()->info.fd_count - 1);
