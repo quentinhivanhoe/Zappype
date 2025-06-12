@@ -5,19 +5,21 @@
 ** handle_gui
 */
 
-#include "./includes/server.h"
-#include "./includes/gui.h"
+#include "../includes/server.h"
+#include "../includes/gui.h"
 
 static const char *gui_commands[] = {
     "msz",
     "tna",
     "ppo",
+    "mct",
     NULL
 };
 
 static const gui_command_entry_t gui_command_table[] = {
     { "msz", handle_msz },
     { "tna", handle_tna },
+    { "mct", handle_mct },
     { NULL, NULL }
 };
 
@@ -94,7 +96,8 @@ void dispatch_command(int client_index, const char *input)
     line = strdup(input);
     if (!line)
         return;
-    token = strtok(line, " \r\n");
+    token = strtok(line, "\n");
+    dprintf(STDERR_FILENO, "before token\n");
     if (!token) {
         free(line);
         return;
@@ -103,6 +106,7 @@ void dispatch_command(int client_index, const char *input)
         free(line);
         return;
     }
+    dprintf(STDERR_FILENO, "token: [%s]\n", token);
     handle_gui_command(client_fd, input, token);
     free(line);
 }

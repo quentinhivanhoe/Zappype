@@ -21,4 +21,5 @@ void dispatch_command(int client_fd, const char *cmd);
 
 void handle_msz(int client_fd, char **cmd);
 void handle_tna(int client_fd, char **cmd);
+void handle_mct(int client_fd, char **cmd);
 #endif

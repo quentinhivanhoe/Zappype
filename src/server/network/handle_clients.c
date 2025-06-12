@@ -59,8 +59,10 @@ void parse_data(char *buffer, int i)
     if (my_server()->params.debug_mode)
         dprintf(2, "Received from client #%d: %s", i, buffer);
     if (my_server()->info.clients[i].type == UNDEFINED) {
+        dprintf(STDERR_FILENO, "user not authentified, define teams\n");
         det_teams(buffer, i);
     } else {
+        dprintf(STDERR_FILENO, "Command start ton be handled\n");
         dispatch_command(my_server()->info.fds[i].fd, buffer);
     }
 }

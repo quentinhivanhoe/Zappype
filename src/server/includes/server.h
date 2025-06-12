@@ -7,6 +7,7 @@
 
 #ifndef SERVER_H_
     #define SERVER_H_
+    #define _GNU_SOURCE
     #include <stdio.h>
     #include <stdbool.h>
     #include <stdlib.h>
