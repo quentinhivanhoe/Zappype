@@ -9,11 +9,18 @@
 Zappy::GUI::GUI(/* args */)
 {
     this->_window.create(sf::VideoMode(1920, 1080, 8), "Zappy GUI", sf::Style::Close);
+
     this->tile_texture = sf::Texture();
     this->tile_texture.loadFromFile("../GUI/assets/map.png");
+
     this->tile = sf::Sprite(tile_texture);
     this->tile.setScale(this->getTileScale(), this->getTileScale());
     this->_map = Map(Vector2D(4.0, 4.0));
+
+    this->sky_texture = sf::Texture();
+    this->sky_texture.loadFromFile("../GUI/assets/sky.jpg");
+    this->sky = sf::Sprite(sky_texture);
+    this->sky.setPosition(0, 0);
     this->run();
 }
     
@@ -36,12 +43,12 @@ void Zappy::GUI::handleWindowEvents()
     }   
 }
 
-
 void Zappy::GUI::run()
 {
     while (this->_window.isOpen()) {
         this->handleWindowEvents();
         this->_window.clear(sf::Color::Black);
+        this->display_sky();
         this->display_map();
         this->_window.display();
     }   
@@ -64,3 +71,7 @@ void Zappy::GUI::display_map()
     }
 }
 
+void Zappy::GUI::display_sky()
+{
+    this->_window.draw(this->sky);
+}

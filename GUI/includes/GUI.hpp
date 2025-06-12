@@ -21,10 +21,17 @@ namespace Zappy
             std::vector<std::shared_ptr<Buttons>> _buttons;
             std::shared_ptr<Network> _networkInfo;
             sf::RenderWindow _window;
+
+            //faire une classe pour ça ptet//        
             sf::Texture tile_texture;
             sf::Sprite tile;
             float tile_scale = 0.25;
             Map _map;
+
+            sf::Texture sky_texture;
+            sf::Sprite sky;
+
+            //----------------------------//
             sf::Event _event;
 
         public:
@@ -33,6 +40,7 @@ namespace Zappy
             void init();
             void run();
             void display_map();
+            void display_sky();
             void handleWindowEvents();
             std::vector<std::shared_ptr<Buttons>> getButtons() const {return this->_buttons;};
             Map getMap() const {return this->_map;};
