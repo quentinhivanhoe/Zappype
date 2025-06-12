@@ -47,7 +47,6 @@ typedef struct trantorian_s {
     pos_t pos;
     uint8_t lvl;
     obj_t inventory[OBJECT_DEFINED];
-    // char *team;
     size_t team_id;
     size_t wait_time;
     size_t clock;

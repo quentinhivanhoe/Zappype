@@ -19,6 +19,8 @@ add_executable(zappy_server
     ./parsing/retrieve_flags.c
     ./network/signal.c
     ./network/registration.c
+    ./gui.c
+    ./gui_commands.c
 )
 
 target_include_directories(zappy_server PRIVATE includes)
