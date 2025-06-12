@@ -18,9 +18,11 @@ bool check_event(void)
 
 void server_loop(void)
 {
+    double start_time = get_elapsed_time_units_from_start();
+
     while (my_server()->running == true) {
         if (poll(my_server()->info.fds,
-        my_server()->params.max_clients, 50000) < 0) {
+        my_server()->params.max_clients, 0) < 0) {
             perror("poll");
             break;
         }

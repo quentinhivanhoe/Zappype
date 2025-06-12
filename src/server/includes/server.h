@@ -22,6 +22,7 @@
     #include "parsing.h"
     #include "trantor.h"
     #include "client.h"
+    #include <time.h>
     #define _GNU_SOURCE
     #define MAX_CLIENTS 5
     #define BUFFER_SIZE 1024
@@ -51,6 +52,9 @@ void clean_server(void);
 void handle_new_connection(void);
 void handle_client_data(int i);
 void remove_client(int i);
+
+/* Time management function */
+double get_elapsed_time_units_from_start(void);
 
 /* Registration process*/
 
