@@ -80,13 +80,13 @@ static int bind_server(void)
     (struct sockaddr *)&my_server()->info.address,
     sizeof(my_server()->info.address)) < 0) {
         perror("bind failed");
-        close(my_server()->info.fds[my_server()->info.fd_count].fd);
+        clean_server();
         return -1;
     }
     if (listen(my_server()->info.fds[my_server()->info.fd_count].fd,
     my_server()->params.max_clients) < 0) {
         perror("listen");
-        close(my_server()->info.fds[my_server()->info.fd_count].fd);
+        clean_server();
         return -1;
     }
     my_server()->running = true;

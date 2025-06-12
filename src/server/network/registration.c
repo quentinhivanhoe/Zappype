@@ -104,7 +104,6 @@ void det_teams(char *buffer, int i)
         remove_client(i);
         return;
     }
-    printf("team name: [%s]\n", team_name);
     if (strcmp(team_name, "GRAPHIC") == 0)
         return register_gui_client(i);
     return register_ia_client(i, team_name);

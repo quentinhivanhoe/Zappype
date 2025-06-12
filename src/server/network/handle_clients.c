@@ -48,7 +48,8 @@ void handle_new_connection(void)
         close(new_fd);
         return;
     }
-    printf("New connection from %s:%d (client #%u)\n",
+    if (my_server()->params.debug_mode)
+        dprintf(2, "New connection from %s:%d (client #%lu)\n",
         inet_ntoa(client_addr.sin_addr),
         ntohs(client_addr.sin_port),
         my_server()->info.fd_count - 1);
@@ -57,17 +58,12 @@ void handle_new_connection(void)
 
 void parse_data(char *buffer, int i)
 {
-    char resp[BUFFER_SIZE + 30];
-
+    if (my_server()->params.debug_mode)
+        dprintf(2, "Received from client #%d: %s", i, buffer);
     if (my_server()->info.clients[i].type == UNDEFINED) {
         det_teams(buffer, i);
     } else {
-        printf("Received from client #%d: %s", i, buffer);
         dispatch_command(my_server()->info.fds[i].fd, buffer);
-        sprintf(resp, "Server received: %s", buffer);
-        if (write(my_server()->info.fds[i].fd, resp, strlen(resp)) < 0) {
-            perror("write");
-        }
     }
 }
 
