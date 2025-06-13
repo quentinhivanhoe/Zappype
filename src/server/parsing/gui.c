@@ -13,6 +13,7 @@ static const char *gui_commands[] = {
     "tna",
     "ppo",
     "mct",
+    "bct",
     NULL
 };
 
@@ -20,6 +21,7 @@ static const gui_command_entry_t gui_command_table[] = {
     { "msz", handle_msz },
     { "tna", handle_tna },
     { "mct", handle_mct },
+    { "bct", handle_bct },
     { NULL, NULL }
 };
 
@@ -78,6 +80,9 @@ static void handle_gui_command(int fd, const char *input, const char *token)
     for (int i = 0; gui_command_table[i].key != NULL; i++) {
         if (strcmp(gui_command_table[i].key, token) == 0) {
             args = split_args(input);
+            for (int j = 0; args[j]; j++) {
+                printf("args[%d]: %s\n", j, args[j]);
+            }
             gui_command_table[i].handler(fd, args);
             free_args(args);
             return;
@@ -97,7 +102,7 @@ void dispatch_command(int client_index, const char *input)
     line = strdup(input);
     if (!line)
         return;
-    token = strtok(line, "\n");
+    token = strtok(line, " \n");
     if (!token) {
         free(line);
         return;
