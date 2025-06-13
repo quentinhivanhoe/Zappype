@@ -41,11 +41,12 @@ char **split_args(const char *cmd)
 
     while (token != NULL) {
         args = realloc(args, sizeof(char *) * (count + 1));
-        count++;
         args[count] = strdup(token);
+        count++;
         token = strtok(NULL, " \n");
     }
     args = realloc(args, sizeof(char *) * (count + 1));
+    printf("count: [%d]\n", count);
     args[count] = NULL;
     free(copy);
     return args;
