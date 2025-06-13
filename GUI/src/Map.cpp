@@ -25,7 +25,6 @@ void Zappy::Map::init()
         std::cout << "i" << i << std::endl;
         std::vector<std::shared_ptr<Tile>> tmp;
         for (int j = 0; j != this->_size.getX(); j++) {
-            std::cout << "j" << j << std::endl;
             tmp.push_back(std::make_shared<Tile>(id_tmp));
             id_tmp++;
         }

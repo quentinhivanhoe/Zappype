@@ -10,8 +10,10 @@ Zappy::GUI::GUI(/* args */)
 {
     this->_window.create(sf::VideoMode(1920, 1080, 8), "Zappy GUI", sf::Style::Close);
     this->tile.getSprite().setScale(this->getTileScale(), this->getTileScale());
+    this->tile.getSprite().setScale(this->getTileScale(), this->getTileScale());
     this->_map = Map(Vector2D(7.0, 4.0));
     this->sky.getSprite().setPosition(0, 0);
+    this->init();
     this->run();
 }
     
@@ -29,14 +31,14 @@ void Zappy::GUI::init()
 
 void Zappy::GUI::initPaths()
 {
-    this->spritePaths.push_back("../assets/egg_filed.png");
-    this->spritePaths.push_back("../assets/food_filed.png");
-    this->spritePaths.push_back("../assets/cristal_filed.png");
-    this->spritePaths.push_back("../assets/cristal_filed.png");
-    this->spritePaths.push_back("../assets/cristal_filed.png");
-    this->spritePaths.push_back("../assets/cristal_filed.png");
-    this->spritePaths.push_back("../assets/cristal_filed.png");
-    this->spritePaths.push_back("../assets/cristal_filed.png");
+    this->spritePaths.push_back("../GUI/assets/egg_filled.png");
+    this->spritePaths.push_back("../GUI/assets/food_filled.png");
+    this->spritePaths.push_back("../GUI/assets/cristal_filled.png");
+    this->spritePaths.push_back("../GUI/assets/cristal_filled.png");
+    this->spritePaths.push_back("../GUI/assets/cristal_filled.png");
+    this->spritePaths.push_back("../GUI/assets/cristal_filled.png");
+    this->spritePaths.push_back("../GUI/assets/cristal_filled.png");
+    this->spritePaths.push_back("../GUI/assets/cristal_filled.png");
 }
 
 void Zappy::GUI::handleWindowEvents(  )
@@ -56,6 +58,7 @@ void Zappy::GUI::run()
         this->_window.clear(sf::Color::Black);
         this->display_sky();
         this->display_map();
+        this->display_objects();
         this->_window.display();
     }   
 }
@@ -69,7 +72,9 @@ void Zappy::GUI::display_map()
             offset.setY(offset.getY() + tile.getTexture().getSize().y  * this->getTileScale() / (2) - 18);
             this->tile.getSprite().setPosition(offset.getX(), offset.getY());
             this->_window.draw(this->tile.getSprite());
-            std::cout << "Tile ID :" << _map.getTiles()[j][i].get()->getId() << std::endl;
+            _map.getTiles()[j][i].get()->setCenter(Vector2D(offset.getX() + (tile.getTexture().getSize().x * this->getTileScale() / 2), offset.getY() + (tile.getTexture().getSize().y * this->getTileScale() / 2)));
+            _map.getTiles()[j][i].get()->setPos(offset);
+            // std::cout << "tile pos : " << offset.getX() << " and " << offset.getY() << " / " << _map.getTiles()[j][i].get()->getPos().getX() << " and " << _map.getTiles()[j][i].get()->getPos().getY() << " center " <<  _map.getTiles()[j][i].get()->getCenter().getX() << " "<< _map.getTiles()[j][i].get()->getCenter().getY() << std::endl;
         }
         offset = Vector2D(
         (1920/2 + (tile.getTexture().getSize().x * this->getTileScale() / 2) * (j + 1)),
@@ -84,5 +89,16 @@ void Zappy::GUI::display_sky()
 
 void Zappy::GUI::display_objects()
 {
-    
+    for (size_t i = 0; i < this->_map.getTiles().size(); i++){
+        for (size_t j = 0; j < this->_map.getTiles()[i].size(); j++){
+            for (size_t k = 0; k < 8; k++){
+                if (this->_map.getTiles()[i][j].get()->getItems()[k] > 0){
+                    this->_items[k].get()->getSprite().getSprite().setPosition(this->_map.getTiles()[i][j].get()->getCenter().getX(), this->_map.getTiles()[i][j].get()->getCenter().getY());
+                    this->_items[k].get()->getSprite().getSprite().setScale(0.1, 0.1);
+                    this->_window.draw(this->_items[k].get()->getSprite().getSprite());
+                }
+                
+            }
+        }
+    }
 }

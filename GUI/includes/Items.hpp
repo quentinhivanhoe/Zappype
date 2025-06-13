@@ -18,6 +18,7 @@ namespace Zappy
         Drawable _sprite;
         sf::Text quantity;
     public:
+        Drawable &getSprite(){return _sprite;};
         Items(std::string fileName, size_t id);
         ~Items();
     };
