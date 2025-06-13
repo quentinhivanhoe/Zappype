@@ -6,7 +6,7 @@
 */
 #include "../includes/GUI.hpp"
 
-Zappy::GUI::GUI(/* args */)
+Zappy::GUI::GUI(const std::string& ip = "127.0.0.1", size_t port = 8000)
 {
     this->_window.create(sf::VideoMode(1920, 1080, 8), "Zappy GUI", sf::Style::Close);
     this->tile.getSprite().setScale(this->getTileScale(), this->getTileScale());
