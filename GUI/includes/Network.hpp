@@ -8,20 +8,48 @@
 #ifndef NETWORK_HPP_
     #define NETWORK_HPP_
     #include <memory>
+    #include <array>
+    #include <iostream>
+    #include "Error.hpp"
+    #include "Parser.hpp"
+    #include "SFML/Network.hpp"
+    #include "GUI.hpp"
 namespace Zappy 
 {
     class GUI;
     class Network
     {
         private:
-            std::shared_ptr<GUI> _gui;
-            /*manque les attirubut du serv*/
+            GUI *_gui;
+            sf::TcpSocket _socket;
+            sf::Socket::Status _status;
+            sf::Packet _packet;
+            int _playerNb;
+            sf::Vector2i _mapSize;
         public:
-            Network(/* args */);
+            Network(GUI *gui = nullptr);
             ~Network();
+
+            //Setters
+            inline void setPlayerNb(int nb) { this->_playerNb = nb;};
+            inline void setMapSize(sf::Vector2i mapSize) { this->_mapSize = mapSize;};
+
+            //Getters
+            inline int getPlayerNb() const { return this->_playerNb; };
+            inline sf::Vector2i getMapSize() const { return this->_mapSize; };
+
             inline void updateGUi() {};
-            inline void init() {};
+            void establishConnection(std::string ip, size_t socket);
+            void initProcess();
+            void send(std::string message);
+            std::string receive(bool isBlocking = true);
             inline void fetchData() {};
+            void askToServer(const std::string& command);
+            void askTeam();
+            void askPlayerNb();
+            void askPlayersInfo();
+            void askMapSize();
+            void askMapContent();
     };
 }
 

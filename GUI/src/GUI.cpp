@@ -6,10 +6,11 @@
 */
 #include "../includes/GUI.hpp"
 
-Zappy::GUI::GUI(const std::string& ip, size_t port)
+Zappy::GUI::GUI(const std::string &ip, size_t port)
 {
-    (void)ip;
-    (void)port;
+    this->_networkInfo = std::make_shared<Network>(this);
+    this->_networkInfo->establishConnection(ip, port);
+    this->_networkInfo->initProcess();
     this->_window.create(sf::VideoMode(1920, 1080, 8), "Zappy GUI", sf::Style::Close);
     this->tile.getSprite().setScale(this->getTileScale(), this->getTileScale());
     this->tile.getSprite().setScale(this->getTileScale(), this->getTileScale());
@@ -18,7 +19,7 @@ Zappy::GUI::GUI(const std::string& ip, size_t port)
     this->init();
     this->run();
 }
-    
+
 Zappy::GUI::~GUI()
 {
 }
@@ -51,7 +52,7 @@ void Zappy::GUI::handleWindowEvents(  )
             this->_window.close();
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
             this->_window.close();
-    }   
+    }
 }
 
 void Zappy::GUI::run()

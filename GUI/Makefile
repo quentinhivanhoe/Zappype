@@ -7,7 +7,7 @@
 
 NAME = zappy_gui
 
-CPPFLAGS = -std=c++20 -Wall -Wextra -Werror -fno-gnu-unique -lsfml-graphics -lsfml-window -lsfml-system
+CPPFLAGS = -std=c++20 -Wall -Iincludes -Wextra -Werror -fno-gnu-unique -lsfml-graphics -lsfml-window -lsfml-system -lsfml-network
 
 SRC = $(shell find -name "*.cpp")
 

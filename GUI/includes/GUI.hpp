@@ -17,6 +17,7 @@
 
 namespace Zappy
 {
+    class Network;
     class GUI
     {
         private:
@@ -50,3 +51,4 @@ namespace Zappy
 }
 
 #endif /* !GUI_HPP_ */
+//
