@@ -98,7 +98,6 @@ void dispatch_command(int client_index, const char *input)
     if (!line)
         return;
     token = strtok(line, "\n");
-    dprintf(STDERR_FILENO, "before token\n");
     if (!token) {
         free(line);
         return;
@@ -107,7 +106,6 @@ void dispatch_command(int client_index, const char *input)
         free(line);
         return;
     }
-    dprintf(STDERR_FILENO, "token: [%s]\n", token);
     handle_gui_command(client_fd, input, token);
     free(line);
 }

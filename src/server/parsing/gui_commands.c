@@ -29,14 +29,15 @@ void handle_mct(int client_fd, __attribute_maybe_unused__ char **cmd)
 
     for (size_t i = 0; i < width; i++) {
         for (size_t j = 0; j < height; j++) {
-            dprintf(client_fd, "bct %ld %ld %ld %ld %ld %ld %ld %ld %ld\n",i, j,
-            my_server()->map[(i * j) + j].content[FOOD],
-            my_server()->map[(i * j) + j].content[LINEMATE],
-            my_server()->map[(i * j) + j].content[DERAUMERE],
-            my_server()->map[(i * j) + j].content[SIBUR],
-            my_server()->map[(i * j) + j].content[MENDIANE],
-            my_server()->map[(i * j) + j].content[PHIRAS],
-            my_server()->map[(i * j) + j].content[THYSTAME]
+            dprintf(client_fd,
+                "bct %ld %ld %ld %ld %ld %ld %ld %ld %ld\n", i, j,
+                my_server()->map[(i * j) + j].content[FOOD],
+                my_server()->map[(i * j) + j].content[LINEMATE],
+                my_server()->map[(i * j) + j].content[DERAUMERE],
+                my_server()->map[(i * j) + j].content[SIBUR],
+                my_server()->map[(i * j) + j].content[MENDIANE],
+                my_server()->map[(i * j) + j].content[PHIRAS],
+                my_server()->map[(i * j) + j].content[THYSTAME]
             );
         }
     }
