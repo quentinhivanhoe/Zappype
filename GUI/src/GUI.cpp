@@ -6,8 +6,10 @@
 */
 #include "../includes/GUI.hpp"
 
-Zappy::GUI::GUI(const std::string& ip = "127.0.0.1", size_t port = 8000)
+Zappy::GUI::GUI(const std::string& ip, size_t port)
 {
+    (void)ip;
+    (void)port;
     this->_window.create(sf::VideoMode(1920, 1080, 8), "Zappy GUI", sf::Style::Close);
     this->tile.getSprite().setScale(this->getTileScale(), this->getTileScale());
     this->tile.getSprite().setScale(this->getTileScale(), this->getTileScale());
@@ -25,6 +27,7 @@ void Zappy::GUI::init()
 {
     initPaths();
     for (int i = 0; i != 8; i++) {
+        std::cout << this->spritePaths[i] << std::endl;
         this->_items.push_back(std::make_shared<Items>(this->spritePaths[i], i));
     }
 }
@@ -93,9 +96,9 @@ void Zappy::GUI::display_objects()
         for (size_t j = 0; j < this->_map.getTiles()[i].size(); j++){
             for (size_t k = 0; k < 8; k++){
                 if (this->_map.getTiles()[i][j].get()->getItems()[k] > 0){
-                    this->_items[k].get()->getSprite().getSprite().setPosition(this->_map.getTiles()[i][j].get()->getCenter().getX(), this->_map.getTiles()[i][j].get()->getCenter().getY());
-                    this->_items[k].get()->getSprite().getSprite().setScale(0.1, 0.1);
-                    this->_window.draw(this->_items[k].get()->getSprite().getSprite());
+                    this->_items[k]->getSprite().getSprite().setPosition(this->_map.getTiles()[i][j].get()->getCenter().getX(), this->_map.getTiles()[i][j].get()->getCenter().getY());
+                    this->_items[k]->getSprite().getSprite().setScale(0.1, 0.1);
+                    this->_window.draw(this->_items[k]->getSprite().getSprite());
                 }
                 
             }
