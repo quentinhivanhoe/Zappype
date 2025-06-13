@@ -42,7 +42,7 @@ namespace Zappy
             void establishConnection(std::string ip, size_t socket);
             void initProcess();
             void send(std::string message);
-            std::string receive();
+            std::string receive(bool isBlocking = true);
             inline void fetchData() {};
             void askToServer(const std::string& command);
             void askTeam();

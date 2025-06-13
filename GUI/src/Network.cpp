@@ -30,16 +30,16 @@ void Zappy::Network::send(std::string message)
         throw Error("Error", "Network Send function");
 }
 
-std::string Zappy::Network::receive()
+std::string Zappy::Network::receive(bool isBlocking)
 {
     std::array<char, 4096> recievedArray;
     size_t nb_bytes;
+    this->_socket.setBlocking(isBlocking);
     if (_socket.receive(recievedArray.data(), recievedArray.size(), nb_bytes) == sf::Socket::Done) {
         recievedArray[nb_bytes] = '\0';
         return std::string(recievedArray.data());
     }
-    throw Error("Error", "Network Recieve function");
-    return "error";
+    return "";
 }
 
 void Zappy::Network::establishConnection(std::string ip, size_t socket)
@@ -54,11 +54,11 @@ void Zappy::Network::establishConnection(std::string ip, size_t socket)
 void Zappy::Network::initProcess()
 {
     this->askToServer("Team");
-    this->askToServer("PlayerNb");
+    // this->askToServer("PlayerNb");
     this->askToServer("MapSize");
-    this->askToServer("PlayersInfo");
+    // this->askToServer("PlayersInfo");
     this->askToServer("MapContent");
-    std::cout << "Initialisation process sucess" << std::endl;
+    std::cout << "[DEBUG from GUI] GUI connection to Server : OK" << std::endl;
 }
 
 void Zappy::Network::askToServer(const std::string& command)
@@ -79,6 +79,8 @@ void Zappy::Network::askToServer(const std::string& command)
 void Zappy::Network::askTeam()
 {
     this->send("GRAPHIC\n");
+    [[maybe_unused]] std::string recievedString = this->receive();
+    std::cout << "[DEBUG from GUI] Authentification sucess" << std::endl;
 }
 
 void Zappy::Network::askPlayerNb()
@@ -98,9 +100,16 @@ void Zappy::Network::askPlayersInfo()
     }
     this->send("spi\n");
     Parser parser;
-    for (int i = 0; i < this->_playerNb; i++) {
-        std::string recievedString = this->receive();
-        std::vector<std::string> args = Parser::parseLine(recievedString, ' ');
+    std::string playersInfo = "";
+    while (true) {
+        std::string recievedString = this->receive(false);
+        playersInfo.append(recievedString);
+        if (static_cast<int>(Parser::nbOccur(playersInfo, "spi")) >= this->_playerNb)
+            break;
+    }
+    std::vector<std::string> tab = Parser::splitLine(playersInfo, "\n");
+    for (size_t i = 0; i < tab.size(); i++) {
+        std::vector<std::string> args = Parser::parseLine(tab[i], ' ');
         parser.manageResponse(args, this);
     }
 }
@@ -122,9 +131,16 @@ void Zappy::Network::askMapContent()
     }
     this->send("mct\n");
     Parser parser;
-    for (int i = 0; i < this->_mapSize.x * this->_mapSize.y; i++) {
-        std::string recievedString = this->receive();
-        std::vector<std::string> args = Parser::parseLine(recievedString, ' ');
+    std::string mapContent = "";
+    while (true) {
+        std::string recievedString = this->receive(false);
+        mapContent.append(recievedString);
+        if (static_cast<int>(Parser::nbOccur(mapContent, "bct")) >= this->_mapSize.x * this->_mapSize.y)
+            break;
+    }
+    std::vector<std::string> tab = Parser::splitLine(mapContent, "\n");
+    for (size_t i = 0; i < tab.size(); i++) {
+        std::vector<std::string> args = Parser::parseLine(tab[i], ' ');
         parser.manageResponse(args, this);
     }
 }

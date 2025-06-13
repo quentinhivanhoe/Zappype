@@ -36,9 +36,9 @@ void Zappy::Parser::manageResponse(std::vector<std::string> args, Zappy::Network
 {
     std::map<std::string, void (Zappy::Parser:: *)(std::vector<std::string>, Network *)> funcTab = {
         {"msz", &Zappy::Parser::manageMSZ},
-        {"spi", &Zappy::Parser::manageMSZ},
-        {"spn", &Zappy::Parser::manageMSZ},
-        {"bct", &Zappy::Parser::manageMSZ},
+        {"spi", &Zappy::Parser::manageSPI},
+        {"spn", &Zappy::Parser::manageSPN},
+        {"bct", &Zappy::Parser::manageBCT},
     };
     if (funcTab[args.front()])
         (this->*funcTab[args.front()])(args, network);
@@ -56,6 +56,33 @@ bool Zappy::Parser::isIndex(const std::string& string)
 {
     std::regex regExp("#[0-9]+");
     return std::regex_match(string, regExp);
+}
+
+size_t Zappy::Parser::nbOccur(const std::string& string, const std::string& key)
+{
+    std::string tempString = string;
+    size_t count = 0;
+    size_t pos = tempString.find(key);
+    while (pos != tempString.npos) {
+        tempString = tempString.substr(pos + key.size());
+        pos = tempString.find(key);
+        count++;
+    }
+    return count;
+}
+
+std::vector<std::string> Zappy::Parser::splitLine(const std::string& string, const std::string& sep)
+{
+    std::string tempString = string;
+    std::vector<std::string> tab;
+    size_t pos = tempString.find(sep);
+    while (pos != tempString.npos) {
+        if (!tempString.substr(0, pos).empty())
+            tab.push_back(tempString.substr(0, pos));
+        tempString = tempString.substr(pos + sep.size());
+        pos = tempString.find(sep);
+    }
+    return tab;
 }
 
 //----------------------------------------------------------------------//
