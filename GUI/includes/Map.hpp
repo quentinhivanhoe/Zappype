@@ -26,7 +26,7 @@ namespace Zappy
         void init();
         Vector2D getSize() const {return this->_size;};
         std::vector<Team> getTeams() const {return this->_teams;};
-        std::vector<std::vector<std::shared_ptr<Tile>>> getTiles() const {return this->_tiles;};
+        std::vector<std::vector<std::shared_ptr<Tile>>> getTiles() {return this->_tiles;};
     };
 }
 

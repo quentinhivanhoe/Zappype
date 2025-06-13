@@ -63,17 +63,17 @@ void Zappy::GUI::run()
 void Zappy::GUI::display_map()
 {
     Vector2D offset = Vector2D(1920/2, 0);
-
-    for (size_t j = 0; j < this->getMap().getSize().getY() + 1; j++){
+    for (size_t j = 0; j < this->getMap().getSize().getY(); j++){
         for (int i = 0; i < this->getMap().getSize().getX(); i++){
             offset.setX(offset.getX() - tile.getTexture().getSize().x  * this->getTileScale() / (2));
             offset.setY(offset.getY() + tile.getTexture().getSize().y  * this->getTileScale() / (2) - 18);
             this->tile.getSprite().setPosition(offset.getX(), offset.getY());
             this->_window.draw(this->tile.getSprite());
+            std::cout << "Tile ID :" << _map.getTiles()[j][i].get()->getId() << std::endl;
         }
         offset = Vector2D(
-        (1920/2 + (tile.getTexture().getSize().x * this->getTileScale() / 2) * j),
-        (0 + (tile.getTexture().getSize().y * this->getTileScale() / 2 - 18) * j));
+        (1920/2 + (tile.getTexture().getSize().x * this->getTileScale() / 2) * (j + 1)),
+        (0 + (tile.getTexture().getSize().y * this->getTileScale() / 2 - 18) * (j + 1)));
     }
 }
 

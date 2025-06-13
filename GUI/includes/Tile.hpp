@@ -9,6 +9,7 @@
     #define TILE_HPP_
     #include "iostream"
     #include "vector"
+    #include "Math/Vector2D.hpp"
 namespace Zappy
 {
     enum Item {
@@ -30,6 +31,7 @@ namespace Zappy
     public:
         Tile(size_t id = -1);
         ~Tile();
+        size_t getId() const {return this->_id;};
         size_t getNItem(Item name);
         void setNItem(Item name, size_t value);
         Vector2D getPos() const {return this->_pos;};

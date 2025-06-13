@@ -7,7 +7,7 @@
 
 #include "../includes/Items.hpp"
 
-Zappy::Items::Items(const char *fileName, size_t id)
+Zappy::Items::Items(std::string fileName, size_t id)
 {
     this->_id = id;
     this->_sprite = Drawable(fileName);

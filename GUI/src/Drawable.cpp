@@ -7,7 +7,7 @@
 
 #include "../includes/Drawable.hpp"
 
-Zappy::Drawable::Drawable(const char *texture_path)
+Zappy::Drawable::Drawable(std::string texture_path)
 {
     this->_texture = sf::Texture();
     this->_texture.loadFromFile(texture_path);
