@@ -7,18 +7,18 @@
 
 #ifndef TEAM_HPP_
     #define TEAM_HPP_
-    #include "Player.hpp"
+    #include "Trantor.hpp"
 namespace Zappy
 {
     class Team
     {
         private:
-            std::vector<Player> _players;
+            std::vector<Trantorian> _Trantorians;
             std::string _teamName;
         public:
             Team(std::string teamName);
             ~Team();
-            std::vector<Player> getPlayer() const {return this->_players;};
+            std::vector<Trantorian> getTrantorian() const {return this->_Trantorians;};
             std::string getTeamName() const {return this->_teamName;};
     };
 }
