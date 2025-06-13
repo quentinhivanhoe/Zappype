@@ -56,9 +56,12 @@ typedef struct trantorian_s {
     int socket;
 } trn_t;
 
+typedef struct tile_s tile_t;
 typedef struct tile_s {
     obj_t content[OBJECT_DEFINED];
 } tile_t;
+
+tile_t get_object(tile_t *tile, ssize_t x, ssize_t y);
 
 extern const float density_table[OBJECT_DEFINED + 1];
 
