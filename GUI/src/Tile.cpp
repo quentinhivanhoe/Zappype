@@ -11,7 +11,7 @@ Zappy::Tile::Tile(size_t id)
 {
     this->_id = id;
     for (int i = 0; i != 8; i++) {
-        this->_items.push_back(1);
+        this->_items.push_back(0);
     }
 }
 

@@ -10,7 +10,8 @@
 Zappy::Items::Items(std::string fileName, size_t id)
 {
     this->_id = id;
-    this->_sprite = Drawable(fileName);
+    std::cout << "Creating Item with :\"" << fileName << "\"" << std::endl;
+    this->_sprite = std::make_shared<Drawable>(fileName);
 }
     
 Zappy::Items::~Items()

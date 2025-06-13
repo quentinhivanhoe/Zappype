@@ -9,16 +9,18 @@
     #define ITEMS_HPP_
     #include "Drawable.hpp"
     #include "Tile.hpp"
+    #include <iostream>
+    #include <memory>
 namespace Zappy
 {
     class Items
     {
     private:
         size_t _id;
-        Drawable _sprite;
+        std::shared_ptr<Drawable> _sprite;
         sf::Text quantity;
     public:
-        Drawable &getSprite(){return _sprite;};
+        std::shared_ptr<Drawable> getSprite(){return _sprite;};
         Items(std::string fileName, size_t id);
         ~Items();
     };

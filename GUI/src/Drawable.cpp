@@ -9,9 +9,8 @@
 
 Zappy::Drawable::Drawable(std::string texture_path)
 {
-    this->_texture = sf::Texture();
     this->_texture.loadFromFile(texture_path);
-    this->_sprite = sf::Sprite(_texture);
+    this->_sprite.setTexture(this->_texture);
 }
 
 Zappy::Drawable::~Drawable()
