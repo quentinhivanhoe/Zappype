@@ -8,6 +8,7 @@
 #ifndef SERVER_H_
     #define SERVER_H_
     #define _GNU_SOURCE
+    #include <time.h>
     #include <stdio.h>
     #include <stdbool.h>
     #include <stdlib.h>
@@ -23,7 +24,6 @@
     #include "parsing.h"
     #include "trantor.h"
     #include "client.h"
-    #include <time.h>
     #define _GNU_SOURCE
     #define MAX_CLIENTS 5
     #define BUFFER_SIZE 1024

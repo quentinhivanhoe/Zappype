@@ -4,7 +4,7 @@
 ** File description:
 ** handle_clock
 */
-#include "../includes/time.h"
+#include "../includes/clock.h"
 #include <stdio.h>
 #include <string.h>
 #include <errno.h>
@@ -26,4 +26,5 @@ clk_node_t *alloc_node(size_t limit, callback_t call, void *arg, uint64_t flag)
     node->args = arg;
     node->frame_limit = limit;
     node->flags = flag;
+    return node;
 }

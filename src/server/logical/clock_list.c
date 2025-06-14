@@ -4,7 +4,7 @@
 ** File description:
 ** clock_list
 */
-#include "../includes/time.h"
+#include "../includes/clock.h"
 #include <stdio.h>
 #include <string.h>
 #include <errno.h>
@@ -31,28 +31,8 @@ void add_clock(sll_t **list, clk_node_t *node)
     }
     new = alloc_list();
     new->node = node;
-    new->next = (*list)->next ? (*list)->next : NULL;
+    new->next = (*list);
     (*list) = new;
-}
-
-void update_clock(sll_t **list)
-{
-    sll_t *parse_ptr = NULL;
-
-    if (!list)
-        return;
-    if (!(*list))
-        return;
-    parse_ptr = (*list);
-    while (parse_ptr) {
-        parse_ptr->node->frame_counter++;
-        if (parse_ptr->node->frame_limit == parse_ptr->node->frame_counter) {
-            if (!(parse_ptr->node->flags & LOOP_CLOCK))
-                del_clock(&parse_ptr);
-            parse_ptr->node->frame_counter = 0;
-            parse_ptr->node->callback(parse_ptr->node->args);
-        }
-    }
 }
 
 void del_clock(sll_t **list)
@@ -80,6 +60,29 @@ void destroy_clock(sll_t **list)
         del_clock(&(*list)->next);
         (*list) = (*list)->next;
     }
+}
+
+void update_clock(sll_t **list)
+{
+    sll_t *parse_ptr = NULL;
+
+    if (!list)
+        return;
+    if (!(*list))
+        return;
+    fprintf(stderr, "updating !\n");
+    parse_ptr = (*list);
+    while (parse_ptr) {
+        parse_ptr->node->frame_counter++;
+        if (parse_ptr->node->frame_limit == parse_ptr->node->frame_counter) {
+            if (!(parse_ptr->node->flags & LOOP_CLOCK))
+                del_clock(&parse_ptr);
+            parse_ptr->node->frame_counter = 0;
+            parse_ptr->node->callback(parse_ptr->node->args);
+        }
+        parse_ptr = parse_ptr->next;
+    }
+    fprintf(stderr, "finish updating !\n");
 }
 
 void clock_list(clk_node_t *node, clk_act_t action)

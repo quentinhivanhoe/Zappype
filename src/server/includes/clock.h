@@ -25,7 +25,7 @@ typedef struct clock_node_s {
     size_t frame_limit;
     callback_t callback;
     uint64_t flags;
-    void *args
+    void *args;
 } clk_node_t;
 
 typedef struct singly_linked_list_s {
@@ -33,6 +33,8 @@ typedef struct singly_linked_list_s {
     struct singly_linked_list_s *prev;
     struct singly_linked_list_s *next;
 } sll_t;
-clk_node_t *alloc_node(size_t limit, callback_t call, void *arg, uint64_t flag);
+
+clk_node_t *alloc_node(size_t limit, callback_t call, void *arg, uint64_t flg);
+void clock_list(clk_node_t *node, clk_act_t action);
 
 #endif /* !TIME_H_ */
