@@ -6,7 +6,7 @@
 */
 
 #include "../includes/server.h"
-
+#include "../includes/clock.h"
 bool check_event(void)
 {
     for (nfds_t i = 0; i < my_server()->params.max_clients; i++) {
@@ -18,13 +18,18 @@ bool check_event(void)
 
 void server_loop(void)
 {
-    __attribute_maybe_unused__ double start_time = get_time();
+    int poll_ret = 0;
+    double start_time = get_time();
 
     while (my_server()->running == true) {
-        if (poll(my_server()->info.fds,
-        my_server()->params.max_clients, 0) < 0) {
+        poll_ret = poll(my_server()->info.fds, my_server()->params.max_clients, 1000 / my_server()->params.frequency);
+        if (poll_ret < 0) {
             perror("poll");
             break;
+        }
+        if (start_time > (get_time() - 1) || !poll_ret) {
+            clock_list(NULL, UPDATE);
+            start_time = get_time();
         }
         if (!check_event())
             break;
