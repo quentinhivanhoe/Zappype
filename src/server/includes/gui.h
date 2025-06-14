@@ -23,4 +23,5 @@ void handle_msz(int client_fd, char **cmd);
 void handle_tna(int client_fd, char **cmd);
 void handle_mct(int client_fd, __attribute_maybe_unused__ char **cmd);
 void handle_bct(int client_fd, char **cmd);
+void handle_ppo(int client_fd, char **cmd);
 #endif

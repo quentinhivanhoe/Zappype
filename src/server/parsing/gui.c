@@ -8,27 +8,28 @@
 #include "../includes/server.h"
 #include "../includes/gui.h"
 
-static const char *gui_commands[] = {
-    "msz",
-    "tna",
-    "ppo",
-    "mct",
-    "bct",
-    NULL
-};
+// static const char *gui_commands[] = {
+//     "msz",
+//     "tna",
+//     "ppo",
+//     "mct",
+//     "bct",
+//     NULL
+// };
 
 static const gui_command_entry_t gui_command_table[] = {
     { "msz", handle_msz },
     { "tna", handle_tna },
     { "mct", handle_mct },
     { "bct", handle_bct },
+    { "ppo", handle_ppo },
     { NULL, NULL }
 };
 
 bool is_valid_command(const char *cmd)
 {
-    for (int i = 0; gui_commands[i] != NULL; i++) {
-        if (strcmp(cmd, gui_commands[i]) == 0)
+    for (int i = 0; gui_command_table[i].key != NULL; i++) {
+        if (strcmp(cmd, gui_command_table[i].key) == 0)
             return true;
     }
     return false;
@@ -68,6 +69,8 @@ static bool is_authorized_gui(int client_index, const char *input)
 
 static void free_args(char **args)
 {
+    if (!args)
+        return;
     for (int j = 0; args[j]; j++)
         free(args[j]);
     free(args);
@@ -77,12 +80,9 @@ static void handle_gui_command(int fd, const char *input, const char *token)
 {
     char **args = NULL;
 
-    for (int i = 0; gui_command_table[i].key != NULL; i++) {
+    for (int i = 0; gui_command_table[i].key != NULL; i++){
         if (strcmp(gui_command_table[i].key, token) == 0) {
             args = split_args(input);
-            for (int j = 0; args[j]; j++) {
-                printf("args[%d]: %s\n", j, args[j]);
-            }
             gui_command_table[i].handler(fd, args);
             free_args(args);
             return;
