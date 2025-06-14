@@ -60,13 +60,14 @@ void add_clock(sll_t **list, clk_node_t *node)
 
 void destroy_clock(sll_t **list)
 {
+    sll_t *next = NULL;
+
     if (!list)
         return;
-    if (!(*list))
-        return;
     while ((*list)) {
-        del_clock(&(*list)->next);
-        (*list) = (*list)->next;
+        next = (*list)->next;
+        del_clock(list);
+        (*list) = next;
     }
 }
 
@@ -95,7 +96,7 @@ void clock_list(clk_node_t *node, clk_act_t action)
 
     if (action == ADD && node)
         add_clock(&list, node);
-    if (action == DESTROY && node)
+    if (action == DESTROY)
         destroy_clock(&list);
     if (action == UPDATE)
         update_clock(&list);

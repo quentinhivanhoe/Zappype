@@ -6,7 +6,7 @@
 */
 
 #include "../includes/server.h"
-
+#include "../includes/clock.h"
 
 void clean_server(void)
 {
@@ -22,4 +22,5 @@ void clean_server(void)
     free(my_server()->info.fds);
     free(my_server()->params.team_names);
     free(my_server()->map);
+    clock_list(NULL, DESTROY);
 }
