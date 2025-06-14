@@ -51,11 +51,8 @@ void handle_bct(int client_fd, char **cmd)
     size_t y = 0;
     tile_t tile = {0};
 
-    if (!cmd || !cmd[0] || !cmd[1] || !cmd[2]) {
-        dprintf(client_fd, "sbp\n");
-        return;
-    }
-    if (is_num(cmd[1]) == false || is_num(cmd[2]) == false) {
+    if (!cmd || !cmd[0] || !cmd[1] || !cmd[2]
+        || !is_num(cmd[1]) || !is_num(cmd[2])) {
         dprintf(client_fd, "sbp\n");
         return;
     }

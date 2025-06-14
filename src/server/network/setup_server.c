@@ -119,10 +119,3 @@ int setup_server(void)
     setup_address();
     return bind_server();
 }
-
-server_t *my_server(void)
-{
-    static server_t server;
-
-    return &server;
-}
