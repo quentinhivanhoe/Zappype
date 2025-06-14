@@ -81,3 +81,25 @@ void handle_pin(int client_fd, char **cmd)
         get_client(client_idx)->data.ia_client.inventory[THYSTAME]
     );
 }
+
+void handle_sgt(int client_fd, char **cmd)
+{
+    if (tab_len(cmd) != 1) {
+        dprintf(client_fd, "sbp\n");
+    } else {
+        dprintf(client_fd, "sgt %d\n", my_server()->params.frequency);
+    }
+}
+
+void handle_sst(int client_fd, char **cmd)
+{
+    int new_frequency = 0;
+
+    if (tab_len(cmd) != 2 || !is_num(cmd[1])) {
+        dprintf(client_fd, "sdb\n");
+        return;
+    }
+    new_frequency = atoi(cmd[1]);
+    my_server()->params.frequency = new_frequency;
+    dprintf(client_fd, "sst %d\n", new_frequency);
+}
