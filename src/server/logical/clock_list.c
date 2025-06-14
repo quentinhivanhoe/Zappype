@@ -20,6 +20,29 @@ static sll_t *alloc_list(void)
     return list;
 }
 
+static void del_clock(sll_t **list)
+{
+    if (!list)
+        return;
+    if (!(*list))
+        return;
+    if ((*list)->prev)
+        (*list)->prev->next = (*list)->next;
+    if ((*list)->next)
+        (*list)->next->prev = (*list)->prev;
+    if ((*list)->node)
+        free((*list)->node);
+    free((*list));
+}
+
+static void run_event(sll_t **list)
+{
+    if (!((*list)->node->flags & LOOP_CLOCK))
+        del_clock(list);
+    (*list)->node->frame_counter = 0;
+    (*list)->node->callback((*list)->node->args);
+}
+
 void add_clock(sll_t **list, clk_node_t *node)
 {
     sll_t *new = NULL;
@@ -33,21 +56,6 @@ void add_clock(sll_t **list, clk_node_t *node)
     new->node = node;
     new->next = (*list);
     (*list) = new;
-}
-
-void del_clock(sll_t **list)
-{
-    if (!list)
-        return;
-    if (!(*list))
-        return;
-    if ((*list)->prev)
-        (*list)->prev->next = (*list)->next;
-    if ((*list)->next)
-        (*list)->next->prev = (*list)->prev;
-    if ((*list)->node)
-        free((*list)->node);
-    free((*list));
 }
 
 void destroy_clock(sll_t **list)
@@ -74,12 +82,8 @@ void update_clock(sll_t **list)
     parse_ptr = (*list);
     while (parse_ptr) {
         parse_ptr->node->frame_counter++;
-        if (parse_ptr->node->frame_limit == parse_ptr->node->frame_counter) {
-            if (!(parse_ptr->node->flags & LOOP_CLOCK))
-                del_clock(&parse_ptr);
-            parse_ptr->node->frame_counter = 0;
-            parse_ptr->node->callback(parse_ptr->node->args);
-        }
+        if (parse_ptr->node->frame_limit == parse_ptr->node->frame_counter)
+            run_event(&parse_ptr);
         parse_ptr = parse_ptr->next;
     }
     fprintf(stderr, "finish updating !\n");

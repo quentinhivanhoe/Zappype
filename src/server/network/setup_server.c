@@ -22,12 +22,13 @@ void server_loop(void)
     double start_time = get_time();
 
     while (my_server()->running == true) {
-        poll_ret = poll(my_server()->info.fds, my_server()->params.max_clients, 1000 / my_server()->params.frequency);
+        poll_ret = poll(my_server()->info.fds, my_server()->params.max_clients,
+        1000 / my_server()->params.frequency);
         if (poll_ret < 0) {
             perror("poll");
             break;
         }
-        if (start_time > (get_time() - 1) || !poll_ret) {
+        if ((start_time + 1) < get_time() || !poll_ret) {
             clock_list(NULL, UPDATE);
             start_time = get_time();
         }

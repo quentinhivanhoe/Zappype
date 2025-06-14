@@ -87,7 +87,7 @@ void handle_sgt(int client_fd, char **cmd)
     if (tab_len(cmd) != 1) {
         dprintf(client_fd, "sbp\n");
     } else {
-        dprintf(client_fd, "sgt %d\n", my_server()->params.frequency);
+        dprintf(client_fd, "sgt %ld\n", my_server()->params.frequency);
     }
 }
 
