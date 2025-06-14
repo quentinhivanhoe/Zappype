@@ -47,12 +47,15 @@ typedef struct server_s {
 void add_clients(int new_fd);
 void server_loop(void);
 bool handle_event(int i);
-server_t *my_server(void);
 int setup_server(void);
 void clean_server(void);
 void handle_new_connection(void);
 void handle_client_data(int i);
 void remove_client(int i);
+
+/* Singleton */
+client_t *get_client(size_t client_idx);
+server_t *my_server(void);
 
 /* Time management function */
 double get_time(void);

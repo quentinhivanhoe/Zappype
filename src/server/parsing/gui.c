@@ -23,6 +23,8 @@ static const gui_command_entry_t gui_command_table[] = {
     { "mct", handle_mct },
     { "bct", handle_bct },
     { "ppo", handle_ppo },
+    { "plv", handle_plv },
+    { "pin", handle_pin },
     { NULL, NULL }
 };
 
