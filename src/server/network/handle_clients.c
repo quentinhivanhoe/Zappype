@@ -7,6 +7,7 @@
 
 #include "../includes/server.h"
 #include "../includes/gui.h"
+#include "../includes/ia.h"
 
 void add_clients(int new_fd)
 {
@@ -54,6 +55,19 @@ void handle_new_connection(void)
     add_clients(new_fd);
 }
 
+// void parse_data(char *buffer, int i)
+// {
+//     if (my_server()->params.debug_mode)
+//         dprintf(2, "Received from client #%d: %s", i, buffer);
+//     if (my_server()->info.clients[i].type == UNDEFINED) {
+//         dprintf(STDERR_FILENO, "user not authentified, define teams\n");
+//         det_teams(buffer, i);
+//     } else {
+//         dprintf(STDERR_FILENO, "Command start ton be handled\n");
+//         dispatch_command(i, buffer);
+//     }
+// }
+
 void parse_data(char *buffer, int i)
 {
     if (my_server()->params.debug_mode)
@@ -61,9 +75,14 @@ void parse_data(char *buffer, int i)
     if (my_server()->info.clients[i].type == UNDEFINED) {
         dprintf(STDERR_FILENO, "user not authentified, define teams\n");
         det_teams(buffer, i);
-    } else {
-        dprintf(STDERR_FILENO, "Command start ton be handled\n");
+    } else if (my_server()->info.clients[i].type == GUI) {
+        dprintf(STDERR_FILENO, "Dispatching GUI command\n");
         dispatch_command(i, buffer);
+    } else if (my_server()->info.clients[i].type == IA) {
+        dprintf(STDERR_FILENO, "Dispatching IA command\n");
+        dispatch_ia_command(i, buffer);
+    } else {
+        dprintf(my_server()->info.fds[i].fd, "Unknown client type\n");
     }
 }
 
