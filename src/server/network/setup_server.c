@@ -20,6 +20,7 @@ void server_loop(void)
 {
     int poll_ret = 0;
     double start_time = get_time();
+    const double frame = 1 / my_server()->params.frequency;
 
     while (my_server()->running == true) {
         poll_ret = poll(my_server()->info.fds, my_server()->params.max_clients,
@@ -28,7 +29,7 @@ void server_loop(void)
             perror("poll");
             break;
         }
-        if ((start_time + 1) < get_time() || !poll_ret) {
+        if ((start_time + frame) < get_time() || !poll_ret) {
             clock_list(NULL, UPDATE);
             start_time = get_time();
         }
