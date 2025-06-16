@@ -6,6 +6,8 @@
 */
 
 #include "../includes/trantor.h"
+#include "../includes/server.h"
+#include "../includes/clock.h"
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -20,13 +22,13 @@ const float density_table[OBJECT_DEFINED + 1] = {
     0
 };
 
-void set_obj_number(uint64_t *number, size_t size)
+static void set_obj_number(uint64_t *number, size_t size)
 {
     for (uint8_t i = 0; density_table[i]; i++)
         number[i] = (uint64_t)(size * density_table[i]);
 }
 
-void set_padding(uint64_t *padding, uint64_t *object, size_t size)
+static void set_padding(uint64_t *padding, uint64_t *object, size_t size)
 {
     for (uint8_t i = 0; i < OBJECT_DEFINED; i++)
         padding[i] = size / object[i];
@@ -59,12 +61,29 @@ tile_t *dispatch_object(uint64_t *object, uint64_t *padding, size_t size)
     return map;
 }
 
+void respwan_ressoruces(__attribute_maybe_unused__ void *arg)
+{
+    int rand_pos = 0;
+    size_t len_map = my_server()->params.width * my_server()->params.height;
+
+    for (size_t i = 0; i < OBJECT_DEFINED; i++) {
+        srand(get_time());
+        rand_pos = rand() % len_map;
+        my_server()->map[rand_pos].content[i] += 1;
+    }
+    if (my_server()->params.debug_mode)
+        fprintf(stderr, "ressources have respawn\n");
+}
+
 tile_t *init_map(size_t len_map)
 {
     uint64_t object[OBJECT_DEFINED] = {0};
     uint64_t padding[OBJECT_DEFINED] = {0};
+    clk_node_t *node = NULL;
 
     set_obj_number(object, len_map);
     set_padding(padding, object, len_map);
+    node = alloc_node(10, respwan_ressoruces, NULL, LOOP_CLOCK);
+    clock_list(node, ADD);
     return dispatch_object(object, padding, len_map);
 }
