@@ -20,5 +20,7 @@ typedef struct ia_cmd_s {
 
 void dispatch_ia_command(int client_index, const char *input);
 
-void handle_forward(__attribute_maybe_unused__ trn_t *trantorian,__attribute_maybe_unused__ char **args);
+void handle_forward(trn_t *trantorian, char **args);
+void handle_right(trn_t *trantorian, char **args);
+void handle_left(trn_t *trantorian, char **args);
 #endif /* !IA_H_ */
