@@ -9,7 +9,7 @@
 #include "../includes/ia.h"
 #include "../includes/gui.h"
 
-static const ia_cmd_t ia_command_table[] = {
+static const ia_cmd_t cmd_table[] = {
     { "Forward", handle_forward, 7 },
     // { "Right", handle_right, 7 },
     // { "Left", handle_left, 7 },
@@ -46,15 +46,20 @@ static void free_args(char **args)
     free(args);
 }
 
-void handle_ia_command(trn_t *trantorian, const char *input, char *token)
+void handle_ia_command(trn_t *trn, const char *input, char *token)
 {
-    char **args = NULL;
+    char **argv = NULL;
+    clk_args_t *args = NULL;
+    clk_node_t *node  = NULL;
 
-    for (int i = 0; ia_command_table[i].cmd != NULL; i++) {
-        if (strcmp(ia_command_table[i].cmd, token) == 0) {
-            args = split_args(input);
-            ia_command_table[i].handler(trantorian, args);
-            free_args(args);
+    for (int i = 0; cmd_table[i].cmd != NULL; i++) {
+        if (strcmp(cmd_table[i].cmd, token) == 0) {
+            fprintf(stderr, "%s: added to the clock list\n", token);
+            argv = split_args(input);
+            args = alloc_args(trn, argv, cmd_table[i].delay, ONE_SHOT_CLOCK);
+            node = alloc_node(cmd_table[i].handler, args);
+            clock_list(node, ADD);
+            free_args(argv);
             return;
         }
     }
@@ -79,6 +84,7 @@ void dispatch_ia_command(int client_index, const char *input)
         free(line);
         return;
     }
+    fprintf(stderr, "token: %s", token);
     handle_ia_command(trt, input, token);
     free(line);
     (void)client_fd;

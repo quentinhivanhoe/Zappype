@@ -8,9 +8,10 @@
 #ifndef IA_H_
     #define IA_H_
     #include "client.h"
+    #include "../includes/clock.h"
 
 
-typedef void (*ia_cmd_handler_t)(trn_t *trantorian, char **args);
+typedef void (*ia_cmd_handler_t)(clk_args_t *);
 
 typedef struct ia_cmd_s {
     const char *cmd;
@@ -20,7 +21,7 @@ typedef struct ia_cmd_s {
 
 void dispatch_ia_command(int client_index, const char *input);
 
-void handle_forward(trn_t *trantorian, char **args);
+void handle_forward(clk_args_t *args);
 void handle_right(trn_t *trantorian, char **args);
 void handle_left(trn_t *trantorian, char **args);
 #endif /* !IA_H_ */

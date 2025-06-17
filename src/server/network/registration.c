@@ -69,7 +69,7 @@ void process_ia_connection(int i, int team_index)
     trantorian->pos.dir = (rand() % 4) + 1;
     trantorian->lvl = 1;
     trantorian->socket = my_server()->info.fds[i].fd;
-    trantorian->food_bar = 10;
+    trantorian->food_bar = 1260;
     my_server()->info.clients[i].type = IA;
     dprintf(trantorian->socket, "WELCOME\n");
     if (my_server()->params.debug_mode) {

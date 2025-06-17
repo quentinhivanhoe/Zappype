@@ -44,10 +44,11 @@ static bool compute_forward_position(trn_t *trantorian)
     return true;
 }
 
-void handle_forward(trn_t *trantorian, char **args)
+void handle_forward(clk_args_t *args)
 {
+    trn_t *trantorian = args->trantorian;
     if (!compute_forward_position(trantorian)) {
-        dprintf(trantorian->socket, "Directio of trantorian isn't set yet !\n");
+        dprintf(trantorian->socket, "Direction of trantorian isn't set yet !\n");
         return;
     }
     dprintf(trantorian->socket, "ok\n");
@@ -55,5 +56,4 @@ void handle_forward(trn_t *trantorian, char **args)
         dprintf(2, "Forward: new position = (%lu, %lu) direction %d\n",
                 trantorian->pos.x, trantorian->pos.y, trantorian->pos.dir);
     }
-    (void)args;
 }
