@@ -30,6 +30,8 @@ static void del_clock(sll_t **list)
         (*list)->prev->next = (*list)->next;
     if ((*list)->next)
         (*list)->next->prev = (*list)->prev;
+    if ((*list)->node->args)
+        free((*list)->node->args);
     if ((*list)->node)
         free((*list)->node);
     free((*list));
@@ -51,6 +53,14 @@ void add_clock(sll_t **list, clk_node_t *node)
         if (node)
             free(node);
         return;
+    }
+    if (!(node->flags & ARGS_UNUSED)) {
+        if (node->args->trantorian->req_count >= 10) {
+            free(node->args);
+            free(node);
+            return;
+        }
+        node->args->trantorian->req_count++;
     }
     new = alloc_list();
     new->node = node;

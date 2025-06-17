@@ -10,6 +10,7 @@
     #include <stdint.h>
     #include <unistd.h>
     #define OBJECT_DEFINED 7
+    #define MAX_REQUEST 10
 
 typedef uint64_t obj_t;
 
@@ -49,9 +50,8 @@ typedef struct trantorian_s {
     uint8_t lvl;
     obj_t inventory[OBJECT_DEFINED];
     size_t team_id;
-    size_t wait_time;
-    size_t clock;
     size_t food_bar;
+    uint8_t req_count;
     trn_stat_t stat;
     int socket;
 } trn_t;
