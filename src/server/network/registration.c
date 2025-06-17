@@ -19,7 +19,7 @@ static size_t count_gui_clients(void)
     return count;
 }
 
-static size_t count_ia_clients(size_t id)
+size_t count_ia_clients(size_t id)
 {
     size_t count = 0;
 
@@ -71,6 +71,7 @@ void process_ia_connection(int i, int team_index)
     trantorian->socket = my_server()->info.fds[i].fd;
     trantorian->food_bar = 10;
     my_server()->info.clients[i].type = IA;
+    my_server()->info.clients[i].data.ia_client.team_id = team_index;
     dprintf(trantorian->socket, "WELCOME\n");
     if (my_server()->params.debug_mode) {
         dprintf(2, "New IA client: pos=(%lu,%lu), dir=%d\n",

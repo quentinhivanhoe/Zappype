@@ -72,4 +72,6 @@ bool is_num(const char *str);
 /* SIGNAL */
 void signal_handler(int signum);
 
+
+size_t count_ia_clients(size_t id);
 #endif /* !SERVER_H_ */

@@ -23,4 +23,6 @@ void dispatch_ia_command(int client_index, const char *input);
 void handle_forward(trn_t *trantorian, char **args);
 void handle_right(trn_t *trantorian, char **args);
 void handle_left(trn_t *trantorian, char **args);
+void handle_connect_nbr(trn_t *trantorian, char **args);
+
 #endif /* !IA_H_ */
