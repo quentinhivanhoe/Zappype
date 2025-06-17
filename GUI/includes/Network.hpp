@@ -44,12 +44,18 @@ namespace Zappy
             void send(std::string message);
             std::string receive(bool isBlocking = true);
             inline void fetchData() {};
-            void askToServer(const std::string& command);
+            void askToServer(const std::string& command, std::vector<int> args);
             void askTeam();
             void askPlayerNb();
             void askPlayersInfo();
             void askMapSize();
             void askMapContent();
+            void askTimeUnitRequest();
+            void askTileContent(std::vector<std::string> args);
+            void askPlayerPos(std::vector<std::string> args);
+            void askPlayerLevel(std::vector<std::string> args);
+            void askPlayerInventory(std::vector<std::string> args);
+            void askTimeUnitModif(std::vector<std::string> args);
     };
 }
 

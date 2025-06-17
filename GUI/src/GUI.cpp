@@ -8,18 +8,17 @@
 
 Zappy::GUI::GUI(const std::string &ip, size_t port)
 {
-    (void)ip;
-    (void)port;
-    // this->_networkInfo = std::make_shared<Network>(this);
-    // this->_networkInfo->establishConnection(ip, port);
-    // this->_networkInfo->initProcess();
-    this->_window.create(sf::VideoMode(1920, 1080, 8), "Zappy GUI", sf::Style::Close);
-    this->tile.getSprite().setScale(this->getTileScale(), this->getTileScale());
-    this->tile.getSprite().setScale(this->getTileScale(), this->getTileScale());
-    this->_map = Map(Vector2D(7.0, 4.0));
-    this->sky.getSprite().setPosition(0, 0);
-    this->init();
-    this->run();
+    std::cout << "---------------SERVER---------------" << std::endl;
+    this->_networkInfo = std::make_shared<Network>(this);
+    this->_networkInfo->establishConnection(ip, port);
+    this->_networkInfo->initProcess();
+    // this->_window.create(sf::VideoMode(1920, 1080, 8), "Zappy GUI", sf::Style::Close);
+    // this->tile.getSprite().setScale(this->getTileScale(), this->getTileScale());
+    // this->tile.getSprite().setScale(this->getTileScale(), this->getTileScale());
+    // this->_map = Map(Vector2D(7.0, 4.0));
+    // this->sky.getSprite().setPosition(0, 0);
+    // this->init();
+    // this->run();
 }
 
 Zappy::GUI::~GUI()

@@ -32,13 +32,34 @@ void Zappy::Parser::showArgs(std::vector<std::string> args)
     std::cout << "}" << std::endl;
 }
 
-void Zappy::Parser::manageResponse(std::vector<std::string> args, Zappy::Network *network)
+void Zappy::Parser::manageResponse(std::vector<std::string> args, [[maybe_unused]] Zappy::Network *network)
 {
     std::map<std::string, void (Zappy::Parser:: *)(std::vector<std::string>, Network *)> funcTab = {
         {"msz", &Zappy::Parser::manageMSZ},
         {"spi", &Zappy::Parser::manageSPI},
         {"spn", &Zappy::Parser::manageSPN},
         {"bct", &Zappy::Parser::manageBCT},
+        {"ppo", &Zappy::Parser::managePPO},
+        {"plv", &Zappy::Parser::managePLV},
+        {"plin", &Zappy::Parser::managePLIN},
+        {"sgt", &Zappy::Parser::manageSGT},
+        {"sst", &Zappy::Parser::manageSST},
+        {"pnw", &Zappy::Parser::managePNW},
+        {"pex", &Zappy::Parser::managePEX},
+        {"pbc", &Zappy::Parser::managePBC},
+        {"pic", &Zappy::Parser::managePIC},
+        {"pie", &Zappy::Parser::managePIE},
+        {"pfk", &Zappy::Parser::managePFK},
+        {"pdr", &Zappy::Parser::managePDR},
+        {"pgt", &Zappy::Parser::managePGT},
+        {"pdi", &Zappy::Parser::managePDI},
+        {"enw", &Zappy::Parser::manageENW},
+        {"ebo", &Zappy::Parser::manageEBO},
+        {"edi", &Zappy::Parser::manageEDI},
+        {"seg", &Zappy::Parser::manageSEG},
+        {"smg", &Zappy::Parser::manageSMG},
+        {"suc", &Zappy::Parser::manageSUC},
+        {"sbp", &Zappy::Parser::manageSBP},
     };
     if (funcTab[args.front()])
         (this->*funcTab[args.front()])(args, network);
@@ -85,6 +106,15 @@ std::vector<std::string> Zappy::Parser::splitLine(const std::string& string, con
     return tab;
 }
 
+std::vector<std::string> Zappy::Parser::argsToString(std::vector<int> args)
+{
+    std::vector<std::string> tab;
+
+    for (auto item: args)
+        tab.push_back(std::to_string(item));
+    return tab;
+}
+
 //----------------------------------------------------------------------//
 
 void Zappy::Parser::manageMSZ([[maybe_unused]] std::vector<std::string> args, [[maybe_unused]] Zappy::Network *network)
@@ -103,7 +133,6 @@ void Zappy::Parser::manageMSZ([[maybe_unused]] std::vector<std::string> args, [[
 
 void Zappy::Parser::manageBCT([[maybe_unused]] std::vector<std::string> args, [[maybe_unused]] Zappy::Network *network)
 {
-    Parser::showArgs(args);
     if (args.size() != 10) {
         std::cout << "Wrong number of args, response failed." << std::endl;
         return;
@@ -147,5 +176,291 @@ void Zappy::Parser::manageSPI([[maybe_unused]] std::vector<std::string> args, [[
             return;
         }
     }
+    Parser::showArgs(args);
+}
+
+void Zappy::Parser::managePPO(std::vector<std::string> args, [[maybe_unused]] Zappy::Network *network)
+{
+    if (args.size() != 5) {
+        std::cout << "Wrong number of args, response failed." << std::endl;
+        return;
+    }
+    if (!Parser::isIndex(args[1])) {
+        std::cout << "Index must be a # followed by a positive number." << std::endl;
+        return;
+    }
+    for (size_t i = 2; i < args.size(); i++) {
+        if (!Parser::isNum(args[i])) {
+            std::cout << "Args must be positive numbers." << std::endl;
+            return;
+        }
+    }
+    Parser::showArgs(args);
+}
+
+void Zappy::Parser::managePLV(std::vector<std::string> args, [[maybe_unused]] Zappy::Network *network)
+{
+    if (args.size() != 3) {
+        std::cout << "Wrong number of args, response failed." << std::endl;
+        return;
+    }
+    if (!Parser::isIndex(args[1])) {
+        std::cout << "Index must be a # followed by a positive number." << std::endl;
+        return;
+    }
+    if (!Parser::isNum(args[2])) {
+        std::cout << "Level must be a positive number." << std::endl;
+        return;
+    }
+    Parser::showArgs(args);
+}
+
+void Zappy::Parser::managePLIN(std::vector<std::string> args, [[maybe_unused]] Zappy::Network *network)
+{
+    if (args.size() != 11) {
+        std::cout << "Wrong number of args, response failed." << std::endl;
+        return;
+    }
+    if (!Parser::isIndex(args[1])) {
+        std::cout << "Index must be a # followed by a positive number." << std::endl;
+        return;
+    }
+    for (size_t i = 2; i < args.size(); i++) {
+        if (!Parser::isNum(args[i])) {
+            std::cout << "Args must be positive numbers." << std::endl;
+            return;
+        }
+    }
+    Parser::showArgs(args);
+}
+
+void Zappy::Parser::manageSGT(std::vector<std::string> args, [[maybe_unused]] Zappy::Network *network)
+{
+    if (args.size() != 2) {
+        std::cout << "Wrong number of args, response failed." << std::endl;
+        return;
+    }
+    if (!Parser::isNum(args[1])) {
+        std::cout << "Args must be positive numbers." << std::endl;
+        return;
+    }
+    Parser::showArgs(args);
+}
+
+void Zappy::Parser::manageSST(std::vector<std::string> args, [[maybe_unused]] Zappy::Network *network)
+{
+    if (args.size() != 2) {
+        std::cout << "Wrong number of args, response failed." << std::endl;
+        return;
+    }
+    if (!Parser::isNum(args[1])) {
+        std::cout << "Args must be positive numbers." << std::endl;
+        return;
+    }
+    Parser::showArgs(args);
+}
+
+void Zappy::Parser::managePNW(std::vector<std::string> args, [[maybe_unused]] Zappy::Network *network)
+{
+    if (args.size() != 7) {
+        std::cout << "Wrong number of args, response failed." << std::endl;
+        return;
+    }
+    if (!Parser::isIndex(args[1])) {
+        std::cout << "Index must be a # followed by a positive number." << std::endl;
+        return;
+    }
+    for (size_t i = 2; i < args.size() - 1; i++) {
+        if (!Parser::isNum(args[i])) {
+            std::cout << "Args must be positive numbers." << std::endl;
+            return;
+        }
+    }
+    Parser::showArgs(args);
+}
+
+void Zappy::Parser::managePEX(std::vector<std::string> args, [[maybe_unused]] Zappy::Network *network)
+{
+    if (args.size() != 2) {
+        std::cout << "Wrong number of args, response failed." << std::endl;
+        return;
+    }
+    if (!Parser::isIndex(args[1])) {
+        std::cout << "Index must be a # followed by a positive number." << std::endl;
+        return;
+    }
+    Parser::showArgs(args);
+}
+
+void Zappy::Parser::managePBC(std::vector<std::string> args, [[maybe_unused]] Zappy::Network *network)
+{
+    if (args.size() != 3) {
+        std::cout << "Wrong number of args, response failed." << std::endl;
+        return;
+    }
+    if (!Parser::isIndex(args[1])) {
+        std::cout << "Index must be a # followed by a positive number." << std::endl;
+        return;
+    }
+    Parser::showArgs(args);
+}
+
+void Zappy::Parser::managePIC(std::vector<std::string> args, [[maybe_unused]] Zappy::Network *network)
+{
+    if (args.size() < 5) {
+        std::cout << "Wrong number of args, response failed." << std::endl;
+        return;
+    }
+    for (size_t i = 1; i < 4; i++) {
+        if (!Parser::isNum(args[i])) {
+            std::cout << "Args must be positive numbers." << std::endl;
+            return;
+        }
+    }
+    for (size_t i = 4; i < args.size(); i++) {
+        if (!Parser::isIndex(args[i])) {
+            std::cout << "Index must be a # followed by a positive number." << std::endl;
+            return;
+        }
+    }
+}
+
+void Zappy::Parser::managePIE(std::vector<std::string> args, [[maybe_unused]] Zappy::Network *network)
+{
+    if (args.size() < 4) {
+        std::cout << "Wrong number of args, response failed." << std::endl;
+        return;
+    }
+    if (!Parser::isNum(args[1]) || !Parser::isNum(args[2])) {
+        std::cout << "Args must be positive numbers." << std::endl;
+        return;
+    }
+    Parser::showArgs(args);
+}
+
+void Zappy::Parser::managePFK(std::vector<std::string> args, [[maybe_unused]] Zappy::Network *network)
+{
+    if (args.size() != 2) {
+        std::cout << "Wrong number of args, response failed." << std::endl;
+        return;
+    }
+    if (!Parser::isIndex(args[1])) {
+        std::cout << "Index must be a # followed by a positive number." << std::endl;
+        return;
+    }
+    Parser::showArgs(args);
+}
+
+void Zappy::Parser::managePDR(std::vector<std::string> args, [[maybe_unused]] Zappy::Network *network)
+{
+    if (args.size() != 3) {
+        std::cout << "Wrong number of args, response failed." << std::endl;
+        return;
+    }
+    if (!Parser::isIndex(args[1])) {
+        std::cout << "Index must be a # followed by a positive number." << std::endl;
+        return;
+    }
+    if (!Parser::isNum(args[2])) {
+        std::cout << "Args must be positive numbers." << std::endl;
+        return;
+    }
+    Parser::showArgs(args);
+}
+
+void Zappy::Parser::managePGT(std::vector<std::string> args, [[maybe_unused]] Zappy::Network *network)
+{
+    if (args.size() != 3) {
+        std::cout << "Wrong number of args, response failed." << std::endl;
+        return;
+    }
+    if (!Parser::isIndex(args[1])) {
+        std::cout << "Index must be a # followed by a positive number." << std::endl;
+        return;
+    }
+    if (!Parser::isNum(args[2])) {
+        std::cout << "Args must be positive numbers." << std::endl;
+        return;
+    }
+    Parser::showArgs(args);
+}
+
+void Zappy::Parser::managePDI(std::vector<std::string> args, [[maybe_unused]] Zappy::Network *network)
+{
+    if (args.size() != 2) {
+        std::cout << "Wrong number of args, response failed." << std::endl;
+        return;
+    }
+    if (!Parser::isIndex(args[1])) {
+        std::cout << "Index must be a # followed by a positive number." << std::endl;
+        return;
+    }
+    Parser::showArgs(args);
+}
+
+void Zappy::Parser::manageENW(std::vector<std::string> args, [[maybe_unused]] Zappy::Network *network)
+{
+    if (args.size() != 5) {
+        std::cout << "Wrong number of args, response failed." << std::endl;
+        return;
+    }
+    if (!Parser::isIndex(args[1]) || !Parser::isIndex(args[2])) {
+        std::cout << "Index must be a # followed by a positive number." << std::endl;
+        return;
+    }
+    Parser::showArgs(args);
+}
+
+void Zappy::Parser::manageEBO(std::vector<std::string> args, [[maybe_unused]] Zappy::Network *network)
+{
+    if (args.size() != 2) {
+        std::cout << "Wrong number of args, response failed." << std::endl;
+        return;
+    }
+    if (!Parser::isIndex(args[1])) {
+        std::cout << "Index must be a # followed by a positive number." << std::endl;
+        return;
+    }
+    Parser::showArgs(args);
+}
+
+void Zappy::Parser::manageEDI(std::vector<std::string> args, [[maybe_unused]] Zappy::Network *network)
+{
+    if (args.size() != 2) {
+        std::cout << "Wrong number of args, response failed." << std::endl;
+        return;
+    }
+    if (!Parser::isIndex(args[1])) {
+        std::cout << "Index must be a # followed by a positive number." << std::endl;
+        return;
+    }
+    Parser::showArgs(args);
+}
+
+void Zappy::Parser::manageSEG(std::vector<std::string> args, [[maybe_unused]] Zappy::Network *network)
+{
+    if (args.size() != 2) {
+        std::cout << "Wrong number of args, response failed." << std::endl;
+        return;
+    }
+    Parser::showArgs(args);
+}
+
+void Zappy::Parser::manageSMG(std::vector<std::string> args, [[maybe_unused]] Zappy::Network *network)
+{
+    if (args.size() != 2) {
+        std::cout << "Wrong number of args, response failed." << std::endl;
+        return;
+    }
+    Parser::showArgs(args);
+}
+
+void Zappy::Parser::manageSUC(std::vector<std::string> args, [[maybe_unused]] Zappy::Network *network)
+{
+    Parser::showArgs(args);
+}
+
+void Zappy::Parser::manageSBP(std::vector<std::string> args, [[maybe_unused]] Zappy::Network *network)
+{
     Parser::showArgs(args);
 }
