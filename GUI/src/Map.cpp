@@ -10,6 +10,7 @@
 Zappy::Map::Map(Vector2D size)
 {
     _size = size;
+    this->_teams.push_back(std::make_shared<Team>("test"));
     this->init();
 }
     

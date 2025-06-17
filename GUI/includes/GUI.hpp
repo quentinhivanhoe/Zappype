@@ -13,7 +13,6 @@
     #include "Network.hpp"
     #include "Buttons.hpp"
     #include "Map.hpp"
-    #include "Math/Vector2D.hpp"
     #include "Items.hpp"
 
 namespace Zappy
@@ -43,6 +42,7 @@ namespace Zappy
             void display_map();
             void display_sky();
             void display_objects();
+            void display_trantor();
             void handleWindowEvents();
             std::vector<std::shared_ptr<Buttons>> getButtons() const {return this->_buttons;};
             Map getMap() const {return this->_map;};

@@ -17,7 +17,7 @@ namespace Zappy
     class Map
     {
     private:
-        std::vector<Team> _teams;
+        std::vector<std::shared_ptr<Team>> _teams = {};
         std::vector<std::vector<std::shared_ptr<Tile>>> _tiles;
         Vector2D _size;
     public:
@@ -25,7 +25,7 @@ namespace Zappy
         ~Map();
         void init();
         Vector2D getSize() const {return this->_size;};
-        std::vector<Team> getTeams() const {return this->_teams;};
+        std::vector<std::shared_ptr<Team>> &getTeams() {return this->_teams;};
         std::vector<std::vector<std::shared_ptr<Tile>>> getTiles() {return this->_tiles;};
     };
 }
