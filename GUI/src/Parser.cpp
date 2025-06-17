@@ -128,6 +128,7 @@ void Zappy::Parser::manageMSZ([[maybe_unused]] std::vector<std::string> args, [[
         return;
     }
     network->setMapSize({std::stoi(args[1]), std::stoi(args[2])});
+    network->getGui()->setMapSize({std::stoi(args[1]), std::stoi(args[2])});
     Parser::showArgs(args);
 }
 
@@ -157,6 +158,7 @@ void Zappy::Parser::manageSPN([[maybe_unused]] std::vector<std::string> args, [[
         return;
     }
     network->setPlayerNb(std::stoi(args[1]));
+    network->getGui()->setPlayerNb(std::stoi(args[1]));
     Parser::showArgs(args);
 }
 

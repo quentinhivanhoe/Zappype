@@ -65,6 +65,7 @@ void Zappy::Network::initProcess()
     this->askToServer("PlayerPos", {1});
     this->askToServer("PlayerLevel", {1});
     this->askToServer("PlayerInventory", {1});
+    std::cout << "[DEBUIT from GUI] map size from gui: " << this->getGui()->getMapSize().x << "-"  << this->getGui()->getMapSize().x << std::endl;
 }
 
 void Zappy::Network::askToServer(const std::string& command, std::vector<int> args)

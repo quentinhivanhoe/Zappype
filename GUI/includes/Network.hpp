@@ -37,7 +37,7 @@ namespace Zappy
             //Getters
             inline int getPlayerNb() const { return this->_playerNb; };
             inline sf::Vector2i getMapSize() const { return this->_mapSize; };
-
+            inline GUI *getGui() const { return this->_gui; };
             inline void updateGUi() {};
             void establishConnection(std::string ip, size_t socket);
             void initProcess();
