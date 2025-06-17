@@ -104,6 +104,7 @@ void update_clock(sll_t **list)
     if ((*list))
         while ((*list)->prev)
             (*list) = (*list)->prev;
+    parse_req();
     fprintf(stderr, "finish updating !\n");
 }
 

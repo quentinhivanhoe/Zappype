@@ -32,6 +32,7 @@
 typedef struct network_s {
     struct pollfd *fds;
     client_t *clients;
+    size_t trn_count;
     nfds_t fd_count;
     int port;
     struct sockaddr_in address;

@@ -37,29 +37,15 @@ static bool is_authorized_ia(int client_index, const char *input)
     return true;
 }
 
-static void free_args(char **args)
-{
-    if (!args)
-        return;
-    for (int j = 0; args[j]; j++)
-        free(args[j]);
-    free(args);
-}
-
 void handle_ia_command(trn_t *trn, const char *input, char *token)
 {
-    char **argv = NULL;
-    clk_args_t *args = NULL;
-    clk_node_t *node = NULL;
+    char **args = NULL;
 
     for (int i = 0; cmd_table[i].cmd != NULL; i++) {
         if (strcmp(cmd_table[i].cmd, token) == 0) {
             fprintf(stderr, "%s: added to the clock list\n", token);
-            argv = split_args(input);
-            args = alloc_args(trn, argv, cmd_table[i].delay, ONE_SHOT_CLOCK);
-            node = alloc_node(cmd_table[i].handler, args);
-            clock_list(node, ADD);
-            free_args(argv);
+            args = split_args(input);
+            add_req(trn, args, cmd_table[i].handler, cmd_table[i].delay);
             return;
         }
     }

@@ -29,4 +29,6 @@ void handle_plv(int client_fd, char **cmd);
 void handle_pin(int client_fd, char **cmd);
 void handle_sgt(int client_fd, char **cmd);
 void handle_sst(int client_fd, char **cmd);
+void free_args(char **args);
+
 #endif

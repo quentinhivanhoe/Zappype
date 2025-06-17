@@ -76,6 +76,7 @@ void process_ia_connection(int i, int team_index)
         dprintf(2, "New IA client: pos=(%lu,%lu), dir=%d\n",
                 trantorian->pos.x, trantorian->pos.y, trantorian->pos.dir);
     }
+    my_server()->info.trn_count++;
     (void)team_index;
 }
 

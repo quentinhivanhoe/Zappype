@@ -71,7 +71,7 @@ static bool is_authorized_gui(int client_index, const char *input)
     return true;
 }
 
-static void free_args(char **args)
+void free_args(char **args)
 {
     if (!args)
         return;
