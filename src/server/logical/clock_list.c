@@ -89,7 +89,7 @@ void update_clock(sll_t **list)
         return;
     if (!(*list))
         return;
-    fprintf(stderr, "updating !\n");
+    // fprintf(stderr, "updating !\n");
     parse_ptr = (*list);
     while (parse_ptr) {
         parse_ptr->node->frame_counter++;
@@ -97,7 +97,7 @@ void update_clock(sll_t **list)
             run_event(&parse_ptr);
         parse_ptr = parse_ptr->next;
     }
-    fprintf(stderr, "finish updating !\n");
+    // fprintf(stderr, "finish updating !\n");
 }
 
 void clock_list(clk_node_t *node, clk_act_t action)

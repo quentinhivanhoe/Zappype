@@ -62,14 +62,21 @@ void register_gui_client(int i)
 
 void process_ia_connection(int i, int team_index)
 {
+    trn_t *trantorian = &my_server()->info.clients[i].data.ia_client;
+
+    trantorian->pos.x = rand() % my_server()->params.width;
+    trantorian->pos.y = rand() % my_server()->params.height;
+    trantorian->pos.dir = (rand() % 4) + 1;
+    trantorian->lvl = 1;
+    trantorian->socket = my_server()->info.fds[i].fd;
+    trantorian->food_bar = 10;
     my_server()->info.clients[i].type = IA;
-    my_server()->info.clients[i].data.ia_client.team_id = team_index;
-    if (my_server()->params.debug_mode == true)
-        dprintf(2, "Client %d is now registered in team '%s'.\n", i + 1,
-        my_server()->params.team_names[team_index]);
-    dprintf(my_server()->info.fds[i].fd, "%d\n", i);
-    dprintf(my_server()->info.fds[i].fd, "%zu %zu\n",
-        my_server()->params.width, my_server()->params.height);
+    dprintf(trantorian->socket, "WELCOME\n");
+    if (my_server()->params.debug_mode) {
+        dprintf(2, "New IA client: pos=(%lu,%lu), dir=%d\n",
+                trantorian->pos.x, trantorian->pos.y, trantorian->pos.dir);
+    }
+    (void)team_index;
 }
 
 void register_ia_client(int i, char *team_name)

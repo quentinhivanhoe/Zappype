@@ -7,6 +7,7 @@
 
 #include "../includes/server.h"
 #include "../includes/gui.h"
+#include "../includes/ia.h"
 
 void add_clients(int new_fd)
 {
@@ -61,9 +62,13 @@ void parse_data(char *buffer, int i)
     if (my_server()->info.clients[i].type == UNDEFINED) {
         dprintf(STDERR_FILENO, "user not authentified, define teams\n");
         det_teams(buffer, i);
-    } else {
-        dprintf(STDERR_FILENO, "Command start ton be handled\n");
+    }
+    if (my_server()->info.clients[i].type == GUI)
         dispatch_command(i, buffer);
+    if (my_server()->info.clients[i].type == IA) {
+        dispatch_ia_command(i, buffer);
+    } else {
+        dprintf(my_server()->info.fds[i].fd, "Unknown client type\n");
     }
 }
 

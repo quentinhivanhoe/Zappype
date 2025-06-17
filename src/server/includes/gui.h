@@ -18,6 +18,7 @@ typedef struct gui_command_entry_s {
 
 bool is_valid_command(const char *cmd);
 void dispatch_command(int client_fd, const char *cmd);
+char **split_args(const char *cmd);
 
 void handle_msz(int client_fd, char **cmd);
 void handle_tna(int client_fd, char **cmd);
