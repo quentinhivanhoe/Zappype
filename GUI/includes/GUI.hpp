@@ -13,6 +13,7 @@
     #include "Network.hpp"
     #include "Buttons.hpp"
     #include "Map.hpp"
+    #include "Math/Vector2D.hpp"
     #include "Items.hpp"
 
 namespace Zappy

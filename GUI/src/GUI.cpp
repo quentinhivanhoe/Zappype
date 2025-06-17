@@ -10,13 +10,15 @@ Zappy::GUI::GUI(const std::string &ip, size_t port)
 {
     (void)ip;
     (void)port;
+    std::srand(std::time(0));
     // this->_networkInfo = std::make_shared<Network>(this);
     // this->_networkInfo->establishConnection(ip, port);
     // this->_networkInfo->initProcess();
     this->_window.create(sf::VideoMode(1920, 1080, 8), "Zappy GUI", sf::Style::Close);
     this->tile.getSprite().setScale(this->getTileScale(), this->getTileScale());
     this->tile.getSprite().setScale(this->getTileScale(), this->getTileScale());
-    this->_map = Map(Vector2D(7.0, 4.0));
+    //chien pété de merde
+    this->_map = Map(Vector2D(4.0, 7.0));
     this->sky.getSprite().setPosition(0, 0);
     this->init();
     this->run();
@@ -98,9 +100,10 @@ void Zappy::GUI::display_objects()
     for (size_t i = 0; i < this->_map.getTiles().size(); i++){
         for (size_t j = 0; j < this->_map.getTiles()[i].size(); j++){
             for (size_t k = 0; k < 8; k++){
+                this->tile.set_offsets();
+
                 if (this->_map.getTiles()[i][j].get()->getItems()[k] > 0){
-                    this->_items[k]->getSprite()->getSprite().setPosition(this->_map.getTiles()[i][j].get()->getCenter().getX(), this->_map.getTiles()[i][j].get()->getCenter().getY());
-                    this->_items[k]->getSprite()->getSprite().setScale(0.1, 0.1);
+                    this->_items[k]->getSprite()->getSprite().setPosition(this->_map.getTiles()[i][j].get()->getCenter().getX() + this->tile.get_offsets()[k].getX(), this->_map.getTiles()[i][j].get()->getCenter().getY() +this->tile.get_offsets()[k].getY());
                     this->_window.draw(this->_items[k]->getSprite()->getSprite());
                 }
                 
