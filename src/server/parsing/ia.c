@@ -50,7 +50,7 @@ void handle_ia_command(trn_t *trn, const char *input, char *token)
 {
     char **argv = NULL;
     clk_args_t *args = NULL;
-    clk_node_t *node  = NULL;
+    clk_node_t *node = NULL;
 
     for (int i = 0; cmd_table[i].cmd != NULL; i++) {
         if (strcmp(cmd_table[i].cmd, token) == 0) {
@@ -67,7 +67,6 @@ void handle_ia_command(trn_t *trn, const char *input, char *token)
 
 void dispatch_ia_command(int client_index, const char *input)
 {
-    int client_fd = my_server()->info.fds[client_index].fd;
     trn_t *trt = &my_server()->info.clients[client_index].data.ia_client;
     char *line = NULL;
     char *token = NULL;
@@ -87,5 +86,4 @@ void dispatch_ia_command(int client_index, const char *input)
     fprintf(stderr, "token: %s", token);
     handle_ia_command(trt, input, token);
     free(line);
-    (void)client_fd;
 }

@@ -46,7 +46,6 @@ static void del_clock(sll_t **list)
 static void run_event(sll_t **list)
 {
     (*list)->node->frame_counter++;
-    fprintf(stderr, "limit: %ld\ncounter: %ld\n", (*list)->node->frame_limit, (*list)->node->frame_counter);
     if ((*list)->node->frame_limit > (*list)->node->frame_counter)
         return;
     (*list)->node->callback((*list)->node->args);
@@ -54,21 +53,14 @@ static void run_event(sll_t **list)
         del_clock(list);
     else
         (*list)->node->frame_counter = 0;
-
 }
 
 void add_clock(sll_t **list, clk_node_t *node)
 {
     sll_t *new = NULL;
 
-    if (!list || !node) {
-        if (node)
-            free(node);
-        return;
-    }
     if (!(node->flags & ARGS_UNUSED)) {
         if (node->args->trantorian->req_count >= 10) {
-            fprintf(stderr, "too much sent request\n");
             free(node->args);
             free(node);
             return;
