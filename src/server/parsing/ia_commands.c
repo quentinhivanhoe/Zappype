@@ -47,7 +47,7 @@ static bool compute_forward_position(trn_t *trantorian)
 void handle_forward(trn_t *trantorian, char **args)
 {
     if (!compute_forward_position(trantorian)) {
-        dprintf(trantorian->socket, "Directio of trantorian isn't set yet !\n");
+        dprintf(trantorian->socket, "Direction of trantorian isn't set yet\n");
         return;
     }
     dprintf(trantorian->socket, "ok\n");
@@ -55,5 +55,47 @@ void handle_forward(trn_t *trantorian, char **args)
         dprintf(2, "Forward: new position = (%lu, %lu) direction %d\n",
                 trantorian->pos.x, trantorian->pos.y, trantorian->pos.dir);
     }
+    (void)args;
+}
+
+void handle_right(trn_t *trantorian, char **args)
+{
+    int test;
+
+    if (trantorian->pos.dir == 1)
+        test = 2;
+    if (trantorian->pos.dir == 2)
+        test = 3;
+    if (trantorian->pos.dir == 3)
+        test = 4;
+    if (trantorian->pos.dir == 4)
+        test = 1;
+    dprintf(trantorian->socket, "ok\n");
+    if (my_server()->params.debug_mode) {
+        printf("Right: Old direction: %d new direction %d\n",
+            trantorian->pos.dir, test);
+    }
+    trantorian->pos.dir = test;
+    (void)args;
+}
+
+void handle_left(trn_t *trantorian, char **args)
+{
+    int test;
+
+    if (trantorian->pos.dir == 1)
+        test = 4;
+    if (trantorian->pos.dir == 4)
+        test = 3;
+    if (trantorian->pos.dir == 3)
+        test = 2;
+    if (trantorian->pos.dir == 2)
+        test = 1;
+    dprintf(trantorian->socket, "ok\n");
+    if (my_server()->params.debug_mode) {
+        printf("Left: Old direction: %d new direction %d\n",
+            trantorian->pos.dir, test);
+    }
+    trantorian->pos.dir = test;
     (void)args;
 }
