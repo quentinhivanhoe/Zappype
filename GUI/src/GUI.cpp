@@ -8,17 +8,21 @@
 
 Zappy::GUI::GUI(const std::string &ip, size_t port)
 {
-    std::cout << "---------------SERVER---------------" << std::endl;
-    this->_networkInfo = std::make_shared<Network>(this);
-    this->_networkInfo->establishConnection(ip, port);
-    this->_networkInfo->initProcess();
-    // this->_window.create(sf::VideoMode(1920, 1080, 8), "Zappy GUI", sf::Style::Close);
-    // this->tile.getSprite().setScale(this->getTileScale(), this->getTileScale());
-    // this->tile.getSprite().setScale(this->getTileScale(), this->getTileScale());
-    // this->_map = Map(Vector2D(7.0, 4.0));
-    // this->sky.getSprite().setPosition(0, 0);
-    // this->init();
-    // this->run();
+    (void)ip;
+    (void)port;
+    // std::cout << "---------------SERVER---------------" << std::endl;
+    // this->_networkInfo = std::make_shared<Network>(this);
+    // this->_networkInfo->establishConnection(ip, port);
+    // this->_networkInfo->initProcess();
+    this->_window.create(sf::VideoMode(1920, 1080, 8), "Zappy GUI", sf::Style::Close);
+    this->tile.getSprite().setScale(this->getTileScale(), this->getTileScale());
+    this->tile.getSprite().setScale(this->getTileScale(), this->getTileScale());
+    this->_map = Map(Vector2D(7.0, 4.0));
+    std::cout << "map created" << std::endl;
+    this->sky.getSprite().setPosition(0, 0);
+    this->init();
+    std::cout << "init done" << std::endl;
+    this->run();
 }
 
 Zappy::GUI::~GUI()
@@ -44,6 +48,7 @@ void Zappy::GUI::initPaths()
     this->spritePaths.push_back("../GUI/assets/cristal_filled.png");
     this->spritePaths.push_back("../GUI/assets/cristal_filled.png");
     this->spritePaths.push_back("../GUI/assets/cristal_filled.png");
+    std::cout << "init path done" << std::endl;
 }
 
 void Zappy::GUI::handleWindowEvents(  )
@@ -111,13 +116,11 @@ void Zappy::GUI::display_objects()
 void Zappy::GUI::display_trantor()
 {
     //printf("TEAM\n");
-    for (size_t i = 0; i < this->_map.getTeams().size(); i++) {
-        printf("I : %ld\n", i);   
-        for (size_t j = 0; j < this->_map.getTeams()[i].get()->getTrantorian().size(); j++) {
-            printf("J : %ld\n", j);   
-            this->_map.getTeams()[i].get()->getTrantorian()[j].get()->getSprite()->getSprite().setPosition(50, 50);
-            this->_map.getTeams()[i].get()->getTrantorian()[j].get()->getSprite()->getSprite().setScale(0.1, 0.1);
-            this->_window.draw(this->_map.getTeams()[i].get()->getTrantorian()[j].get()->getSprite()->getSprite());
+    for (auto team: this->_map.getTeams()) {
+        for (auto trantorian: team.second->getTrantorians()) {
+            trantorian->getSprite()->getSprite().setPosition(50, 50);
+            trantorian->getSprite()->getSprite().setScale(0.1, 0.1);
+            this->_window.draw(trantorian->getSprite()->getSprite());
         }
     }
 }

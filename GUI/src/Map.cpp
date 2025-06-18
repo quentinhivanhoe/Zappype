@@ -10,8 +10,11 @@
 Zappy::Map::Map(Vector2D size)
 {
     _size = size;
-    this->_teams.push_back(std::make_shared<Team>("test"));
+
     this->init();
+    std::shared_ptr<Trantorian> testTrantorian = std::make_shared<Trantorian>();
+    testTrantorian->setTeamName("test");
+    this->addTrantorian(testTrantorian);
 }
     
 Zappy::Map::~Map()
@@ -21,7 +24,7 @@ Zappy::Map::~Map()
 void Zappy::Map::init() 
 {
     size_t id_tmp = 0;
-
+    std::cout << this->_size.getY() << " and " << this->_size.getX() << std::endl;
     for (int i = 0; i != this->_size.getY(); i++) {
         std::cout << "i" << i << std::endl;
         std::vector<std::shared_ptr<Tile>> tmp;
@@ -30,11 +33,15 @@ void Zappy::Map::init()
             id_tmp++;
         }
         this->_tiles.push_back(tmp);
+        std::cout << "map init ok" << std::endl;
     }
+    std::cout << "ok" << std::endl;
 }
 
 void Zappy::Map::addTrantorian(std::shared_ptr<Zappy::Trantorian> trantorian)
 {
     this->_trantorians[trantorian->getID()] = trantorian;
+    if (!_teams[trantorian->getTeamName()])
+        this->_teams[trantorian->getTeamName()] = std::make_shared<Team>(trantorian->getTeamName());
     this->_teams[trantorian->getTeamName()]->addTrantorian(trantorian);
 }

@@ -11,7 +11,6 @@
 Zappy::Team::Team(std::string teamName)
 {
     this->_teamName = teamName;
-    this->_Trantorians.push_back(std::make_shared<Trantorian>());
 }
     
 Zappy::Team::~Team()
