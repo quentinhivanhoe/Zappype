@@ -62,14 +62,14 @@ void parse_data(char *buffer, int i)
     if (my_server()->info.clients[i].type == UNDEFINED) {
         dprintf(STDERR_FILENO, "user not authentified, define teams\n");
         det_teams(buffer, i);
+        return;
     }
     if (my_server()->info.clients[i].type == GUI)
         dispatch_command(i, buffer);
-    if (my_server()->info.clients[i].type == IA) {
+    else if (my_server()->info.clients[i].type == IA)
         dispatch_ia_command(i, buffer);
-    } else {
+    else
         dprintf(my_server()->info.fds[i].fd, "Unknown client type\n");
-    }
 }
 
 void handle_client_data(int i)
