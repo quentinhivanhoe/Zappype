@@ -14,7 +14,7 @@ static const ia_cmd_t ia_command_table[] = {
     { "Right", handle_right, 7 },
     { "Left", handle_left, 7 },
     // { "Look", handle_look, 7 },
-    // { "Inventory", handle_inventory, 1 },
+    { "Inventory", handle_inventory, 1 },
     // { "Broadcast", handle_broadcast, 7 },
     { "Connect_nbr", handle_connect_nbr, 0 },
     // { "Fork", handle_fork, 42 },
