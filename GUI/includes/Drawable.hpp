@@ -21,8 +21,8 @@ namespace Zappy
         public:
             Drawable(std::string texture_path = "../GUI/assets/default.jpeg", float scale = 1.0);
             ~Drawable();
-            sf::Texture &getTexture(){return this->_texture;};
-            sf::Sprite &getSprite(){return this->_sprite;};
+            inline sf::Texture &getTexture(){return this->_texture;};
+            inline sf::Sprite &getSprite(){return this->_sprite;};
             void set_offsets();
             std::vector<Vector2D> get_offsets(){return this->offsets;};
             void setTexture(sf::Texture texture);

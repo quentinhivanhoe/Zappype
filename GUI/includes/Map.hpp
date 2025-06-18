@@ -17,16 +17,19 @@ namespace Zappy
     class Map
     {
     private:
-        std::vector<std::shared_ptr<Team>> _teams = {};
+        std::map<std::string, std::shared_ptr<Team>> _teams;
+        std::map<size_t, std::shared_ptr<Trantorian>> _trantorians;
         std::vector<std::vector<std::shared_ptr<Tile>>> _tiles;
         Vector2D _size;
     public:
         Map(Vector2D size = Vector2D(5.0, 5.0));
         ~Map();
         void init();
-        Vector2D getSize() const {return this->_size;};
-        std::vector<std::shared_ptr<Team>> &getTeams() {return this->_teams;};
-        std::vector<std::vector<std::shared_ptr<Tile>>> getTiles() {return this->_tiles;};
+        inline Vector2D getSize() const {return this->_size;};
+        inline std::map<std::string, std::shared_ptr<Team>> getTeams() const { return this->_teams; };
+        inline std::vector<std::vector<std::shared_ptr<Tile>>> getTiles() {return this->_tiles;};
+        inline std::shared_ptr<Trantorian> getTrantorianByID(size_t id) { return this->_trantorians[id]; };
+        void addTrantorian(std::shared_ptr<Trantorian> trantorian);
     };
 }
 

@@ -23,12 +23,12 @@ namespace Zappy
     public:
         AObject(/* args */);
         ~AObject();
-        std::string getType() const {return this->_type;};
-        std::string getName() const {return this->_name;};
-        double getDensity() const {return this->_density;};
-        void setType(std::string type) {this->_type = type;};
-        void setName(std::string name) {this->_name = name;};
-        void setDensity(double density) {this->_density = density;};
+        inline std::string getType() const {return this->_type;};
+        inline std::string getName() const {return this->_name;};
+        inline double getDensity() const {return this->_density;};
+        inline void setType(std::string type) {this->_type = type;};
+        inline void setName(std::string name) {this->_name = name;};
+        inline void setDensity(double density) {this->_density = density;};
         
     };
 }

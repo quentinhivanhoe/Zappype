@@ -32,3 +32,9 @@ void Zappy::Map::init()
         this->_tiles.push_back(tmp);
     }
 }
+
+void Zappy::Map::addTrantorian(std::shared_ptr<Zappy::Trantorian> trantorian)
+{
+    this->_trantorians[trantorian->getID()] = trantorian;
+    this->_teams[trantorian->getTeamName()]->addTrantorian(trantorian);
+}
