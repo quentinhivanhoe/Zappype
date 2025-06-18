@@ -22,6 +22,7 @@ namespace Zappy
         std::string _teamName;
         size_t _id;
         size_t _level;
+        size_t _direction;
         std::vector<Actions> _actions;
         size_t _lifespan;
         sf::Color _color;
@@ -30,22 +31,26 @@ namespace Zappy
     public:
         sf::RectangleShape shape;
         sf::Clock _clock;
+
         /*GETTER*/
-        Tile getInventory() {return this->_inventory;};
-        std::string getTeamName() const {return this->_teamName;};
-        size_t getID() const {return this->_id;};
-        size_t getLevel() const {return this->_level;};
-        size_t getLifespan() const {return this->_lifespan;};
-        std::vector<Actions> getAction() const {return this->_actions;};
-        Vector2D getPos() const {return this->_pos;};
-        sf::Color getColor() const {return this->_color;};
+        inline Tile getInventory() {return this->_inventory;};
+        inline std::string getTeamName() const {return this->_teamName;};
+        inline size_t getID() const {return this->_id;};
+        inline size_t getLevel() const {return this->_level;};
+        inline size_t getLifespan() const {return this->_lifespan;};
+        inline std::vector<Actions> getAction() const {return this->_actions;};
+        inline Vector2D getPos() const {return this->_pos;};
+        inline size_t getDirection() const { return this->_direction; };
+        inline sf::Color getColor() const {return this->_color;};
+
         /*SETTER*/
-        void setTeamName(std::string teamName) {this->_teamName = teamName;};
-        void setId(size_t id) {this->_id = id;};
-        void setLevel(size_t level) {this->_level = level;};
-        void setLifeSpan(size_t lifeSpan) {this->_lifespan = lifeSpan;};
-        void setColor(sf::Color color) {this->_color = color;};
-        void setPos(Vector2D pos) {this->_pos = pos;};
+        inline void setTeamName(std::string teamName) {this->_teamName = teamName;};
+        inline void setId(size_t id) {this->_id = id;};
+        inline void setLevel(size_t level) {this->_level = level;};
+        inline void setLifeSpan(size_t lifeSpan) {this->_lifespan = lifeSpan;};
+        inline void setColor(sf::Color color) {this->_color = color;};
+        inline void setPos(Vector2D pos) {this->_pos = pos;};
+        inline void setDirection(size_t direction) {this->_direction = direction; };
         Trantorian(/* args */);
         ~Trantorian();
     }; 

@@ -61,6 +61,7 @@ void Zappy::Parser::manageResponse(std::vector<std::string> args, [[maybe_unused
         {"suc", &Zappy::Parser::manageSUC},
         {"sbp", &Zappy::Parser::manageSBP},
     };
+    Parser::showArgs(args);
     if (funcTab[args.front()])
         (this->*funcTab[args.front()])(args, network);
     else
@@ -144,6 +145,14 @@ void Zappy::Parser::manageBCT([[maybe_unused]] std::vector<std::string> args, [[
             return;
         }
     }
+    size_t posX = std::stoi(args[1]);
+    size_t posY = std::stoi(args[2]);
+    if (posY >= network->getGui()->getMap().getTiles().size())
+        return Parser::showArgs(args);
+    if (posX >= network->getGui()->getMap().getTiles()[posY].size())
+        return Parser::showArgs(args);
+    for (size_t i = 3; i < args.size(); i++)
+        network->getGui()->getMap().getTiles()[posY][posX]->setNItem(static_cast<Item>(i - 2), std::stoi(args[i]));
     Parser::showArgs(args);
 }
 
@@ -178,6 +187,15 @@ void Zappy::Parser::manageSPI([[maybe_unused]] std::vector<std::string> args, [[
             return;
         }
     }
+    std::shared_ptr<Trantorian> targetTrantorian = network->getGui()->getMap().getTrantorianByID(std::stoi(args[1].substr(1)));
+    if (!targetTrantorian)
+        targetTrantorian = std::make_shared<Trantorian>();
+    targetTrantorian->setId(std::stoi(args[1].substr(1)));
+    targetTrantorian->setPos(Vector2D(std::stof(args[2]), std::stof(args[3])));
+    targetTrantorian->setDirection(std::stoi(args[4]));
+    targetTrantorian->setTeamName(args[6]);
+    targetTrantorian->setLevel(std::stoi(args[7]));
+    network->getGui()->getMap().addTrantorian(targetTrantorian);
     Parser::showArgs(args);
 }
 
@@ -197,6 +215,11 @@ void Zappy::Parser::managePPO(std::vector<std::string> args, [[maybe_unused]] Za
             return;
         }
     }
+    std::shared_ptr<Trantorian> targetTrantorian = network->getGui()->getMap().getTrantorianByID(std::stoi(args[1].substr(1)));
+    if (!targetTrantorian)
+        return;
+    targetTrantorian->setPos(Vector2D(std::stof(args[2]), std::stof(args[3])));
+    targetTrantorian->setDirection(std::stoi(args[4]));
     Parser::showArgs(args);
 }
 
@@ -214,6 +237,10 @@ void Zappy::Parser::managePLV(std::vector<std::string> args, [[maybe_unused]] Za
         std::cout << "Level must be a positive number." << std::endl;
         return;
     }
+    std::shared_ptr<Trantorian> targetTrantorian = network->getGui()->getMap().getTrantorianByID(std::stoi(args[1].substr(1)));
+    if (!targetTrantorian)
+        return;
+    targetTrantorian->setLevel(std::stoi(args[2]));
     Parser::showArgs(args);
 }
 
@@ -233,6 +260,11 @@ void Zappy::Parser::managePLIN(std::vector<std::string> args, [[maybe_unused]] Z
             return;
         }
     }
+    std::shared_ptr<Trantorian> targetTrantorian = network->getGui()->getMap().getTrantorianByID(std::stoi(args[1].substr(1)));
+    if (!targetTrantorian)
+        return;
+    for (size_t i = 4; i < args.size(); i++)
+        targetTrantorian->getInventory().setNItem(static_cast<Item>(i - 3), std::stoi(args[i]));
     Parser::showArgs(args);
 }
 
@@ -246,6 +278,7 @@ void Zappy::Parser::manageSGT(std::vector<std::string> args, [[maybe_unused]] Za
         std::cout << "Args must be positive numbers." << std::endl;
         return;
     }
+    network->getGui()->setTimeUnit(std::stoi(args[1]));
     Parser::showArgs(args);
 }
 
@@ -259,6 +292,7 @@ void Zappy::Parser::manageSST(std::vector<std::string> args, [[maybe_unused]] Za
         std::cout << "Args must be positive numbers." << std::endl;
         return;
     }
+    network->getGui()->setTimeUnit(std::stoi(args[1]));
     Parser::showArgs(args);
 }
 
@@ -278,6 +312,13 @@ void Zappy::Parser::managePNW(std::vector<std::string> args, [[maybe_unused]] Za
             return;
         }
     }
+    std::shared_ptr<Trantorian> newTrantorian = std::make_shared<Trantorian>();
+    newTrantorian->setId(std::stoi(args[1].substr(1)));
+    newTrantorian->setPos(Vector2D(std::stof(args[2]), std::stof(args[3])));
+    newTrantorian->setDirection(std::stoi(args[4]));
+    newTrantorian->setLevel(std::stoi(args[5]));
+    newTrantorian->setTeamName(args[6]);
+    network->getGui()->getMap().addTrantorian(newTrantorian);
     Parser::showArgs(args);
 }
 

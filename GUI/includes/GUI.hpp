@@ -35,7 +35,7 @@ namespace Zappy
 
             int _playerNb = 0;
             sf::Vector2i _mapSize;
-
+            int _timeUnit = 1;
         public:
             GUI(const std::string& ip = "127.0.0.1", size_t port = 8000);
             ~GUI();
@@ -46,17 +46,19 @@ namespace Zappy
             void display_sky();
             void display_objects();
             void handleWindowEvents();
-            std::vector<std::shared_ptr<Buttons>> getButtons() const {return this->_buttons;};
-            Map getMap() const {return this->_map;};
-            float getTileScale() const {return this->tile_scale;};
-            std::shared_ptr<Network> getNetwork() const {return this->_networkInfo;};
+            inline std::vector<std::shared_ptr<Buttons>> getButtons() const {return this->_buttons;};
+            inline Map getMap() const {return this->_map;};
+            inline float getTileScale() const {return this->tile_scale;};
+            inline std::shared_ptr<Network> getNetwork() const {return this->_networkInfo;};
+            inline int getTimeUnit() const { return this->_timeUnit; };
+            inline void setTimeUnit(int unit) { this->_timeUnit = unit; };
 
             inline void setPlayerNb(int number) { this->_playerNb = number; };
             inline void setMapSize(sf::Vector2i size) { this->_mapSize = size; };
             inline int getPlayerNb() const { return this->_playerNb; };
             inline sf::Vector2i getMapSize() const { return this->_mapSize; };
+
     };
 }
 
 #endif /* !GUI_HPP_ */
-//

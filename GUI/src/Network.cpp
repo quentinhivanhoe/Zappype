@@ -54,17 +54,17 @@ void Zappy::Network::establishConnection(std::string ip, size_t socket)
 void Zappy::Network::initProcess()
 {
     this->askToServer("Team", {});
-    this->askToServer("PlayerNb", {});
+    // this->askToServer("PlayerNb", {});
     this->askToServer("MapSize", {});
-    this->askToServer("PlayersInfo", {});
-    this->askToServer("MapContent", {});
-    std::cout << "[DEBUG from GUI] GUI connection to Server : OK" << std::endl;
-    this->askToServer("TimeUnitRequest", {});
-    this->askToServer("TileContent", {0, 0});
-    this->askToServer("TimeUnitModif", {1});
-    this->askToServer("PlayerPos", {1});
-    this->askToServer("PlayerLevel", {1});
-    this->askToServer("PlayerInventory", {1});
+    // this->askToServer("PlayersInfo", {});
+    // this->askToServer("MapContent", {});
+    // std::cout << "[DEBUG from GUI] GUI connection to Server : OK" << std::endl;
+    // this->askToServer("TimeUnitRequest", {});
+    // this->askToServer("TileContent", {0, 0});
+    // this->askToServer("TimeUnitModif", {1});
+    // this->askToServer("PlayerPos", {1});
+    // this->askToServer("PlayerLevel", {1});
+    // this->askToServer("PlayerInventory", {1});
     std::cout << "[DEBUIT from GUI] map size from gui: " << this->getGui()->getMapSize().x << "-"  << this->getGui()->getMapSize().x << std::endl;
 }
 

@@ -15,9 +15,9 @@ private:
 public:
     Vector2D(double x = 0.0, double y = 0.0);
     ~Vector2D();
-    double getX() const {return this->x;};
-    double getY() const {return this->y;};
-    void setX(double x) {this->x = x;};
-    void setY(double y) {this->y = y;};
+    inline double getX() const {return this->x;};
+    inline double getY() const {return this->y;};
+    inline void setX(double x) {this->x = x;};
+    inline void setY(double y) {this->y = y;};
 };
 #endif /* !VECTOR2D_HPP_ */

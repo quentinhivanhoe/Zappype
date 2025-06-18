@@ -32,14 +32,14 @@ namespace Zappy
     public:
         Tile(size_t id = -1);
         ~Tile();
-        size_t getId() const {return this->_id;};
         size_t getNItem(Item name);
-        std::vector<size_t> getItems(){return this->_items;};
+        size_t getId() const {return this->_id;};
         void setNItem(Item name, size_t value);
-        Vector2D getPos() const {return this->_pos;};
-        void setPos(Vector2D pos) {this->_pos = pos;};
-        Vector2D getCenter() const {return this->_center;};
-        void setCenter(Vector2D Center) {this->_center = Center;};
+        inline std::vector<size_t> getItems(){return this->_items;};
+        inline Vector2D getPos() const {return this->_pos;};
+        inline void setPos(Vector2D pos) {this->_pos = pos;};
+        inline Vector2D getCenter() const {return this->_center;};
+        inline void setCenter(Vector2D Center) {this->_center = Center;};
     }; 
 }
 

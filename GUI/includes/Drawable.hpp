@@ -17,8 +17,8 @@ namespace Zappy
         public:
             Drawable(std::string texture_path = "../GUI/assets/default.jpeg");
             ~Drawable();
-            sf::Texture &getTexture(){return this->_texture;};
-            sf::Sprite &getSprite(){return this->_sprite;};
+            inline sf::Texture &getTexture(){return this->_texture;};
+            inline sf::Sprite &getSprite(){return this->_sprite;};
             void setTexture(sf::Texture texture);
             void setSprite(sf::Sprite sprite);
     };
