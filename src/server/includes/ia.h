@@ -8,9 +8,10 @@
 #ifndef IA_H_
     #define IA_H_
     #include "client.h"
+    #include "../includes/clock.h"
 
 
-typedef void (*ia_cmd_handler_t)(trn_t *trantorian, char **args);
+typedef void (*ia_cmd_handler_t)(trn_t *, char **);
 
 typedef struct ia_cmd_s {
     const char *cmd;

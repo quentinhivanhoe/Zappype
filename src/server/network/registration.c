@@ -69,7 +69,7 @@ void process_ia_connection(int i, int team_index)
     trantorian->pos.dir = (rand() % 4) + 1;
     trantorian->lvl = 1;
     trantorian->socket = my_server()->info.fds[i].fd;
-    trantorian->food_bar = 10;
+    trantorian->food_bar = 1260;
     my_server()->info.clients[i].type = IA;
     my_server()->info.clients[i].data.ia_client.team_id = team_index;
     dprintf(trantorian->socket, "WELCOME\n");
@@ -77,6 +77,7 @@ void process_ia_connection(int i, int team_index)
         dprintf(2, "New IA client: pos=(%lu,%lu), dir=%d\n",
                 trantorian->pos.x, trantorian->pos.y, trantorian->pos.dir);
     }
+    my_server()->info.trn_count++;
     (void)team_index;
 }
 

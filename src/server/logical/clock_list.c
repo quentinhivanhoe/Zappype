@@ -22,6 +22,8 @@ static sll_t *alloc_list(void)
 
 static void del_clock(sll_t **list)
 {
+    sll_t *list_to_free = (*list);
+
     if (!list)
         return;
     if (!(*list))
@@ -30,31 +32,46 @@ static void del_clock(sll_t **list)
         (*list)->prev->next = (*list)->next;
     if ((*list)->next)
         (*list)->next->prev = (*list)->prev;
+    if ((*list)->node->args)
+        free((*list)->node->args);
     if ((*list)->node)
         free((*list)->node);
-    free((*list));
+    if ((*list)->prev)
+        (*list) = (*list)->prev;
+    if ((*list)->next)
+        (*list) = (*list)->next;
+    free(list_to_free);
 }
 
 static void run_event(sll_t **list)
 {
+    (*list)->node->frame_counter++;
+    if ((*list)->node->frame_limit > (*list)->node->frame_counter)
+        return;
+    (*list)->node->callback((*list)->node->args);
     if (!((*list)->node->flags & LOOP_CLOCK))
         del_clock(list);
-    (*list)->node->frame_counter = 0;
-    (*list)->node->callback((*list)->node->args);
+    else
+        (*list)->node->frame_counter = 0;
 }
 
 void add_clock(sll_t **list, clk_node_t *node)
 {
     sll_t *new = NULL;
 
-    if (!list || !node) {
-        if (node)
+    if (!(node->flags & ARGS_UNUSED)) {
+        if (node->args->trantorian->req_count >= 10) {
+            free(node->args);
             free(node);
-        return;
+            return;
+        }
+        node->args->trantorian->req_count++;
     }
     new = alloc_list();
     new->node = node;
     new->next = (*list);
+    if ((*list))
+        (*list)->prev = new;
     (*list) = new;
 }
 
@@ -73,21 +90,22 @@ void destroy_clock(sll_t **list)
 
 void update_clock(sll_t **list)
 {
-    sll_t *parse_ptr = NULL;
-
     if (!list)
         return;
     if (!(*list))
         return;
-    // fprintf(stderr, "updating !\n");
-    parse_ptr = (*list);
-    while (parse_ptr) {
-        parse_ptr->node->frame_counter++;
-        if (parse_ptr->node->frame_limit == parse_ptr->node->frame_counter)
-            run_event(&parse_ptr);
-        parse_ptr = parse_ptr->next;
+    fprintf(stderr, "updating !\n");
+    while ((*list)) {
+        run_event(list);
+        if (!(*list)->next)
+            break;
+        (*list) = (*list)->next;
     }
-    // fprintf(stderr, "finish updating !\n");
+    if ((*list))
+        while ((*list)->prev)
+            (*list) = (*list)->prev;
+    parse_req();
+    fprintf(stderr, "finish updating !\n");
 }
 
 void clock_list(clk_node_t *node, clk_act_t action)

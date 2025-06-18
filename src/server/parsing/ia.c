@@ -9,7 +9,7 @@
 #include "../includes/ia.h"
 #include "../includes/gui.h"
 
-static const ia_cmd_t ia_command_table[] = {
+static const ia_cmd_t cmd_table[] = {
     { "Forward", handle_forward, 7 },
     { "Right", handle_right, 7 },
     { "Left", handle_left, 7 },
@@ -37,24 +37,15 @@ static bool is_authorized_ia(int client_index, const char *input)
     return true;
 }
 
-static void free_args(char **args)
-{
-    if (!args)
-        return;
-    for (int j = 0; args[j]; j++)
-        free(args[j]);
-    free(args);
-}
-
-void handle_ia_command(trn_t *trantorian, const char *input, char *token)
+void handle_ia_command(trn_t *trn, const char *input, char *token)
 {
     char **args = NULL;
 
-    for (int i = 0; ia_command_table[i].cmd != NULL; i++) {
-        if (strcmp(ia_command_table[i].cmd, token) == 0) {
+    for (int i = 0; cmd_table[i].cmd != NULL; i++) {
+        if (strcmp(cmd_table[i].cmd, token) == 0) {
+            fprintf(stderr, "%s: added to the clock list\n", token);
             args = split_args(input);
-            ia_command_table[i].handler(trantorian, args);
-            free_args(args);
+            add_req(trn, args, cmd_table[i].handler, cmd_table[i].delay);
             return;
         }
     }
@@ -62,7 +53,6 @@ void handle_ia_command(trn_t *trantorian, const char *input, char *token)
 
 void dispatch_ia_command(int client_index, const char *input)
 {
-    int client_fd = my_server()->info.fds[client_index].fd;
     trn_t *trt = &my_server()->info.clients[client_index].data.ia_client;
     char *line = NULL;
     char *token = NULL;
@@ -79,7 +69,7 @@ void dispatch_ia_command(int client_index, const char *input)
         free(line);
         return;
     }
+    fprintf(stderr, "token: %s", token);
     handle_ia_command(trt, input, token);
     free(line);
-    (void)client_fd;
 }

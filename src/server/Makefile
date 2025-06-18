@@ -11,12 +11,17 @@ OBJ = $(SRC:.c=.o)
 
 NAME = zappy_server
 
+DFLAGS	= -g -ggdb -g3
+
 CFLAGS = -Wall -Wextra -Werror -I./includes
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
+	$(CC) $(CFLAGS) $(DFLAGS) -o $(NAME) $(OBJ)
+
+debug:
+	$(CC) $(CFLAGS) $(DFLAGS) -o $(NAME) $(SRC)
 
 clean:
 	rm -f $(OBJ)

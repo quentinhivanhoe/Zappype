@@ -61,7 +61,7 @@ tile_t *dispatch_object(uint64_t *object, uint64_t *padding, size_t size)
     return map;
 }
 
-void respwan_ressoruces(__attribute_maybe_unused__ void *arg)
+void respwan_ressoruces(__attribute_maybe_unused__ clk_args_t *args)
 {
     int rand_pos = 0;
     size_t len_map = my_server()->params.width * my_server()->params.height;
@@ -80,10 +80,12 @@ tile_t *init_map(size_t len_map)
     uint64_t object[OBJECT_DEFINED] = {0};
     uint64_t padding[OBJECT_DEFINED] = {0};
     clk_node_t *node = NULL;
+    clk_args_t *args = NULL;
 
     set_obj_number(object, len_map);
     set_padding(padding, object, len_map);
-    node = alloc_node(10, respwan_ressoruces, NULL, LOOP_CLOCK);
+    args = alloc_args(NULL, NULL, 20, LOOP_CLOCK | ARGS_UNUSED);
+    node = alloc_node(respwan_ressoruces, args);
     clock_list(node, ADD);
     return dispatch_object(object, padding, len_map);
 }
