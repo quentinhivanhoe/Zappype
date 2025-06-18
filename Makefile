@@ -25,15 +25,20 @@ all: $(SERVER) $(AI) $(GUI)
 
 $(AI):
 	@echo "Building AI..."
+	make -C ./src/ai
+	mv src/ai/$(AI) .
 
 $(GUI):
 	@echo "Building GUI..."
 
 clean:
 	rm -rf build
+	make -C ./src/ai clean
 
 fclean: clean
 	rm -rf $(SERVER)
+	rm -rf $(AI)
+	rm -rf $(GUI)
 
 re: fclean all
 
