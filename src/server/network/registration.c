@@ -64,8 +64,10 @@ void process_ia_connection(int i, int team_index)
 {
     trn_t *trantorian = &my_server()->info.clients[i].data.ia_client;
 
+    srand(time(NULL));
     trantorian->pos.x = rand() % my_server()->params.width;
     trantorian->pos.y = rand() % my_server()->params.height;
+    printf("(%lu, %lu)", trantorian->pos.x, trantorian->pos.y);
     trantorian->pos.dir = (rand() % 4) + 1;
     trantorian->lvl = 1;
     trantorian->socket = my_server()->info.fds[i].fd;
