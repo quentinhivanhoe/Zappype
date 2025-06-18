@@ -13,6 +13,7 @@
     #include "Math/Vector2D.hpp"
     #include "Actions.hpp"
     #include "Interfaces/IObject.hpp"
+    #include "Drawable.hpp"
     #include "Tile.hpp"
 namespace Zappy 
 {
@@ -24,6 +25,7 @@ namespace Zappy
         size_t _level;
         size_t _direction;
         std::vector<Actions> _actions;
+        std::shared_ptr<Drawable> _sprite;
         size_t _lifespan;
         sf::Color _color;
         Vector2D _pos;
@@ -42,6 +44,7 @@ namespace Zappy
         inline Vector2D getPos() const {return this->_pos;};
         inline size_t getDirection() const { return this->_direction; };
         inline sf::Color getColor() const {return this->_color;};
+        inline std::shared_ptr<Drawable> getSprite() {return this->_sprite;};
 
         /*SETTER*/
         inline void setTeamName(std::string teamName) {this->_teamName = teamName;};

@@ -45,6 +45,7 @@ namespace Zappy
             void display_map();
             void display_sky();
             void display_objects();
+            void display_trantor();
             void handleWindowEvents();
             inline std::vector<std::shared_ptr<Buttons>> getButtons() const {return this->_buttons;};
             inline Map getMap() const {return this->_map;};

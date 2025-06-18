@@ -8,6 +8,7 @@
 
 Zappy::Trantorian::Trantorian(/* args */)
 {
+    this->_sprite = std::make_shared<Drawable>("../GUI/assets/untitled.png");
 }
     
 Zappy::Trantorian::~Trantorian()
