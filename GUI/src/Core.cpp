@@ -16,7 +16,7 @@ Zappy::Core::Core(int argc, char **argv)
     //     throw Error("Port must be a positive number.", "Core init");
     (void)argc;
     (void)argv;
-    this->_gui = std::make_shared<GUI>(argv[1], std::stoi(argv[2]));
+    this->_gui = std::make_shared<GUI>();
 }
 
 Zappy::Core::~Core()

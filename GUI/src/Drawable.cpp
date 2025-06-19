@@ -28,9 +28,10 @@ void Zappy::Drawable::setTexture(sf::Texture texture)
 
 
 void Zappy::Drawable::shuffler(std::vector<Vector2D> tab, unsigned seed)
-{
-    for (int i = 0; i < tab.size(); i++){}
-    
+{   
+    (void)tab;
+    (void)seed;
+    return;   
 }
 
 void Zappy::Drawable::setSprite(sf::Sprite sprite)
