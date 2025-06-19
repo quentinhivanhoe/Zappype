@@ -27,6 +27,7 @@ namespace Zappy
     private:
         size_t _id;
         std::vector<size_t> _items;
+        std::vector<Vector2D> offsets_list;
         Vector2D _pos;
         Vector2D _center;
     public:
@@ -36,6 +37,8 @@ namespace Zappy
         size_t getNItem(Item name);
         std::vector<size_t> getItems(){return this->_items;};
         void setNItem(Item name, size_t value);
+        void setOffsetsList(std::vector<Vector2D> offsets);
+        std::vector<Vector2D> getOffsetsList() {return this->offsets_list;};
         Vector2D getPos() const {return this->_pos;};
         void setPos(Vector2D pos) {this->_pos = pos;};
         Vector2D getCenter() const {return this->_center;};

@@ -33,6 +33,7 @@ namespace Zappy
             Drawable sky = Drawable("../GUI/assets/sky.jpg");
             sf::Event _event;
 
+
         public:
             GUI(const std::string& ip = "127.0.0.1", size_t port = 8000);
             ~GUI();

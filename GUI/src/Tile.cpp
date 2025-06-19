@@ -6,6 +6,7 @@
 */
 
 #include "../includes/Tile.hpp"
+#include "Tile.hpp"
 
 Zappy::Tile::Tile(size_t id)
 {
@@ -30,3 +31,7 @@ void Zappy::Tile::setNItem(Zappy::Item name, size_t value)
     this->_items[name] = value;
 }
 
+void Zappy::Tile::setOffsetsList(std::vector<Vector2D> offsets)
+{
+    this->offsets_list = offsets;
+}
