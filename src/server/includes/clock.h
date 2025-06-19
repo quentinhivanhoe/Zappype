@@ -46,5 +46,6 @@ typedef struct singly_linked_list_s {
 clk_node_t *alloc_node(callback_t call, clk_args_t *args);
 clk_args_t *alloc_args(trn_t *trn, char **argv, size_t limit, uint64_t flags);
 void clock_list(clk_node_t *node, clk_act_t action);
+void trantorian_death(clk_args_t *args);
 
 #endif /* !TIME_H_ */
