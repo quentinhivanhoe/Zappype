@@ -80,5 +80,6 @@ extern const float density_table[OBJECT_DEFINED + 1];
 tile_t *init_map(size_t len_map);
 void parse_req(void);
 void add_req(trn_t *trn, char **args, req_func_t func, size_t delay);
+void init_trantorian(trn_t *trantorian, int i, int team_index);
 
 #endif /* !TRANTOR_H_ */

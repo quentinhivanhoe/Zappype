@@ -14,6 +14,8 @@ void add_req(trn_t *trn, char **args, req_func_t func, size_t delay)
         return;
     if (trn->req_count >= MAX_REQUEST)
         return;
+    if (!delay)
+        return func(trn, args);
     trn->req_queue[trn->req_count].callback = func;
     trn->req_queue[trn->req_count].delay = delay;
     trn->req_queue[trn->req_count].args = args;

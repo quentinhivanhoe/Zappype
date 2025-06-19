@@ -31,7 +31,7 @@ static void set_obj_number(uint64_t *number, size_t size)
 static void set_padding(uint64_t *padding, uint64_t *object, size_t size)
 {
     for (uint8_t i = 0; i < OBJECT_DEFINED; i++)
-        padding[i] = size / object[i];
+        padding[i] = object[i] ? size / object[i] : 0;
 }
 
 tile_t fill_tile(uint64_t *object, uint64_t *padding, size_t idx)
@@ -39,6 +39,8 @@ tile_t fill_tile(uint64_t *object, uint64_t *padding, size_t idx)
     tile_t tile = {0};
 
     for (uint8_t i = 0; i < OBJECT_DEFINED; i++) {
+        if (!padding[i])
+            continue;
         if (idx % padding[i] == 0 && object[i]) {
             tile.content[i] = 1;
             object[i]--;

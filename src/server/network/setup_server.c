@@ -82,7 +82,7 @@ static void alloc_server(void)
 static void set_default_fd(void)
 {
     clk_args_t *args = NULL;
-    clk_node_t *node  = NULL;
+    clk_node_t *node = NULL;
 
     for (nfds_t i = 0; i < my_server()->params.max_clients; i++)
         my_server()->info.fds[i].fd = -1;
