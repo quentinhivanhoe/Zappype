@@ -63,6 +63,8 @@ void register_gui_client(int i)
 void process_ia_connection(int i, int team_index)
 {
     trn_t *trantorian = &my_server()->info.clients[i].data.ia_client;
+    ssize_t free_slots = (ssize_t)my_server()->params.cli_per_team
+    - ((ssize_t)count_ia_clients(team_index) + 1);
 
     srand(time(NULL));
     trantorian->pos.x = rand() % my_server()->params.width;
@@ -74,13 +76,14 @@ void process_ia_connection(int i, int team_index)
     trantorian->food_bar = 1260;
     my_server()->info.clients[i].type = IA;
     my_server()->info.clients[i].data.ia_client.team_id = team_index;
-    dprintf(trantorian->socket, "WELCOME\n");
     if (my_server()->params.debug_mode) {
         dprintf(2, "New IA client: pos=(%lu,%lu), dir=%d\n",
                 trantorian->pos.x, trantorian->pos.y, trantorian->pos.dir);
     }
+    dprintf(trantorian->socket, "%lu\n", (free_slots <= 0) ? 0 : free_slots);
+    dprintf(trantorian->socket, "%ld %ld\n", my_server()->params.width,
+        my_server()->params.height);
     my_server()->info.trn_count++;
-    (void)team_index;
 }
 
 void register_ia_client(int i, char *team_name)
