@@ -41,6 +41,7 @@ void Zappy::Drawable::setSprite(sf::Sprite sprite)
 
 void Zappy::Drawable::set_offsets()
 {
+    this->offsets.clear();
     float half_x = this->getTexture().getSize().x * this->getSprite().getScale().x / 2;
     float half_y = this->getTexture().getSize().y * this->getSprite().getScale().y / 2;
     float quarter_x = half_x / 2;
@@ -57,6 +58,5 @@ void Zappy::Drawable::set_offsets()
     this->offsets.push_back(Vector2D(-quarter_x, 0 - 18));
     this->offsets.push_back(Vector2D(quarter_x, 0 - 18));
     unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
-    (void) seed;
-    // std::shuffle(this->offsets.begin(), this->offsets.end(), std::default_random_engine(seed));
+    std::shuffle(this->offsets.begin(), this->offsets.end(), std::default_random_engine(seed));
 }
