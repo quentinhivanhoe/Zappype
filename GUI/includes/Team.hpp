@@ -13,13 +13,14 @@ namespace Zappy
     class Team
     {
         private:
-            std::vector<std::shared_ptr<Trantorian>> _Trantorians = {};
+            std::vector<std::shared_ptr<Trantorian>> _trantorians;
             std::string _teamName;
         public:
             Team(std::string teamName);
             ~Team();
-            std::vector<std::shared_ptr<Trantorian>> &getTrantorian() {return this->_Trantorians;};
-            std::string getTeamName() const {return this->_teamName;};
+            inline std::vector<std::shared_ptr<Trantorian>> getTrantorians() const {return this->_trantorians;};
+            inline std::string getTeamName() const {return this->_teamName;};
+            inline void addTrantorian(std::shared_ptr<Trantorian> trantorian) { this->_trantorians.push_back(trantorian); };
     };
 }
 

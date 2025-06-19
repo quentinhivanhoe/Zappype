@@ -18,9 +18,9 @@ namespace Zappy {
     public:
         Actions(/* args */);
         ~Actions();
-        std::string getName() const {return this->_name;};
-        void setName(std::string name){this->_name = name;};
-        void setFunction(std::function<const int&()> function){this->_function = function;};
+        inline std::string getName() const {return this->_name;};
+        inline void setName(std::string name){this->_name = name;};
+        inline void setFunction(std::function<const int&()> function){this->_function = function;};
         void function(const int& param);
 
     };

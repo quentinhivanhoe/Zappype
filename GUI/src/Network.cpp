@@ -53,27 +53,43 @@ void Zappy::Network::establishConnection(std::string ip, size_t socket)
 
 void Zappy::Network::initProcess()
 {
-    this->askToServer("Team");
-    // this->askToServer("PlayerNb");
-    this->askToServer("MapSize");
-    // this->askToServer("PlayersInfo");
-    this->askToServer("MapContent");
-    std::cout << "[DEBUG from GUI] GUI connection to Server : OK" << std::endl;
+    this->askToServer("Team", {});
+    // this->askToServer("PlayerNb", {});
+    this->askToServer("MapSize", {});
+    // this->askToServer("PlayersInfo", {});
+    // this->askToServer("MapContent", {});
+    // std::cout << "[DEBUG from GUI] GUI connection to Server : OK" << std::endl;
+    // this->askToServer("TimeUnitRequest", {});
+    // this->askToServer("TileContent", {0, 0});
+    // this->askToServer("TimeUnitModif", {1});
+    // this->askToServer("PlayerPos", {1});
+    // this->askToServer("PlayerLevel", {1});
+    // this->askToServer("PlayerInventory", {1});
+    std::cout << "[DEBUIT from GUI] map size from gui: " << this->getGui()->getMapSize().x << "-"  << this->getGui()->getMapSize().x << std::endl;
 }
 
-void Zappy::Network::askToServer(const std::string& command)
+void Zappy::Network::askToServer(const std::string& command, std::vector<int> args)
 {
-    std::map<std::string, void (Network:: *)()> funcTab = {
+    std::map<std::string, void (Network:: *)()> funcTabNoArgs = {
         {"Team", &Network::askTeam},
         {"PlayerNb", &Network::askPlayerNb},
         {"PlayersInfo", &Network::askPlayersInfo},
         {"MapSize", &Network::askMapSize},
         {"MapContent", &Network::askMapContent},
+        {"TimeUnitRequest", &Network::askTimeUnitRequest},
     };
-    if (funcTab[command])
-        (this->*funcTab[command])();
-    else
-        std::cout << "command not found." << std::endl;
+    std::map<std::string, void (Network:: *)(std::vector<std::string>)> funcTabWithArgs = {
+        {"TileContent", &Network::askTileContent},
+        {"PlayerPos", &Network::askPlayerPos},
+        {"PlayerLevel", &Network::askPlayerLevel},
+        {"PlayerInventory", &Network::askPlayerInventory},
+        {"TimeUnitModif", &Network::askTimeUnitModif},
+    };
+
+    if (args.empty() && funcTabNoArgs[command])
+        return (this->*funcTabNoArgs[command])();
+    if (!args.empty() && funcTabWithArgs[command])
+        return (this->*funcTabWithArgs[command])(Parser::argsToString(args));
 }
 
 void Zappy::Network::askTeam()
@@ -143,4 +159,98 @@ void Zappy::Network::askMapContent()
         std::vector<std::string> args = Parser::parseLine(tab[i], ' ');
         parser.manageResponse(args, this);
     }
+}
+
+void Zappy::Network::askTimeUnitRequest()
+{
+    this->send("sgt\n");
+    std::string recievedString = this->receive();
+    Parser parser;
+    std::vector<std::string> args = Parser::parseLine(recievedString, ' ');
+    parser.manageResponse(args, this);
+}
+
+void Zappy::Network::askTileContent([[maybe_unused]] std::vector<std::string> args)
+{
+    if (args.size() != 2) {
+        std::cout << "Wrong number of arguments" << std::endl;
+        return;
+    }
+    if (!Parser::isNum(args[0]) || !Parser::isNum(args[1])) {
+        std::cout << "Args must be positive numbers" << std::endl;
+        return;
+    }
+    this->send("bct " + args[0] + " " + args[1] + "\n");
+    std::string recievedString = this->receive();
+    Parser parser;
+    std::vector<std::string> responseArgs = Parser::parseLine(recievedString, ' ');
+    parser.manageResponse(responseArgs, this);
+}
+
+void Zappy::Network::askPlayerPos([[maybe_unused]] std::vector<std::string> args)
+{
+    if (args.size() != 1) {
+        std::cout << "Wrong number of arguments" << std::endl;
+        return;
+    }
+    if (!Parser::isNum(args[0])) {
+        std::cout << "Args must be positive numbers" << std::endl;
+        return;
+    }
+    this->send("ppo #" + args[0] + "\n");
+    std::string recievedString = this->receive();
+    Parser parser;
+    std::vector<std::string> responseArgs = Parser::parseLine(recievedString, ' ');
+    parser.manageResponse(responseArgs, this);
+}
+
+void Zappy::Network::askPlayerLevel([[maybe_unused]] std::vector<std::string> args)
+{
+    if (args.size() != 1) {
+        std::cout << "Wrong number of arguments" << std::endl;
+        return;
+    }
+    if (!Parser::isNum(args[0])) {
+        std::cout << "Args must be positive numbers" << std::endl;
+        return;
+    }
+    this->send("plv #" + args[0] + "\n");
+    std::string recievedString = this->receive();
+    Parser parser;
+    std::vector<std::string> responseArgs = Parser::parseLine(recievedString, ' ');
+    parser.manageResponse(responseArgs, this);
+}
+
+void Zappy::Network::askPlayerInventory([[maybe_unused]] std::vector<std::string> args)
+{
+    if (args.size() != 1) {
+        std::cout << "Wrong number of arguments" << std::endl;
+        return;
+    }
+    if (!Parser::isNum(args[0])) {
+        std::cout << "Args must be positive numbers" << std::endl;
+        return;
+    }
+    this->send("plin #" + args[0] + "\n");
+    std::string recievedString = this->receive();
+    Parser parser;
+    std::vector<std::string> responseArgs = Parser::parseLine(recievedString, ' ');
+    parser.manageResponse(responseArgs, this);
+}
+
+void Zappy::Network::askTimeUnitModif([[maybe_unused]] std::vector<std::string> args)
+{
+    if (args.size() != 1) {
+        std::cout << "Wrong number of arguments" << std::endl;
+        return;
+    }
+    if (!Parser::isNum(args[0])) {
+        std::cout << "Args must be positive numbers" << std::endl;
+        return;
+    }
+    this->send("sst " + args[0] + "\n");
+    std::string recievedString = this->receive();
+    Parser parser;
+    std::vector<std::string> responseArgs = Parser::parseLine(recievedString, ' ');
+    parser.manageResponse(responseArgs, this);
 }

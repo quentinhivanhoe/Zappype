@@ -20,7 +20,7 @@ namespace Zappy
         std::shared_ptr<Drawable> _sprite;
         sf::Text quantity;
     public:
-        std::shared_ptr<Drawable> getSprite(){return _sprite;};
+        inline std::shared_ptr<Drawable> getSprite(){return _sprite;};
         Items(std::string fileName, size_t id);
         ~Items();
     };
