@@ -28,11 +28,11 @@ namespace Zappy
             sf::RenderWindow _window;
 
             Drawable tile = Drawable("../GUI/assets/map.png");
-            float tile_scale = 0.25;
+            float tile_scale = 0.5;
             Map _map;
             Drawable sky = Drawable("../GUI/assets/sky.jpg");
             sf::Event _event;
-
+            sf::View _view;
             int _playerNb = 0;
             sf::Vector2i _mapSize;
             int _timeUnit = 1;

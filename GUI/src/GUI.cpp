@@ -44,6 +44,9 @@ void Zappy::GUI::init()
         this->_items.push_back(std::make_shared<Items>(this->spritePaths[i], i));
     }
     std::cout << "TEAMNAME" << this->_map.getTeams().size() << std::endl;
+
+    this->_view = sf::View(sf::FloatRect(0, 0, this->_window.getSize().x, this->_window.getSize().y));
+    this->_window.setView(this->_view);
 }
 
 void Zappy::GUI::initPaths()
@@ -71,6 +74,7 @@ void Zappy::GUI::handleWindowEvents(  )
 
 void Zappy::GUI::run()
 {
+    this->_view.zoom(2);
     while (this->_window.isOpen()) {
         this->handleWindowEvents();
         this->_window.clear(sf::Color::Black);
@@ -78,6 +82,7 @@ void Zappy::GUI::run()
         this->display_map();
         this->display_objects();
         this->display_trantor();
+        this->_window.setView(this->_view);
         this->_window.display();
     }   
 }
@@ -87,8 +92,8 @@ void Zappy::GUI::display_map()
     Vector2D offset = Vector2D(1920/2, 0);
     for (size_t j = 0; j < this->getMap().getSize().getY(); j++){
         for (int i = 0; i < this->getMap().getSize().getX(); i++){
-            offset.setX(offset.getX() - tile.getTexture().getSize().x  * this->getTileScale() / (2));
-            offset.setY(offset.getY() + tile.getTexture().getSize().y  * this->getTileScale() / (2) - 18);
+            offset.setX(offset.getX() - tile.getTexture().getSize().x  * this->getTileScale() / (2) + 13);
+            offset.setY(offset.getY() + tile.getTexture().getSize().y  * this->getTileScale() / (2) - 40);
             this->tile.getSprite().setPosition(offset.getX(), offset.getY());
             this->_window.draw(this->tile.getSprite());
             _map.getTiles()[j][i].get()->setCenter(Vector2D(offset.getX() + (tile.getTexture().getSize().x * this->getTileScale() / 2), offset.getY() + (tile.getTexture().getSize().y * this->getTileScale() / 2)));
@@ -96,8 +101,8 @@ void Zappy::GUI::display_map()
             // std::cout << "tile pos : " << offset.getX() << " and " << offset.getY() << " / " << _map.getTiles()[j][i].get()->getPos().getX() << " and " << _map.getTiles()[j][i].get()->getPos().getY() << " center " <<  _map.getTiles()[j][i].get()->getCenter().getX() << " "<< _map.getTiles()[j][i].get()->getCenter().getY() << std::endl;
         }
         offset = Vector2D(
-        (1920/2 + (tile.getTexture().getSize().x * this->getTileScale() / 2) * (j + 1)),
-        (0 + (tile.getTexture().getSize().y * this->getTileScale() / 2 - 18) * (j + 1)));
+        (1920/2 + (tile.getTexture().getSize().x * this->getTileScale() / 2 - 13) * (j + 1)),
+        (0 + (tile.getTexture().getSize().y * this->getTileScale() / 2 - 40) * (j + 1)));
     }
 }
 
