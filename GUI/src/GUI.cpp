@@ -14,11 +14,19 @@ Zappy::GUI::GUI(const std::string &ip, size_t port)
     // this->_networkInfo = std::make_shared<Network>(this);
     // this->_networkInfo->establishConnection(ip, port);
     // this->_networkInfo->initProcess();
+    std::srand(std::time(0));
     this->_window.create(sf::VideoMode(1920, 1080, 8), "Zappy GUI", sf::Style::Close);
     this->tile.getSprite().setScale(this->getTileScale(), this->getTileScale());
     this->tile.getSprite().setScale(this->getTileScale(), this->getTileScale());
+
     this->_map = Map(Vector2D(7.0, 4.0));
-    std::cout << "map created" << std::endl;
+    for (size_t i = 0; i < this->_map.getTiles().size(); i++){
+        for (size_t j = 0; j < this->_map.getTiles()[i].size(); j++){
+            this->tile.set_offsets();
+            this->_map.getTiles()[i][j].get()->setOffsetsList(this->tile.get_offsets());
+        }
+    }
+    
     this->sky.getSprite().setPosition(0, 0);
     this->init();
     std::cout << "init done" << std::endl;
@@ -43,10 +51,10 @@ void Zappy::GUI::initPaths()
     this->spritePaths.push_back("../GUI/assets/egg_filled.png");
     this->spritePaths.push_back("../GUI/assets/food_filled.png");
     this->spritePaths.push_back("../GUI/assets/cristal_filled.png");
-    this->spritePaths.push_back("../GUI/assets/cristal_filled.png");
-    this->spritePaths.push_back("../GUI/assets/cristal_filled.png");
-    this->spritePaths.push_back("../GUI/assets/cristal_filled.png");
-    this->spritePaths.push_back("../GUI/assets/cristal_filled.png");
+    this->spritePaths.push_back("../GUI/assets/food_empty.png");
+    this->spritePaths.push_back("../GUI/assets/egg_empty.png");
+    this->spritePaths.push_back("../GUI/assets/cristal_empty.png");
+    this->spritePaths.push_back("../GUI/assets/egg_empty.png");
     this->spritePaths.push_back("../GUI/assets/cristal_filled.png");
     std::cout << "init path done" << std::endl;
 }
@@ -104,8 +112,8 @@ void Zappy::GUI::display_objects()
         for (size_t j = 0; j < this->_map.getTiles()[i].size(); j++){
             for (size_t k = 0; k < 8; k++){
                 if (this->_map.getTiles()[i][j].get()->getItems()[k] > 0){
-                    this->_items[k]->getSprite()->getSprite().setPosition(this->_map.getTiles()[i][j].get()->getCenter().getX(), this->_map.getTiles()[i][j].get()->getCenter().getY());
-                    this->_items[k]->getSprite()->getSprite().setScale(0.1, 0.1);
+                    this->_items[k]->getSprite()->getSprite().setPosition(this->_map.getTiles()[i][j].get()->getCenter().getX() + this->_map.getTiles()[i][j].get()->getOffsetsList()[k].getX(), 
+                    this->_map.getTiles()[i][j].get()->getCenter().getY() + this->_map.getTiles()[i][j].get()->getOffsetsList()[k].getY());
                     this->_window.draw(this->_items[k]->getSprite()->getSprite());
                 }                
             }

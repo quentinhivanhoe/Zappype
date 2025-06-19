@@ -8,6 +8,7 @@
 #include "../includes/Drawable.hpp"
 #include <random>
 #include <chrono>
+#include "Drawable.hpp"
 
 Zappy::Drawable::Drawable(std::string texture_path, float scale)
 {
@@ -23,6 +24,13 @@ Zappy::Drawable::~Drawable()
 void Zappy::Drawable::setTexture(sf::Texture texture)
 {
     this->_texture = texture;
+}
+
+
+void Zappy::Drawable::shuffler(std::vector<Vector2D> tab, unsigned seed)
+{
+    for (int i = 0; i < tab.size(); i++){}
+    
 }
 
 void Zappy::Drawable::setSprite(sf::Sprite sprite)
@@ -48,5 +56,6 @@ void Zappy::Drawable::set_offsets()
     this->offsets.push_back(Vector2D(-quarter_x, 0 - 18));
     this->offsets.push_back(Vector2D(quarter_x, 0 - 18));
     unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
-    std::shuffle(this->offsets.begin(), this->offsets.end(), std::default_random_engine(seed));
+    (void) seed;
+    // std::shuffle(this->offsets.begin(), this->offsets.end(), std::default_random_engine(seed));
 }
