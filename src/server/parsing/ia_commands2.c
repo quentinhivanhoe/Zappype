@@ -94,3 +94,35 @@ void handle_take(trn_t *trantorian, char **args)
     }
     execute_take(trantorian, obj_idx);
 }
+
+static void execute_set(trn_t *trantorian, int obj_idx)
+{
+    uint64_t x = trantorian->pos.x;
+    uint64_t y = trantorian->pos.y;
+    uint64_t width = my_server()->params.width;
+    tile_t *tile = &my_server()->map[y * width + x];
+
+    if (trantorian->inventory[obj_idx] == 0) {
+        dprintf(trantorian->socket, "ko\n");
+        return;
+    }
+    trantorian->inventory[obj_idx]--;
+    tile->content[obj_idx]++;
+    dprintf(trantorian->socket, "ok\n");
+}
+
+void handle_set(trn_t *trantorian, char **args)
+{
+    int obj_idx;
+
+    if (!args || !args[0]) {
+        dprintf(trantorian->socket, "ko\n");
+        return;
+    }
+    obj_idx = get_object_index(args[1]);
+    if (obj_idx < 0) {
+        dprintf(trantorian->socket, "ko\n");
+        return;
+    }
+    execute_set(trantorian, obj_idx);
+}
