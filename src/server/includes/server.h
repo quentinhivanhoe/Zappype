@@ -78,4 +78,6 @@ int get_gui(void);
 void pdi_command(trn_t *trantorian);
 size_t count_ia_clients(size_t id);
 void pnw_command(trn_t *trantorian);
+void spn_command(int client_fd, __attribute_maybe_unused__ char **cmd);
+
 #endif /* !SERVER_H_ */

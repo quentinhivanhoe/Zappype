@@ -26,7 +26,8 @@ static const gui_command_entry_t gui_command_table[] = {
     { "plv", handle_plv },
     { "pin", handle_pin },
     { "sgt", handle_sgt },
-    { "sst", handle_sst},
+    { "sst", handle_sst },
+    { "pnu", spn_command },
     { NULL, NULL }
 };
 

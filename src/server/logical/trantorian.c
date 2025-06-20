@@ -40,5 +40,6 @@ void init_trantorian(trn_t *trantorian, int i, int team_index)
     trantorian->food_bar = 1260;
     my_server()->info.clients[i].type = IA;
     my_server()->info.clients[i].data.ia_client.team_id = team_index;
+    my_server()->info.trn_count++;
     pnw_command(trantorian);
 }

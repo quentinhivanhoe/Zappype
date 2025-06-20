@@ -97,4 +97,5 @@ void remove_client(int i)
     my_server()->info.fds[i].fd = -1;
     my_server()->info.fds[i].events = 0;
     my_server()->info.fd_count--;
+    my_server()->info.trn_count--;
 }
