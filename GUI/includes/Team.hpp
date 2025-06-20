@@ -10,6 +10,8 @@
     #include "Trantor.hpp"
 namespace Zappy
 {
+    class Trantorian;
+    class TrantorButtons;
     class Team
     {
         private:

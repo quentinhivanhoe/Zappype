@@ -15,8 +15,12 @@
     #include "Interfaces/IObject.hpp"
     #include "Drawable.hpp"
     #include "Tile.hpp"
+    #include "TrantorButtons.hpp"
+
 namespace Zappy 
 {
+    class TrantorButtons;
+    class Tile;
     class Trantorian
     {
     private:
@@ -29,13 +33,16 @@ namespace Zappy
         size_t _lifespan;
         sf::Color _color;
         Vector2D _pos;
-        Tile _inventory;
+        sf::Vector2i _tilePos;
+        std::shared_ptr<Tile> _inventory;
+        std::shared_ptr<TrantorButtons> _innerButton; 
+
     public:
         sf::RectangleShape shape;
         sf::Clock _clock;
 
         /*GETTER*/
-        inline Tile getInventory() {return this->_inventory;};
+        inline std::shared_ptr<Tile> getInventory() {return this->_inventory;};
         inline std::string getTeamName() const {return this->_teamName;};
         inline size_t getID() const {return this->_id;};
         inline size_t getLevel() const {return this->_level;};
@@ -45,6 +52,7 @@ namespace Zappy
         inline size_t getDirection() const { return this->_direction; };
         inline sf::Color getColor() const {return this->_color;};
         inline std::shared_ptr<Drawable> getSprite() {return this->_sprite;};
+        inline sf::Vector2i getTilePos() const { return this->_tilePos; };
 
         /*SETTER*/
         inline void setTeamName(std::string teamName) {this->_teamName = teamName;};
@@ -54,6 +62,7 @@ namespace Zappy
         inline void setColor(sf::Color color) {this->_color = color;};
         inline void setPos(Vector2D pos) {this->_pos = pos;};
         inline void setDirection(size_t direction) {this->_direction = direction; };
+        inline void setTilePos(sf::Vector2i pos) { this->_tilePos = pos; };
         Trantorian(/* args */);
         ~Trantorian();
     }; 

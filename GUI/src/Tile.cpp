@@ -6,7 +6,6 @@
 */
 
 #include "../includes/Tile.hpp"
-#include "Tile.hpp"
 
 Zappy::Tile::Tile(size_t id)
 {
