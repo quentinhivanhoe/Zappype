@@ -15,12 +15,12 @@ Zappy::Map::Map(Vector2D size)
     std::shared_ptr<Trantorian> testTrantorian = std::make_shared<Trantorian>();
     testTrantorian->setTeamName("test");
     testTrantorian->setId(0);
-    testTrantorian->setTilePos(sf::Vector2i(0, 0));
+    testTrantorian->setTilePos(sf::Vector2i(0, 3));
     this->addTrantorian(testTrantorian);
     std::shared_ptr<Trantorian> anotherTrantorian = std::make_shared<Trantorian>();
     anotherTrantorian->setTeamName("test");
     anotherTrantorian->setId(1);
-    anotherTrantorian->setTilePos(sf::Vector2i(0, 0));
+    anotherTrantorian->setTilePos(sf::Vector2i(0, 2));
     this->addTrantorian(anotherTrantorian);
 }
     

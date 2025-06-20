@@ -21,7 +21,7 @@ Zappy::GUI::GUI(const std::string &ip, size_t port)
     this->tile.getSprite().setScale(this->getTileScale(), this->getTileScale());
     this->tile.getSprite().setScale(this->getTileScale(), this->getTileScale());
 
-    this->_map = std::make_shared<Map>(Vector2D(7.0, 4.0));
+    this->_map = std::make_shared<Map>(Vector2D(10.0, 10.0));
     for (size_t i = 0; i < this->_map->getTiles().size(); i++){
         for (size_t j = 0; j < this->_map->getTiles()[i].size(); j++){
             this->tile.set_offsets();
@@ -144,7 +144,9 @@ void Zappy::GUI::display_trantor()
     //printf("TEAM\n");
     for (auto team: this->_map->getTeams()) {
         for (auto trantorian: team.second->getTrantorians()) {
-            trantorian->getSprite()->getSprite().setPosition(50, 50);
+            //to be optimized
+            trantorian->getSprite()->getSprite().setOrigin(trantorian->getSprite()->getTexture().getSize().x / 2, trantorian->getSprite()->getTexture().getSize().y / 2 + 400);
+            trantorian->getSprite()->getSprite().setPosition(this->_map->getTiles()[trantorian->getTilePos().x][trantorian->getTilePos().y]->getCenter().getX(), this->_map->getTiles()[trantorian->getTilePos().x][trantorian->getTilePos().y]->getCenter().getY());
             trantorian->getSprite()->getSprite().setScale(0.1, 0.1);
             this->_window.draw(trantorian->getSprite()->getSprite());
         }
