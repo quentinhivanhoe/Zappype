@@ -27,6 +27,7 @@ namespace Zappy
             std::vector<Vector2D> get_offsets(){return this->offsets;};
             void shuffler(std::vector<Vector2D> tab, unsigned seed);
             void setTexture(sf::Texture texture);
+            void updateTextureFromPath(std::string filepath);
             void setSprite(sf::Sprite sprite);
     };
 }

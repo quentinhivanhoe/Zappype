@@ -25,7 +25,7 @@ namespace Zappy
             void manageBCT(std::vector<std::string> args, Network *network);
             void managePPO(std::vector<std::string> args, Network *network);
             void managePLV(std::vector<std::string> args, Network *network);
-            void managePLIN(std::vector<std::string> args, Network *network);
+            void managePIN(std::vector<std::string> args, Network *network);
             void manageSGT(std::vector<std::string> args, Network *network);
             void manageSST(std::vector<std::string> args, Network *network);
             void managePNW(std::vector<std::string> args, Network *network);

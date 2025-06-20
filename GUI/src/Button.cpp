@@ -126,7 +126,7 @@ Zappy::Buttons &Zappy::Buttons::setTextOutlineColor(sf::Color color)
     return *this;
 }
 
-Zappy::Buttons &Zappy::Buttons::setFunction(void (*function)(void *))
+Zappy::Buttons &Zappy::Buttons::setFunction(std::function<void(void *)> function)
 {
     this->_function = function;
     return *this;
@@ -169,6 +169,14 @@ Zappy::Buttons &Zappy::Buttons::scaleDown(float step)
 }
 
 Zappy::Buttons &Zappy::Buttons::operator()(void *parameters)
+{
+    if (!this->_function)
+        return *this;
+    this->_function(parameters);
+    return *this;
+}
+
+Zappy::Buttons &Zappy::Buttons::function(void *parameters)
 {
     if (!this->_function)
         return *this;

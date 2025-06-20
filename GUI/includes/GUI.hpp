@@ -12,34 +12,43 @@
     #include "MouseStatus.hpp"
     #include "Drawable.hpp"
     #include "Network.hpp"
-    #include "Buttons.hpp"
-    #include "Map.hpp"
     #include "Items.hpp"
+    #include "MouseStatus.hpp"
+    #include "Map.hpp"
+    #include "TrantorianInfo.hpp"
+    #include "TileInfo.hpp"
 
 namespace Zappy
 {
     class Network;
+    class TrantorButtons;
+    class TileButtons;
+    class Map;
+    class TileInfo;
+    class TrantorianInfo;
+    class Items;
     class GUI
     {
         private:
-            std::vector<std::shared_ptr<Buttons>> _buttons;
             std::vector<std::shared_ptr<Items>> _items;
             std::vector<std::string> spritePaths;
             std::shared_ptr<Network> _networkInfo;
             sf::RenderWindow _window;
             sf::View _view;
-            MouseStatus _mouseStatus;
+            MouseStatus _mouse;
 
             Drawable tile = Drawable("../GUI/assets/map.png");
-            float tile_scale = 0.25;
-            Map _map;
+            std::shared_ptr<Map> _map;
+            float tile_scale = 0.5;
             Drawable sky = Drawable("../GUI/assets/sky.jpg");
             sf::Event _event;
-
+            sf::View _view;
             int _playerNb = 0;
             sf::Vector2i _mapSize;
             int _timeUnit = 1;
             bool _dragging;
+            std::shared_ptr<TileInfo> _tileInfo;
+            std::shared_ptr<TrantorianInfo> _trantorianInfo;
         public:
             GUI(const std::string& ip = "127.0.0.1", size_t port = 8000);
             ~GUI();
@@ -53,8 +62,7 @@ namespace Zappy
             void handleWindowEvents();
             void dragView();
             void zoomScroll();
-            inline std::vector<std::shared_ptr<Buttons>> getButtons() const {return this->_buttons;};
-            inline Map getMap() const {return this->_map;};
+            inline std::shared_ptr<Map> getMap() const {return this->_map;};
             inline float getTileScale() const {return this->tile_scale;};
             inline std::shared_ptr<Network> getNetwork() const {return this->_networkInfo;};
             inline int getTimeUnit() const { return this->_timeUnit; };
@@ -64,7 +72,8 @@ namespace Zappy
             inline void setMapSize(sf::Vector2i size) { this->_mapSize = size; };
             inline int getPlayerNb() const { return this->_playerNb; };
             inline sf::Vector2i getMapSize() const { return this->_mapSize; };
-
+            inline std::shared_ptr<TileInfo> getTileInfo() const { return this->_tileInfo; };
+            inline std::shared_ptr<TrantorianInfo> getTrantorianInfo() const { return this->_trantorianInfo; };
     };
 }
 
