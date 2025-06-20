@@ -80,5 +80,6 @@ size_t count_ia_clients(size_t id);
 void pnw_command(trn_t *trantorian);
 void spn_command(int client_fd, __attribute_maybe_unused__ char **cmd);
 void pls_command(int client_fd, char **cmd);
+void pdr_command(int player_id, obj_idx_t object);
 
 #endif /* !SERVER_H_ */

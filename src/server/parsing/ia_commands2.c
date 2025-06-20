@@ -108,6 +108,7 @@ static void execute_set(trn_t *trantorian, int obj_idx)
     }
     trantorian->inventory[obj_idx]--;
     tile->content[obj_idx]++;
+    pdr_command(trantorian->socket, obj_idx);
     dprintf(trantorian->socket, "ok\n");
 }
 
