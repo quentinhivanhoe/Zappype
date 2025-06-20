@@ -12,6 +12,7 @@ Zappy::GUI::GUI(const std::string &ip, size_t port)
 {
     (void)ip;
     (void)port;
+    this->_mouseStatus = MouseStatus();
     // std::cout << "---------------SERVER---------------" << std::endl;
     // this->_networkInfo = std::make_shared<Network>(this);
     // this->_networkInfo->establishConnection(ip, port);
@@ -38,9 +39,34 @@ Zappy::GUI::~GUI()
 {
 }
 
+void Zappy::GUI::dragView()
+{
+    sf::Vector2f origin;
+
+    if (this->_event.type == sf::Event::MouseButtonPressed && this->_event.mouseButton.button == sf::Mouse::Right) {
+        printf("right click\n");
+        _dragging = true;
+        origin = this->_window.mapPixelToCoords(sf::Mouse::getPosition(this->_window));
+    }
+    if (this->_event.type == sf::Event::MouseButtonReleased && this->_event.mouseButton.button == sf::Mouse::Right) {
+        printf("right released\n");
+        _dragging = false;
+    }
+    if (this->_event.type == sf::Event::MouseMoved && _dragging) {
+        printf("mouse moving\n");
+        sf::Vector2f newWorldPos = this->_window.mapPixelToCoords(sf::Mouse::getPosition(this->_window));
+        sf::Vector2f delta = origin - newWorldPos;
+        this->_view.move(delta);
+        origin = this->_window.mapPixelToCoords(sf::Mouse::getPosition(_window));
+    }
+}
+
 void Zappy::GUI::init()
 {
     initPaths();
+    this->_view = sf::View(sf::FloatRect(0, 0, this->_window.getSize().x, this->_window.getSize().y));
+    this->_window.setView(this->_view);
+    this->_view.setCenter(sf::Vector2f(this->_window.getSize().x/2, this->_window.getSize().y/2));
     for (int i = 0; i < 8; i++) {
         this->_items.push_back(std::make_shared<Items>(this->spritePaths[i], i));
     }
@@ -70,12 +96,27 @@ void Zappy::GUI::handleWindowEvents(  )
             this->_window.close();
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
             this->_window.close();
+        dragView();
+        zoomScroll();
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Tab)) {
             this->_tileInfo->setTile(nullptr);
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
             this->_tileInfo->setTile(this->_map->getTiles()[0][0]);
             this->_tileInfo->updateTrantorButtonsTab();
+    }
+}
+
+void Zappy::GUI::zoomScroll()
+{
+    if (_event.type == sf::Event::MouseWheelScrolled) {
+        if (_event.mouseWheelScroll.wheel == sf::Mouse::VerticalWheel) {
+            float zoomFactor = 1.1f;
+            if (_event.mouseWheelScroll.delta > 0) {
+                this->_view.zoom(1.f / zoomFactor);
+            } else {
+                this->_view.zoom(zoomFactor);
+            }
         }
     }
 }
@@ -89,7 +130,9 @@ void Zappy::GUI::run()
         this->_trantorianInfo->update(this->_mouse);
         this->handleWindowEvents();
         this->_window.clear(sf::Color::Black);
+        this->_window.setView(this->_window.getDefaultView());
         this->display_sky();
+        this->_window.setView(this->_view);
         this->display_map();
         this->display_objects();
         this->display_trantor();
