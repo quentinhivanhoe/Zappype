@@ -26,6 +26,12 @@ void Zappy::Drawable::setTexture(sf::Texture texture)
     this->_texture = texture;
 }
 
+void Zappy::Drawable::updateTextureFromPath(std::string filepath)
+{
+    sf::Texture tmp;
+    tmp.loadFromFile(filepath);
+    this->setTexture(tmp);
+}
 
 void Zappy::Drawable::shuffler(std::vector<Vector2D> tab, unsigned seed)
 {   
