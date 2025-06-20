@@ -53,12 +53,12 @@ void Zappy::GUI::initPaths()
 {
     this->spritePaths.push_back("../GUI/assets/egg_filled.png");
     this->spritePaths.push_back("../GUI/assets/food_filled.png");
-    this->spritePaths.push_back("../GUI/assets/cristal_filled.png");
-    this->spritePaths.push_back("../GUI/assets/food_empty.png");
-    this->spritePaths.push_back("../GUI/assets/egg_empty.png");
-    this->spritePaths.push_back("../GUI/assets/cristal_empty.png");
-    this->spritePaths.push_back("../GUI/assets/egg_empty.png");
-    this->spritePaths.push_back("../GUI/assets/cristal_filled.png");
+    this->spritePaths.push_back("../GUI/assets/Gray_Cristal.png");
+    this->spritePaths.push_back("../GUI/assets/Green_Cristal.png");
+    this->spritePaths.push_back("../GUI/assets/Red_Cristal.png");
+    this->spritePaths.push_back("../GUI/assets/Yellow_Cristal.png");
+    this->spritePaths.push_back("../GUI/assets/Blue_Cristal.png");
+    this->spritePaths.push_back("../GUI/assets/Orange_Cristal.png");
     std::cout << "init path done" << std::endl;
 }
 
@@ -74,7 +74,7 @@ void Zappy::GUI::handleWindowEvents(  )
 
 void Zappy::GUI::run()
 {
-    this->_view.zoom(2);
+    // this->_view.zoom(2);
     while (this->_window.isOpen()) {
         this->handleWindowEvents();
         this->_window.clear(sf::Color::Black);
