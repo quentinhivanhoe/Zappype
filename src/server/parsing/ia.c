@@ -19,7 +19,7 @@ static const ia_cmd_t cmd_table[] = {
     { "Connect_nbr", handle_connect_nbr, 0 },
     // { "Fork", handle_fork, 42 },
     // { "Eject", handle_eject, 7 },
-    // { "Take", handle_take, 7 },
+    { "Take", handle_take, 7 },
     // { "Set", handle_set, 7 },
     // { "Incantation", handle_incantation, 300 },
     { NULL, NULL, 0 }
