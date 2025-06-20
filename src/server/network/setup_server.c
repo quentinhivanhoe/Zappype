@@ -86,7 +86,7 @@ static void set_default_fd(void)
 
     for (nfds_t i = 0; i < my_server()->params.max_clients; i++)
         my_server()->info.fds[i].fd = -1;
-    args = alloc_args(NULL, NULL, 1, LOOP_CLOCK | ARGS_UNUSED);
+    args = alloc_args(NULL, NULL, 126, LOOP_CLOCK | ARGS_UNUSED);
     node = alloc_node(trantorian_death, args);
     clock_list(node, ADD);
 }

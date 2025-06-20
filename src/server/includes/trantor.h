@@ -58,7 +58,6 @@ struct trantorian_s {
     pos_t pos;
     uint8_t lvl;
     size_t team_id;
-    size_t food_bar;
     uint8_t req_count;
     trn_stat_t stat;
     obj_t inventory[OBJECT_DEFINED];
