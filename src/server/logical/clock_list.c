@@ -94,7 +94,6 @@ void update_clock(sll_t **list)
         return;
     if (!(*list))
         return;
-    fprintf(stderr, "updating !\n");
     while ((*list)) {
         run_event(list);
         if (!(*list)->next)
@@ -105,7 +104,6 @@ void update_clock(sll_t **list)
         while ((*list)->prev)
             (*list) = (*list)->prev;
     parse_req();
-    fprintf(stderr, "finish updating !\n");
 }
 
 void clock_list(clk_node_t *node, clk_act_t action)

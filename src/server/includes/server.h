@@ -75,6 +75,7 @@ void signal_handler(int signum);
 
 
 int get_gui(void);
+void pdi_command(trn_t *trantorian);
 size_t count_ia_clients(size_t id);
 void pnw_command(trn_t *trantorian);
 #endif /* !SERVER_H_ */

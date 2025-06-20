@@ -12,6 +12,9 @@ void decrease_food_bar(trn_t *trantorian, size_t i)
     trantorian->food_bar--;
     if (!trantorian->food_bar) {
             write(trantorian->socket, "dead\n", 5);
+            pdi_command(trantorian);
+            if (my_server()->params.debug_mode)
+                fprintf(stderr, "death of player #%d\n", trantorian->socket);
             remove_client(i);
     }
 }
@@ -34,7 +37,7 @@ void init_trantorian(trn_t *trantorian, int i, int team_index)
     trantorian->pos.dir = (rand() % 4) + 1;
     trantorian->lvl = 1;
     trantorian->socket = my_server()->info.fds[i].fd;
-    trantorian->food_bar = 1260;
+    trantorian->food_bar = 10;
     my_server()->info.clients[i].type = IA;
     my_server()->info.clients[i].data.ia_client.team_id = team_index;
     pnw_command(trantorian);
