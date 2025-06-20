@@ -5,8 +5,8 @@
 ** handle_gui
 */
 
-#include "../includes/server.h"
-#include "../includes/gui.h"
+#include "../../includes/server.h"
+#include "../../includes/gui.h"
 
 // static const char *gui_commands[] = {
 //     "msz",

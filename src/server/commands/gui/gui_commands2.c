@@ -5,7 +5,7 @@
 ** gui_commands2
 */
 
-#include "../includes/server.h"
+#include "../../includes/server.h"
 
 static size_t tab_len(char **tab)
 {

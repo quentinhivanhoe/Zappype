@@ -4,8 +4,8 @@
 ** File description:
 ** gui_commands
 */
-#include "../includes/server.h"
-#include "../includes/gui.h"
+#include "../../includes/server.h"
+#include "../../includes/gui.h"
 
 void handle_msz(int client_fd, char **cmd)
 {

@@ -37,8 +37,5 @@ void init_trantorian(trn_t *trantorian, int i, int team_index)
     trantorian->food_bar = 1260;
     my_server()->info.clients[i].type = IA;
     my_server()->info.clients[i].data.ia_client.team_id = team_index;
-    if (my_server()->params.debug_mode) {
-        fprintf(stderr, "New IA client; pos=(%lu, %lu), dir=%d\n",
-            trantorian->pos.x, trantorian->pos.y, trantorian->pos.dir);
-    }
+    pnw_command(trantorian);
 }

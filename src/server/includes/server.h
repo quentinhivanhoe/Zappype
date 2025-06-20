@@ -74,5 +74,7 @@ bool is_num(const char *str);
 void signal_handler(int signum);
 
 
+int get_gui(void);
 size_t count_ia_clients(size_t id);
+void pnw_command(trn_t *trantorian);
 #endif /* !SERVER_H_ */
