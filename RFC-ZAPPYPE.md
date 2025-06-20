@@ -208,14 +208,16 @@ q4		|	resource 4 (mendiane) quantity		|
 q5		|	resource 5 (phiras) quantity		|
 q6		|	resource 6 (thystame) quantity		|
 n		|	player number						|
+N       |   number of player connected          |
 O		|	orientation: 1(N), 2(E), 3(S), 4(W)	|
 L		|	Player or incantation level			|
 e		|	egg number							|
-T		|	Time unit							|
-N		|	Name of the team					|
+F		|	Time unit							|
+T		|	Name of the team					|
 R		|	incantation result					|
 M		|	message								|
 i		|	resource number						|
+S       |   state of the trantorian             |
 
 ## Client request
 there is some request the client can ask and some the server send it to inform the client that an event occurred, ended. We gonna detail the request client can send to the server.
@@ -274,15 +276,15 @@ there is some request the client can ask and some the server send it to inform t
 ### request
 > sgt\<LF>
 ### response
-> sgt `T`\<LF>
+> sgt `F`\<LF>
 
 ## sst - time unit modification
 ### description
 > _command not understand_
 ### request
-> sst `T`\<LF>
+> sst `F`\<LF>
 ### response
-> sst `T`\<LF>
+> sst `F`\<LF>
 
 ## server request
 The server send automatically some response to the client, the reason is to keep client informed about event on the trantor world.
@@ -291,7 +293,7 @@ The server send automatically some response to the client, the reason is to keep
 ### description
 > a new trantorian is connected
 ### response
-> pnw #`n` `X` `Y` `O` `L` `N`\<LF>
+> pnw #`n` `X` `Y` `O` `L` `T`\<LF>
 
 ## pex - expulsion
 ### description
@@ -369,7 +371,7 @@ The server send automatically some response to the client, the reason is to keep
 ### description
 > signal the end of the game. The game ended when there is no more trantorian on trantor, and precise the last `team` alive
 ### response
-> seg `N`\<LF>
+> seg `T`\<LF>
 
 ## smg - message from the server
 ### description
@@ -388,3 +390,19 @@ The server send automatically some response to the client, the reason is to keep
 > client send a valid command but with bad parameters.
 ### response
 > sbp\<LF>
+
+## spn - player number
+### description
+> send the number of trantorian in the world
+### request
+> spn\<LF>
+### response
+> spn `N`\<LF>
+
+## spi - all player position
+### descritpion
+> send all player info like his position, his state, his id, his team and his level
+### request
+> spi\<LF>
+### response
+> spi #`n` `X` `Y` `O` `S` `T` `L`\<LF>

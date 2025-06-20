@@ -5,7 +5,7 @@
 ** signal
 */
 
-#include "./includes/server.h"
+#include "../includes/server.h"
 
 void signal_handler(int signum)
 {

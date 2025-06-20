@@ -8,17 +8,9 @@ add_compile_options(
     -Werror
 )
 
-add_executable(zappy_server
-    ./main.c
-    ./clean_server.c
-    ./handle_flags.c
-    ./handle_flags2.c
-    ./setup_server.c
-    ./handle_clients.c
-    ./is_num.c
-    ./retrieve_flags.c
-    ./signal.c
-)
+file(GLOB_RECURSE CODE_FILES "./*.c")
+
+add_executable(zappy_server ${CODE_FILES})
 
 target_include_directories(zappy_server PRIVATE includes)
 

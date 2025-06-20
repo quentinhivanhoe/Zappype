@@ -5,7 +5,8 @@
 ** retrieve_flags
 */
 
-#include "./includes/server.h"
+#include "../includes/server.h"
+#include "../includes/parsing.h"
 
 const params_functions_t params_functions[] = {
     {"-p", &add_port},
@@ -38,6 +39,8 @@ void det_params(int argc, char **argv)
     for (int i = 0; i < argc; i++) {
         execute_function(argc, argv, i);
     }
+    my_server()->params.max_clients = my_server()->params.cli_per_team;
+    my_server()->params.max_clients *= my_server()->params.team_nbr + 1;
 }
 
 void check_params(void)

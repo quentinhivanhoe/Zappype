@@ -5,12 +5,12 @@
 ** clean_server
 */
 
-#include "./includes/server.h"
-
+#include "../includes/server.h"
+#include "../includes/clock.h"
 
 void clean_server(void)
 {
-    for (int i = 0; i < my_server()->info.fd_count; i++) {
+    for (nfds_t i = 0; i < my_server()->info.fd_count; i++) {
         if (my_server()->info.fds[i].fd >= 0) {
             close(my_server()->info.fds[i].fd);
         }
@@ -18,5 +18,9 @@ void clean_server(void)
     for (int i = 0; my_server()->params.team_names[i] != NULL; i++) {
         free(my_server()->params.team_names[i]);
     }
+    free(my_server()->info.clients);
+    free(my_server()->info.fds);
     free(my_server()->params.team_names);
+    free(my_server()->map);
+    clock_list(NULL, DESTROY);
 }
