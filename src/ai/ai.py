@@ -8,8 +8,14 @@
 import socket
 import sys
 import getopt
-import threading
 import time
+import pprint
+import random
+
+ELAPSED_SLEEP = 0.25
+INVENTORY_ITEM = 6
+ai = None
+
 elevationCondition = {
     "1" : {
         "food": 3,
@@ -109,8 +115,6 @@ elevationCondition = {
     },
 }
 
-ai = None
-
 class Client:
     def __init__(self, port, teamName, ip):
         self.port = int(port)
@@ -118,9 +122,17 @@ class Client:
         self.ip = "127.0.0.1" if ip == "localhost" else ip
         self.clientSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-    def read(self, bufferSize=2048):
+    def read(self, bufferSize=1):
         try:
-            return self.clientSocket.recv(bufferSize).decode()
+            data = ""
+            while True:
+                chunk = self.clientSocket.recv(bufferSize).decode()
+                if not chunk:
+                    break
+                data += chunk
+                if '\n' in chunk:
+                    break
+            return data
         except:
             return None
 
@@ -136,43 +148,6 @@ class Client:
     def processConnection(self):
         self.clientSocket.connect((self.ip, self.port))
 
-# class AI:
-#     def __init__(self, args):
-#         self.client = Client(args["port"], args["team"], args["host"])
-#         self.debug = args.get("debug", False)
-#         self.level = 1
-#         self.food = 0
-#         self.isDead = False
-#         self.nbResToWait = 0
-#         self.resArray = []
-
-#     def waitResponse(self):
-#         while len(self.resArray) < self.nbResToWait:
-#             response = self.client.read()
-#             if response:
-#                 responses = response.strip().split('\n')
-#                 self.resArray.extend(responses)
-#                 for msg in responses:
-#                     print(f"[RECEIVED] {msg}")
-
-#     def simulation(self):
-
-
-#     def send_commands(self):
-#         commands = []
-
-#         commands.append("Connect_nbr\n")
-#         for _ in range(5):
-#             commands.append("Forward\n")
-#             commands.append("Right\n")
-#             commands.append("Left\n")
-
-#         self.nbResToWait = len(commands)
-
-#         for cmd in commands:
-#             print(f"[SENT] {cmd.strip()}")
-#             self.client.write(cmd)
-
 class AI:
     def __init__(self, args):
         self.client = Client(args["port"], args["team"], args["host"])
@@ -183,6 +158,15 @@ class AI:
         self.isDead = False
         self.nbResToWait = 0
         self.resArray = []
+        self.inventory = {
+            "linemate": 0,
+            "deraumere": 0,
+            "sibur": 0,
+            "mendiane": 0,
+            "phiras": 0,
+            "thystame": 0
+        }
+        self.lookInventory = []
 
     def receive_loop(self):
         while self.running:
@@ -209,6 +193,19 @@ class AI:
                 print(f"[ERROR] Envoi: {e}")
                 self.running = False
 
+    def parse_response(self):
+        for res in self.resArray:
+            print(f"Parse => {res}")
+            if res == "dead\n":
+                self.isDead = True
+            if res in ["ok\n", "ko\n"]:
+                continue
+            if res.count(',') == 6:
+                fillInventory(res)
+                continue
+            if res[0] == '[' and res[-2] == ']':
+                self.lookInventory = formatLook(res)
+
     def wait_all_resp(self):
         self.resArray = []
         while len(self.resArray) <= (self.nbResToWait - 1):
@@ -217,6 +214,8 @@ class AI:
                 raise("Error server")
             self.resArray.append(res)
             print(res.strip())
+        self.parse_response()
+        self.nbResToWait = 0
         print("Fini")
 
     def simulation(self):
@@ -230,21 +229,139 @@ class AI:
         print(f"[INFO] Message serveur : {self.client.read().strip()}")
 
         while self.isDead != True:
-            self.nbResToWait = 0
-            self.client.write("Forward\n")
-            time.sleep(0.5)
-            self.nbResToWait += 1
-            self.client.write("Right\n")
-            time.sleep(0.5)
-            self.nbResToWait += 1
-            self.client.write("Left\n")
-            time.sleep(0.5)
-            self.nbResToWait += 1
-            self.client.write("Forward\n")
-            time.sleep(0.5)
+            pprint.pprint(self.inventory)
+            self.client.write("Inventory\n")
             self.nbResToWait += 1
             self.wait_all_resp()
-            # self.nbResToWait = 0
+            if checkElevationCondition(ai.inventory, ai.level) == True:
+                print("You can level up!")
+            elif ai.food < 3:
+                self.client.write("Look\n")
+                self.nbResToWait += 1
+                time.sleep(ELAPSED_SLEEP)
+                self.wait_all_resp()
+                idx = detNearRessources(self.lookInventory, "food")
+                respArray = detPath(idx)
+                for res in respArray:
+                    self.client.write(res)
+                    self.nbResToWait += 1
+                    time.sleep(ELAPSED_SLEEP)
+                self.client.write("Take food\n")
+                self.nbResToWait += 1
+                time.sleep(ELAPSED_SLEEP)
+                self.wait_all_resp()
+            else:
+                for resource, required in elevationCondition[str(ai.level)]["ressources"].items():
+                    if self.inventory[resource] < required:
+                        self.client.write("Look\n")
+                        self.nbResToWait += 1
+                        time.sleep(ELAPSED_SLEEP)
+                        self.wait_all_resp()
+
+                        idx = detNearRessources(self.lookInventory, resource)
+                        if idx == -1:
+                            print(f"[WARN] {resource} not found nearby.")
+                            continue
+                        respArray = detPath(idx)
+                        for res in respArray:
+                            self.client.write(res)
+                            self.nbResToWait += 1
+                            time.sleep(ELAPSED_SLEEP)
+                        self.client.write(f"Take {resource}\n")
+                        self.nbResToWait += 1
+                        time.sleep(ELAPSED_SLEEP)
+                        self.wait_all_resp()
+                    if random.randint(0, 1):
+                        self.client.write("Right\n")
+                        self.nbResToWait += 1
+                        time.sleep(ELAPSED_SLEEP)
+                        self.wait_all_resp()
+                    else:
+                        self.client.write("Right\n")
+                        self.nbResToWait += 1
+                        time.sleep(ELAPSED_SLEEP)
+                        self.wait_all_resp()
+                    break
+
+def fillInventory(inventoryString):
+
+    cleaned = inventoryString.strip().replace('[', '').replace(']', '').replace('\n', '')
+    slots = cleaned.split(',')
+
+    for slot in slots:
+        elements = slot.strip().split()
+        for i in range(0, len(elements), 2):
+            name = elements[i]
+            try:
+                qty = int(elements[i + 1])
+            except (IndexError, ValueError):
+                continue
+            if name == "food":
+                ai.food = qty
+            elif name in ai.inventory:
+                ai.inventory[name] = qty
+
+
+def checkElevationCondition(inventory, level):
+    required = elevationCondition[str(level)]["ressources"]
+    for res, qty in required.items():
+        if inventory.get(res, 0) < qty:
+            return False
+    return True
+
+def formatLook(inventoryString):
+    cleaned = inventoryString.strip().replace('[', '').replace(']', '').replace('\n', '')
+    tiles = cleaned.split(',')
+
+    result = []
+
+    for tile in tiles:
+        elements = tile.strip().split()
+        tile_dict = {
+            "player": 0,
+            "food": 0,
+            "ressources": {}
+        }
+        for elem in elements:
+            if elem == "player":
+                tile_dict["player"] += 1
+            elif elem == "food":
+                tile_dict["food"] += 1
+            else:
+                if elem in tile_dict["ressources"]:
+                    tile_dict["ressources"][elem] += 1
+                else:
+                    tile_dict["ressources"][elem] = 1
+        result.append(tile_dict)
+    return result
+
+def detNearRessources(tile_tab, element):
+    print(f"Looking for {element}")
+    for i, tile in enumerate(tile_tab):
+        if element in ["player", "food"]:
+            if tile.get(element, 0) > 0:
+                return i
+        elif tile.get("ressources", {}).get(element, 0) > 0:
+            return i
+    return -1
+
+def detPath(idx):
+    path = []
+    max_level = len(elevationCondition)
+    for i in range(1, max_level + 1):
+        if idx >= (i**2) and idx < ((i+1)**2):
+            for _ in range(i):
+                path.append("Forward\n")
+            mid = i + i**2
+            val = idx - mid
+            if val < 0:
+                path.append("Left\n")
+            elif val > 0:
+                path.append("Right\n")
+            for _ in range(abs(val)):
+                path.append("Forward\n")
+            break
+    return path
 
 def process_ai():
     global ai
@@ -274,5 +391,21 @@ def process_ai():
     ai.simulation()
     ai.client.closeConnection()
 
-if __name__ == "__main__":
-    process_ai()
+# example = "player linemate, linemate player player, food deraumere , mendiane phiras,food linemate player player, deraumere , mendiane phiras, sibur"
+# tile_tab = formatLook(example)
+# index = detNearRessources(tile_tab, "player")
+# index = detNearRessources(tile_tab, "player")
+
+# fillInventory("[linemate 1, deraumere 2, food 5, sibur 0, mendiane 0, phiras 1, thystame 0]")
+
+# from pprint import pprint
+# pprint(tile_tab)
+# print(detNearRessources(tile_tab, "sibur"))
+# print(detNearRessources(tile_tab, "food"))
+# print(detNearRessources(tile_tab, "phiras"))
+# # print(detNearRessources(tile_tab, "food"))
+# print(detPath(detNearRessources(tile_tab, "sibur")))
+# print(detPath(detNearRessources(tile_tab, "food")))
+# print(detPath(detNearRessources(tile_tab, "phiras")))
+# print(detPath(detNearRessources(tile_tab, "toot")))
+
