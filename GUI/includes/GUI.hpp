@@ -9,6 +9,7 @@
     #define GUI_HPP_
     #include <memory>
     #include "SFML/Graphics.hpp"
+    #include "MouseStatus.hpp"
     #include "Drawable.hpp"
     #include "Network.hpp"
     #include "Buttons.hpp"
@@ -26,6 +27,8 @@ namespace Zappy
             std::vector<std::string> spritePaths;
             std::shared_ptr<Network> _networkInfo;
             sf::RenderWindow _window;
+            sf::View _view;
+            MouseStatus _mouseStatus;
 
             Drawable tile = Drawable("../GUI/assets/map.png");
             float tile_scale = 0.25;
@@ -36,6 +39,7 @@ namespace Zappy
             int _playerNb = 0;
             sf::Vector2i _mapSize;
             int _timeUnit = 1;
+            bool _dragging;
         public:
             GUI(const std::string& ip = "127.0.0.1", size_t port = 8000);
             ~GUI();
@@ -47,6 +51,8 @@ namespace Zappy
             void display_objects();
             void display_trantor();
             void handleWindowEvents();
+            void dragView();
+            void zoomScroll();
             inline std::vector<std::shared_ptr<Buttons>> getButtons() const {return this->_buttons;};
             inline Map getMap() const {return this->_map;};
             inline float getTileScale() const {return this->tile_scale;};
