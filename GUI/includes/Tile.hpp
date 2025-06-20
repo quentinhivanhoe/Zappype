@@ -7,9 +7,12 @@
 
 #ifndef TILE_HPP_
     #define TILE_HPP_
-    #include "iostream"
-    #include "vector"
+    #include <iostream>
+    #include <vector>
+    #include <SFML/Graphics.hpp>
     #include "Math/Vector2D.hpp"
+    #include "GUI.hpp"
+    #include "TileButtons.hpp"
 namespace Zappy
 {
     enum Item {
@@ -30,6 +33,8 @@ namespace Zappy
         std::vector<Vector2D> offsets_list;
         Vector2D _pos;
         Vector2D _center;
+        sf::Vector2i _index;
+        std::shared_ptr<TileButtons> _innerButton = nullptr;
     public:
         Tile(size_t id = -1);
         ~Tile();
@@ -43,6 +48,8 @@ namespace Zappy
         inline void setPos(Vector2D pos) {this->_pos = pos;};
         inline Vector2D getCenter() const {return this->_center;};
         inline void setCenter(Vector2D Center) {this->_center = Center;};
+        inline void setIndex(sf::Vector2i index) { this->_index = index; };
+        inline sf::Vector2i getIndex() const { return this->_index; };
     }; 
 }
 

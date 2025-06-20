@@ -14,6 +14,11 @@
 
 namespace Zappy
 {
+    class Team;
+    class Trantorian;
+    class TrantorButtons;
+    class GUI;
+    class Tile;
     class Map
     {
     private:
@@ -29,6 +34,7 @@ namespace Zappy
         inline std::map<std::string, std::shared_ptr<Team>> getTeams() const { return this->_teams; };
         inline std::vector<std::vector<std::shared_ptr<Tile>>> getTiles() {return this->_tiles;};
         inline std::shared_ptr<Trantorian> getTrantorianByID(size_t id) { return this->_trantorians[id]; };
+        inline std::map<size_t, std::shared_ptr<Trantorian>> getAllTrantorians() const { return this->_trantorians; };
         void addTrantorian(std::shared_ptr<Trantorian> trantorian);
     };
 }
