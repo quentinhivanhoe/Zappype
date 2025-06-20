@@ -36,11 +36,11 @@ namespace Zappy
             MouseStatus _mouse;
 
             Drawable tile = Drawable("../GUI/assets/map.png");
-            float tile_scale = 0.25;
             std::shared_ptr<Map> _map;
+            float tile_scale = 0.5;
             Drawable sky = Drawable("../GUI/assets/sky.jpg");
             sf::Event _event;
-
+            sf::View _view;
             int _playerNb = 0;
             sf::Vector2i _mapSize;
             int _timeUnit = 1;
