@@ -19,6 +19,6 @@ void pls_command(int client_fd, __attribute_maybe_unused__ char **cmd)
         trn = clients[i].data.ia_client;
         dprintf(client_fd, "pls #%d %ld %ld %d %d %s %d\n",
             trn.socket, trn.pos.x, trn.pos.y, trn.pos.dir, trn.stat,
-            my_server()->params.team_names[trn.team_id], trn.lvl);
+            my_server()->params.teams[trn.team_id].name, trn.lvl);
     }
 }

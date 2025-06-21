@@ -19,7 +19,7 @@ void pnw_command(trn_t *trantorian)
         return;
     pos = trantorian->pos;
     lvl = trantorian->lvl;
-    team = my_server()->params.team_names[trantorian->team_id];
+    team = my_server()->params.teams[trantorian->team_id].name;
     for (gui_fd = get_gui(); gui_fd >= 0; gui_fd = get_gui())
         dprintf(gui_fd, "pnw #%d %ld %ld %d %d %s\n",
             trantorian->socket, pos.x, pos.y, pos.dir, lvl, team);

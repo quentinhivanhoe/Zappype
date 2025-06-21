@@ -14,6 +14,13 @@ typedef struct params_functions_s {
     void (*function)(int, char **, int);
 } params_functions_t;
 
+typedef struct team_s {
+    char *name;
+    size_t max;
+    size_t egg_count;
+    size_t trn_count;
+} team_t;
+
 typedef struct params_s {
     size_t port;
     size_t width;
@@ -21,7 +28,7 @@ typedef struct params_s {
     size_t frequency;
     size_t cli_per_team;
     size_t max_clients;
-    char **team_names;
+    team_t *teams;
     size_t team_nbr;
     bool debug_mode;
 } params_t;

@@ -50,8 +50,8 @@ void check_params(void)
     || my_server()->params.height == 0
     || my_server()->params.frequency == 0
     || my_server()->params.max_clients == 0
-    || my_server()->params.team_names == NULL
-    || my_server()->params.team_names[0] == NULL) {
+    || my_server()->params.teams == NULL
+    || my_server()->params.teams[0].name == NULL) {
         print_usage(0, NULL, 0);
     }
 }
@@ -64,14 +64,12 @@ void print_params(void)
     printf("Height: %zu\n", my_server()->params.height);
     printf("Frequency: %zu\n", my_server()->params.frequency);
     printf("Max Clients: %zu\n", my_server()->params.max_clients);
-    if (my_server()->params.team_names) {
+    if (my_server()->params.teams) {
         printf("Team Names:\n");
-        for (size_t i = 0; my_server()->params.team_names[i] != NULL; i++) {
-            printf(" - %s\n", my_server()->params.team_names[i]);
-        }
-    } else {
+        for (size_t i = 0; my_server()->params.teams[i].name != NULL; i++)
+            printf(" - %s\n", my_server()->params.teams[i].name);
+    } else
         printf("No team names provided.\n");
-    }
     printf("Debug Mode: %s\n",
         my_server()->params.debug_mode ? "Enabled" : "Disabled");
 }
@@ -91,5 +89,6 @@ void print_usage(int argc, char **argv, int i)
     printf("  -f <frequency>    Set the frequency of the server n");
     printf("  -c <max_clients>  Set the maximum number of clients n");
     printf("  -n <team_name1> <team_name2> ...  Set team names\n");
+    clean_server();
     exit(EXIT_FAILURE);
 }

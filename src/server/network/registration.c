@@ -36,11 +36,9 @@ static size_t count_clients_per_team(char *name)
 {
     if (strcmp(name, "GRAPHIC") == 0)
         return count_gui_clients();
-    for (size_t i = 0; i < my_server()->params.team_nbr; i++) {
-        if (strcmp(name, my_server()->params.team_names[i]) == 0) {
+    for (size_t i = 0; i < my_server()->params.team_nbr; i++)
+        if (strcmp(name, my_server()->params.teams[i].name) == 0)
             return count_ia_clients(i);
-        }
-    }
     return 0;
 }
 
@@ -77,7 +75,7 @@ void register_ia_client(int i, char *team_name)
     int team_index = -1;
 
     for (int j = 0; j < (int)my_server()->params.team_nbr - 1; j++) {
-        if (strcmp(team_name, my_server()->params.team_names[j]) == 0) {
+        if (strcmp(team_name, my_server()->params.teams[j].name) == 0) {
             team_index = j;
             break;
         }

@@ -14,12 +14,10 @@ void handle_msz(int client_fd, char **cmd)
     (void)cmd;
 }
 
-void handle_tna(int client_fd, char **cmd)
+void handle_tna(int client_fd, __attribute_maybe_unused__ char **cmd)
 {
-    for (size_t i = 0; my_server()->params.team_names[i]; i++) {
-        dprintf(client_fd, "tna %s\n", my_server()->params.team_names[i]);
-    }
-    (void)cmd;
+    for (size_t i = 0; my_server()->params.teams[i].name; i++)
+        dprintf(client_fd, "tna %s\n", my_server()->params.teams[i].name);
 }
 
 void handle_mct(int client_fd, __attribute_maybe_unused__ char **cmd)

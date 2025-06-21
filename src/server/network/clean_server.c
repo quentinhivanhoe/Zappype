@@ -15,12 +15,11 @@ void clean_server(void)
             close(my_server()->info.fds[i].fd);
         }
     }
-    for (int i = 0; my_server()->params.team_names[i] != NULL; i++) {
-        free(my_server()->params.team_names[i]);
-    }
+    for (int i = 0; my_server()->params.teams[i].name; i++)
+        free(my_server()->params.teams[i].name);
     free(my_server()->info.clients);
     free(my_server()->info.fds);
-    free(my_server()->params.team_names);
+    free(my_server()->params.teams);
     free(my_server()->map);
     clock_list(NULL, DESTROY);
 }

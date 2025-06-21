@@ -10,31 +10,31 @@
 
 void append_team_names(int argc, char **argv, int i)
 {
-    size_t team_count = 0;
-    char **new_team_names;
+    size_t cmp = 0;
+    team_t *teams = NULL;
 
     for (; i < argc && argv[i][0] != '-'; i++) {
-        new_team_names = realloc(my_server()->params.team_names,
-        sizeof(char *) * (team_count + 2));
-        if (!new_team_names) {
+        teams = realloc(my_server()->params.teams, sizeof(team_t) * (cmp + 2));
+        if (!teams) {
             perror("realloc");
             exit(EXIT_FAILURE);
         }
-        my_server()->params.team_names = new_team_names;
-        my_server()->params.team_names[team_count] = strdup(argv[i]);
-        if (!my_server()->params.team_names[team_count]) {
+        my_server()->params.teams = teams;
+        memset(&my_server()->params.teams[cmp], 0, sizeof(team_t));
+        my_server()->params.teams[cmp].name = strdup(argv[i]);
+        if (!my_server()->params.teams[cmp].name) {
             perror("strdup");
             exit(EXIT_FAILURE);
         }
-        team_count++;
+        cmp++;
     }
-    my_server()->params.team_nbr = team_count + 1;
-    my_server()->params.team_names[team_count] = NULL;
+    my_server()->params.team_nbr = cmp + 1;
+    my_server()->params.teams[cmp].name = NULL;
 }
 
 void add_team_names(int argc, char **argv, int i)
 {
-    if (my_server()->params.team_names) {
+    if (my_server()->params.teams) {
         fprintf(stderr, "Team names already set. Use -n only once.\n");
         exit(EXIT_FAILURE);
     }
@@ -42,8 +42,8 @@ void add_team_names(int argc, char **argv, int i)
         fprintf(stderr, "Team names are missing after -n flag\n");
         exit(EXIT_FAILURE);
     }
-    my_server()->params.team_names = malloc(sizeof(char *));
-    if (!my_server()->params.team_names) {
+    my_server()->params.teams = malloc(sizeof(team_t));
+    if (!my_server()->params.teams) {
         perror("malloc");
         exit(EXIT_FAILURE);
     }
