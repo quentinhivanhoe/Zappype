@@ -76,6 +76,7 @@ static void execute_take(trn_t *trantorian, int obj_idx)
     }
     tile->content[obj_idx]--;
     trantorian->inventory[obj_idx]++;
+    pgt_command(trantorian->socket, obj_idx);
     dprintf(trantorian->socket, "ok\n");
 }
 
