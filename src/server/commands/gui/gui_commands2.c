@@ -41,9 +41,8 @@ void handle_ppo(int client_fd, char **cmd)
 {
     size_t client_idx = check_player_info(client_fd, cmd);
 
-    if (client_idx == false) {
+    if (client_idx == false)
         return;
-    }
     dprintf(client_fd, "ppo #%zu %ld %ld %d\n", client_idx,
         my_server()->info.clients[client_idx].data.ia_client.pos.x,
         my_server()->info.clients[client_idx].data.ia_client.pos.y,
@@ -54,9 +53,8 @@ void handle_plv(int client_fd, char **cmd)
 {
     size_t client_idx = check_player_info(client_fd, cmd);
 
-    if (client_idx == false) {
+    if (client_idx == false)
         return;
-    }
     dprintf(client_fd, "plv #%zu %d\n", client_idx,
         my_server()->info.clients->data.ia_client.lvl);
 }
@@ -65,9 +63,8 @@ void handle_pin(int client_fd, char **cmd)
 {
     size_t client_idx = check_player_info(client_fd, cmd);
 
-    if (client_idx == false) {
+    if (client_idx == false)
         return;
-    }
     dprintf(client_fd, "pin #%zu %ld %ld %ld %ld %ld %ld %ld %ld %ld\n",
         client_idx,
         get_client(client_idx)->data.ia_client.pos.x,
@@ -96,7 +93,7 @@ void handle_sst(int client_fd, char **cmd)
     int new_frequency = 0;
 
     if (tab_len(cmd) != 2 || !is_num(cmd[1])) {
-        dprintf(client_fd, "sdb\n");
+        dprintf(client_fd, "sbp\n");
         return;
     }
     new_frequency = atoi(cmd[1]);
