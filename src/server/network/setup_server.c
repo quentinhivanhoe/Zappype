@@ -89,6 +89,7 @@ static void set_default_fd(void)
     args = alloc_args(NULL, NULL, 126, LOOP_CLOCK | ARGS_UNUSED);
     node = alloc_node(trantorian_death, args);
     clock_list(node, ADD);
+    setup_team();
 }
 
 static int bind_server(void)

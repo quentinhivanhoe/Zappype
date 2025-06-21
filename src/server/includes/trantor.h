@@ -36,7 +36,6 @@ typedef enum direction_e {
 typedef enum trantorian_status_e {
     ALIVE,
     DEAD,
-    EGG,
     FROZEN
 } trn_stat_t;
 

@@ -40,7 +40,7 @@ void det_params(int argc, char **argv)
         execute_function(argc, argv, i);
     }
     my_server()->params.max_clients = my_server()->params.cli_per_team;
-    my_server()->params.max_clients *= my_server()->params.team_nbr + 1;
+    my_server()->params.max_clients *= my_server()->params.team_nbr;
 }
 
 void check_params(void)

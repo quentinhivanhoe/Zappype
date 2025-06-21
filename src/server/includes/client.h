@@ -12,7 +12,8 @@
 typedef enum client_type_e {
     UNDEFINED,
     IA,
-    GUI
+    GUI,
+    EGG
 } client_type_t;
 
 typedef union client_data_u {

@@ -48,6 +48,7 @@ typedef struct server_s {
 void add_clients(int new_fd);
 void server_loop(void);
 bool handle_event(int i);
+void setup_team(void);
 int setup_server(void);
 void clean_server(void);
 void handle_new_connection(void);
