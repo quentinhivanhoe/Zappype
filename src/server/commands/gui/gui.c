@@ -94,7 +94,7 @@ static void handle_gui_command(int fd, const char *input, const char *token)
             return;
         }
     }
-    dprintf(fd, "Invalid GUI command: %s", input);
+    dprintf(fd, "suc\n");
 }
 
 void dispatch_command(int client_index, const char *input)
