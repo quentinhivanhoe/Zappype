@@ -32,16 +32,6 @@ size_t count_ia_clients(size_t id)
     return count;
 }
 
-static size_t count_clients_per_team(char *name)
-{
-    if (strcmp(name, "GRAPHIC") == 0)
-        return count_gui_clients();
-    for (size_t i = 0; i < my_server()->params.team_nbr; i++)
-        if (strcmp(name, my_server()->params.teams[i].name) == 0)
-            return count_ia_clients(i);
-    return 0;
-}
-
 void register_gui_client(int i)
 {
     if (count_gui_clients() >= my_server()->params.cli_per_team) {
@@ -58,16 +48,28 @@ void register_gui_client(int i)
     return;
 }
 
-void process_ia_connection(int i, int team_index)
+void process_ia_connection(client_t *clients, int i, size_t team_index)
 {
-    trn_t *trantorian = &my_server()->info.clients[i].data.ia_client;
-    ssize_t free_slots = (ssize_t)my_server()->params.cli_per_team
-    - ((ssize_t)count_ia_clients(team_index) + 1);
+    team_t t = {0};
 
-    init_trantorian(trantorian, i, team_index);
-    dprintf(trantorian->socket, "%lu\n", (free_slots <= 0) ? 0 : free_slots);
-    dprintf(trantorian->socket, "%ld %ld\n", my_server()->params.width,
-        my_server()->params.height);
+    for (size_t n = 0; n < my_server()->params.max_clients; n++) {
+        if (clients[n].type != EGG)
+            continue;
+        if (clients[n].data.ia_client.team_id != team_index)
+            continue;
+        clients[n].type = IA;
+        clients[n].data.ia_client.socket = my_server()->info.fds[i].fd;
+        my_server()->info.fds[n] = my_server()->info.fds[i];
+        my_server()->info.fds[i].fd = -1;
+        pnw_command(clients[n].data.ia_client);
+        my_server()->params.teams[team_index].trn_count++;
+        my_server()->params.teams[team_index].egg_count--;
+        t = my_server()->params.teams[team_index];
+        dprintf(my_server()->info.fds[n].fd, "%ld\n", t.max - t.trn_count);
+        dprintf(my_server()->info.fds[n].fd, "%ld %ld\n",
+        my_server()->params.width, my_server()->params.height);
+        break;
+    }
 }
 
 void register_ia_client(int i, char *team_name)
@@ -85,13 +87,10 @@ void register_ia_client(int i, char *team_name)
         remove_client(i);
         return;
     }
-    if (count_clients_per_team(team_name) >= my_server()->params.cli_per_team){
-        dprintf(my_server()->info.fds[i].fd,
-            "Team '%s' is full.\n", team_name);
-        remove_client(i);
-        return;
-    }
-    process_ia_connection(i, team_index);
+    if (my_server()->params.teams[team_index].egg_count)
+        return process_ia_connection(my_server()->info.clients, i, team_index);
+    dprintf(my_server()->info.fds[i].fd, "No slots for '%s'\n", team_name);
+    remove_client(i);
 }
 
 void det_teams(char *buffer, int i)

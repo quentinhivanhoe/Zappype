@@ -65,7 +65,7 @@ double get_time(void);
 /* Registration process*/
 
 void register_gui_client(int i);
-void process_ia_connection(int i, int team_index);
+void process_ia_connection(client_t *clients, int i, size_t team_index);
 void register_ia_client(int i, char *team_name);
 void det_teams(char *buffer, int i);
 /* UTIL */
@@ -74,11 +74,10 @@ bool is_num(const char *str);
 /* SIGNAL */
 void signal_handler(int signum);
 
-
 int get_gui(void);
 void pdi_command(trn_t *trantorian);
 size_t count_ia_clients(size_t id);
-void pnw_command(trn_t *trantorian);
+void pnw_command(trn_t trantorian);
 void spn_command(int client_fd, __attribute_maybe_unused__ char **cmd);
 void pls_command(int client_fd, char **cmd);
 void pdr_command(int player_id, obj_idx_t object);
