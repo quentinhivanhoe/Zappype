@@ -61,9 +61,9 @@ void process_ia_connection(client_t *clients, int i, size_t team_index)
         clients[n].data.ia_client.socket = my_server()->info.fds[i].fd;
         my_server()->info.fds[n] = my_server()->info.fds[i];
         my_server()->info.fds[i].fd = -1;
-        pnw_command(clients[n].data.ia_client);
         my_server()->params.teams[team_index].trn_count++;
         my_server()->params.teams[team_index].egg_count--;
+        ebo_command(n);
         t = my_server()->params.teams[team_index];
         dprintf(my_server()->info.fds[n].fd, "%ld\n", t.max - t.trn_count);
         dprintf(my_server()->info.fds[n].fd, "%ld %ld\n",
