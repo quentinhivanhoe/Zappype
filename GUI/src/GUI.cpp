@@ -12,7 +12,6 @@ Zappy::GUI::GUI(const std::string &ip, size_t port)
 {
     (void)ip;
     (void)port;
-    this->_mouseStatus = MouseStatus();
     // std::cout << "---------------SERVER---------------" << std::endl;
     // this->_networkInfo = std::make_shared<Network>(this);
     // this->_networkInfo->establishConnection(ip, port);
@@ -104,6 +103,7 @@ void Zappy::GUI::handleWindowEvents(  )
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
             this->_tileInfo->setTile(this->_map->getTiles()[0][0]);
             this->_tileInfo->updateTrantorButtonsTab();
+        }
     }
 }
 
@@ -136,6 +136,7 @@ void Zappy::GUI::run()
         this->display_map();
         this->display_objects();
         this->display_trantor();
+        this->_window.setView(this->_window.getDefaultView());
         this->_tileInfo->render(this->_window);
         this->_trantorianInfo->render(this->_window);
         this->_window.setView(this->_view);

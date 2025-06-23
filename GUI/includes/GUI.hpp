@@ -42,7 +42,7 @@ namespace Zappy
             float tile_scale = 0.5;
             Drawable sky = Drawable("../GUI/assets/sky.jpg");
             sf::Event _event;
-            sf::View _view;
+            // sf::View _view;
             int _playerNb = 0;
             sf::Vector2i _mapSize;
             int _timeUnit = 1;
