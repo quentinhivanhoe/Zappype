@@ -98,7 +98,7 @@ void Zappy::GUI::handleWindowEvents(  )
             this->_window.close();
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
             this->_window.close();
-        dragView();
+        touchView();
         zoomScroll();
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Tab)) {
             this->_tileInfo->setTile(nullptr);
@@ -121,6 +121,28 @@ void Zappy::GUI::zoomScroll()
                 this->_view.zoom(zoomFactor);
             }
         }
+    }
+}
+
+void Zappy::GUI::touchView()
+{
+    sf::Vector2f pos = sf::Vector2f(0, 0);
+
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
+        pos.y -= 15;
+        this->_view.move(pos);
+    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
+        pos.y += 15;
+        this->_view.move(pos);
+    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
+        pos.x -= 15;
+        this->_view.move(pos);
+    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
+        pos.x += 15;
+        this->_view.move(pos);
     }
 }
 
@@ -182,6 +204,7 @@ void Zappy::GUI::display_sky()
 
 void Zappy::GUI::display_objects()
 {
+    return;
     for (size_t i = 0; i < this->_map->getTiles().size(); i++){
         for (size_t j = 0; j < this->_map->getTiles()[i].size(); j++){
             if (this->_map->getTiles()[i][j]->getActivity() == false)

@@ -62,6 +62,7 @@ namespace Zappy
             void handleWindowEvents();
             void dragView();
             void zoomScroll();
+            void touchView();
             float get_dist_to_cam(sf::View view, Vector2D pos);
             inline std::shared_ptr<Map> getMap() const {return this->_map;};
             inline float getTileScale() const {return this->tile_scale;};
