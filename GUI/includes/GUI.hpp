@@ -62,12 +62,12 @@ namespace Zappy
             void handleWindowEvents();
             void dragView();
             void zoomScroll();
+            float get_dist_to_cam(sf::View view, Vector2D pos);
             inline std::shared_ptr<Map> getMap() const {return this->_map;};
             inline float getTileScale() const {return this->tile_scale;};
             inline std::shared_ptr<Network> getNetwork() const {return this->_networkInfo;};
             inline int getTimeUnit() const { return this->_timeUnit; };
             inline void setTimeUnit(int unit) { this->_timeUnit = unit; };
-
             inline void setPlayerNb(int number) { this->_playerNb = number; };
             inline void setMapSize(sf::Vector2i size) { this->_mapSize = size; };
             inline int getPlayerNb() const { return this->_playerNb; };

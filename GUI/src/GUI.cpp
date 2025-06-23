@@ -7,11 +7,14 @@
 #include "../includes/GUI.hpp"
 #include "../includes/TrantorButtons.hpp"
 #include "../includes/TileInfo.hpp"
+#include <cmath>
+#include "GUI.hpp"
 
 Zappy::GUI::GUI(const std::string &ip, size_t port)
 {
     (void)ip;
     (void)port;
+
     // std::cout << "---------------SERVER---------------" << std::endl;
     // this->_networkInfo = std::make_shared<Network>(this);
     // this->_networkInfo->establishConnection(ip, port);
@@ -121,6 +124,11 @@ void Zappy::GUI::zoomScroll()
     }
 }
 
+float Zappy::GUI::get_dist_to_cam(sf::View view, Vector2D pos)
+{
+    return (sqrt(pow(view.getCenter().x - pos.getX(), 2) + pow(view.getCenter().y - pos.getY(), 2)));
+}
+
 void Zappy::GUI::run()
 {
     // this->_view.zoom(2);
@@ -151,11 +159,13 @@ void Zappy::GUI::display_map()
         for (int i = 0; i < this->getMap()->getSize().getX(); i++){
             offset.setX(offset.getX() - tile.getTexture().getSize().x  * this->getTileScale() / (2) + 13);
             offset.setY(offset.getY() + tile.getTexture().getSize().y  * this->getTileScale() / (2) - 40);
+            if (get_dist_to_cam(this->_view, Vector2D(offset.getX(), offset.getY())) > 2000)
+                continue;
             this->tile.getSprite().setPosition(offset.getX(), offset.getY());
-            this->_window.draw(this->tile.getSprite());
             _map->getTiles()[j][i].get()->setCenter(Vector2D(offset.getX() + (tile.getTexture().getSize().x * this->getTileScale() / 2), offset.getY() + (tile.getTexture().getSize().y * this->getTileScale() / 2)));
             _map->getTiles()[j][i].get()->setPos(offset);
             // std::cout << "tile pos : " << offset.getX() << " and " << offset.getY() << " / " << _map->getTiles()[j][i].get()->getPos().getX() << " and " << _map->getTiles()[j][i].get()->getPos().getY() << " center " <<  _map->getTiles()[j][i].get()->getCenter().getX() << " "<< _map->getTiles()[j][i].get()->getCenter().getY() << std::endl;
+            this->_window.draw(this->tile.getSprite());
         }
         offset = Vector2D(
         (1920/2 + (tile.getTexture().getSize().x * this->getTileScale() / 2 - 13) * (j + 1)),
@@ -172,10 +182,12 @@ void Zappy::GUI::display_objects()
 {
     for (size_t i = 0; i < this->_map->getTiles().size(); i++){
         for (size_t j = 0; j < this->_map->getTiles()[i].size(); j++){
+            if (get_dist_to_cam(this->_view, this->_map->getTiles()[i][j]->getPos()) > 2000)
+                continue;
             for (size_t k = 0; k < 8; k++){
                 if (this->_map->getTiles()[i][j].get()->getItems()[k] > 0){
-                    this->_items[k]->getSprite()->getSprite().setPosition(this->_map->getTiles()[i][j].get()->getCenter().getX() + this->_map->getTiles()[i][j].get()->getOffsetsList()[k].getX(), 
-                    this->_map->getTiles()[i][j].get()->getCenter().getY() + this->_map->getTiles()[i][j].get()->getOffsetsList()[k].getY());
+                    this->_items[k]->getSprite()->getSprite().setPosition(this->_map->getTiles()[i][j]->getCenter().getX() + this->_map->getTiles()[i][j]->getOffsetsList()[k].getX(), 
+                    this->_map->getTiles()[i][j]->getCenter().getY() + this->_map->getTiles()[i][j]->getOffsetsList()[k].getY());
                     this->_window.draw(this->_items[k]->getSprite()->getSprite());
                 }                
             }
@@ -189,9 +201,7 @@ void Zappy::GUI::display_trantor()
     for (auto team: this->_map->getTeams()) {
         for (auto trantorian: team.second->getTrantorians()) {
             //to be optimized
-            trantorian->getSprite()->getSprite().setOrigin(trantorian->getSprite()->getTexture().getSize().x / 2, trantorian->getSprite()->getTexture().getSize().y / 2 + 400);
             trantorian->getSprite()->getSprite().setPosition(this->_map->getTiles()[trantorian->getTilePos().x][trantorian->getTilePos().y]->getCenter().getX(), this->_map->getTiles()[trantorian->getTilePos().x][trantorian->getTilePos().y]->getCenter().getY());
-            trantorian->getSprite()->getSprite().setScale(0.1, 0.1);
             this->_window.draw(trantorian->getSprite()->getSprite());
         }
     }
