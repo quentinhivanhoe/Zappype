@@ -54,18 +54,30 @@ void Zappy::Network::establishConnection(std::string ip, size_t socket)
 void Zappy::Network::initProcess()
 {
     this->askToServer("Team", {});
-    // this->askToServer("PlayerNb", {});
     this->askToServer("MapSize", {});
-    // this->askToServer("PlayersInfo", {});
-    // this->askToServer("MapContent", {});
+    this->_gui->initMap(this->_mapSize.x, this->_mapSize.y);
+    this->askToServer("PlayerNb", {});
+    this->askToServer("PlayersInfo", {});
+    this->askToServer("MapContent", {});
     // std::cout << "[DEBUG from GUI] GUI connection to Server : OK" << std::endl;
     // this->askToServer("TimeUnitRequest", {});
     // this->askToServer("TileContent", {0, 0});
     // this->askToServer("TimeUnitModif", {1});
-    // this->askToServer("PlayerPos", {1});
-    // this->askToServer("PlayerLevel", {1});
-    // this->askToServer("PlayerInventory", {1});
-    std::cout << "[DEBUIT from GUI] map size from gui: " << this->getGui()->getMapSize().x << "-"  << this->getGui()->getMapSize().x << std::endl;
+    this->askToServer("PlayerPos", {1});
+    this->askToServer("PlayerLevel", {1});
+    this->askToServer("PlayerInventory", {1});
+}
+
+void Zappy::Network::recieveFromServer()
+{
+    Parser parser;
+    while (!this->_isShuttingDown) {
+        std::string recievedString = this->receive(false);
+        if (!recievedString.empty()) {
+            std::vector<std::string> args = Parser::parseLine(recievedString, ' ');
+            parser.manageResponse(args, this);
+        }
+    }
 }
 
 void Zappy::Network::askToServer(const std::string& command, std::vector<int> args)
@@ -101,7 +113,7 @@ void Zappy::Network::askTeam()
 
 void Zappy::Network::askPlayerNb()
 {
-    this->send("spn\n");
+    this->send("pnu\n");
     std::string recievedString = this->receive();
     Parser parser;
     std::vector<std::string> args = Parser::parseLine(recievedString, ' ');
@@ -110,17 +122,17 @@ void Zappy::Network::askPlayerNb()
 
 void Zappy::Network::askPlayersInfo()
 {
-    if (this->_playerNb < 0) {
+    if (this->_playerNb <= 0) {
         std::cout << "Must have player number set before asking for players info." << std::endl;
         return;
     }
-    this->send("spi\n");
+    this->send("pls\n");
     Parser parser;
     std::string playersInfo = "";
     while (true) {
         std::string recievedString = this->receive(false);
         playersInfo.append(recievedString);
-        if (static_cast<int>(Parser::nbOccur(playersInfo, "spi")) >= this->_playerNb)
+        if (static_cast<int>(Parser::nbOccur(playersInfo, "pls")) >= this->_playerNb)
             break;
     }
     std::vector<std::string> tab = Parser::splitLine(playersInfo, "\n");
