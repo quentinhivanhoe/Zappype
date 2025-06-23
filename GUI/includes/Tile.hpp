@@ -13,6 +13,8 @@
     #include "Math/Vector2D.hpp"
     #include "GUI.hpp"
     #include "TileButtons.hpp"
+    #include "Drawable.hpp"
+
 namespace Zappy
 {
     enum Item {
@@ -34,6 +36,7 @@ namespace Zappy
         Vector2D _pos;
         Vector2D _center;
         sf::Vector2i _index;
+        std::shared_ptr<Drawable>_tile = std::make_shared<Drawable>("../GUI/assets/map.png", 0.5);
         std::shared_ptr<TileButtons> _innerButton = nullptr;
         bool _activity = false;
     public:
@@ -46,6 +49,9 @@ namespace Zappy
         inline std::vector<Vector2D> getOffsetsList() {return this->offsets_list;};
         inline std::vector<size_t> getItems(){return this->_items;};
         inline Vector2D getPos() const {return this->_pos;};
+
+        inline std::shared_ptr<Drawable> getTile() {return this->_tile;};
+
         inline void setPos(Vector2D pos) {this->_pos = pos;};
         inline Vector2D getCenter() const {return this->_center;};
         inline void setCenter(Vector2D Center) {this->_center = Center;};
