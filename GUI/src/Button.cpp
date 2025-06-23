@@ -132,6 +132,13 @@ Zappy::Buttons &Zappy::Buttons::setFunction(std::function<void(void *)> function
     return *this;
 }
 
+Zappy::Buttons &Zappy::Buttons::setBasePosition(sf::Vector2f pos)
+{
+    this->_basePosition = pos;
+    return *this;
+}
+
+
 Zappy::Buttons &Zappy::Buttons::rotateClockWise(float step)
 {
     this->_bg.rotate(step);
@@ -151,8 +158,8 @@ Zappy::Buttons &Zappy::Buttons::scaleUp(float step)
     float scaleX = this->_scale.x + step;
     float scaleY = this->_scale.y + step;
 
-    Math::Clamp::function(&scaleX, this->_minScale.x, this->_maxScale.x);
-    Math::Clamp::function(&scaleY, this->_minScale.y, this->_maxScale.y);
+    Math::Clamp::function(scaleX, this->_minScale.x, this->_maxScale.x);
+    Math::Clamp::function(scaleY, this->_minScale.y, this->_maxScale.y);
     this->setScale({scaleX, scaleY});
     return *this;
 }
@@ -162,8 +169,8 @@ Zappy::Buttons &Zappy::Buttons::scaleDown(float step)
     float scaleX = this->_scale.x - step;
     float scaleY = this->_scale.y - step;
 
-    Math::Clamp::function(&scaleX, this->_minScale.x, this->_maxScale.x);
-    Math::Clamp::function(&scaleY, this->_minScale.y, this->_maxScale.y);
+    Math::Clamp::function(scaleX, this->_minScale.x, this->_maxScale.x);
+    Math::Clamp::function(scaleY, this->_minScale.y, this->_maxScale.y);
     this->setScale({scaleX, scaleY});
     return *this;
 }
@@ -195,9 +202,9 @@ void Zappy::Buttons::update(MouseStatus mouse)
     float colorRed = this->_fillColor.r + 50 - 150 * mouse.hold();
     float colorGreen = this->_fillColor.g + 50 - 150 * mouse.hold();
     float colorBlue = this->_fillColor.b + 50 - 150 * mouse.hold();
-    Math::Clamp::function(&colorRed, 0, 255);
-    Math::Clamp::function(&colorGreen, 0, 255);
-    Math::Clamp::function(&colorBlue, 0, 255);
+    Math::Clamp::function(colorRed, 0, 255);
+    Math::Clamp::function(colorGreen, 0, 255);
+    Math::Clamp::function(colorBlue, 0, 255);
     this->_bg.setFillColor(this->_fillColor);
     if (mouse.hover(this->_bg)) {
         this->scaleUp(0.02);

@@ -13,7 +13,7 @@ namespace Math
     class Clamp
     {
         public:
-            static void function(float *value, float min, float max);
+            static void function(float &value, float min, float max);
     };
 } // namespace Math
 

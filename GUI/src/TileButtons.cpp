@@ -34,9 +34,9 @@ void Zappy::TileButtons::update(MouseStatus mouse)
     float colorRed = this->getFillColor().r + 50 - 150 * mouse.hold();
     float colorGreen = this->getFillColor().g + 50 - 150 * mouse.hold();
     float colorBlue = this->getFillColor().b + 50 - 150 * mouse.hold();
-    Math::Clamp::function(&colorRed, 0, 255);
-    Math::Clamp::function(&colorGreen, 0, 255);
-    Math::Clamp::function(&colorBlue, 0, 255);
+    Math::Clamp::function(colorRed, 0, 255);
+    Math::Clamp::function(colorGreen, 0, 255);
+    Math::Clamp::function(colorBlue, 0, 255);
     this->getBgComponent().setFillColor(this->getFillColor());
     if (mouse.hover(this->getBgComponent())) {
         this->scaleUp(0.02);

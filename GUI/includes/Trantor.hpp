@@ -24,13 +24,13 @@ namespace Zappy
     class Trantorian
     {
     private:
-        std::string _teamName;
-        size_t _id;
-        size_t _level;
-        size_t _direction;
+        std::string _teamName = "default";
+        size_t _id = 0;
+        size_t _level = 0;
+        size_t _direction = 0;
         std::vector<Actions> _actions;
         std::shared_ptr<Drawable> _sprite;
-        size_t _lifespan;
+        size_t _lifespan = 0;
         sf::Color _color;
         Vector2D _pos;
         sf::Vector2i _tilePos;

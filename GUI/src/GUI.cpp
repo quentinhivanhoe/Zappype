@@ -12,18 +12,13 @@
 
 Zappy::GUI::GUI(const std::string &ip, size_t port)
 {
-    (void)ip;
-    (void)port;
-
-    // std::cout << "---------------SERVER---------------" << std::endl;
-    // this->_networkInfo = std::make_shared<Network>(this);
-    // this->_networkInfo->establishConnection(ip, port);
-    // this->_networkInfo->initProcess();
+    std::cout << "---------------SERVER---------------" << std::endl;
+    this->_networkInfo = std::make_shared<Network>(this);
+    this->_networkInfo->establishConnection(ip, port);
+    this->_networkInfo->initProcess();
     std::srand(std::time(0));
+    this->_recieveThread = std::thread(&Network::recieveFromServer, this->_networkInfo);
     this->_window.create(sf::VideoMode(1920, 1080, 8), "Zappy GUI", sf::Style::Close);
-
-
-    this->_map = std::make_shared<Map>(Vector2D(42.0, 42.0));
     for (size_t i = 0; i < this->_map->getTiles().size(); i++){
         for (size_t j = 0; j < this->_map->getTiles()[i].size(); j++){
             this->_map->getTiles()[j][i]->getTile()->set_offsets();
@@ -34,6 +29,7 @@ Zappy::GUI::GUI(const std::string &ip, size_t port)
     this->sky.getSprite().setPosition(0, 0);
     this->init();
     this->run();
+    this->_recieveThread.join();
 }
 
 Zappy::GUI::~GUI()
@@ -103,7 +99,7 @@ void Zappy::GUI::handleWindowEvents(  )
             this->_tileInfo->setTile(nullptr);
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
-            this->_tileInfo->setTile(this->_map->getTiles()[0][0]);
+            this->_tileInfo->setTile(this->_map->getTiles()[1][1]);
             this->_tileInfo->updateTrantorButtonsTab();
         }
     }
@@ -155,6 +151,9 @@ void Zappy::GUI::run()
     // this->_view.zoom(2);
     set_map();
     while (this->_window.isOpen()) {
+        if (this->_framerateClock.getElapsedTime().asMicroseconds() < 1000000 / 60)
+            continue;
+        this->_framerateClock.restart();
         this->_mouse.update(this->_window);
         this->_tileInfo->update(this->_mouse);
         this->_trantorianInfo->update(this->_mouse);
@@ -167,11 +166,12 @@ void Zappy::GUI::run()
         this->display_objects();
         this->display_trantor();
         this->_window.setView(this->_window.getDefaultView());
-        this->_tileInfo->render(this->_window);
         this->_trantorianInfo->render(this->_window);
+        this->_tileInfo->render(this->_window);
         this->_window.setView(this->_view);
         this->_window.display();
-    }   
+    }
+    this->_networkInfo->shutDown();
 }
 
 void Zappy::GUI::set_map()
