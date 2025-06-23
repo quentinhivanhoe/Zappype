@@ -27,6 +27,7 @@ typedef struct params_s {
     size_t height;
     size_t frequency;
     size_t cli_per_team;
+    size_t least_clients;
     size_t max_clients;
     team_t *teams;
     size_t team_nbr;

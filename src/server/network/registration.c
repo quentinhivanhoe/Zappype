@@ -50,7 +50,7 @@ void register_gui_client(int i)
 
 void process_ia_connection(client_t *clients, int i, size_t team_index)
 {
-    team_t t = {0};
+    team_t team = {0};
 
     for (size_t n = 0; n < my_server()->params.max_clients; n++) {
         if (clients[n].type != EGG)
@@ -64,8 +64,8 @@ void process_ia_connection(client_t *clients, int i, size_t team_index)
         my_server()->params.teams[team_index].trn_count++;
         my_server()->params.teams[team_index].egg_count--;
         ebo_command(n);
-        t = my_server()->params.teams[team_index];
-        dprintf(my_server()->info.fds[n].fd, "%ld\n", t.max - t.trn_count);
+        team = my_server()->params.teams[team_index];
+        dprintf(my_server()->info.fds[n].fd, "%ld\n", team.egg_count);
         dprintf(my_server()->info.fds[n].fd, "%ld %ld\n",
         my_server()->params.width, my_server()->params.height);
         break;

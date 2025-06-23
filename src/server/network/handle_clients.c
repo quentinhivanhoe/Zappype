@@ -93,8 +93,12 @@ void handle_client_data(int i)
 
 void remove_client(int i)
 {
+    size_t team_id = 0;
+
     close(my_server()->info.fds[i].fd);
     if (my_server()->info.clients[i].type == IA) {
+        team_id = my_server()->info.clients[i].data.ia_client.team_id;
+        my_server()->params.teams[team_id].trn_count--;
         my_server()->info.trn_count--;
         my_server()->info.clients[i].data.ia_client.socket = -1;
     }
