@@ -166,6 +166,9 @@ class AI:
             "phiras": 0,
             "thystame": 0
         }
+        self.takeFailed = False
+        self.cmd_resp_queue = []
+        self.isLeveling = False
         self.lookInventory = []
 
     def receive_loop(self):
@@ -181,6 +184,11 @@ class AI:
                 print(f"[ERROR] Réception: {e}")
                 self.running = False
 
+    def send_command(self, command):
+        self.client.write(command)
+        self.nbResToWait += 1
+        self.cmd_resp_queue.append([command.strip(), None])
+
     def send_loop(self):
         while self.running:
             try:
@@ -194,50 +202,93 @@ class AI:
                 self.running = False
 
     def parse_response(self):
-        for res in self.resArray:
-            print(f"Parse => {res}")
-            if res == "dead\n":
+        for cmd, res in self.cmd_resp_queue:
+            cmd = cmd.strip().lower()
+            res = res.strip()
+
+            if res == "dead":
                 self.isDead = True
-            if res in ["ok\n", "ko\n"]:
+                print(f"[INFO] Mort détectée suite à la commande : {cmd}")
                 continue
-            if res.count(',') == 6:
+            if cmd.startswith("take") and res == "ko":
+                self.takeFailed = True
+            if cmd == "inventory":
                 fillInventory(res)
-                continue
-            if res[0] == '[' and res[-2] == ']':
+                print(f"[DEBUG] Inventaire mis à jour après : {cmd}")
+            elif cmd == "look":
                 self.lookInventory = formatLook(res)
+                print(f"[DEBUG] Vision mise à jour après : {cmd}")
+            elif res in ["ok", "ko"]:
+                print(f"[DEBUG] Réponse simple à '{cmd}' => {res}")
+            else:
+                print(f"[WARN] Réponse inconnue pour '{cmd}' => {res}")
 
     def wait_all_resp(self):
         self.resArray = []
+        idx = 0
         while len(self.resArray) <= (self.nbResToWait - 1):
             res = self.client.read()
-            if res == None:
-                raise("Error server")
+            if res is None:
+                raise Exception("Error server")
             self.resArray.append(res)
             print(res.strip())
+            if idx < len(self.cmd_resp_queue):
+                self.cmd_resp_queue[idx][1] = res.strip()
+                idx += 1
         self.parse_response()
         self.nbResToWait = 0
-        print("Fini")
+        if self.debug:
+            print("[DEBUG] Commande / Réponse :")
+            for cmd, resp in self.cmd_resp_queue:
+                print(f"  > {cmd} => {resp}")
+        # self.handle_failed_take()
+        self.cmd_resp_queue = []
+
+    def setAllObjects(self):
+        self.send_command("Set linemate\n")
+        self.send_command("Set deraumere\n")
+        self.send_command("Set sibur\n")
+        self.send_command("Set mendiane\n")
+        self.send_command("Set phiras\n")
+        self.send_command("Set thystame\n")
 
     def simulation(self):
         welcome = self.client.read()
         if welcome.strip() != "WELCOME":
             print("Erreur protocole de connexion")
             return
-
         self.client.write(f"{self.client.teamName}\n")
         print(f"[INFO] Connecté : {self.client.read().strip()}")
         print(f"[INFO] Message serveur : {self.client.read().strip()}")
-
         while self.isDead != True:
             pprint.pprint(self.inventory)
-            self.client.write("Inventory\n")
-            self.nbResToWait += 1
+            self.send_command("Inventory\n")
             self.wait_all_resp()
             if checkElevationCondition(ai.inventory, ai.level) == True:
                 print("You can level up!")
+                # self.setAllObjects()
+                # self.send_command("Incantation\n")
+                # self.resArray = []
+                # while len(self.resArray) <= (self.nbResToWait - 1):
+                #     res = self.client.read()
+                #     if res == None:
+                #         raise("Error server")
+                #     self.resArray.append(res)
+                #     print(res.strip())
+                # self.nbResToWait == 0
+                # if res == "Elevation underway\n":
+                #     self.isLeveling = True
+                #     res = self.client.read()
+                #     if res == None:
+                #         raise("Error server")
+                #     if res == "ko\n":
+                #         continue
+                #     self.level = int(res[-2])
+                # else:
+                #     continue
+
             elif ai.food < 3:
-                self.client.write("Look\n")
-                self.nbResToWait += 1
+                self.send_command("Look\n")
                 time.sleep(ELAPSED_SLEEP)
                 self.wait_all_resp()
                 idx = detNearRessources(self.lookInventory, "food")
@@ -246,41 +297,41 @@ class AI:
                     self.client.write(res)
                     self.nbResToWait += 1
                     time.sleep(ELAPSED_SLEEP)
-                self.client.write("Take food\n")
-                self.nbResToWait += 1
+                self.send_command("Take food\n")
                 time.sleep(ELAPSED_SLEEP)
                 self.wait_all_resp()
+                if self.takeFailed == True:
+                    direction = random.choice(["Left\n", "Right\n"])
+                    print(f"Take {resource} failed.")
+                    self.send_command(direction)
+                    time.sleep(ELAPSED_SLEEP)
+                    self.wait_all_resp()
+                    self.takeFailed = False
             else:
                 for resource, required in elevationCondition[str(ai.level)]["ressources"].items():
                     if self.inventory[resource] < required:
-                        self.client.write("Look\n")
-                        self.nbResToWait += 1
+                        self.send_command("Look\n")
                         time.sleep(ELAPSED_SLEEP)
                         self.wait_all_resp()
-
                         idx = detNearRessources(self.lookInventory, resource)
                         if idx == -1:
                             print(f"[WARN] {resource} not found nearby.")
+                            self.takeFailed = True
                             continue
                         respArray = detPath(idx)
                         for res in respArray:
-                            self.client.write(res)
-                            self.nbResToWait += 1
+                            self.send_command(res)
                             time.sleep(ELAPSED_SLEEP)
-                        self.client.write(f"Take {resource}\n")
-                        self.nbResToWait += 1
+                        self.send_command(f"Take {resource}\n")
                         time.sleep(ELAPSED_SLEEP)
                         self.wait_all_resp()
-                    if random.randint(0, 1):
-                        self.client.write("Right\n")
-                        self.nbResToWait += 1
+                    if self.takeFailed == True:
+                        direction = random.choice(["Left\n", "Right\n", "Forward\n", "Forward\n"])
+                        print(f"Take {resource} failed.")
+                        self.send_command(direction)
                         time.sleep(ELAPSED_SLEEP)
                         self.wait_all_resp()
-                    else:
-                        self.client.write("Right\n")
-                        self.nbResToWait += 1
-                        time.sleep(ELAPSED_SLEEP)
-                        self.wait_all_resp()
+                        self.takeFailed = False
                     break
 
 def fillInventory(inventoryString):
@@ -340,6 +391,7 @@ def detNearRessources(tile_tab, element):
     for i, tile in enumerate(tile_tab):
         if element in ["player", "food"]:
             if tile.get(element, 0) > 0:
+                print(f"Find {element} at {i}")
                 return i
         elif tile.get("ressources", {}).get(element, 0) > 0:
             return i
@@ -381,9 +433,7 @@ def process_ai():
 
     if not all(k in argsTab for k in ("port", "team", "host")):
         raise Exception("Usage: -p <port> -n <team> -h <host> [-d]")
-
     ai = AI(argsTab)
-
     if ai.debug:
         print(f"Connexion au serveur {ai.client.ip}:{ai.client.port}")
 
