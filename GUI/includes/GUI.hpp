@@ -37,7 +37,7 @@ namespace Zappy
             sf::View _view;
             MouseStatus _mouse;
 
-            Drawable tile = Drawable("../GUI/assets/map.png");
+
             std::shared_ptr<Map> _map;
             float tile_scale = 0.5;
             Drawable sky = Drawable("../GUI/assets/sky.jpg");
@@ -55,6 +55,7 @@ namespace Zappy
             void init();
             void initPaths();
             void run();
+            void set_map();
             void display_map();
             void display_sky();
             void display_objects();
