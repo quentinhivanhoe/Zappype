@@ -8,6 +8,7 @@
 #ifndef GUI_HPP_
     #define GUI_HPP_
     #include <memory>
+    #include <thread>
     #include "SFML/Graphics.hpp"
     #include "Drawable.hpp"
     #include "Network.hpp"
@@ -34,7 +35,8 @@ namespace Zappy
             std::shared_ptr<Network> _networkInfo;
             sf::RenderWindow _window;
             MouseStatus _mouse;
-
+            sf::Clock _framerateClock;
+            std::thread _recieveThread;
             Drawable tile = Drawable("../GUI/assets/map.png");
             std::shared_ptr<Map> _map;
             float tile_scale = 0.5;
@@ -58,12 +60,13 @@ namespace Zappy
             void display_objects();
             void display_trantor();
             void handleWindowEvents();
+            inline void initMap(double sizeX, double sizeY) { this->_map = std::make_shared<Map>(Vector2D(sizeX, sizeY)); };
             inline std::shared_ptr<Map> getMap() const {return this->_map;};
             inline float getTileScale() const {return this->tile_scale;};
             inline std::shared_ptr<Network> getNetwork() const {return this->_networkInfo;};
             inline int getTimeUnit() const { return this->_timeUnit; };
+            inline sf::View &getView() {return this->_view; };
             inline void setTimeUnit(int unit) { this->_timeUnit = unit; };
-
             inline void setPlayerNb(int number) { this->_playerNb = number; };
             inline void setMapSize(sf::Vector2i size) { this->_mapSize = size; };
             inline int getPlayerNb() const { return this->_playerNb; };
