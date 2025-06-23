@@ -11,7 +11,7 @@ void decrease_food_bar(trn_t *trantorian, size_t i)
 {
     if (!trantorian->inventory[FOOD]) {
             write(trantorian->socket, "dead\n", 5);
-            pdi_command(trantorian);
+            pdi_command(i);
             if (my_server()->params.debug_mode)
                 fprintf(stderr, "death of player #%d\n", trantorian->socket);
             remove_client(i);

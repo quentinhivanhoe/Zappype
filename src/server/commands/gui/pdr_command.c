@@ -31,15 +31,23 @@ const char *get_object_name(obj_idx_t object)
 void pdr_command(int player_id, obj_idx_t object)
 {
     const char *obj_name = get_object_name(object);
+    size_t id = 0;
 
+    for (size_t i = 0; i < my_server()->params.max_clients; i++)
+        if (my_server()->info.fds[i].fd == player_id)
+            id = i;
     for (int fd = get_gui(); fd > 0; fd = get_gui())
-        dprintf(fd, "pdr #%d %s\n", player_id, obj_name);
+        dprintf(fd, "pdr #%ld %s\n", id, obj_name);
 }
 
 void pgt_command(int player_id, obj_idx_t object)
 {
     const char *obj_name = get_object_name(object);
+    size_t id = 0;
 
+    for (size_t i = 0; i < my_server()->params.max_clients; i++)
+        if (my_server()->info.fds[i].fd == player_id)
+            id = i;
     for (int fd = get_gui(); fd > 0; fd = get_gui())
-        dprintf(fd, "pgt #%d %s\n", player_id, obj_name);
+        dprintf(fd, "pgt #%ld %s\n", id, obj_name);
 }
