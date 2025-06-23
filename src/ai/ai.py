@@ -200,7 +200,6 @@ class AI:
             except Exception as e:
                 print(f"[ERROR] Envoi: {e}")
                 self.running = False
-
     def parse_response(self):
         for cmd, res in self.cmd_resp_queue:
             cmd = cmd.strip().lower()
@@ -209,6 +208,12 @@ class AI:
             if res == "dead":
                 self.isDead = True
                 print(f"[INFO] Mort détectée suite à la commande : {cmd}")
+                continue
+            if cmd == "incantation" and res == "ko":
+                self.isLeveling == False
+                continue
+            if cmd == "incantation" and res == "Elevation underway":
+                self.isLeveling == True
                 continue
             if cmd.startswith("take") and res == "ko":
                 self.takeFailed = True
@@ -222,7 +227,6 @@ class AI:
                 print(f"[DEBUG] Réponse simple à '{cmd}' => {res}")
             else:
                 print(f"[WARN] Réponse inconnue pour '{cmd}' => {res}")
-
     def wait_all_resp(self):
         self.resArray = []
         idx = 0
@@ -237,20 +241,23 @@ class AI:
                 idx += 1
         self.parse_response()
         self.nbResToWait = 0
+
         if self.debug:
             print("[DEBUG] Commande / Réponse :")
             for cmd, resp in self.cmd_resp_queue:
                 print(f"  > {cmd} => {resp}")
-        # self.handle_failed_take()
+
+        result = self.cmd_resp_queue.copy()
         self.cmd_resp_queue = []
+        self.nbResToWait = 0
+        return result
+
 
     def setAllObjects(self):
-        self.send_command("Set linemate\n")
-        self.send_command("Set deraumere\n")
-        self.send_command("Set sibur\n")
-        self.send_command("Set mendiane\n")
-        self.send_command("Set phiras\n")
-        self.send_command("Set thystame\n")
+        for resource, quantity in self.inventory.items():
+            if quantity > 0:
+                for _ in range(quantity):
+                    self.send_command(f"Set {resource}")
 
     def simulation(self):
         welcome = self.client.read()
@@ -261,33 +268,40 @@ class AI:
         print(f"[INFO] Connecté : {self.client.read().strip()}")
         print(f"[INFO] Message serveur : {self.client.read().strip()}")
         while self.isDead != True:
-            pprint.pprint(self.inventory)
             self.send_command("Inventory\n")
             self.wait_all_resp()
-            if checkElevationCondition(ai.inventory, ai.level) == True:
+            if self.debug == True:
+                pprint.pprint(self.inventory)
+            if checkElevationCondition(ai.inventory, ai.level):
                 print("You can level up!")
-                # self.setAllObjects()
-                # self.send_command("Incantation\n")
-                # self.resArray = []
-                # while len(self.resArray) <= (self.nbResToWait - 1):
-                #     res = self.client.read()
-                #     if res == None:
-                #         raise("Error server")
-                #     self.resArray.append(res)
-                #     print(res.strip())
-                # self.nbResToWait == 0
-                # if res == "Elevation underway\n":
-                #     self.isLeveling = True
-                #     res = self.client.read()
-                #     if res == None:
-                #         raise("Error server")
-                #     if res == "ko\n":
-                #         continue
-                #     self.level = int(res[-2])
-                # else:
-                #     continue
 
-            elif ai.food < 3:
+                self.setAllObjects()
+                self.send_command("Incantation\n")
+                cmds = self.wait_all_resp()
+                if self.debug == True:
+                    print(cmds)
+                last_cmd, last_resp = cmds[-1]
+                last_resp = last_resp.strip()
+                if last_resp == "Elevation underway":
+                    if self.debug:
+                        print("[DEBUG] Élévation en cours...")
+                    while True:
+                        buffer = self.client.read()
+                        if buffer:
+                            buffer = buffer.strip()
+                            if buffer.startswith("Current level"):
+                                try:
+                                    self.level = int(buffer.split()[-1])
+                                    print(f"[INFO] Nouveau niveau atteint : {self.level}")
+                                    break
+                                except ValueError:
+                                    print(f"[WARN] Format inattendu : {buffer}")
+                                    break
+                    continue
+                else:
+                    print("[INFO] Élévation impossible.")
+                    continue
+            elif ai.food < 5:
                 self.send_command("Look\n")
                 time.sleep(ELAPSED_SLEEP)
                 self.wait_all_resp()
@@ -302,7 +316,7 @@ class AI:
                 self.wait_all_resp()
                 if self.takeFailed == True:
                     direction = random.choice(["Left\n", "Right\n"])
-                    print(f"Take {resource} failed.")
+                    print(f"Take food failed.")
                     self.send_command(direction)
                     time.sleep(ELAPSED_SLEEP)
                     self.wait_all_resp()
@@ -317,7 +331,7 @@ class AI:
                         if idx == -1:
                             print(f"[WARN] {resource} not found nearby.")
                             self.takeFailed = True
-                            continue
+                            break
                         respArray = detPath(idx)
                         for res in respArray:
                             self.send_command(res)
