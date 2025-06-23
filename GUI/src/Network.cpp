@@ -122,7 +122,7 @@ void Zappy::Network::askPlayerNb()
 
 void Zappy::Network::askPlayersInfo()
 {
-    if (this->_playerNb < 0) {
+    if (this->_playerNb <= 0) {
         std::cout << "Must have player number set before asking for players info." << std::endl;
         return;
     }
