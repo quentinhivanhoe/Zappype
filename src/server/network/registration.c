@@ -87,8 +87,10 @@ void register_ia_client(int i, char *team_name)
         remove_client(i);
         return;
     }
-    if (my_server()->params.teams[team_index].egg_count)
+    if (my_server()->params.teams[team_index].egg_count) {
+        my_server()->info.trn_count++;
         return process_ia_connection(my_server()->info.clients, i, team_index);
+    }
     dprintf(my_server()->info.fds[i].fd, "No slots for '%s'\n", team_name);
     remove_client(i);
 }

@@ -94,12 +94,13 @@ void handle_client_data(int i)
 void remove_client(int i)
 {
     close(my_server()->info.fds[i].fd);
-    if (my_server()->info.clients[i].type == IA)
+    if (my_server()->info.clients[i].type == IA) {
+        my_server()->info.trn_count--;
         my_server()->info.clients[i].data.ia_client.socket = -1;
+    }
     if (my_server()->info.clients[i].type == GUI)
         my_server()->info.clients[i].data.gui_client = -1;
     my_server()->info.fds[i].fd = -1;
     my_server()->info.fds[i].events = 0;
     my_server()->info.fd_count--;
-    my_server()->info.trn_count--;
 }
