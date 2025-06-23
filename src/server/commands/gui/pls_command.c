@@ -17,8 +17,8 @@ void pls_command(int client_fd, __attribute_maybe_unused__ char **cmd)
         if (clients[i].data.ia_client.socket < 0)
             continue;
         trn = clients[i].data.ia_client;
-        dprintf(client_fd, "pls #%d %ld %ld %d %d %s %d\n",
-            trn.socket, trn.pos.x, trn.pos.y, trn.pos.dir, trn.stat,
+        dprintf(client_fd, "pls #%ld %ld %ld %d %d %s %d\n",
+            i, trn.pos.x, trn.pos.y, trn.pos.dir, trn.stat,
             my_server()->params.teams[trn.team_id].name, trn.lvl);
     }
 }

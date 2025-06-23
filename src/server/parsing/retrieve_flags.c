@@ -39,8 +39,9 @@ void det_params(int argc, char **argv)
     for (int i = 0; i < argc; i++) {
         execute_function(argc, argv, i);
     }
-    my_server()->params.max_clients = my_server()->params.cli_per_team;
-    my_server()->params.max_clients *= my_server()->params.team_nbr;
+    my_server()->params.least_clients = my_server()->params.cli_per_team;
+    my_server()->params.least_clients *= my_server()->params.team_nbr;
+    my_server()->params.max_clients = my_server()->params.least_clients * 5;
 }
 
 void check_params(void)

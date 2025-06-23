@@ -6,8 +6,8 @@
 */
 #include "../../includes/server.h"
 
-void pdi_command(trn_t *trantorian)
+void pdi_command(size_t id)
 {
     for (int fd = get_gui(); fd >= 0; fd = get_gui())
-        dprintf(fd, "pdi #%d\n", trantorian->socket);
+        dprintf(fd, "pdi #%ld\n", id);
 }

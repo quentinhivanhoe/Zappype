@@ -10,16 +10,13 @@
 
 void handle_connect_nbr(trn_t *trantorian, char **args)
 {
-    size_t total_slots = my_server()->params.cli_per_team;
-    size_t used_slots = count_ia_clients(trantorian->team_id);
-    size_t remaining = 0;
+    team_t team = my_server()->params.teams[trantorian->team_id];
 
-    if (total_slots > used_slots)
-        remaining = total_slots - used_slots;
-    dprintf(trantorian->socket, "%lu\n", remaining);
+    dprintf(trantorian->socket, "%lu\n", team.egg_count);
     if (my_server()->params.debug_mode) {
-        dprintf(2, "Connect_nbr: team_id=%lu, used=%lu, remaining=%lu\n",
-                trantorian->team_id, used_slots, remaining);
+        dprintf(STDERR_FILENO, "Team: %s\n", team.name);
+        dprintf(STDERR_FILENO, "\tegg: %ld\n", team.egg_count);
+        dprintf(STDERR_FILENO, "\ttrantorian: %ld\n", team.trn_count);
     }
     (void)args;
 }
