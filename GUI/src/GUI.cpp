@@ -24,7 +24,7 @@ Zappy::GUI::GUI(const std::string &ip, size_t port)
     this->tile.getSprite().setScale(this->getTileScale(), this->getTileScale());
     this->tile.getSprite().setScale(this->getTileScale(), this->getTileScale());
 
-    this->_map = std::make_shared<Map>(Vector2D(10.0, 10.0));
+    this->_map = std::make_shared<Map>(Vector2D(42.0, 42.0));
     for (size_t i = 0; i < this->_map->getTiles().size(); i++){
         for (size_t j = 0; j < this->_map->getTiles()[i].size(); j++){
             this->tile.set_offsets();
@@ -46,16 +46,16 @@ void Zappy::GUI::dragView()
     sf::Vector2f origin;
 
     if (this->_event.type == sf::Event::MouseButtonPressed && this->_event.mouseButton.button == sf::Mouse::Right) {
-        printf("right click\n");
+        // printf("right click\n");
         _dragging = true;
         origin = this->_window.mapPixelToCoords(sf::Mouse::getPosition(this->_window));
     }
     if (this->_event.type == sf::Event::MouseButtonReleased && this->_event.mouseButton.button == sf::Mouse::Right) {
-        printf("right released\n");
+        // printf("right released\n");
         _dragging = false;
     }
     if (this->_event.type == sf::Event::MouseMoved && _dragging) {
-        printf("mouse moving\n");
+        // printf("mouse moving\n");
         sf::Vector2f newWorldPos = this->_window.mapPixelToCoords(sf::Mouse::getPosition(this->_window));
         sf::Vector2f delta = origin - newWorldPos;
         this->_view.move(delta);
@@ -159,12 +159,14 @@ void Zappy::GUI::display_map()
         for (int i = 0; i < this->getMap()->getSize().getX(); i++){
             offset.setX(offset.getX() - tile.getTexture().getSize().x  * this->getTileScale() / (2) + 13);
             offset.setY(offset.getY() + tile.getTexture().getSize().y  * this->getTileScale() / (2) - 40);
-            if (get_dist_to_cam(this->_view, Vector2D(offset.getX(), offset.getY())) > 2000)
+            if (get_dist_to_cam(this->_view, Vector2D(offset.getX(), offset.getY())) > 1000){
+                _map->getTiles()[j][i]->setActivity(false);
                 continue;
+            }
+            _map->getTiles()[j][i]->setActivity(true);
             this->tile.getSprite().setPosition(offset.getX(), offset.getY());
             _map->getTiles()[j][i].get()->setCenter(Vector2D(offset.getX() + (tile.getTexture().getSize().x * this->getTileScale() / 2), offset.getY() + (tile.getTexture().getSize().y * this->getTileScale() / 2)));
             _map->getTiles()[j][i].get()->setPos(offset);
-            // std::cout << "tile pos : " << offset.getX() << " and " << offset.getY() << " / " << _map->getTiles()[j][i].get()->getPos().getX() << " and " << _map->getTiles()[j][i].get()->getPos().getY() << " center " <<  _map->getTiles()[j][i].get()->getCenter().getX() << " "<< _map->getTiles()[j][i].get()->getCenter().getY() << std::endl;
             this->_window.draw(this->tile.getSprite());
         }
         offset = Vector2D(
@@ -182,7 +184,7 @@ void Zappy::GUI::display_objects()
 {
     for (size_t i = 0; i < this->_map->getTiles().size(); i++){
         for (size_t j = 0; j < this->_map->getTiles()[i].size(); j++){
-            if (get_dist_to_cam(this->_view, this->_map->getTiles()[i][j]->getPos()) > 2000)
+            if (this->_map->getTiles()[i][j]->getActivity() == false)
                 continue;
             for (size_t k = 0; k < 8; k++){
                 if (this->_map->getTiles()[i][j].get()->getItems()[k] > 0){

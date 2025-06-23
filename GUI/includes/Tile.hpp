@@ -35,6 +35,7 @@ namespace Zappy
         Vector2D _center;
         sf::Vector2i _index;
         std::shared_ptr<TileButtons> _innerButton = nullptr;
+        bool _activity = false;
     public:
         Tile(size_t id = -1);
         ~Tile();
@@ -48,6 +49,8 @@ namespace Zappy
         inline void setPos(Vector2D pos) {this->_pos = pos;};
         inline Vector2D getCenter() const {return this->_center;};
         inline void setCenter(Vector2D Center) {this->_center = Center;};
+        inline bool getActivity() const {return this->_activity;};
+        inline void setActivity(bool activity) {this->_activity = activity;};
         inline void setIndex(sf::Vector2i index) { this->_index = index; };
         inline sf::Vector2i getIndex() const { return this->_index; };
     }; 
