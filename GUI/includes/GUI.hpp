@@ -10,6 +10,7 @@
     #include <memory>
     #include <thread>
     #include "SFML/Graphics.hpp"
+    #include "MouseStatus.hpp"
     #include "Drawable.hpp"
     #include "Network.hpp"
     #include "Items.hpp"
@@ -34,6 +35,7 @@ namespace Zappy
             std::vector<std::string> spritePaths;
             std::shared_ptr<Network> _networkInfo;
             sf::RenderWindow _window;
+            sf::View _view;
             MouseStatus _mouse;
             sf::Clock _framerateClock;
             std::thread _recieveThread;
@@ -42,11 +44,11 @@ namespace Zappy
             float tile_scale = 0.5;
             Drawable sky = Drawable("../GUI/assets/sky.jpg");
             sf::Event _event;
-            sf::View _view;
+            // sf::View _view;
             int _playerNb = 0;
             sf::Vector2i _mapSize;
             int _timeUnit = 1;
-
+            bool _dragging;
             std::shared_ptr<TileInfo> _tileInfo;
             std::shared_ptr<TrantorianInfo> _trantorianInfo;
         public:
@@ -60,6 +62,10 @@ namespace Zappy
             void display_objects();
             void display_trantor();
             void handleWindowEvents();
+            void dragView();
+            void zoomScroll();
+            void touchView();
+            float get_dist_to_cam(sf::View view, Vector2D pos);
             inline void initMap(double sizeX, double sizeY) { this->_map = std::make_shared<Map>(Vector2D(sizeX, sizeY)); };
             inline std::shared_ptr<Map> getMap() const {return this->_map;};
             inline float getTileScale() const {return this->tile_scale;};
