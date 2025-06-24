@@ -259,6 +259,13 @@ void Zappy::GUI::display_map()
         for (int i = 0; i < this->getMap()->getSize().getX(); i++){
             if (get_dist_to_cam(this->_view, this->_map->getTiles()[j][i]->getPos()) < 2000)
                 this->_window.draw(_map->getTiles()[j][i]->getTile()->getSprite());
+            for (size_t k = 0; k < 8; k++){
+                if (this->_map->getTiles()[j][i].get()->getItems()[k] > 0){
+                    this->_items[k]->getSprite()->getSprite().setPosition(this->_map->getTiles()[j][i]->getCenter().getX() + this->_map->getTiles()[j][i]->getOffsetsList()[k].getX(), 
+                    this->_map->getTiles()[j][i]->getCenter().getY() + this->_map->getTiles()[j][i]->getOffsetsList()[k].getY() + 70);
+                    this->_window.draw(this->_items[k]->getSprite()->getSprite());
+                }          
+            }
         }
 
     }
@@ -271,20 +278,6 @@ void Zappy::GUI::display_sky()
 
 void Zappy::GUI::display_objects()
 {
-    return;
-    for (size_t i = 0; i < this->_map->getTiles().size(); i++){
-        for (size_t j = 0; j < this->_map->getTiles()[i].size(); j++){
-            if (this->_map->getTiles()[i][j]->getActivity() == false)
-                continue;
-            for (size_t k = 0; k < 8; k++){
-                if (this->_map->getTiles()[i][j].get()->getItems()[k] > 0){
-                    this->_items[k]->getSprite()->getSprite().setPosition(this->_map->getTiles()[i][j]->getCenter().getX() + this->_map->getTiles()[i][j]->getOffsetsList()[k].getX(), 
-                    this->_map->getTiles()[i][j]->getCenter().getY() + this->_map->getTiles()[i][j]->getOffsetsList()[k].getY());
-                    this->_window.draw(this->_items[k]->getSprite()->getSprite());
-                }          
-            }
-        }
-    }
 }
 
 void Zappy::GUI::display_trantor()
