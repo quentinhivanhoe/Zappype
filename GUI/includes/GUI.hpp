@@ -8,6 +8,7 @@
 #ifndef GUI_HPP_
     #define GUI_HPP_
     #include <memory>
+    #include <thread>
     #include "SFML/Graphics.hpp"
     #include "MouseStatus.hpp"
     #include "Drawable.hpp"
@@ -39,10 +40,11 @@ namespace Zappy
             sf::VertexArray background;
             sf::Clock _clock = sf::Clock();
             float time = 6.0f;
-
             Drawable tile = Drawable("../GUI/assets/map.png");
             Drawable sky = Drawable("../GUI/assets/sky.jpg");
             Drawable star = Drawable("../GUI/assets/star.jpg");
+            sf::Clock _framerateClock;
+            std::thread _recieveThread;
             std::shared_ptr<Map> _map;
             float tile_scale = 0.5;
             sf::Event _event;
@@ -58,6 +60,7 @@ namespace Zappy
             void init();
             void initPaths();
             void run();
+            void set_map();
             void display_map();
             void display_sky();
             void display_objects();
@@ -70,10 +73,12 @@ namespace Zappy
             sf::Color lerpColor(const sf::Color &a, sf::Color &b, float t);
             void updateSky();
             float get_dist_to_cam(sf::View view, Vector2D pos);
+            inline void initMap(double sizeX, double sizeY) { this->_map = std::make_shared<Map>(Vector2D(sizeX, sizeY)); };
             inline std::shared_ptr<Map> getMap() const {return this->_map;};
             inline float getTileScale() const {return this->tile_scale;};
             inline std::shared_ptr<Network> getNetwork() const {return this->_networkInfo;};
             inline int getTimeUnit() const { return this->_timeUnit; };
+            inline sf::View &getView() {return this->_view; };
             inline void setTimeUnit(int unit) { this->_timeUnit = unit; };
             inline void setPlayerNb(int number) { this->_playerNb = number; };
             inline void setMapSize(sf::Vector2i size) { this->_mapSize = size; };

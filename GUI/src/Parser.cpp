@@ -36,8 +36,8 @@ void Zappy::Parser::manageResponse(std::vector<std::string> args, [[maybe_unused
 {
     std::map<std::string, void (Zappy::Parser:: *)(std::vector<std::string>, Network *)> funcTab = {
         {"msz", &Zappy::Parser::manageMSZ},
-        {"spi", &Zappy::Parser::manageSPI},
-        {"spn", &Zappy::Parser::manageSPN},
+        {"pls", &Zappy::Parser::manageSPI},
+        {"pnu", &Zappy::Parser::manageSPN},
         {"bct", &Zappy::Parser::manageBCT},
         {"ppo", &Zappy::Parser::managePPO},
         {"plv", &Zappy::Parser::managePLV},
@@ -181,11 +181,15 @@ void Zappy::Parser::manageSPI([[maybe_unused]] std::vector<std::string> args, [[
         std::cout << "Index must be a # followed by a positive number." << std::endl;
         return;
     }
-    for (size_t i = 2; i < args.size(); i++) {
+    for (size_t i = 2; i < 5; i++) {
         if (!Parser::isNum(args[i])) {
             std::cout << "Args must be positive numbers." << std::endl;
             return;
         }
+    }
+    if (!Parser::isNum(args[7])) {
+        std::cout << "Args must be positive numbers." << std::endl;
+        return;
     }
     std::shared_ptr<Trantorian> targetTrantorian = network->getGui()->getMap()->getTrantorianByID(std::stoi(args[1].substr(1)));
     if (!targetTrantorian)
@@ -220,7 +224,10 @@ void Zappy::Parser::managePPO(std::vector<std::string> args, [[maybe_unused]] Za
         return;
     targetTrantorian->setTilePos(sf::Vector2i(std::stoi(args[2]), std::stoi(args[3])));
     targetTrantorian->setDirection(std::stoi(args[4]));
+    network->getGui()->getTileInfo()->updateTrantorButtonsTab();
     Parser::showArgs(args);
+    std::cout << targetTrantorian->getTilePos().x << std::endl;
+    std::cout << targetTrantorian->getTilePos().y << std::endl;
 }
 
 void Zappy::Parser::managePLV(std::vector<std::string> args, [[maybe_unused]] Zappy::Network *network)
@@ -319,6 +326,7 @@ void Zappy::Parser::managePNW(std::vector<std::string> args, [[maybe_unused]] Za
     newTrantorian->setLevel(std::stoi(args[5]));
     newTrantorian->setTeamName(args[6]);
     network->getGui()->getMap()->addTrantorian(newTrantorian);
+    network->getGui()->getTileInfo()->updateTrantorButtonsTab();
     Parser::showArgs(args);
 }
 
