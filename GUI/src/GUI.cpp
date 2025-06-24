@@ -99,7 +99,7 @@ void Zappy::GUI::handleWindowEvents(  )
             this->_tileInfo->setTile(nullptr);
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
-            this->_tileInfo->setTile(this->_map->getTiles()[20][20]);
+            this->_tileInfo->setTile(this->_map->getTiles()[0][0]);
             this->_tileInfo->updateTrantorButtonsTab();
         }
     }
