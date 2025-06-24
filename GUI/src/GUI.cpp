@@ -25,7 +25,12 @@ Zappy::GUI::GUI(const std::string &ip, size_t port)
             this->_map->getTiles()[i][j].get()->setOffsetsList(this->_map->getTiles()[j][i]->getTile()->get_offsets());
         }
     }
-    
+    this->background = sf::VertexArray(sf::Quads, 4);
+    background[0].position = sf::Vector2f(0, 0);
+    background[1].position = sf::Vector2f(this->_window.getSize().x, 0);
+    background[2].position = sf::Vector2f(this->_window.getSize().x, this->_window.getSize().y);
+    background[3].position = sf::Vector2f(0, this->_window.getSize().y);
+
     this->sky.getSprite().setPosition(0, 0);
     this->init();
     this->run();
@@ -34,6 +39,56 @@ Zappy::GUI::GUI(const std::string &ip, size_t port)
 
 Zappy::GUI::~GUI()
 {
+}
+
+sf::Color Zappy::GUI::lerpColor(const sf::Color &a, sf::Color &b, float t)
+{
+    return sf::Color(
+        a.r + t * (b.r - a.r),
+        a.g + t * (b.g - a.g),
+        a.b + t * (b.b - a.b)
+    );
+}
+
+void Zappy::GUI::updateSky()
+{
+    sf::Color dawnColor(150, 180, 255);
+    sf::Color noonColor(135, 206, 235);
+    sf::Color duskColor(255, 100, 50);
+    sf::Color nightColor(10, 10, 30);
+    sf::Color dawnBottom(100, 100, 180);
+    sf::Color noonBottom(200, 220, 255);
+    sf::Color duskBottom(255, 150, 80);
+    sf::Color nightBottom(10, 20, 40);
+    sf::Color Bottom;
+    sf::Color Top;
+
+    float timeElapsed = this->_clock.getElapsedTime().asSeconds();
+    this->time += timeElapsed * 0.01f;
+    if (this->time > 24.f) {
+        this->time -= 24;
+        this->_clock.restart();
+    }
+    if (time < 6.f) {
+        Top = lerpColor(nightColor, dawnColor, time / 6.f);
+        Bottom = lerpColor(nightBottom, dawnBottom, time / 6.f);
+    } else if (time < 12.f) {
+        Top = lerpColor(dawnColor, noonColor, (time - 6.f) / 6.f);
+        Bottom = lerpColor(dawnBottom, noonBottom, (time - 6.f) / 6.f);
+    } else if (time < 18.f) {
+        Top = lerpColor(noonColor, duskColor, (time - 12.f) / 6.f);
+        Bottom = lerpColor(noonColor, duskBottom, (time - 12.f)/ 6.f);
+    } else if (time < 20.f) {
+        Top = lerpColor(duskColor, nightColor, (time - 18.f) / 2.f);
+        Bottom = lerpColor(duskBottom, nightBottom, (time - 18.f) / 2.f);
+    } else {
+        Top = lerpColor(nightColor, dawnColor, (time - 20.f) / 4.f);
+        Bottom = lerpColor(nightBottom, dawnBottom, (time - 20.F) / 4.f);
+    }
+    background[0].color = Top;
+    background[1].color = Top;
+    background[2].color = Bottom;
+    background[3].color = Bottom;
 }
 
 void Zappy::GUI::dragView()
@@ -160,7 +215,9 @@ void Zappy::GUI::run()
         this->handleWindowEvents();
         this->_window.clear(sf::Color::Black);
         this->_window.setView(this->_window.getDefaultView());
-        this->display_sky();
+        this->updateSky();
+        this->_window.draw(this->background);
+        // this->display_sky();
         this->_window.setView(this->_view);
         this->display_map();
         this->display_objects();
