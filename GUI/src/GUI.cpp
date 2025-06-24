@@ -236,7 +236,7 @@ void Zappy::GUI::display_trantor()
     for (auto team: this->_map->getTeams()) {
         for (auto trantorian: team.second->getTrantorians()) {
             //to be optimized
-            trantorian->getSprite()->getSprite().setPosition(this->_map->getTiles()[trantorian->getTilePos().x][trantorian->getTilePos().y]->getCenter().getX(), this->_map->getTiles()[trantorian->getTilePos().x][trantorian->getTilePos().y]->getCenter().getY());
+            trantorian->getSprite()->getSprite().setPosition(this->_map->getTiles()[trantorian->getTilePos().x][trantorian->getTilePos().y]->getCenter().getX(), this->_map->getTiles()[trantorian->getTilePos().x][trantorian->getTilePos().y]->getCenter().getY() + 70);
             this->_window.draw(trantorian->getSprite()->getSprite());
         }
     }
