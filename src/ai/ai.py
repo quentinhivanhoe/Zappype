@@ -12,7 +12,7 @@ import time
 import pprint
 import random
 
-ELAPSED_SLEEP = 0.25
+ELAPSED_SLEEP = 0
 INVENTORY_ITEM = 6
 ai = None
 
@@ -128,7 +128,7 @@ class Client:
             while True:
                 chunk = self.clientSocket.recv(bufferSize).decode()
                 if not chunk:
-                    break
+                    return None
                 data += chunk
                 if '\n' in chunk:
                     break
@@ -207,17 +207,18 @@ class AI:
 
             if res == "dead":
                 self.isDead = True
+                # exit(84)
                 print(f"[INFO] Mort détectée suite à la commande : {cmd}")
-                continue
-            if cmd == "incantation" and res == "ko":
+                break
+            elif cmd == "incantation" and res == "ko":
                 self.isLeveling == False
-                continue
-            if cmd == "incantation" and res == "Elevation underway":
+                break
+            elif cmd == "incantation" and res == "Elevation underway":
                 self.isLeveling == True
-                continue
-            if cmd.startswith("take") and res == "ko":
+                break
+            elif cmd.startswith("take") and res == "ko":
                 self.takeFailed = True
-            if cmd == "inventory":
+            elif cmd == "inventory":
                 fillInventory(res)
                 print(f"[DEBUG] Inventaire mis à jour après : {cmd}")
             elif cmd == "look":
@@ -276,11 +277,12 @@ class AI:
                 print("You can level up!")
 
                 self.setAllObjects()
+                self.wait_all_resp()
                 self.send_command("Incantation\n")
                 cmds = self.wait_all_resp()
                 if self.debug == True:
                     print(cmds)
-                last_cmd, last_resp = cmds[-1]
+                _ , last_resp = cmds[-1]
                 last_resp = last_resp.strip()
                 if last_resp == "Elevation underway":
                     if self.debug:
@@ -301,7 +303,7 @@ class AI:
                 else:
                     print("[INFO] Élévation impossible.")
                     continue
-            elif ai.food < 5:
+            elif ai.food < 3:
                 self.send_command("Look\n")
                 time.sleep(ELAPSED_SLEEP)
                 self.wait_all_resp()
@@ -315,7 +317,7 @@ class AI:
                 time.sleep(ELAPSED_SLEEP)
                 self.wait_all_resp()
                 if self.takeFailed == True:
-                    direction = random.choice(["Left\n", "Right\n"])
+                    direction = random.choice(["Left\n", "Right\n", "Forward\n", "Forward\n"])
                     print(f"Take food failed.")
                     self.send_command(direction)
                     time.sleep(ELAPSED_SLEEP)
@@ -323,6 +325,7 @@ class AI:
                     self.takeFailed = False
             else:
                 for resource, required in elevationCondition[str(ai.level)]["ressources"].items():
+                    print(f"Search {resource}")
                     if self.inventory[resource] < required:
                         self.send_command("Look\n")
                         time.sleep(ELAPSED_SLEEP)
@@ -331,7 +334,7 @@ class AI:
                         if idx == -1:
                             print(f"[WARN] {resource} not found nearby.")
                             self.takeFailed = True
-                            break
+                            continue
                         respArray = detPath(idx)
                         for res in respArray:
                             self.send_command(res)
@@ -369,6 +372,8 @@ def fillInventory(inventoryString):
 
 def checkElevationCondition(inventory, level):
     required = elevationCondition[str(level)]["ressources"]
+    if ai.debug:
+        print(f"Level {level}")
     for res, qty in required.items():
         if inventory.get(res, 0) < qty:
             return False
@@ -454,6 +459,7 @@ def process_ai():
     ai.client.processConnection()
     ai.simulation()
     ai.client.closeConnection()
+    print("You are dead\n")
 
 # example = "player linemate, linemate player player, food deraumere , mendiane phiras,food linemate player player, deraumere , mendiane phiras, sibur"
 # tile_tab = formatLook(example)
