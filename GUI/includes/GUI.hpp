@@ -36,13 +36,16 @@ namespace Zappy
             sf::RenderWindow _window;
             sf::View _view;
             MouseStatus _mouse;
+            sf::VertexArray background;
+            sf::Clock _clock = sf::Clock();
+            float time = 6.0f;
 
             Drawable tile = Drawable("../GUI/assets/map.png");
+            Drawable sky = Drawable("../GUI/assets/sky.jpg");
+            Drawable star = Drawable("../GUI/assets/star.jpg");
             std::shared_ptr<Map> _map;
             float tile_scale = 0.5;
-            Drawable sky = Drawable("../GUI/assets/sky.jpg");
             sf::Event _event;
-            // sf::View _view;
             int _playerNb = 0;
             sf::Vector2i _mapSize;
             int _timeUnit = 1;
@@ -63,6 +66,9 @@ namespace Zappy
             void dragView();
             void zoomScroll();
             void touchView();
+            void drawRandom();
+            sf::Color lerpColor(const sf::Color &a, sf::Color &b, float t);
+            void updateSky();
             float get_dist_to_cam(sf::View view, Vector2D pos);
             inline std::shared_ptr<Map> getMap() const {return this->_map;};
             inline float getTileScale() const {return this->tile_scale;};
