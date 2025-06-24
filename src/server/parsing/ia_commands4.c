@@ -58,17 +58,17 @@ void handle_incantation(trn_t *trantorian, char **args)
     const uint8_t *req;
 
     if (lvl < 1 || lvl > 7) {
-        dprintf(trantorian->socket, "ko\n");
+        dprintf(trantorian->socket, "ko1\n");
         return;
     }
     req = elevation_tab[lvl - 1];
     if (!check_resources(tile, req) || count_trantorians_same_level(lvl) < req[0]) {
-        dprintf(trantorian->socket, "ko\n");
+        dprintf(trantorian->socket, "ko2\n");
         return;
     }
     dprintf(trantorian->socket, "Elevation underway\n");
     if (!check_resources(tile, req) || count_trantorians_same_level(lvl) < req[0]) {
-        dprintf(trantorian->socket, "ko\n");
+        dprintf(trantorian->socket, "ko3\n");
         return;
     }
     consume_resources(tile, req);
