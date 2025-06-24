@@ -99,7 +99,7 @@ void Zappy::GUI::handleWindowEvents(  )
             this->_tileInfo->setTile(nullptr);
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
-            this->_tileInfo->setTile(this->_map->getTiles()[1][1]);
+            this->_tileInfo->setTile(this->_map->getTiles()[20][20]);
             this->_tileInfo->updateTrantorButtonsTab();
         }
     }
@@ -180,7 +180,7 @@ void Zappy::GUI::set_map()
     Vector2D size = Vector2D(500, 500);
     for (size_t j = 0; j < this->getMap()->getSize().getY(); j++){
         for (int i = 0; i < this->getMap()->getSize().getX(); i++){
-            Vector2D size = Vector2D(_map->getTiles()[j][i]->getTile()->getTexture().getSize().x * this->getTileScale() / (2) - 13, _map->getTiles()[j][i]->getTile()->getTexture().getSize().y  * this->getTileScale() / (2) - 40);
+            Vector2D size = Vector2D(_map->getTiles()[j][i]->getTile()->getTexture().getSize().x * this->getTileScale() / (2) - 5, _map->getTiles()[j][i]->getTile()->getTexture().getSize().y  * this->getTileScale() / (2) - 85);
             offset.setX(offset.getX() - size.getX());
             offset.setY(offset.getY() + size.getY());
 
@@ -191,8 +191,8 @@ void Zappy::GUI::set_map()
             _map->getTiles()[j][i].get()->setPos(offset);
         }
         offset = Vector2D(
-        (1920/2 + (size.getX() - 260) * (j + 1)),
-        (0 + (size.getY() - 360) * (j + 1)));
+        (1920/2 + (size.getX() - 310) * (j + 1)),
+        (0 + (size.getY() - 390) * (j + 1)));
     }
 }
 
@@ -200,7 +200,8 @@ void Zappy::GUI::display_map()
 {
     for (int j = 0; j < this->getMap()->getSize().getY(); j++){
         for (int i = 0; i < this->getMap()->getSize().getX(); i++){
-            this->_window.draw(_map->getTiles()[j][i]->getTile()->getSprite());
+            if (get_dist_to_cam(this->_view, this->_map->getTiles()[j][i]->getPos()) < 2000)
+                this->_window.draw(_map->getTiles()[j][i]->getTile()->getSprite());
         }
 
     }

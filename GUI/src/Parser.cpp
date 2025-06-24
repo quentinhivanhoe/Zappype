@@ -226,6 +226,8 @@ void Zappy::Parser::managePPO(std::vector<std::string> args, [[maybe_unused]] Za
     targetTrantorian->setDirection(std::stoi(args[4]));
     network->getGui()->getTileInfo()->updateTrantorButtonsTab();
     Parser::showArgs(args);
+    std::cout << targetTrantorian->getTilePos().x << std::endl;
+    std::cout << targetTrantorian->getTilePos().y << std::endl;
 }
 
 void Zappy::Parser::managePLV(std::vector<std::string> args, [[maybe_unused]] Zappy::Network *network)
