@@ -48,35 +48,60 @@ static void consume_resources(tile_t *tile, const uint8_t *req)
         tile->content[i] -= req[i];
 }
 
-void handle_incantation(trn_t *trantorian, char **args)
+static bool can_incantate(trn_t *trantorian, const uint8_t *req, tile_t *tile)
 {
-    int lvl = trantorian->lvl;
-    uint64_t x = trantorian->pos.x;
-    uint64_t y = trantorian->pos.y;
-    uint64_t width = my_server()->params.width;
-    tile_t *tile = &my_server()->map[y * width + x];
-    const uint8_t *req;
+    if (!check_resources(tile, req))
+        return false;
+    if (count_trantorians_same_level(trantorian->lvl) < req[0])
+        return false;
+    return true;
+}
 
-    if (lvl < 1 || lvl > 7) {
-        dprintf(trantorian->socket, "ko1\n");
-        return;
-    }
-    req = elevation_tab[lvl - 1];
-    if (!check_resources(tile, req) || count_trantorians_same_level(lvl) < req[0]) {
-        dprintf(trantorian->socket, "ko2\n");
-        return;
-    }
-    dprintf(trantorian->socket, "Elevation underway\n");
-    if (!check_resources(tile, req) || count_trantorians_same_level(lvl) < req[0]) {
-        dprintf(trantorian->socket, "ko3\n");
-        return;
-    }
+void complete_incantation(trn_t *trantorian, const uint8_t *req, tile_t *tile)
+{
     consume_resources(tile, req);
     trantorian->lvl++;
     dprintf(trantorian->socket, "Current level: %d\n", trantorian->lvl);
     if (my_server()->params.debug_mode) {
-        dprintf(2, "**********Incantation complète : (%lu, %lu) -> level %d**********\n",
-                x, y, trantorian->lvl);
+        dprintf(2, "Incantation complete : (%lu, %lu) -> level %d\n",
+                trantorian->pos.x, trantorian->pos.y, trantorian->lvl);
     }
+}
+
+static bool is_valid_level(int lvl)
+{
+    return lvl >= 1 && lvl <= 7;
+}
+
+static tile_t *get_trantorian_tile(trn_t *trantorian)
+{
+    uint64_t x = trantorian->pos.x;
+    uint64_t y = trantorian->pos.y;
+    uint64_t width = my_server()->params.width;
+
+    return &my_server()->map[y * width + x];
+}
+
+void handle_incantation(trn_t *trantorian, char **args)
+{
+    const uint8_t *req;
+    tile_t *tile;
+
+    if (!is_valid_level(trantorian->lvl)) {
+        dprintf(trantorian->socket, "ko\n");
+        return;
+    }
+    req = elevation_tab[trantorian->lvl - 1];
+    tile = get_trantorian_tile(trantorian);
+    if (!can_incantate(trantorian, req, tile)) {
+        dprintf(trantorian->socket, "ko\n");
+        return;
+    }
+    dprintf(trantorian->socket, "Elevation underway\n");
+    if (!can_incantate(trantorian, req, tile)) {
+        dprintf(trantorian->socket, "ko\n");
+        return;
+    }
+    complete_incantation(trantorian, req, tile);
     (void)args;
 }

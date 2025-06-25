@@ -19,7 +19,6 @@ trn_t init_egg(size_t team_id)
     egg.team_id = team_id;
     egg.lvl = 1;
     egg.inventory[FOOD] = 10;
-    egg.inventory[LINEMATE] = 1;
     return egg;
 }
 

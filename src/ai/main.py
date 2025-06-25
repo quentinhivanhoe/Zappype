@@ -18,7 +18,7 @@ import time
 import pprint
 import random
 
-ELAPSED_SLEEP = 0.25
+ELAPSED_SLEEP = 0.1
 INVENTORY_ITEM = 6
 ai = None
 
@@ -229,7 +229,7 @@ class AI:
             elif cmd == "look":
                 self.lookInventory = formatLook(res)
                 print(f"[DEBUG] Vision mise à jour après : {cmd}")
-            elif res in ["ok", "ko"]:
+            elif res in ["ok", "koooo"]:
                 print(f"[DEBUG] Réponse simple à '{cmd}' => {res}")
             else:
                 print(f"[WARN] Réponse inconnue pour '{cmd}' => {res}")
@@ -264,6 +264,7 @@ class AI:
             if quantity > 0:
                 for _ in range(quantity):
                     self.send_command(f"Set {resource}")
+                    # self.wait_all_resp()
 
     def simulation(self):
         welcome = self.client.read()
