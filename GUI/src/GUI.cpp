@@ -257,15 +257,12 @@ void Zappy::GUI::display_map()
 {
     for (int j = 0; j < this->getMap()->getSize().getY(); j++){
         for (int i = 0; i < this->getMap()->getSize().getX(); i++){
-            if (get_dist_to_cam(this->_view, this->_map->getTiles()[j][i]->getPos()) < 2000)
+            if (get_dist_to_cam(this->_view, this->_map->getTiles()[j][i]->getPos()) < 2000){
                 this->_window.draw(_map->getTiles()[j][i]->getTile()->getSprite());
-            for (size_t k = 0; k < 8; k++){
-                if (this->_map->getTiles()[j][i].get()->getItems()[k] > 0){
-                    this->_items[k]->getSprite()->getSprite().setPosition(this->_map->getTiles()[j][i]->getCenter().getX() + this->_map->getTiles()[j][i]->getOffsetsList()[k].getX(), 
-                    this->_map->getTiles()[j][i]->getCenter().getY() + this->_map->getTiles()[j][i]->getOffsetsList()[k].getY() + 70);
-                    this->_window.draw(this->_items[k]->getSprite()->getSprite());
-                }          
+                this->_map->getTiles()[j][i]->setActivity(true);
+                continue;
             }
+            this->_map->getTiles()[j][i]->setActivity(false);
         }
 
     }
@@ -278,6 +275,19 @@ void Zappy::GUI::display_sky()
 
 void Zappy::GUI::display_objects()
 {
+    for (int j = 0; j < this->getMap()->getSize().getY(); j++){
+        for (int i = 0; i < this->getMap()->getSize().getX(); i++){
+            if (this->_map->getTiles()[j][i]->getActivity()){
+                for (size_t k = 0; k < 8; k++){
+                    if (this->_map->getTiles()[j][i].get()->getItems()[k] > 0){
+                        this->_items[k]->getSprite()->getSprite().setPosition(this->_map->getTiles()[j][i]->getCenter().getX() + this->_map->getTiles()[j][i]->getOffsetsList()[k].getX(), 
+                        this->_map->getTiles()[j][i]->getCenter().getY() + this->_map->getTiles()[j][i]->getOffsetsList()[k].getY() + 70);
+                        this->_window.draw(this->_items[k]->getSprite()->getSprite());
+                    }
+                }
+            }
+        }
+    }
 }
 
 void Zappy::GUI::display_trantor()
