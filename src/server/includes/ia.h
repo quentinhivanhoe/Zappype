@@ -20,6 +20,7 @@ typedef struct ia_cmd_s {
 } ia_cmd_t;
 
 void dispatch_ia_command(int client_index, const char *input);
+int get_object_index(const char *name);
 
 void handle_forward(trn_t *trantorian, char **args);
 void handle_right(trn_t *trantorian, char **args);

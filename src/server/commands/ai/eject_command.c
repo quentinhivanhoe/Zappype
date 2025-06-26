@@ -2,12 +2,23 @@
 ** EPITECH PROJECT, 2025
 ** Zappype
 ** File description:
-** ia_commands5
+** eject_command
 */
 
 #include "../includes/server.h"
 #include "../includes/ia.h"
 
+/**
+ * @brief Moves a trantorian one tile forward based on a given direction.
+ *
+ * The movement is performed on a toroidal (wrapped) map. If the trantorian
+ * moves out of bounds, it wraps around to the opposite side.
+ *
+ * @param trantorian Pointer to the trantorian to move.
+ * @param dir The direction in which to move (NORTH, SOUTH, EAST, WEST).
+ * @param width The width of the map.
+ * @param height The height of the map.
+ */
 void move_player(trn_t *trantorian, int dir, int width, int height)
 {
     if (dir == NORTH)
@@ -20,6 +31,19 @@ void move_player(trn_t *trantorian, int dir, int width, int height)
         trantorian->pos.x = (trantorian->pos.x + width - 1) % width;
 }
 
+/**
+ * @brief Handles the `Eject` command for a trantorian.
+ *
+ * Ejects all other trantorians located on the same tile as the current
+ * trantorian. Each affected player is moved one tile in the direction
+ * of the ejecting player and receives an `eject: <dir>` message.
+ *
+ * If at least one player was ejected, the current trantorian receives `ok`,
+ * otherwise `ko` is sent.
+ *
+ * @param trantorian Pointer to the trantorian issuing the command.
+ * @param args Unused command arguments.
+ */
 void handle_eject(trn_t *trantorian, __attribute_maybe_unused__ char **args)
 {
     bool has_ejected = false;

@@ -2,11 +2,23 @@
 ** EPITECH PROJECT, 2025
 ** Zappype
 ** File description:
-** ia_commands
+** forward_command
 */
 
 #include "../includes/server.h"
 #include "../includes/ia.h"
+
+/**
+ * @brief Computes the new coordinates based on the trantorian's direction.
+ *
+ * This function updates the given coordinates pointer based on the direction
+ * of the trantorian, applying map wrapping if necessary.
+ *
+ * @param trantorian Pointer to the trantorian structure.
+ * @param x Pointer to the X coordinate to update.
+ * @param y Pointer to the Y coordinate to update.
+ * @return true if direction is valid and update is successful, false otherwise
+ */
 
 static bool compute_new_coords(trn_t *trantorian, uint64_t *x, uint64_t *y)
 {
@@ -32,6 +44,16 @@ static bool compute_new_coords(trn_t *trantorian, uint64_t *x, uint64_t *y)
     return true;
 }
 
+/**
+ * @brief Computes and applies the trantorian's forward movement.
+ *
+ * This function calculates the new position of the trantorian one tile ahead
+ * in the direction it's currently facing. It also sends a position update
+ * (ppo) to any connected GUI clients.
+ *
+ * @param trn Pointer to the trantorian structure.
+ * @return true if the move was successful, false otherwise.
+ */
 static bool compute_forward_position(trn_t *trn)
 {
     uint64_t new_x = trn->pos.x;
@@ -53,6 +75,16 @@ static bool compute_forward_position(trn_t *trn)
     return true;
 }
 
+/**
+ * @brief Handles the "Forward" command from a trantorian.
+ *
+ * This function moves the trantorian one tile forward based on its direction,
+ * wrapping around the map edges if necessary. If successful, it replies "ok"
+ * to the client. If direction is invalid, it sends an error.
+ *
+ * @param trantorian Pointer to the trantorian structure.
+ * @param args Unused command arguments.
+ */
 void handle_forward(trn_t *trantorian, __attribute_maybe_unused__ char **args)
 {
     if (!compute_forward_position(trantorian)) {
@@ -64,46 +96,4 @@ void handle_forward(trn_t *trantorian, __attribute_maybe_unused__ char **args)
         dprintf(2, "Forward: new position = (%lu, %lu) direction %d\n",
                 trantorian->pos.x, trantorian->pos.y, trantorian->pos.dir);
     }
-}
-
-void handle_right(trn_t *trantorian, char **args)
-{
-    int test;
-
-    if (trantorian->pos.dir == 1)
-        test = 2;
-    if (trantorian->pos.dir == 2)
-        test = 3;
-    if (trantorian->pos.dir == 3)
-        test = 4;
-    if (trantorian->pos.dir == 4)
-        test = 1;
-    dprintf(trantorian->socket, "ok\n");
-    if (my_server()->params.debug_mode) {
-        printf("Right: Old direction: %d new direction %d\n",
-            trantorian->pos.dir, test);
-    }
-    trantorian->pos.dir = test;
-    (void)args;
-}
-
-void handle_left(trn_t *trantorian, char **args)
-{
-    int test;
-
-    if (trantorian->pos.dir == 1)
-        test = 4;
-    if (trantorian->pos.dir == 4)
-        test = 3;
-    if (trantorian->pos.dir == 3)
-        test = 2;
-    if (trantorian->pos.dir == 2)
-        test = 1;
-    dprintf(trantorian->socket, "ok\n");
-    if (my_server()->params.debug_mode) {
-        printf("Left: Old direction: %d new direction %d\n",
-            trantorian->pos.dir, test);
-    }
-    trantorian->pos.dir = test;
-    (void)args;
 }
