@@ -46,10 +46,8 @@ void run_req(trn_t *trn)
 
 void parse_req(void)
 {
-    client_t *clients = my_server()->info.clients;
-
-    for (size_t i = 1; i < my_server()->params.max_clients; i++) {
-        if (clients[i].type == IA)
-            run_req(&clients[i].data.ia_client);
+    for (client_t *cli = my_server()->info.clients; cli; cli = cli->next) {
+        if (cli->type == IA)
+            run_req(&cli->data.ia_client);
     }
 }

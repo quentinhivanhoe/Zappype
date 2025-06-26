@@ -8,6 +8,12 @@
 
 void pdi_command(size_t id)
 {
-    for (int fd = get_gui(); fd >= 0; fd = get_gui())
-        dprintf(fd, "pdi #%ld\n", id);
+    int fd = 0;
+
+    for (client_t *cli = my_server()->info.clients; cli; cli = cli->next) {
+        if (cli->type == GUI && cli->data.gui_client > 0) {
+            fd = cli->data.gui_client;
+            dprintf(fd, "pdi #%ld\n", id);
+        }
+    }
 }

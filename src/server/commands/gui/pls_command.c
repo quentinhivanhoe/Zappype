@@ -8,17 +8,16 @@
 
 void pls_command(int client_fd, __attribute_maybe_unused__ char **cmd)
 {
-    client_t *clients = my_server()->info.clients;
     trn_t trn = {0};
 
-    for (size_t i = 0; i < my_server()->params.max_clients; i++) {
-        if (clients[i].type != IA)
+    for (client_t *cli = my_server()->info.clients; cli; cli = cli->next) {
+        if (cli->type != IA)
             continue;
-        if (clients[i].data.ia_client.socket < 0)
+        if (cli->data.ia_client.socket < 0)
             continue;
-        trn = clients[i].data.ia_client;
+        trn = cli->data.ia_client;
         dprintf(client_fd, "pls #%ld %ld %ld %d %d %s %d\n",
-            i, trn.pos.x, trn.pos.y, trn.pos.dir, trn.stat,
+            cli->id, trn.pos.x, trn.pos.y, trn.pos.dir, trn.stat,
             my_server()->params.teams[trn.team_id].name, trn.lvl);
     }
 }

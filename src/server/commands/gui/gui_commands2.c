@@ -18,64 +18,65 @@ static size_t tab_len(char **tab)
     return len;
 }
 
-static int check_player_info(int client_fd, char **cmd)
+static trn_t *check_player_info(int client_fd, char **cmd)
 {
     size_t len = tab_len(cmd);
     size_t client_idx = 0;
+    client_t *client = NULL;
 
     if (len != 2 || cmd[1][0] != '#') {
         dprintf(client_fd, "sbp\n");
-        return false;
+        return NULL;
     }
     client_idx = atoi(cmd[1] + 1);
+    client = get_client_by_id(client_idx);
+    if (!client)
+        return NULL;
     if (client_idx == 0 || client_idx >= my_server()->info.fd_count
     || my_server()->info.fds[client_idx].fd == -1
-    || my_server()->info.clients[client_idx].type != IA) {
+    || client->type != IA) {
         dprintf(client_fd, "sbp\n");
         return false;
     }
-    return client_idx;
+    return &client->data.ia_client;
 }
 
 void handle_ppo(int client_fd, char **cmd)
 {
-    size_t client_idx = check_player_info(client_fd, cmd);
+    trn_t *trn = check_player_info(client_fd, cmd);
+    size_t id = 0;
 
-    if (client_idx == false)
+    if (!trn)
         return;
-    dprintf(client_fd, "ppo #%zu %ld %ld %d\n", client_idx,
-        my_server()->info.clients[client_idx].data.ia_client.pos.x,
-        my_server()->info.clients[client_idx].data.ia_client.pos.y,
-        my_server()->info.clients[client_idx].data.ia_client.pos.dir);
+    id = atol(cmd[1] + 1);
+    dprintf(client_fd, "ppo #%zu %ld %ld %d\n",
+        id, trn->pos.x, trn->pos.y, trn->pos.dir);
 }
 
 void handle_plv(int client_fd, char **cmd)
 {
-    size_t client_idx = check_player_info(client_fd, cmd);
+    trn_t *trn = check_player_info(client_fd, cmd);
+    size_t id = 0;
 
-    if (client_idx == false)
+    if (!trn)
         return;
-    dprintf(client_fd, "plv #%zu %d\n", client_idx,
-        my_server()->info.clients->data.ia_client.lvl);
+    id = atol(cmd[1] + 1);
+    dprintf(client_fd, "plv #%zu %d\n", id, trn->lvl);
 }
 
 void handle_pin(int client_fd, char **cmd)
 {
-    size_t client_idx = check_player_info(client_fd, cmd);
+    trn_t *trn = check_player_info(client_fd, cmd);
+    size_t id = 0;
 
-    if (client_idx == false)
+    if (!trn)
         return;
+    id = atol(cmd[1] + 1);
     dprintf(client_fd, "pin #%zu %ld %ld %ld %ld %ld %ld %ld %ld %ld\n",
-        client_idx,
-        get_client(client_idx)->data.ia_client.pos.x,
-        get_client(client_idx)->data.ia_client.pos.y,
-        get_client(client_idx)->data.ia_client.inventory[FOOD],
-        get_client(client_idx)->data.ia_client.inventory[LINEMATE],
-        get_client(client_idx)->data.ia_client.inventory[DERAUMERE],
-        get_client(client_idx)->data.ia_client.inventory[SIBUR],
-        get_client(client_idx)->data.ia_client.inventory[MENDIANE],
-        get_client(client_idx)->data.ia_client.inventory[PHIRAS],
-        get_client(client_idx)->data.ia_client.inventory[THYSTAME]
+        id, trn->pos.x, trn->pos.y, trn->inventory[FOOD],
+        trn->inventory[LINEMATE], trn->inventory[DERAUMERE],
+        trn->inventory[SIBUR], trn->inventory[MENDIANE],
+        trn->inventory[PHIRAS], trn->inventory[THYSTAME]
     );
 }
 

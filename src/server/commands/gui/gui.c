@@ -64,11 +64,11 @@ char **split_args(const char *cmd)
 
 static bool is_authorized_gui(int client_index, const char *input)
 {
-    int type = my_server()->info.clients[client_index].type;
-    int fd = my_server()->info.fds[client_index].fd;
+    client_t *client = get_client_by_id(client_index);
 
-    if (type != GUI) {
-        dprintf(fd, "Unauthorized command for non-GUI client: %s", input);
+    if (client->type != GUI) {
+        dprintf(client->data.gui_client,
+            "Unauthorized command for non-GUI client: %s", input);
         return false;
     }
     return true;

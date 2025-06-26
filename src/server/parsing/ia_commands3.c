@@ -33,10 +33,10 @@ static void print_tile_players(int fd, uint64_t x, uint64_t y, bool *first)
 {
     trn_t *other = 0;
 
-    for (size_t i = 1; i < my_server()->info.fd_count; i++) {
-        if (my_server()->info.clients[i].type != IA)
+    for (client_t *cli = my_server()->info.clients; cli; cli = cli->next) {
+        if (cli->type != IA)
             continue;
-        other = &my_server()->info.clients[i].data.ia_client;
+        other = &cli->data.ia_client;
         if (other->socket == fd)
             continue;
         if (other->pos.x != x || other->pos.y != y)

@@ -27,7 +27,7 @@ static const ia_cmd_t cmd_table[] = {
 
 static bool is_authorized_ia(int client_index, const char *input)
 {
-    int type = my_server()->info.clients[client_index].type;
+    int type = get_client_by_id((size_t)client_index)->type;
     int fd = my_server()->info.fds[client_index].fd;
 
     if (type != IA) {
@@ -53,7 +53,7 @@ void handle_ia_command(trn_t *trn, const char *input, char *token)
 
 void dispatch_ia_command(int client_index, const char *input)
 {
-    trn_t *trt = &my_server()->info.clients[client_index].data.ia_client;
+    trn_t *trt = &get_client_by_id((size_t)client_index)->data.ia_client;
     char *line = NULL;
     char *token = NULL;
 

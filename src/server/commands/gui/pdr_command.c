@@ -32,22 +32,32 @@ void pdr_command(int player_id, obj_idx_t object)
 {
     const char *obj_name = get_object_name(object);
     size_t id = 0;
+    int fd = 0;
 
     for (size_t i = 0; i < my_server()->params.max_clients; i++)
         if (my_server()->info.fds[i].fd == player_id)
             id = i;
-    for (int fd = get_gui(); fd > 0; fd = get_gui())
-        dprintf(fd, "pdr #%ld %s\n", id, obj_name);
+    for (client_t *cli = my_server()->info.clients; cli; cli = cli->next) {
+        if (cli->type == GUI && cli->data.gui_client > 0) {
+            fd = cli->data.gui_client;
+            dprintf(fd, "pdr #%ld %s\n", id, obj_name);
+        }
+    }
 }
 
 void pgt_command(int player_id, obj_idx_t object)
 {
     const char *obj_name = get_object_name(object);
     size_t id = 0;
+    int fd = 0;
 
     for (size_t i = 0; i < my_server()->params.max_clients; i++)
         if (my_server()->info.fds[i].fd == player_id)
             id = i;
-    for (int fd = get_gui(); fd > 0; fd = get_gui())
-        dprintf(fd, "pgt #%ld %s\n", id, obj_name);
+    for (client_t *cli = my_server()->info.clients; cli; cli = cli->next) {
+        if (cli->type == GUI && cli->data.gui_client > 0) {
+            fd = cli->data.gui_client;
+            dprintf(fd, "pgt #%ld %s\n", id, obj_name);
+        }
+    }
 }

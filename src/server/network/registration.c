@@ -11,11 +11,9 @@ static size_t count_gui_clients(void)
 {
     size_t count = 0;
 
-    for (size_t i = 0; i < my_server()->params.max_clients; i++) {
-        if (my_server()->info.clients[i].type == GUI) {
+    for (client_t *cli = my_server()->info.clients; cli; cli = cli->next)
+        if (cli->type == GUI)
             count++;
-        }
-    }
     return count;
 }
 
@@ -23,12 +21,9 @@ size_t count_ia_clients(size_t id)
 {
     size_t count = 0;
 
-    for (size_t j = 0; j < my_server()->params.max_clients; j++) {
-        if (my_server()->info.clients[j].type == IA &&
-            my_server()->info.clients[j].data.ia_client.team_id == id) {
+    for (client_t *cli = my_server()->info.clients; cli; cli = cli->next)
+        if (cli->type == GUI && cli->data.ia_client.team_id == id)
             count++;
-        }
-    }
     return count;
 }
 
@@ -40,33 +35,32 @@ void register_gui_client(int i)
         remove_client(i);
         return;
     }
-    my_server()->info.clients[i].data.gui_client = my_server()->info.fds[i].fd;
-    dprintf(2,
-        "You are now registered as a GUI client.\n");
-    dprintf(my_server()->info.clients[i].data.gui_client, "ok\n");
-    my_server()->info.clients[i].type = GUI;
+    get_client_by_id(i)->data.gui_client = my_server()->info.fds[i].fd;
+    dprintf(2, "You are now registered as a GUI client.\n");
+    dprintf(my_server()->info.fds[i].fd, "ok\n");
+    get_client_by_id(i)->type = GUI;
     return;
 }
 
-void process_ia_connection(client_t *clients, int i, size_t team_index)
+void process_ia_connection(client_t *cli, int i, size_t team_index)
 {
     team_t team = {0};
 
-    for (size_t n = 0; n < my_server()->params.max_clients; n++) {
-        if (clients[n].type != EGG)
+    for (; cli; cli = cli->next) {
+        if (cli->type != EGG)
             continue;
-        if (clients[n].data.ia_client.team_id != team_index)
+        if (cli->data.ia_client.team_id != team_index)
             continue;
-        clients[n].type = IA;
-        clients[n].data.ia_client.socket = my_server()->info.fds[i].fd;
-        my_server()->info.fds[n] = my_server()->info.fds[i];
+        cli->type = IA;
+        cli->data.ia_client.socket = my_server()->info.fds[i].fd;
+        my_server()->info.fds[cli->id] = my_server()->info.fds[i];
         my_server()->info.fds[i].fd = -1;
         my_server()->params.teams[team_index].trn_count++;
         my_server()->params.teams[team_index].egg_count--;
-        ebo_command(n);
+        ebo_command(cli->id);
         team = my_server()->params.teams[team_index];
-        dprintf(my_server()->info.fds[n].fd, "%ld\n", team.egg_count);
-        dprintf(my_server()->info.fds[n].fd, "%ld %ld\n",
+        dprintf(my_server()->info.fds[cli->id].fd, "%ld\n", team.egg_count);
+        dprintf(my_server()->info.fds[cli->id].fd, "%ld %ld\n",
         my_server()->params.width, my_server()->params.height);
         break;
     }
@@ -89,7 +83,8 @@ void register_ia_client(int i, char *team_name)
     }
     if (my_server()->params.teams[team_index].egg_count) {
         my_server()->info.trn_count++;
-        return process_ia_connection(my_server()->info.clients, i, team_index);
+        process_ia_connection(my_server()->info.clients, i, team_index);
+        return;
     }
     dprintf(my_server()->info.fds[i].fd, "No slots for '%s'\n", team_name);
     remove_client(i);

@@ -8,7 +8,16 @@
 
 void ebo_command(size_t id)
 {
-    for (int fd = get_gui(); fd > 0; fd = get_gui())
-        dprintf(fd, "ebo #%ld\n", id);
-    pnw_command(my_server()->info.clients[id].data.ia_client, id);
+    client_t *client = get_client_by_id(id);
+    int fd = 0;
+
+    if (!client)
+        return;
+    for (client_t *cli = my_server()->info.clients; cli; cli = cli->next) {
+        if (cli->type == GUI && cli->data.gui_client > 0) {
+            fd = cli->data.gui_client;
+            dprintf(fd, "ebo #%ld\n", id);
+            pnw_command(client->data.ia_client, id, fd);
+        }
+    }
 }

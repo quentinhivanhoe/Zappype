@@ -21,10 +21,7 @@ void decrease_food_bar(trn_t *trantorian, size_t i)
 
 void trantorian_death(__attribute_maybe_unused__ clk_args_t *args)
 {
-    client_t *clients = my_server()->info.clients;
-    size_t max_clients = my_server()->params.max_clients;
-
-    for (size_t i = 0; i < max_clients; i++)
-        if (clients[i].type == IA)
-            decrease_food_bar(&clients[i].data.ia_client, i);
+    for (client_t *cli = my_server()->info.clients; cli; cli = cli->next)
+        if (cli->type == IA)
+            decrease_food_bar(&cli->data.ia_client, cli->id);
 }

@@ -12,8 +12,9 @@
 void add_clients(int new_fd)
 {
     int free_slots = -1;
+    trn_t trn = {0};
 
-    for (nfds_t i = 1; i < my_server()->params.max_clients + 1; i++) {
+    for (nfds_t i = 1; i < my_server()->params.least_clients + 1; i++) {
         if (my_server()->info.fds[i].fd == -1) {
             free_slots = i;
             break;
@@ -28,7 +29,7 @@ void add_clients(int new_fd)
     my_server()->info.fds[free_slots].events = POLLIN;
     (my_server()->info.fd_count)++;
     dprintf(new_fd, "WELCOME\n");
-    my_server()->info.clients[free_slots].type = UNDEFINED;
+    add_list(&my_server()->info.clients, UNDEFINED, new_fd, trn);
 }
 
 void handle_new_connection(void)
@@ -57,16 +58,23 @@ void handle_new_connection(void)
 
 void parse_data(char *buffer, int i)
 {
+    client_t *client = NULL;
+
     if (my_server()->params.debug_mode)
         dprintf(2, "Received from client #%d: %s", i, buffer);
-    if (my_server()->info.clients[i].type == UNDEFINED) {
+    client = get_client_by_id((size_t)i);
+    if (!client) {
+        dprintf(STDERR_FILENO, "client NULL\n");
+        return;
+    }
+    if (client->type == UNDEFINED) {
         dprintf(STDERR_FILENO, "user not authentified, define teams\n");
         det_teams(buffer, i);
         return;
     }
-    if (my_server()->info.clients[i].type == GUI)
+    if (client->type == GUI)
         dispatch_command(i, buffer);
-    else if (my_server()->info.clients[i].type == IA)
+    else if (client->type == IA)
         dispatch_ia_command(i, buffer);
     else
         dprintf(my_server()->info.fds[i].fd, "Unknown client type\n");
@@ -91,19 +99,24 @@ void handle_client_data(int i)
     }
 }
 
-void remove_client(int i)
+void remove_client(size_t i)
 {
     size_t team_id = 0;
+    client_t *clients = my_server()->info.clients;
 
     close(my_server()->info.fds[i].fd);
-    if (my_server()->info.clients[i].type == IA) {
-        team_id = my_server()->info.clients[i].data.ia_client.team_id;
-        my_server()->params.teams[team_id].trn_count--;
-        my_server()->info.trn_count--;
-        my_server()->info.clients[i].data.ia_client.socket = -1;
+    for (; clients; clients = clients->next) {
+        if (clients->id != i)
+            continue;
+        if (clients->type == IA) {
+            team_id = clients->data.ia_client.team_id;
+            my_server()->params.teams[team_id].trn_count--;
+            my_server()->info.trn_count--;
+            clients->data.ia_client.socket = -1;
+        }
+        if (clients->type == GUI)
+            clients->data.gui_client = -1;
     }
-    if (my_server()->info.clients[i].type == GUI)
-        my_server()->info.clients[i].data.gui_client = -1;
     my_server()->info.fds[i].fd = -1;
     my_server()->info.fds[i].events = 0;
     my_server()->info.fd_count--;

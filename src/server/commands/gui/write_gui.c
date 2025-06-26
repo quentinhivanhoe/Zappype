@@ -9,17 +9,24 @@
 
 int get_gui(void)
 {
-    static size_t i = 0;
+    static size_t id = 0;
     client_t *clients = my_server()->info.clients;
 
-    for (; i < my_server()->params.max_clients; i++) {
-        if (clients[i].type != GUI)
+    for (; clients; clients = clients->next) {
+        if (clients->id <= id) {
+            id++;
             continue;
-        if (clients[i].data.gui_client == -1)
-            continue;
-        i++;
-        return clients[i - 1].data.gui_client;
+        }
     }
-    i = 0;
+    if (!clients)
+        return -1;
+    for (; clients; clients = clients->next) {
+        if (clients->type != GUI)
+            continue;
+        if (clients->data.gui_client == -1)
+            continue;
+        return clients->data.gui_client;
+    }
+    id = 0;
     return -1;
 }

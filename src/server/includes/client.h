@@ -24,6 +24,11 @@ typedef union client_data_u {
 typedef struct client_s {
     client_type_t type;
     client_data_t data;
+    size_t id;
+    struct client_s *next;
 } client_t;
+
+void add_list(client_t **list, client_type_t type, int fd, trn_t trn);
+client_t *get_client_by_id(size_t id);
 
 #endif /* !CLIENT_H_ */

@@ -75,7 +75,7 @@ static void alloc_server(void)
     size_t len_map = my_server()->params.width * my_server()->params.height;
 
     my_server()->info.fds = calloc(size, sizeof(struct pollfd));
-    my_server()->info.clients = calloc(size, sizeof(client_t));
+    my_server()->info.clients = NULL;
     my_server()->map = init_map(len_map);
 }
 
@@ -120,15 +120,15 @@ int setup_server(void)
         return -1;
     }
     alloc_server();
-    if (!my_server()->info.fds || !my_server()->info.clients) {
+    if (!my_server()->info.fds) {
         perror("calloc failed");
-        return -1;
+        exit(EXIT_FAILURE);
     }
     set_default_fd();
     my_server()->info.fds[count].fd = socket(AF_INET, SOCK_STREAM, 0);
     if (my_server()->info.fds[0].fd < 0) {
         perror("socket failed");
-        return -1;
+        exit(EXIT_FAILURE);
     }
     setup_address();
     return bind_server();

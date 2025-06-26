@@ -54,6 +54,7 @@ typedef struct req_queue_s {
 } req_queue_t;
 
 struct trantorian_s {
+    int socket;
     pos_t pos;
     uint8_t lvl;
     size_t team_id;
@@ -62,7 +63,6 @@ struct trantorian_s {
     obj_t inventory[OBJECT_DEFINED];
     req_queue_t req_queue[MAX_REQUEST];
     size_t frame_count;
-    int socket;
 };
 
 typedef struct tile_s tile_t;

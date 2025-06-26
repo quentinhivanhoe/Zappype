@@ -23,15 +23,13 @@ trn_t init_egg(size_t team_id)
 
 void setup_team(void)
 {
-    client_t *clients = my_server()->info.clients;
     struct pollfd *fds = my_server()->info.fds;
     size_t egg_nbr = my_server()->params.cli_per_team;
 
     for (size_t i = 0; my_server()->params.teams[i].name; i++) {
         for (size_t j = 0; j < egg_nbr; j++) {
             my_server()->params.teams[i].egg_count++;
-            clients[(i * egg_nbr) + (j + 1)].type = EGG;
-            clients[(i * egg_nbr) + (j + 1)].data.ia_client = init_egg(i);
+            add_list(&my_server()->info.clients, EGG, -1, init_egg(i));
             fds[(i * egg_nbr) + (j + 1)].fd = 0;
         }
     }
