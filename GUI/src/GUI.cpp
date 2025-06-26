@@ -8,6 +8,7 @@
 #include "../includes/TrantorButtons.hpp"
 #include "../includes/TileInfo.hpp"
 #include <cmath>
+#include <algorithm>
 #include "GUI.hpp"
 
 Zappy::GUI::GUI(const std::string &ip, size_t port)
@@ -21,8 +22,8 @@ Zappy::GUI::GUI(const std::string &ip, size_t port)
     this->_window.create(sf::VideoMode(1920, 1080, 8), "Zappy GUI", sf::Style::Close);
     for (size_t i = 0; i < this->_map->getTiles().size(); i++){
         for (size_t j = 0; j < this->_map->getTiles()[i].size(); j++){
-            this->_map->getTiles()[j][i]->getTile()->set_offsets();
-            this->_map->getTiles()[i][j].get()->setOffsetsList(this->_map->getTiles()[j][i]->getTile()->get_offsets());
+            this->_map->getTiles()[i][j]->getTile()->set_offsets();
+            this->_map->getTiles()[i][j].get()->setOffsetsList(this->_map->getTiles()[i][j]->getTile()->get_offsets());
         }
     }
     this->background = sf::VertexArray(sf::Quads, 4);
@@ -93,24 +94,24 @@ void Zappy::GUI::updateSky()
 
 void Zappy::GUI::dragView()
 {
-    sf::Vector2f origin;
+    // sf::Vector2f origin;
 
-    if (this->_event.type == sf::Event::MouseButtonPressed && this->_event.mouseButton.button == sf::Mouse::Right) {
-        // printf("right click\n");
-        _dragging = true;
-        origin = this->_window.mapPixelToCoords(sf::Mouse::getPosition(this->_window));
-    }
-    if (this->_event.type == sf::Event::MouseButtonReleased && this->_event.mouseButton.button == sf::Mouse::Right) {
-        // printf("right released\n");
-        _dragging = false;
-    }
-    if (this->_event.type == sf::Event::MouseMoved && _dragging) {
-        // printf("mouse moving\n");
-        sf::Vector2f newWorldPos = this->_window.mapPixelToCoords(sf::Mouse::getPosition(this->_window));
-        sf::Vector2f delta = origin - newWorldPos;
-        this->_view.move(delta);
-        origin = this->_window.mapPixelToCoords(sf::Mouse::getPosition(_window));
-    }
+    // if (this->_event.type == sf::Event::MouseButtonPressed && this->_event.mouseButton.button == sf::Mouse::Right) {
+    //     // printf("right click\n");
+    //     _dragging = true;
+    //     origin = this->_window.mapPixelToCoords(sf::Mouse::getPosition(this->_window));
+    // }
+    // if (this->_event.type == sf::Event::MouseButtonReleased && this->_event.mouseButton.button == sf::Mouse::Right) {
+    //     // printf("right released\n");
+    //     _dragging = false;
+    // }
+    // if (this->_event.type == sf::Event::MouseMoved && _dragging) {
+    //     // printf("mouse moving\n");
+    //     sf::Vector2f newWorldPos = this->_window.mapPixelToCoords(sf::Mouse::getPosition(this->_window));
+    //     sf::Vector2f delta = origin - newWorldPos;
+    //     this->_view.move(delta);
+    //     origin = this->_window.mapPixelToCoords(sf::Mouse::getPosition(_window));
+    // }
 }
 
 void Zappy::GUI::init()
@@ -172,6 +173,21 @@ void Zappy::GUI::zoomScroll()
             }
         }
     }
+    this->_view.setSize(vclamp(this->_view.getSize(), sf::Vector2f(1920/2, 1080/2), sf::Vector2f(1920 * 1.5, 1080 * 1.5)));
+}
+
+sf::Vector2f Zappy::GUI::vclamp(sf::Vector2f val, sf::Vector2f min, sf::Vector2f max)
+{
+    if(val.x < min.x)
+        val.x = min.x;
+    if(val.y < min.y)
+        val.y = min.y;
+    if(val.x > max.x)
+        val.x = max.x;
+    if(val.y > max.y)
+        val.y = max.y;
+
+    return val;
 }
 
 void Zappy::GUI::touchView()
