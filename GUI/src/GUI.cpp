@@ -145,7 +145,6 @@ void Zappy::GUI::handleWindowEvents(  )
             this->_window.close();
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
             this->_window.close();
-        touchView();
         zoomScroll();
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Tab)) {
             this->_tileInfo->setTile(nullptr);
@@ -218,6 +217,7 @@ void Zappy::GUI::run()
     while (this->_window.isOpen()) {
         if (this->_framerateClock.getElapsedTime().asMicroseconds() < 1000000 / 60)
             continue;
+        touchView();
         this->_framerateClock.restart();
         this->_mouse.update(this->_window);
         this->_tileInfo->update(this->_mouse);
