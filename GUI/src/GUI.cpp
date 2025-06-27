@@ -20,12 +20,6 @@ Zappy::GUI::GUI(const std::string &ip, size_t port)
     std::srand(std::time(0));
     this->_recieveThread = std::thread(&Network::recieveFromServer, this->_networkInfo);
     this->_window.create(sf::VideoMode(1920, 1080, 8), "Zappy GUI", sf::Style::Close);
-    for (size_t i = 0; i < this->_map->getTiles().size(); i++){
-        for (size_t j = 0; j < this->_map->getTiles()[i].size(); j++){
-            this->_map->getTiles()[i][j]->getTile()->set_offsets();
-            this->_map->getTiles()[i][j].get()->setOffsetsList(this->_map->getTiles()[i][j]->getTile()->get_offsets());
-        }
-    }
     this->background = sf::VertexArray(sf::Quads, 4);
     background[0].position = sf::Vector2f(0, 0);
     background[1].position = sf::Vector2f(this->_window.getSize().x, 0);
@@ -125,6 +119,7 @@ void Zappy::GUI::init()
     }
     this->_tileInfo = std::make_shared<TileInfo>(this);
     this->_trantorianInfo = std::make_shared<TrantorianInfo>(this);
+    this->_broadcastTab = std::make_shared<BroadCastTab>();
     this->_view = sf::View(sf::FloatRect(0, 0, this->_window.getSize().x, this->_window.getSize().y));
     this->_window.setView(this->_view);
 }
@@ -144,6 +139,7 @@ void Zappy::GUI::initPaths()
 
 void Zappy::GUI::handleWindowEvents(  )
 {
+    int test = std::rand() % 20;
     while (this->_window.pollEvent(this->_event)) {
         if (this->_event.type == sf::Event::Closed)
             this->_window.close();
@@ -155,8 +151,7 @@ void Zappy::GUI::handleWindowEvents(  )
             this->_tileInfo->setTile(nullptr);
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
-            this->_tileInfo->setTile(this->_map->getTiles()[0][0]);
-            this->_tileInfo->updateTrantorButtonsTab();
+            this->_broadcastTab->pushToMessages("Blaaablaaabla" + std::to_string(test));
         }
     }
 }
@@ -220,7 +215,6 @@ float Zappy::GUI::get_dist_to_cam(sf::View view, Vector2D pos)
 void Zappy::GUI::run()
 {
     // this->_view.zoom(2);
-    set_map();
     while (this->_window.isOpen()) {
         if (this->_framerateClock.getElapsedTime().asMicroseconds() < 1000000 / 60)
             continue;
@@ -228,12 +222,12 @@ void Zappy::GUI::run()
         this->_mouse.update(this->_window);
         this->_tileInfo->update(this->_mouse);
         this->_trantorianInfo->update(this->_mouse);
+        this->_broadcastTab->update();
         this->handleWindowEvents();
         this->_window.clear(sf::Color::Black);
         this->_window.setView(this->_window.getDefaultView());
         this->updateSky();
         this->_window.draw(this->background);
-        // this->display_sky();
         this->_window.setView(this->_view);
         this->display_map();
         this->display_objects();
@@ -241,32 +235,11 @@ void Zappy::GUI::run()
         this->_window.setView(this->_window.getDefaultView());
         this->_trantorianInfo->render(this->_window);
         this->_tileInfo->render(this->_window);
+        this->_broadcastTab->render(this->_window);
         this->_window.setView(this->_view);
         this->_window.display();
     }
     this->_networkInfo->shutDown();
-}
-
-void Zappy::GUI::set_map()
-{
-    Vector2D offset = Vector2D(1920/2, 0);
-    Vector2D size = Vector2D(500, 500);
-    for (size_t j = 0; j < this->getMap()->getSize().getY(); j++){
-        for (int i = 0; i < this->getMap()->getSize().getX(); i++){
-            Vector2D size = Vector2D(_map->getTiles()[j][i]->getTile()->getTexture().getSize().x * this->getTileScale() / (2) - 5, _map->getTiles()[j][i]->getTile()->getTexture().getSize().y  * this->getTileScale() / (2) - 85);
-            offset.setX(offset.getX() - size.getX());
-            offset.setY(offset.getY() + size.getY());
-
-            std::cout << offset.getX() << " " << offset.getY() << std::endl;
-            this->_map->getTiles()[j][i]->getTile()->getSprite().setPosition(offset.getX(), offset.getY());
-            std::cout << this->_map->getTiles()[j][i]->getTile()->getSprite().getPosition().x << " " << this->_map->getTiles()[j][i]->getTile()->getSprite().getPosition().y << std::endl;
-            _map->getTiles()[j][i].get()->setCenter(Vector2D(offset.getX() + (size.getX()), offset.getY() + (size.getY())));
-            _map->getTiles()[j][i].get()->setPos(offset);
-        }
-        offset = Vector2D(
-        (1920/2 + (size.getX() - 310) * (j + 1)),
-        (0 + (size.getY() - 390) * (j + 1)));
-    }
 }
 
 void Zappy::GUI::display_map()
@@ -280,7 +253,6 @@ void Zappy::GUI::display_map()
             }
             this->_map->getTiles()[j][i]->setActivity(false);
         }
-
     }
 }
 
@@ -308,12 +280,18 @@ void Zappy::GUI::display_objects()
 
 void Zappy::GUI::display_trantor()
 {
-    //printf("TEAM\n");
-    for (auto team: this->_map->getTeams()) {
-        for (auto trantorian: team.second->getTrantorians()) {
-            //to be optimized
-            trantorian->getSprite()->getSprite().setPosition(this->_map->getTiles()[trantorian->getTilePos().x][trantorian->getTilePos().y]->getCenter().getX(), this->_map->getTiles()[trantorian->getTilePos().x][trantorian->getTilePos().y]->getCenter().getY() + 70);
-            this->_window.draw(trantorian->getSprite()->getSprite());
-        }
+    for (auto trantorian: this->getMap()->getAllTrantorians()) {
+        if (!trantorian.second)
+            continue;
+        this->_window.draw(trantorian.second->getSprite()->getSprite());
+    }
+}
+
+void Zappy::GUI::display_eggs()
+{
+    for (auto egg: this->getMap()->getAllEggs()) {
+        if (!egg.second)
+            continue;
+        this->_window.draw(egg.second->getDrawable()->getSprite());
     }
 }
