@@ -33,21 +33,38 @@ static int compute_broadcast_direction(trn_t *sender, trn_t *receiver)
     return mapping[dir_index][sector];
 }
 
+static size_t get_trantorian_index(trn_t *trantorian)
+{
+    for (size_t i = 0; i < my_server()->params.max_clients; i++) {
+        if (my_server()->info.fds[i].fd == -1)
+            continue;
+        if (my_server()->info.clients[i].type == IA &&
+            &my_server()->info.clients[i].data.ia_client == trantorian) {
+            return i;
+        }
+    }
+    return 0;
+}
+
 void handle_broadcast(trn_t *trantorian, char **args)
 {
     trn_t *receiver = NULL;
     int direction = 0;
+    size_t trantorian_index = 0;
 
     if (!args || !args[1]) {
         dprintf(trantorian->socket, "ko\n");
         return;
     }
+    trantorian_index = get_trantorian_index(trantorian);
     for (size_t i = 0; i < my_server()->params.max_clients; i++) {
-        if (my_server()->info.fds[i].fd == -1)
+        if (my_server()->info.fds[i].fd == -1 || i == trantorian_index)
             continue;
-        if (my_server()->info.clients[i].type == GUI)
-            dprintf(my_server()->info.clients[i].data.gui_client,
-            "pbc #%ld %s\n", i, args[1]);
+        if (my_server()->info.clients[i].type == GUI) {
+            dprintf(
+                my_server()->info.clients[i].data.gui_client,
+                "pbc #%zu %s\n", trantorian_index, args[1]);
+        }
         if (my_server()->info.clients[i].type == IA) {
             receiver = &my_server()->info.clients[i].data.ia_client;
             direction = compute_broadcast_direction(trantorian, receiver);
