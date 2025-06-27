@@ -29,6 +29,6 @@ void handle_inventory(trn_t *trantorian, char **args);
 void handle_look(trn_t *trantorian, char **args);
 void handle_take(trn_t *trantorian, char **args);
 void handle_set(trn_t *trantorian, char **args);
-
+void handle_incantation(trn_t *trantorian, char **args);
 
 #endif /* !IA_H_ */
