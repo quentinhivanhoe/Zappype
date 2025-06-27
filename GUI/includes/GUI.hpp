@@ -8,6 +8,7 @@
 #ifndef GUI_HPP_
     #define GUI_HPP_
     #include <memory>
+    #include <thread>
     #include "SFML/Graphics.hpp"
     #include "MouseStatus.hpp"
     #include "Drawable.hpp"
@@ -18,6 +19,7 @@
     #include "TrantorianInfo.hpp"
     #include "TileInfo.hpp"
     #include "DrawRandom.hpp"
+    #include "BroadCastTab.hpp"
 
 namespace Zappy
 {
@@ -47,6 +49,8 @@ namespace Zappy
             Drawable tile = Drawable("../GUI/assets/map.png");
             Drawable sky = Drawable("../GUI/assets/sky.jpg");
             DrawRandom _effect = DrawRandom(40, 6, 0.2, 0.1);
+            sf::Clock _framerateClock;
+            std::thread _recieveThread;
             std::shared_ptr<Map> _map;
             float tile_scale = 0.5;
             sf::Event _event;
@@ -56,28 +60,35 @@ namespace Zappy
             bool _dragging;
             std::shared_ptr<TileInfo> _tileInfo;
             std::shared_ptr<TrantorianInfo> _trantorianInfo;
+            std::shared_ptr<BroadCastTab> _broadcastTab;
         public:
             GUI(const std::string& ip = "127.0.0.1", size_t port = 8000);
             ~GUI();
             void init();
             void initPaths();
             void run();
+            void set_map();
             void display_map();
             void display_sky();
             void display_objects();
             void display_trantor();
+            void display_eggs();
             void handleWindowEvents();
             void dragView();
             void zoomScroll();
             void touchView();
             void updateClock();
+            void drawRandom();
+            sf::Vector2f vclamp(sf::Vector2f val, sf::Vector2f min, sf::Vector2f max);
             sf::Color lerpColor(const sf::Color &a, sf::Color &b, float t);
             void updateSky();
             float get_dist_to_cam(sf::View view, Vector2D pos);
+            inline void initMap(double sizeX, double sizeY) { this->_map = std::make_shared<Map>(Vector2D(sizeX, sizeY)); };
             inline std::shared_ptr<Map> getMap() const {return this->_map;};
             inline float getTileScale() const {return this->tile_scale;};
             inline std::shared_ptr<Network> getNetwork() const {return this->_networkInfo;};
             inline int getTimeUnit() const { return this->_timeUnit; };
+            inline sf::View &getView() {return this->_view; };
             inline void setTimeUnit(int unit) { this->_timeUnit = unit; };
             inline void setPlayerNb(int number) { this->_playerNb = number; };
             inline void setMapSize(sf::Vector2i size) { this->_mapSize = size; };
@@ -85,6 +96,7 @@ namespace Zappy
             inline sf::Vector2i getMapSize() const { return this->_mapSize; };
             inline std::shared_ptr<TileInfo> getTileInfo() const { return this->_tileInfo; };
             inline std::shared_ptr<TrantorianInfo> getTrantorianInfo() const { return this->_trantorianInfo; };
+            inline std::shared_ptr<BroadCastTab> getBroadCastTab() const { return this->_broadcastTab; };
     };
 }
 

@@ -24,18 +24,19 @@ namespace Zappy
     class Trantorian
     {
     private:
-        std::string _teamName;
-        size_t _id;
-        size_t _level;
-        size_t _direction;
+        std::string _teamName = "default";
+        size_t _id = 0;
+        size_t _level = 0;
+        size_t _direction = 0;
         std::vector<Actions> _actions;
         std::shared_ptr<Drawable> _sprite;
-        size_t _lifespan;
+        size_t _lifespan = 0;
         sf::Color _color;
         Vector2D _pos;
         sf::Vector2i _tilePos;
         std::shared_ptr<Tile> _inventory;
         std::shared_ptr<TrantorButtons> _innerButton; 
+        std::string _state;
 
     public:
         sf::RectangleShape shape;
@@ -53,6 +54,7 @@ namespace Zappy
         inline sf::Color getColor() const {return this->_color;};
         inline std::shared_ptr<Drawable> getSprite() {return this->_sprite;};
         inline sf::Vector2i getTilePos() const { return this->_tilePos; };
+        inline std::string getState() const { return this->_state; };
 
         /*SETTER*/
         inline void setTeamName(std::string teamName) {this->_teamName = teamName;};
@@ -63,6 +65,7 @@ namespace Zappy
         inline void setPos(Vector2D pos) {this->_pos = pos;};
         inline void setDirection(size_t direction) {this->_direction = direction; };
         inline void setTilePos(sf::Vector2i pos) { this->_tilePos = pos; };
+        inline void setState(const std::string& state) { this->_state = state; };
         Trantorian(/* args */);
         ~Trantorian();
     }; 

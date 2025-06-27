@@ -55,14 +55,14 @@ void Zappy::Drawable::set_offsets()
     float half_quarter_x = quarter_x / 2;
     float half_quarter_y = quarter_y / 2;
 
-    this->offsets.push_back(Vector2D(half_quarter_x, half_quarter_y - 40));
-    this->offsets.push_back(Vector2D(half_quarter_x, -half_quarter_y - 40));
-    this->offsets.push_back(Vector2D(-half_quarter_x, half_quarter_y - 40));
-    this->offsets.push_back(Vector2D(-half_quarter_x, -half_quarter_y - 40));
+    this->offsets.push_back(Vector2D(half_quarter_x + 10, half_quarter_y - 20));
+    this->offsets.push_back(Vector2D(half_quarter_x + 10, -half_quarter_y));
+    this->offsets.push_back(Vector2D(-half_quarter_x - 10, half_quarter_y - 20));
+    this->offsets.push_back(Vector2D(-half_quarter_x - 10, -half_quarter_y));
     this->offsets.push_back(Vector2D(0, quarter_y - 40));
-    this->offsets.push_back(Vector2D(0, -quarter_y - 40));
-    this->offsets.push_back(Vector2D(-quarter_x, 0 - 40));
-    this->offsets.push_back(Vector2D(quarter_x, 0 - 40));
+    this->offsets.push_back(Vector2D(0, -quarter_y + 0));
+    this->offsets.push_back(Vector2D(-quarter_x - 10, -10));
+    this->offsets.push_back(Vector2D(quarter_x + 10, -10));
     unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
     std::shuffle(this->offsets.begin(), this->offsets.end(), std::default_random_engine(seed));
 }

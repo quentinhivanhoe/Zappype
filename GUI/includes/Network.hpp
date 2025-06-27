@@ -26,6 +26,7 @@ namespace Zappy
             sf::Packet _packet;
             int _playerNb;
             sf::Vector2i _mapSize;
+            bool _isShuttingDown = false;
         public:
             Network(GUI *gui = nullptr);
             ~Network();
@@ -33,7 +34,7 @@ namespace Zappy
             //Setters
             inline void setPlayerNb(int nb) { this->_playerNb = nb;};
             inline void setMapSize(sf::Vector2i mapSize) { this->_mapSize = mapSize;};
-
+            void recieveFromServer();
             //Getters
             inline int getPlayerNb() const { return this->_playerNb; };
             inline sf::Vector2i getMapSize() const { return this->_mapSize; };
@@ -51,11 +52,13 @@ namespace Zappy
             void askMapSize();
             void askMapContent();
             void askTimeUnitRequest();
+            void askEggsInfo();
             void askTileContent(std::vector<std::string> args);
             void askPlayerPos(std::vector<std::string> args);
             void askPlayerLevel(std::vector<std::string> args);
             void askPlayerInventory(std::vector<std::string> args);
             void askTimeUnitModif(std::vector<std::string> args);
+            inline void shutDown() { this->_isShuttingDown = true; };
     };
 }
 

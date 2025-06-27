@@ -21,6 +21,7 @@ namespace Zappy
         private:
             float _rotation = 0;
             sf::Vector2f _scale = {1, 1};
+            sf::Vector2f _basePosition = {100, 100};
             sf::Vector2f _baseScale = {1, 1};
             sf::Vector2f _maxScale = {1.15, 1.15};
             sf::Vector2f _minScale = {0.85, 0.85};
@@ -59,6 +60,7 @@ namespace Zappy
             inline sf::RectangleShape &getBgComponent() { return this->_bg; };
             inline sf::Color getFillColor() const { return this->_fillColor; };
             inline sf::Color getOutlineColor() const { return this->_outlineColor; };
+            inline sf::Vector2f getBasePosition() const { return this->_basePosition; };
             
             // Setters
             Buttons &setPosition(sf::Vector2f position);
@@ -76,6 +78,7 @@ namespace Zappy
             Buttons &setTextFillColor(sf::Color color);
             Buttons &setTextOutlineColor(sf::Color color);
             Buttons &setFunction(std::function<void(void *)> function);
+            Buttons &setBasePosition(sf::Vector2f pos);
             
             Buttons &rotateClockWise(float step);
             Buttons &rotateCounterClockWise(float step);
