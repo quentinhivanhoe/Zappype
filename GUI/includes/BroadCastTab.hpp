@@ -32,6 +32,7 @@ namespace Zappy
             void render(sf::RenderWindow &window);
             inline std::vector<std::string> getMessages() const { return this->_messages; };
             void pushToMessages(const std::string& messages);
+            inline void resetTimer() { this->_clock.restart(); }; 
     };
 } // namespace Zappy
 

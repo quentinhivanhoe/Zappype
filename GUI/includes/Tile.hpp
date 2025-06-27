@@ -36,7 +36,7 @@ namespace Zappy
         Vector2D _pos;
         Vector2D _center;
         sf::Vector2i _index;
-        std::shared_ptr<Drawable>_tile = std::make_shared<Drawable>("../GUI/assets/map.png", 0.5);
+        std::shared_ptr<Drawable>_tile = std::make_shared<Drawable>("../GUI/assets/map.png", 0.5 * 3.07);
         std::shared_ptr<TileButtons> _innerButton = nullptr;
         bool _activity = false;
     public:

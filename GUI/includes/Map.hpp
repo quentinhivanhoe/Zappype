@@ -28,7 +28,7 @@ namespace Zappy
         std::map<size_t, std::shared_ptr<Egg>> _eggs;
         std::vector<std::vector<std::shared_ptr<Tile>>> _tiles;
         Vector2D _size;
-        float _tileScale = 0.5;
+        float _tileScale = 0.5 * 3.07;
     public:
         Map(Vector2D size = Vector2D(5.0, 5.0));
         ~Map();

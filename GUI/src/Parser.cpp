@@ -360,6 +360,7 @@ void Zappy::Parser::managePBC(std::vector<std::string> args, [[maybe_unused]] Za
         std::cout << "Index must be a # followed by a positive number." << std::endl;
         return;
     }
+    network->getGui()->getBroadCastTab()->resetTimer();
     network->getGui()->getBroadCastTab()->pushToMessages(args[1] + ": " + args[2]);
 }
 
