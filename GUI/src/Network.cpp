@@ -57,12 +57,8 @@ void Zappy::Network::initProcess()
     this->askToServer("PlayerNb", {});
     this->askToServer("MapSize", {});
     this->_gui->initMap(this->_mapSize.x, this->_mapSize.y);
-    this->askToServer("PlayersInfo", {});
     this->askToServer("MapContent", {});
-    // std::cout << "[DEBUG from GUI] GUI connection to Server : OK" << std::endl;
-    // this->askToServer("TimeUnitRequest", {});
-    // this->askToServer("TileContent", {0, 0});
-    // this->askToServer("TimeUnitModif", {1});
+    this->askToServer("PlayersInfo", {});
 }
 
 void Zappy::Network::recieveFromServer()
@@ -86,6 +82,7 @@ void Zappy::Network::askToServer(const std::string& command, std::vector<int> ar
         {"MapSize", &Network::askMapSize},
         {"MapContent", &Network::askMapContent},
         {"TimeUnitRequest", &Network::askTimeUnitRequest},
+        {"EggsInfo", &Network::askEggsInfo},
     };
     std::map<std::string, void (Network:: *)(std::vector<std::string>)> funcTabWithArgs = {
         {"TileContent", &Network::askTileContent},
@@ -177,6 +174,11 @@ void Zappy::Network::askTimeUnitRequest()
     Parser parser;
     std::vector<std::string> args = Parser::parseLine(recievedString, ' ');
     parser.manageResponse(args, this);
+}
+
+void Zappy::Network::askEggsInfo()
+{
+    this->send("els\n");
 }
 
 void Zappy::Network::askTileContent([[maybe_unused]] std::vector<std::string> args)

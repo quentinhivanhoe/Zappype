@@ -39,6 +39,7 @@ namespace Zappy
             void managePDI(std::vector<std::string> args, Network *network);
             void manageENW(std::vector<std::string> args, Network *network);
             void manageEBO(std::vector<std::string> args, Network *network);
+            void manageELS(std::vector<std::string> args, Network *network);
             void manageEDI(std::vector<std::string> args, Network *network);
             void manageSEG(std::vector<std::string> args, Network *network);
             void manageSMG(std::vector<std::string> args, Network *network);

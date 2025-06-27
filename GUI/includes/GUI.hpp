@@ -18,6 +18,7 @@
     #include "Map.hpp"
     #include "TrantorianInfo.hpp"
     #include "TileInfo.hpp"
+    #include "BroadCastTab.hpp"
 
 namespace Zappy
 {
@@ -54,6 +55,7 @@ namespace Zappy
             bool _dragging;
             std::shared_ptr<TileInfo> _tileInfo;
             std::shared_ptr<TrantorianInfo> _trantorianInfo;
+            std::shared_ptr<BroadCastTab> _broadcastTab;
         public:
             GUI(const std::string& ip = "127.0.0.1", size_t port = 8000);
             ~GUI();
@@ -65,6 +67,7 @@ namespace Zappy
             void display_sky();
             void display_objects();
             void display_trantor();
+            void display_eggs();
             void handleWindowEvents();
             void dragView();
             void zoomScroll();
@@ -86,6 +89,7 @@ namespace Zappy
             inline sf::Vector2i getMapSize() const { return this->_mapSize; };
             inline std::shared_ptr<TileInfo> getTileInfo() const { return this->_tileInfo; };
             inline std::shared_ptr<TrantorianInfo> getTrantorianInfo() const { return this->_trantorianInfo; };
+            inline std::shared_ptr<BroadCastTab> getBroadCastTab() const { return this->_broadcastTab; };
     };
 }
 

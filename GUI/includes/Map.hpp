@@ -16,6 +16,7 @@ namespace Zappy
 {
     class Team;
     class Trantorian;
+    class Egg;
     class TrantorButtons;
     class GUI;
     class Tile;
@@ -24,8 +25,10 @@ namespace Zappy
     private:
         std::map<std::string, std::shared_ptr<Team>> _teams;
         std::map<size_t, std::shared_ptr<Trantorian>> _trantorians;
+        std::map<size_t, std::shared_ptr<Egg>> _eggs;
         std::vector<std::vector<std::shared_ptr<Tile>>> _tiles;
         Vector2D _size;
+        float _tileScale = 0.5;
     public:
         Map(Vector2D size = Vector2D(5.0, 5.0));
         ~Map();
@@ -36,6 +39,9 @@ namespace Zappy
         inline std::shared_ptr<Trantorian> getTrantorianByID(size_t id) { return this->_trantorians[id]; };
         inline std::map<size_t, std::shared_ptr<Trantorian>> getAllTrantorians() const { return this->_trantorians; };
         void addTrantorian(std::shared_ptr<Trantorian> trantorian);
+        void addEgg(std::shared_ptr<Egg> egg);
+        inline std::shared_ptr<Egg> getEggById(size_t id) { return this->_eggs[id]; };
+        inline std::map<size_t, std::shared_ptr<Egg>> getAllEggs() const { return this->_eggs; };
     };
 }
 

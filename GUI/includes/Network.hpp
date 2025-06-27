@@ -52,6 +52,7 @@ namespace Zappy
             void askMapSize();
             void askMapContent();
             void askTimeUnitRequest();
+            void askEggsInfo();
             void askTileContent(std::vector<std::string> args);
             void askPlayerPos(std::vector<std::string> args);
             void askPlayerLevel(std::vector<std::string> args);
