@@ -17,6 +17,7 @@
     #include "Map.hpp"
     #include "TrantorianInfo.hpp"
     #include "TileInfo.hpp"
+    #include "DrawRandom.hpp"
 
 namespace Zappy
 {
@@ -35,14 +36,17 @@ namespace Zappy
             std::shared_ptr<Network> _networkInfo;
             sf::RenderWindow _window;
             sf::View _view;
+            sf::Text _TimeText;
+            sf::Font _TimeFont;
             MouseStatus _mouse;
             sf::VertexArray background;
             sf::Clock _clock = sf::Clock();
             float time = 6.0f;
+            bool night = true;
 
             Drawable tile = Drawable("../GUI/assets/map.png");
             Drawable sky = Drawable("../GUI/assets/sky.jpg");
-            Drawable star = Drawable("../GUI/assets/star.jpg");
+            DrawRandom _effect = DrawRandom(40, 6, 0.2, 0.1);
             std::shared_ptr<Map> _map;
             float tile_scale = 0.5;
             sf::Event _event;
@@ -66,7 +70,7 @@ namespace Zappy
             void dragView();
             void zoomScroll();
             void touchView();
-            void drawRandom();
+            void updateClock();
             sf::Color lerpColor(const sf::Color &a, sf::Color &b, float t);
             void updateSky();
             float get_dist_to_cam(sf::View view, Vector2D pos);
