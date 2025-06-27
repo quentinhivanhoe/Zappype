@@ -17,7 +17,6 @@ Zappy::BroadCastTab::BroadCastTab()
     this->_bg.setPosition(1920 - (this->_bg.getSize().x / 2) - 30, 1080 - (this->_bg.getSize().y / 2) - 30);
     this->_font.loadFromFile("assets/arial.ttf");
     this->_text.setFont(this->_font);
-    this->pushToMessages("azeaze");
 }
 
 void Zappy::BroadCastTab::drawText(const std::string& string, sf::Vector2f position, sf::Color color, int characterSize, sf::RenderWindow &window)

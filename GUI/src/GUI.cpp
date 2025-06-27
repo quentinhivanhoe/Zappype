@@ -211,18 +211,43 @@ float Zappy::GUI::get_dist_to_cam(sf::View view, Vector2D pos)
     return (sqrt(pow(view.getCenter().x - pos.getX(), 2) + pow(view.getCenter().y - pos.getY(), 2)));
 }
 
-void Zappy::GUI::run()
+sf::Vector2i Zappy::GUI::getCenterTilePos(float px, float py, float originX, float originY, float tileWidth, float tileHeight)
 {
-    // this->_view.zoom(2);
+    int rectIndexX = (originX / tileWidth) - (px / tileWidth);
+    int rectIndexY = (py / tileHeight) - (originY / tileHeight);
+    sf::Vector2i finalIndex(0, 0);
+    finalIndex += sf::Vector2i(1, 1) * rectIndexY;
+    finalIndex.x += rectIndexX;
+    finalIndex.y -= rectIndexX;
+    return finalIndex;
+}
+
+void Zappy::GUI::update()
+{
     while (this->_window.isOpen()) {
         if (this->_framerateClock.getElapsedTime().asMicroseconds() < 1000000 / 60)
             continue;
+        if (!this->_window.isOpen())
+            break;
         touchView();
         this->_framerateClock.restart();
         this->_mouse.update(this->_window);
         this->_tileInfo->update(this->_mouse);
         this->_trantorianInfo->update(this->_mouse);
         this->_broadcastTab->update();
+    }
+}
+
+
+void Zappy::GUI::display()
+{
+}
+
+void Zappy::GUI::run()
+{
+    // this->_view.zoom(2);
+    std::thread updateThread = std::thread(&GUI::update, this);
+    while (this->_window.isOpen()) {
         this->handleWindowEvents();
         this->_window.clear(sf::Color::Black);
         this->_window.setView(this->_window.getDefaultView());
@@ -230,28 +255,43 @@ void Zappy::GUI::run()
         this->_window.draw(this->background);
         this->_window.setView(this->_view);
         this->display_map();
-        this->display_objects();
+        // this->display_objects();
         this->display_trantor();
         this->_window.setView(this->_window.getDefaultView());
         this->_trantorianInfo->render(this->_window);
         this->_tileInfo->render(this->_window);
         this->_broadcastTab->render(this->_window);
+        this->displayOneShotAnimation();
         this->_window.setView(this->_view);
         this->_window.display();
     }
+    updateThread.join();
     this->_networkInfo->shutDown();
 }
 
 void Zappy::GUI::display_map()
 {
-    for (int j = 0; j < this->getMap()->getSize().getY(); j++){
-        for (int i = 0; i < this->getMap()->getSize().getX(); i++){
-            if (get_dist_to_cam(this->_view, this->_map->getTiles()[j][i]->getPos()) < 2000){
-                this->_window.draw(_map->getTiles()[j][i]->getTile()->getSprite());
-                this->_map->getTiles()[j][i]->setActivity(true);
-                continue;
+    sf::Vector2f size = {392, 225};
+    sf::Vector2f pos = this->_map->getTiles()[0][0]->getTile()->getSprite().getPosition();
+    pos.y += 55;
+    sf::Vector2f viewPos = this->_view.getCenter();
+    sf::Vector2i targetTileIndex = this->getCenterTilePos(viewPos.x, viewPos.y, pos.x + (size.x / 2), pos.y + (size.y / 2), size.x, size.y);
+    targetTileIndex.x -= 5;
+    targetTileIndex.y -= 5;
+    for (int j = targetTileIndex.y; j < this->getMap()->getSize().getY() && j < targetTileIndex.y + 10; j++){
+        if (j < 0)
+            j = 0;
+        for (int i = targetTileIndex.x; i < this->getMap()->getSize().getX() && i < targetTileIndex.x + 10; i++){
+            if (i < 0)
+                i = 0;
+            this->_window.draw(_map->getTiles()[j][i]->getTile()->getSprite());
+            for (size_t k = 1; k < 8; k++){
+                if (this->_map->getTiles()[j][i].get()->getItems()[k] > 0){
+                    this->_items[k]->getSprite()->getSprite().setPosition(this->_map->getTiles()[j][i]->getCenter().getX() + this->_map->getTiles()[j][i]->getOffsetsList()[k].getX(), 
+                    this->_map->getTiles()[j][i]->getCenter().getY() + this->_map->getTiles()[j][i]->getOffsetsList()[k].getY() + 70);
+                    this->_window.draw(this->_items[k]->getSprite()->getSprite());
+                }
             }
-            this->_map->getTiles()[j][i]->setActivity(false);
         }
     }
 }
@@ -259,23 +299,6 @@ void Zappy::GUI::display_map()
 void Zappy::GUI::display_sky()
 {
     this->_window.draw(this->sky.getSprite());
-}
-
-void Zappy::GUI::display_objects()
-{
-    for (int j = 0; j < this->getMap()->getSize().getY(); j++){
-        for (int i = 0; i < this->getMap()->getSize().getX(); i++){
-            if (this->_map->getTiles()[j][i]->getActivity()){
-                for (size_t k = 0; k < 8; k++){
-                    if (this->_map->getTiles()[j][i].get()->getItems()[k] > 0){
-                        this->_items[k]->getSprite()->getSprite().setPosition(this->_map->getTiles()[j][i]->getCenter().getX() + this->_map->getTiles()[j][i]->getOffsetsList()[k].getX(), 
-                        this->_map->getTiles()[j][i]->getCenter().getY() + this->_map->getTiles()[j][i]->getOffsetsList()[k].getY() + 70);
-                        this->_window.draw(this->_items[k]->getSprite()->getSprite());
-                    }
-                }
-            }
-        }
-    }
 }
 
 void Zappy::GUI::display_trantor()
@@ -293,5 +316,17 @@ void Zappy::GUI::display_eggs()
         if (!egg.second)
             continue;
         this->_window.draw(egg.second->getDrawable()->getSprite());
+    }
+}
+
+void Zappy::GUI::displayOneShotAnimation()
+{
+    for (size_t i = 0; i < this->_oneShotAnimationTab.size(); i++) {
+        std::cout << "i: " << i << std::endl;
+        this->_oneShotAnimationTab[i]->update();
+        if (this->_oneShotAnimationTab[i]->isAlive())
+            this->_window.draw(this->_oneShotAnimationTab[i]->getDrawable()->getSprite());
+        if (!this->_oneShotAnimationTab[i]->isAlive())
+            this->_oneShotAnimationTab.erase(this->_oneShotAnimationTab.begin() + i);
     }
 }

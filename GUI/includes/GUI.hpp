@@ -19,6 +19,7 @@
     #include "TrantorianInfo.hpp"
     #include "TileInfo.hpp"
     #include "BroadCastTab.hpp"
+    #include "OneShotAnimationPlayer.hpp"
 
 namespace Zappy
 {
@@ -56,6 +57,7 @@ namespace Zappy
             std::shared_ptr<TileInfo> _tileInfo;
             std::shared_ptr<TrantorianInfo> _trantorianInfo;
             std::shared_ptr<BroadCastTab> _broadcastTab;
+            std::vector<std::shared_ptr<OneShotAnimationPlayer>> _oneShotAnimationTab;
         public:
             GUI(const std::string& ip = "127.0.0.1", size_t port = 8000);
             ~GUI();
@@ -68,11 +70,16 @@ namespace Zappy
             void display_objects();
             void display_trantor();
             void display_eggs();
+            void displayOneShotAnimation();
             void handleWindowEvents();
             void dragView();
             void zoomScroll();
             void touchView();
             void drawRandom();
+            
+            void update();
+            void display();
+
             sf::Vector2f vclamp(sf::Vector2f val, sf::Vector2f min, sf::Vector2f max);
             sf::Color lerpColor(const sf::Color &a, sf::Color &b, float t);
             void updateSky();
@@ -90,7 +97,9 @@ namespace Zappy
             inline sf::Vector2i getMapSize() const { return this->_mapSize; };
             inline std::shared_ptr<TileInfo> getTileInfo() const { return this->_tileInfo; };
             inline std::shared_ptr<TrantorianInfo> getTrantorianInfo() const { return this->_trantorianInfo; };
-            inline std::shared_ptr<BroadCastTab> getBroadCastTab() const { return this->_broadcastTab; };
+            inline std::shared_ptr<BroadCastTab> getBroadCastTab() const { return this->_broadcastTab; }
+            sf::Vector2i getCenterTilePos(float px, float py, float originX, float originY, float tileWidth, float tileHeight);
+
     };
 }
 
