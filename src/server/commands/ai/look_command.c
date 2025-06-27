@@ -2,11 +2,18 @@
 ** EPITECH PROJECT, 2025
 ** Zappype
 ** File description:
-** ia_commands3
+** look_command
 */
+
 #include "../includes/server.h"
 #include "../includes/ia.h"
 
+/**
+ * @brief Get the object name as a string from its index.
+ *
+ * @param idx Index of the object (e.g., FOOD, LINEMATE, etc.)
+ * @return const char* The string name of the object.
+ */
 static const char *get_object_name(int idx)
 {
     switch (idx) {
@@ -29,6 +36,14 @@ static const char *get_object_name(int idx)
     }
 }
 
+/**
+ * @brief Print all players (except the sender) on the specified tile.
+ *
+ * @param fd File descriptor of the client receiving the output.
+ * @param x X coordinate of the tile.
+ * @param y Y coordinate of the tile.
+ * @param first Pointer to a bool indicating if it's the first printed item.
+ */
 static void print_tile_players(int fd, uint64_t x, uint64_t y, bool *first)
 {
     trn_t *other = 0;
@@ -48,6 +63,15 @@ static void print_tile_players(int fd, uint64_t x, uint64_t y, bool *first)
     }
 }
 
+/**
+ * @brief Print a given object multiple times if it exists on a tile.
+ *
+ * @param n Number of objects to print.
+ * @param i Object index.
+ * @param fd File descriptor to print to.
+ * @param first True if it's the first printed item in the list.
+ * @return bool Updated value of the `first` flag.
+ */
 static bool print_object(uint64_t n, int i, int fd, bool first)
 {
     while (n > 0) {
@@ -60,6 +84,14 @@ static bool print_object(uint64_t n, int i, int fd, bool first)
     return first;
 }
 
+/**
+ * @brief Print the full content of a tile (resources and players).
+ *
+ * @param fd File descriptor of the client receiving the output.
+ * @param tile Pointer to the tile.
+ * @param x X coordinate of the tile.
+ * @param y Y coordinate of the tile.
+ */
 static void print_tile_content(int fd, tile_t *tile, uint64_t x, uint64_t y)
 {
     bool first = true;
@@ -75,6 +107,14 @@ static void print_tile_content(int fd, tile_t *tile, uint64_t x, uint64_t y)
     print_tile_players(fd, x, y, &first);
 }
 
+/**
+ * @brief Compute the starting coordinates for a row of vision tiles.
+ *
+ * @param trn Pointer to the trantorian.
+ * @param lvl Vision level (distance from the player).
+ * @param x Pointer to store the starting X coordinate.
+ * @param y Pointer to store the starting Y coordinate.
+ */
 static void compute_row_base(trn_t *trn, uint8_t lvl, int64_t *x, int64_t *y)
 {
     uint64_t width = my_server()->params.width;
@@ -98,6 +138,15 @@ static void compute_row_base(trn_t *trn, uint8_t lvl, int64_t *x, int64_t *y)
     }
 }
 
+/**
+ * @brief Compute coordinates of a tile in the row based on the player's
+ *          direction.
+ *
+ * @param trn Pointer to the trantorian.
+ * @param til Total number of tiles in the row.
+ * @param i Index of the tile in the row.
+ * @param pos Pointer to the (x, y) position array.
+ */
 static void compute_tile_coords(trn_t *trn, size_t til, size_t i, int64_t *pos)
 {
     uint64_t width = my_server()->params.width;
@@ -119,6 +168,14 @@ static void compute_tile_coords(trn_t *trn, size_t til, size_t i, int64_t *pos)
     }
 }
 
+/**
+ * @brief Print all tiles in a specific row of vision.
+ *
+ * @param trantorian Pointer to the trantorian.
+ * @param lvl Vision level (distance from the player).
+ * @param tiles Number of tiles in the row.
+ * @param first Pointer to a bool indicating if it's the first printed item.
+ */
 static void look_row(trn_t *trantorian, uint8_t lvl, size_t tiles, bool *first)
 {
     uint64_t width = my_server()->params.width;
@@ -137,6 +194,14 @@ static void look_row(trn_t *trantorian, uint8_t lvl, size_t tiles, bool *first)
     (void)height;
 }
 
+/**
+ * @brief Handle the `Look` command for a trantorian.
+ *
+ * Outputs the content of the surrounding tiles depending on the player's level
+ *
+ * @param trantorian Pointer to the trantorian.
+ * @param args Unused command arguments.
+ */
 void handle_look(trn_t *trantorian, char **args)
 {
     bool first = true;
