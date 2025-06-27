@@ -36,6 +36,10 @@ static const uint8_t elevation_tab[7][7] = {
 static bool check_resources(tile_t *tile, const uint8_t *req)
 {
     for (int i = 1; i < 7; i++) {
+        if (my_server()->params.debug_mode) {
+            dprintf(2, "Checking resource %d: %ld >= %d\n",
+                    i, tile->content[i], req[i]);
+        }
         if (tile->content[i] < req[i])
             return false;
     }
@@ -88,10 +92,18 @@ static void consume_resources(tile_t *tile, const uint8_t *req)
  */
 static bool can_incantate(trn_t *trantorian, const uint8_t *req, tile_t *tile)
 {
+    int count = 0;
+
     if (!check_resources(tile, req))
         return false;
-    if (count_trantorians_same_level(trantorian->lvl) < req[0])
+    count = count_trantorians_same_level(trantorian->lvl);
+    if (my_server()->params.debug_mode) {
+        dprintf(2, "Incantation check: %d trantorians at level %d\n",
+                count, trantorian->lvl);
+    }
+    if (count < req[0]) {
         return false;
+    }
     return true;
 }
 
