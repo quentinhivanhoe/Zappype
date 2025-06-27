@@ -27,6 +27,11 @@ Zappy::GUI::GUI(const std::string &ip, size_t port)
     background[3].position = sf::Vector2f(0, this->_window.getSize().y);
 
     this->sky.getSprite().setPosition(0, 0);
+    this->_TimeFont.loadFromFile("../GUI/assets/fonts/clock.ttf");
+    this->_TimeText = sf::Text();
+    this->_TimeText.setFont(this->_TimeFont);
+    this->_TimeText.setPosition(sf::Vector2f(1700, 10));
+    this->_TimeText.setScale(sf::Vector2f(2.0, 2.0));
     this->init();
     this->run();
     this->_recieveThread.join();
@@ -34,6 +39,33 @@ Zappy::GUI::GUI(const std::string &ip, size_t port)
 
 Zappy::GUI::~GUI()
 {
+}
+
+void Zappy::GUI::updateClock()
+{
+    if (this->time < 0.0f) this->time = 0.0f;
+    if (this->time >= 24.0f) this->time = 23.9999f;
+    int hours = static_cast<int>(this->time);
+    float fractionalHours = this->time - hours;
+    int minutes = static_cast<int>(fractionalHours * 60);
+    float fractionalMinutes = fractionalHours * 60 - minutes;
+    int seconds = static_cast<int>(std::round(fractionalMinutes * 60));
+    
+    if (seconds == 60) {
+        seconds = 0;
+        minutes++;
+    }
+    if (minutes == 60) {
+        minutes = 0;
+        hours = (hours + 1) % 24;
+    }
+
+    std::ostringstream oss;
+    oss << std::setfill('0') << std::setw(2) << hours << ":"
+        << std::setfill('0') << std::setw(2) << minutes << ":"
+        << std::setfill('0') << std::setw(2) << seconds;
+
+    this->_TimeText.setString(oss.str());
 }
 
 sf::Color Zappy::GUI::lerpColor(const sf::Color &a, sf::Color &b, float t)
@@ -59,7 +91,7 @@ void Zappy::GUI::updateSky()
     sf::Color Top;
 
     float timeElapsed = this->_clock.getElapsedTime().asSeconds();
-    this->time += timeElapsed * 0.01f;
+    this->time = timeElapsed * 0.1f;
     if (this->time > 24.f) {
         this->time -= 24;
         this->_clock.restart();
@@ -68,6 +100,7 @@ void Zappy::GUI::updateSky()
         Top = lerpColor(nightColor, dawnColor, time / 6.f);
         Bottom = lerpColor(nightBottom, dawnBottom, time / 6.f);
     } else if (time < 12.f) {
+        this->night = false;
         Top = lerpColor(dawnColor, noonColor, (time - 6.f) / 6.f);
         Bottom = lerpColor(dawnBottom, noonBottom, (time - 6.f) / 6.f);
     } else if (time < 18.f) {
@@ -79,6 +112,7 @@ void Zappy::GUI::updateSky()
     } else {
         Top = lerpColor(nightColor, dawnColor, (time - 20.f) / 4.f);
         Bottom = lerpColor(nightBottom, dawnBottom, (time - 20.F) / 4.f);
+        this->night = true;
     }
     background[0].color = Top;
     background[1].color = Top;
@@ -88,24 +122,19 @@ void Zappy::GUI::updateSky()
 
 void Zappy::GUI::dragView()
 {
-    // sf::Vector2f origin;
-
-    // if (this->_event.type == sf::Event::MouseButtonPressed && this->_event.mouseButton.button == sf::Mouse::Right) {
-    //     // printf("right click\n");
-    //     _dragging = true;
-    //     origin = this->_window.mapPixelToCoords(sf::Mouse::getPosition(this->_window));
-    // }
-    // if (this->_event.type == sf::Event::MouseButtonReleased && this->_event.mouseButton.button == sf::Mouse::Right) {
-    //     // printf("right released\n");
-    //     _dragging = false;
-    // }
-    // if (this->_event.type == sf::Event::MouseMoved && _dragging) {
-    //     // printf("mouse moving\n");
-    //     sf::Vector2f newWorldPos = this->_window.mapPixelToCoords(sf::Mouse::getPosition(this->_window));
-    //     sf::Vector2f delta = origin - newWorldPos;
-    //     this->_view.move(delta);
-    //     origin = this->_window.mapPixelToCoords(sf::Mouse::getPosition(_window));
-    // }
+    if (this->_event.type == sf::Event::MouseButtonPressed && this->_event.mouseButton.button == sf::Mouse::Right) {
+        _dragging = true;
+        origin = this->_window.mapPixelToCoords(sf::Mouse::getPosition(this->_window));
+    }
+    if (this->_event.type == sf::Event::MouseButtonReleased && this->_event.mouseButton.button == sf::Mouse::Right) {
+        _dragging = false;
+    }
+    if (this->_event.type == sf::Event::MouseMoved && _dragging) {
+        sf::Vector2f newWorldPos = this->_window.mapPixelToCoords(sf::Mouse::getPosition(this->_window));
+        sf::Vector2f delta = origin - newWorldPos;
+        this->_view.move(delta);
+        origin = this->_window.mapPixelToCoords(sf::Mouse::getPosition(_window));
+    }
 }
 
 void Zappy::GUI::init()
@@ -213,7 +242,6 @@ float Zappy::GUI::get_dist_to_cam(sf::View view, Vector2D pos)
 
 void Zappy::GUI::run()
 {
-    // this->_view.zoom(2);
     while (this->_window.isOpen()) {
         if (this->_framerateClock.getElapsedTime().asMicroseconds() < 1000000 / 60)
             continue;
@@ -228,6 +256,9 @@ void Zappy::GUI::run()
         this->_window.setView(this->_window.getDefaultView());
         this->updateSky();
         this->_window.draw(this->background);
+        this->_effect.runDraw(this->_window, night, time);
+        this->updateClock();
+        this->_window.draw(this->_TimeText);
         this->_window.setView(this->_view);
         this->display_map();
         this->display_objects();
