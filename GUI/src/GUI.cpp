@@ -8,6 +8,7 @@
 #include "../includes/TrantorButtons.hpp"
 #include "../includes/TileInfo.hpp"
 #include <cmath>
+#include <algorithm>
 #include "GUI.hpp"
 
 Zappy::GUI::GUI(const std::string &ip, size_t port)
@@ -87,24 +88,24 @@ void Zappy::GUI::updateSky()
 
 void Zappy::GUI::dragView()
 {
-    sf::Vector2f origin;
+    // sf::Vector2f origin;
 
-    if (this->_event.type == sf::Event::MouseButtonPressed && this->_event.mouseButton.button == sf::Mouse::Right) {
-        // printf("right click\n");
-        _dragging = true;
-        origin = this->_window.mapPixelToCoords(sf::Mouse::getPosition(this->_window));
-    }
-    if (this->_event.type == sf::Event::MouseButtonReleased && this->_event.mouseButton.button == sf::Mouse::Right) {
-        // printf("right released\n");
-        _dragging = false;
-    }
-    if (this->_event.type == sf::Event::MouseMoved && _dragging) {
-        // printf("mouse moving\n");
-        sf::Vector2f newWorldPos = this->_window.mapPixelToCoords(sf::Mouse::getPosition(this->_window));
-        sf::Vector2f delta = origin - newWorldPos;
-        this->_view.move(delta);
-        origin = this->_window.mapPixelToCoords(sf::Mouse::getPosition(_window));
-    }
+    // if (this->_event.type == sf::Event::MouseButtonPressed && this->_event.mouseButton.button == sf::Mouse::Right) {
+    //     // printf("right click\n");
+    //     _dragging = true;
+    //     origin = this->_window.mapPixelToCoords(sf::Mouse::getPosition(this->_window));
+    // }
+    // if (this->_event.type == sf::Event::MouseButtonReleased && this->_event.mouseButton.button == sf::Mouse::Right) {
+    //     // printf("right released\n");
+    //     _dragging = false;
+    // }
+    // if (this->_event.type == sf::Event::MouseMoved && _dragging) {
+    //     // printf("mouse moving\n");
+    //     sf::Vector2f newWorldPos = this->_window.mapPixelToCoords(sf::Mouse::getPosition(this->_window));
+    //     sf::Vector2f delta = origin - newWorldPos;
+    //     this->_view.move(delta);
+    //     origin = this->_window.mapPixelToCoords(sf::Mouse::getPosition(_window));
+    // }
 }
 
 void Zappy::GUI::init()
@@ -167,6 +168,21 @@ void Zappy::GUI::zoomScroll()
             }
         }
     }
+    this->_view.setSize(vclamp(this->_view.getSize(), sf::Vector2f(1920/2, 1080/2), sf::Vector2f(1920 * 1.5, 1080 * 1.5)));
+}
+
+sf::Vector2f Zappy::GUI::vclamp(sf::Vector2f val, sf::Vector2f min, sf::Vector2f max)
+{
+    if(val.x < min.x)
+        val.x = min.x;
+    if(val.y < min.y)
+        val.y = min.y;
+    if(val.x > max.x)
+        val.x = max.x;
+    if(val.y > max.y)
+        val.y = max.y;
+
+    return val;
 }
 
 void Zappy::GUI::touchView()
@@ -230,15 +246,12 @@ void Zappy::GUI::display_map()
 {
     for (int j = 0; j < this->getMap()->getSize().getY(); j++){
         for (int i = 0; i < this->getMap()->getSize().getX(); i++){
-            if (get_dist_to_cam(this->_view, this->_map->getTiles()[j][i]->getPos()) < 2000)
+            if (get_dist_to_cam(this->_view, this->_map->getTiles()[j][i]->getPos()) < 2000){
                 this->_window.draw(_map->getTiles()[j][i]->getTile()->getSprite());
-            // for (size_t k = 0; k < 8; k++){
-            //     if (this->_map->getTiles()[j][i].get()->getItems()[k] > 0){
-            //         this->_items[k]->getSprite()->getSprite().setPosition(this->_map->getTiles()[j][i]->getCenter().getX() + this->_map->getTiles()[j][i]->getOffsetsList()[k].getX(), 
-            //         this->_map->getTiles()[j][i]->getCenter().getY() + this->_map->getTiles()[j][i]->getOffsetsList()[k].getY() + 70);
-            //         this->_window.draw(this->_items[k]->getSprite()->getSprite());
-            //     }          
-            // }
+                this->_map->getTiles()[j][i]->setActivity(true);
+                continue;
+            }
+            this->_map->getTiles()[j][i]->setActivity(false);
         }
     }
 }
@@ -250,6 +263,19 @@ void Zappy::GUI::display_sky()
 
 void Zappy::GUI::display_objects()
 {
+    for (int j = 0; j < this->getMap()->getSize().getY(); j++){
+        for (int i = 0; i < this->getMap()->getSize().getX(); i++){
+            if (this->_map->getTiles()[j][i]->getActivity()){
+                for (size_t k = 0; k < 8; k++){
+                    if (this->_map->getTiles()[j][i].get()->getItems()[k] > 0){
+                        this->_items[k]->getSprite()->getSprite().setPosition(this->_map->getTiles()[j][i]->getCenter().getX() + this->_map->getTiles()[j][i]->getOffsetsList()[k].getX(), 
+                        this->_map->getTiles()[j][i]->getCenter().getY() + this->_map->getTiles()[j][i]->getOffsetsList()[k].getY() + 70);
+                        this->_window.draw(this->_items[k]->getSprite()->getSprite());
+                    }
+                }
+            }
+        }
+    }
 }
 
 void Zappy::GUI::display_trantor()

@@ -73,6 +73,7 @@ namespace Zappy
             void zoomScroll();
             void touchView();
             void drawRandom();
+            sf::Vector2f vclamp(sf::Vector2f val, sf::Vector2f min, sf::Vector2f max);
             sf::Color lerpColor(const sf::Color &a, sf::Color &b, float t);
             void updateSky();
             float get_dist_to_cam(sf::View view, Vector2D pos);
