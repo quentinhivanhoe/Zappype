@@ -213,6 +213,8 @@ class AI:
                 self.isDead = True
                 print(f"[INFO] Mort détectée suite à la commande : {cmd}")
                 break
+            elif res.startswith("eject"):
+                break
             elif cmd == "connect_nbr":
                 self.freeSlots = int(res)
             elif cmd == "fork" and res == "ok":
@@ -388,7 +390,7 @@ class AI:
             self.send_command("Inventory\n")
             self.wait_all_resp()
             breed_chance = random.random()
-            if breed_chance < 0.3 and self.freeSlots > 0:
+            if breed_chance < 0.2 and self.freeSlots > 0 and self.food >= 10:
                 state = "BREED"
             else:
                 if self.food < 10:
@@ -407,6 +409,8 @@ class AI:
                 self.try_level_up()
             elif state == "COLLECT_RESOURCES":
                 self.collect_resources()
+            elif state == "BREED":
+                self.breed()
             else:
                 time.sleep(ELAPSED_SLEEP)
 
