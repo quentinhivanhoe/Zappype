@@ -33,5 +33,6 @@ void handle_set(trn_t *trantorian, char **args);
 void handle_incantation(trn_t *trantorian, char **args);
 void handle_eject(trn_t *trantorian, char **args);
 void handle_broadcast(trn_t *trantorian, char **args);
+void handle_fork(trn_t *trn, char **args);
 
 #endif /* !IA_H_ */

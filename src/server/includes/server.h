@@ -84,5 +84,6 @@ void pdr_command(int player_id, obj_idx_t object);
 void pgt_command(int player_id, obj_idx_t object);
 void ebo_command(size_t id);
 void els_command(int client_fd, char **cmd);
+trn_t init_egg(size_t team_id);
 
 #endif /* !SERVER_H_ */

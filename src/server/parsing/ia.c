@@ -17,7 +17,7 @@ static const ia_cmd_t cmd_table[] = {
     { "Inventory", handle_inventory, 1 },
     { "Broadcast", handle_broadcast, 7 },
     { "Connect_nbr", handle_connect_nbr, 0 },
-    // { "Fork", handle_fork, 42 },
+    { "Fork", handle_fork, 42 },
     { "Eject", handle_eject, 7 },
     { "Take", handle_take, 7 },
     { "Set", handle_set, 7 },
