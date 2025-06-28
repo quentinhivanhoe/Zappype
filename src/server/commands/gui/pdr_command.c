@@ -33,7 +33,7 @@ static void print_tile(pos_t pos, int gui_id)
 {
     tile_t tile = get_object(my_server()->map, pos.x, pos.y);
 
-    dprintf(gui_id, "bct #%ld %ld %ld %ld %ld %ld %ld %ld %ld\n", pos.x, pos.y,
+    dprintf(gui_id, "bct %ld %ld %ld %ld %ld %ld %ld %ld %ld\n", pos.x, pos.y,
         tile.content[FOOD], tile.content[LINEMATE], tile.content[DERAUMERE],
         tile.content[SIBUR], tile.content[MENDIANE], tile.content[PHIRAS],
         tile.content[THYSTAME]);
