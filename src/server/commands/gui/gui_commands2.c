@@ -56,7 +56,7 @@ void handle_plv(int client_fd, char **cmd)
     if (client_idx == false)
         return;
     dprintf(client_fd, "plv #%zu %d\n", client_idx,
-        my_server()->info.clients->data.ia_client.lvl);
+        my_server()->info.clients[client_idx].data.ia_client.lvl);
 }
 
 void handle_pin(int client_fd, char **cmd)

@@ -312,6 +312,10 @@ class AI:
                 print(f"[ERROR] Receive: {e}")
                 self.running = False
 
+    # def send_command(self, command):
+    #     self.client.write(command)
+    #     self.nbResToWait += 1
+    #     self.cmd_resp_queue.append([command.strip(), None])
     def send_command(self, command):
         """
         Sends a command to the server and queues it for response tracking.
@@ -323,6 +327,8 @@ class AI:
         self.nbResToWait += 1
         time.sleep(ELAPSED_SLEEP)
         self.cmd_resp_queue.append([command.strip(), None])
+
+
 
     def send_loop(self):
         """

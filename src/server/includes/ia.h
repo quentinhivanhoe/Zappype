@@ -20,6 +20,7 @@ typedef struct ia_cmd_s {
 } ia_cmd_t;
 
 void dispatch_ia_command(int client_index, const char *input);
+int get_object_index(const char *name);
 
 void handle_forward(trn_t *trantorian, char **args);
 void handle_right(trn_t *trantorian, char **args);
@@ -29,6 +30,9 @@ void handle_inventory(trn_t *trantorian, char **args);
 void handle_look(trn_t *trantorian, char **args);
 void handle_take(trn_t *trantorian, char **args);
 void handle_set(trn_t *trantorian, char **args);
-
+void handle_incantation(trn_t *trantorian, char **args);
+void handle_eject(trn_t *trantorian, char **args);
+void handle_broadcast(trn_t *trantorian, char **args);
+void handle_fork(trn_t *trn, char **args);
 
 #endif /* !IA_H_ */
