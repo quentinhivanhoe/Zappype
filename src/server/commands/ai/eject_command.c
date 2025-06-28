@@ -37,6 +37,29 @@ static void send_eject(trn_t *trantorian, int dir)
     send_pex(trantorian);
 }
 
+void kill_egg(size_t egg_id)
+{
+    trn_t *egg = &my_server()->info.clients[egg_id].data.ia_client;
+
+    memset(egg, 0, sizeof(trn_t));
+    my_server()->info.fds[egg_id].fd = -1;
+    my_server()->info.fd_count--;
+    edi_command(egg_id);
+}
+
+void process_eject(trn_t *trantorian, size_t id)
+{
+    trn_t *other = &my_server()->info.clients[id].data.ia_client;
+
+    if (my_server()->info.clients[id].type == EGG) {
+        kill_egg(id);
+        return;
+    }
+    move_player(other, trantorian->pos.dir, my_server()->params.width,
+    my_server()->params.height);
+    send_eject(other, trantorian->pos.dir);
+}
+
 /**
  * @brief Handles the `Eject` command for a trantorian.
  *
@@ -55,19 +78,17 @@ void handle_eject(trn_t *trantorian, __attribute_maybe_unused__ char **args)
     bool has_ejected = false;
     uint64_t x = trantorian->pos.x;
     uint64_t y = trantorian->pos.y;
-    int width = my_server()->params.width;
-    int height = my_server()->params.height;
     trn_t *other = NULL;
 
     for (size_t i = 1; i < my_server()->info.fd_count; i++) {
-        if (my_server()->info.clients[i].type != IA)
+        if (my_server()->info.clients[i].type != IA
+        && my_server()->info.clients[i].type != EGG)
             continue;
         other = &my_server()->info.clients[i].data.ia_client;
         if (other == trantorian)
             continue;
         if (other->pos.x == x && other->pos.y == y) {
-            move_player(other, trantorian->pos.dir, width, height);
-            send_eject(other, trantorian->pos.dir);
+            process_eject(trantorian, i);
             has_ejected = true;
         }
     }
