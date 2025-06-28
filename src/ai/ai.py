@@ -11,6 +11,8 @@ import getopt
 import time
 import pprint
 import random
+import subprocess
+import os
 
 ELAPSED_SLEEP = 0.2
 INVENTORY_ITEM = 6
@@ -170,6 +172,7 @@ class AI:
         self.cmd_resp_queue = []
         self.isLeveling = False
         self.lookInventory = []
+        self.freeSlots = 0
 
     def receive_loop(self):
         while self.running:
@@ -210,6 +213,10 @@ class AI:
                 self.isDead = True
                 print(f"[INFO] Mort détectée suite à la commande : {cmd}")
                 break
+            elif cmd == "connect_nbr":
+                self.freeSlots = int(res)
+            elif cmd == "fork" and res == "ok":
+                self.fork_new_ai()
             elif cmd == "incantation" and res == "ko":
                 self.isLeveling == False
                 break
@@ -252,7 +259,6 @@ class AI:
         self.cmd_resp_queue = []
         self.nbResToWait = 0
         return result
-
 
     def setAllObjects(self):
         for resource, quantity in self.inventory.items():
@@ -330,13 +336,50 @@ class AI:
                 self.wait_all_resp()
                 return
 
+    def breed(self):
+        self.send_command("Connect_nbr\n")
+        self.wait_all_resp()
+        if self.freeSlots <= 0:
+            print("[INFO] No free slots to breed.")
+            return
+        self.send_command("Fork\n")
+        self.wait_all_resp()
+        print("[INFO] Breeding initiated.")
+        self.freeSlots -= 1
+        if self.debug:
+            print(f"[DEBUG] Free slots after breeding: {self.freeSlots}")
+
+    def fork_new_ai(self):
+        cmd = [
+            "./zappy_ai",
+            "-h", self.client.ip,
+            "-n", self.client.teamName,
+            "-p", str(self.client.port)
+        ]
+        if self.debug:
+            print(f"[DEBUG] Forking new AI with command: {' '.join(cmd)}")
+        try:
+            subprocess.Popen(
+                cmd,
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL,
+                stdin=subprocess.DEVNULL,
+                close_fds=True,
+                start_new_session=True
+            )
+            print("[INFO] New AI process started in detached mode.")
+        except Exception as e:
+            print(f"[ERROR] Failed to fork new AI: {e}")
+
+
     def simulation(self):
         welcome = self.client.read()
         if welcome.strip() != "WELCOME":
             print("[ERROR] Wrong connection's protocole.")
             return
         self.client.write(f"{self.client.teamName}\n")
-        print(f"[INFO] Connected : {self.client.read().strip()}")
+        self.freeSlots = int(self.client.read().strip())
+        print(f"[INFO] Connected : {self.freeSlots}")
         print(f"[INFO] Servor message : {self.client.read().strip()}")
 
         state = "IDLE"
@@ -344,13 +387,16 @@ class AI:
         while not self.isDead:
             self.send_command("Inventory\n")
             self.wait_all_resp()
-
-            if self.food < 10:
-                state = "COLLECT_FOOD"
-            elif checkElevationCondition(self.inventory, self.level):
-                state = "LEVEL_UP"
+            breed_chance = random.random()
+            if breed_chance < 0.3 and self.freeSlots > 0:
+                state = "BREED"
             else:
-                state = "COLLECT_RESOURCES"
+                if self.food < 10:
+                    state = "COLLECT_FOOD"
+                elif checkElevationCondition(self.inventory, self.level):
+                    state = "LEVEL_UP"
+                else:
+                    state = "COLLECT_RESOURCES"
 
             if self.debug:
                 print(f"[DEBUG] Current State: {state}")
