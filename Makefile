@@ -13,15 +13,13 @@ AI = zappy_ai
 
 GUI = zappy_gui
 
-$(SERVER):
+$(SERVER): $(AI) $(GUI)
 	@echo "Building Server..."
 	mkdir -p build
 	mkdir -p build/Server
 	cd build/Server && cmake ../.. && make
 	@echo "Server built successfully."
 	cd ../..
-
-all: $(SERVER) $(AI) $(GUI)
 
 $(AI):
 	@echo "Building AI..."
@@ -30,6 +28,8 @@ $(AI):
 
 $(GUI):
 	@echo "Building GUI..."
+
+all: $(AI) $(SERVER) $(GUI)
 
 clean:
 	rm -rf build
@@ -42,4 +42,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re $(SERVER) $(AI) $(GUI)
+.PHONY: $(SERVER) $(AI) $(GUI) all clean fclean re
