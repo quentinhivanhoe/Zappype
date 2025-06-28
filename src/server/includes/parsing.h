@@ -19,6 +19,7 @@ typedef struct team_s {
     size_t max;
     size_t egg_count;
     size_t trn_count;
+    double dead;
 } team_t;
 
 typedef struct params_s {

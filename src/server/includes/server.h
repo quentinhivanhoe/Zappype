@@ -89,5 +89,5 @@ void send_pic(trn_t *trn, char *token);
 void send_pie(trn_t *trantorian, bool state);
 void send_pex(trn_t *trantorian);
 void smg_command(size_t client_id, const char *format, ...);
-
+bool end_game(team_t *teams);
 #endif /* !SERVER_H_ */
