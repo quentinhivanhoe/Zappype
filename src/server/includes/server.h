@@ -90,4 +90,5 @@ void send_pie(trn_t *trantorian, bool state);
 void send_pex(trn_t *trantorian);
 void smg_command(size_t client_id, const char *format, ...);
 bool end_game(team_t *teams);
+void edi_command(size_t egg_id);
 #endif /* !SERVER_H_ */
