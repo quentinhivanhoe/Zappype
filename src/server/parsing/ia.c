@@ -21,7 +21,7 @@ static const ia_cmd_t cmd_table[] = {
     { "Eject", handle_eject, 7 },
     { "Take", handle_take, 7 },
     { "Set", handle_set, 7 },
-    { "Incantation", handle_incantation, 300 },
+    { "Incantation", handle_incantation, 0 },
     { NULL, NULL, 0 }
 };
 

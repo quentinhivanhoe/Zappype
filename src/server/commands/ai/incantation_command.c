@@ -6,6 +6,7 @@
 */
 
 #include "../includes/server.h"
+#include "../includes/clock.h"
 #include "../includes/ia.h"
 
 /**
@@ -123,6 +124,14 @@ void complete_incantation(trn_t *trantorian, const uint8_t *req, tile_t *tile)
         dprintf(2, "Incantation complete : (%lu, %lu) -> level %d\n",
                 trantorian->pos.x, trantorian->pos.y, trantorian->lvl);
     }
+    // for (size_t i = 1; i < my_server()->info.fd_count; i++) {
+    //     if (my_server()->info.fds[i].fd > 0
+    //     && my_server()->info.clients[i].type == GUI) {
+    //         dprintf(my_server()->info.clients[i].data.gui_client,
+    //                "pie %zu %zu %d #%ld\n", trantorian->pos.x, trantorian->pos.y,
+    //                trantorian->lvl, get_trantorian_index(trantorian));
+    //     }
+    // }
 }
 
 /**
@@ -153,6 +162,18 @@ static tile_t *get_trantorian_tile(trn_t *trantorian)
     return &my_server()->map[y * width + x];
 }
 
+void send_incantation_to_gui(trn_t *trantorian, bool state)
+{
+    for (size_t i = 1; i < my_server()->info.fd_count; i++) {
+        if (my_server()->info.fds[i].fd > 0
+        && my_server()->info.clients[i].type == GUI) {
+            dprintf(my_server()->info.clients[i].data.gui_client,
+                   "pie %zu %zu %c\n", trantorian->pos.x, trantorian->pos.y,
+                   state ? 'T' : 'F');
+        }
+    }
+}
+
 /**
  * @brief Handles the `Incantation` command.
  *
@@ -165,10 +186,32 @@ static tile_t *get_trantorian_tile(trn_t *trantorian)
  * @param trantorian Pointer to the trantorian performing the incantation.
  * @param args Command arguments (unused).
  */
+
+void handle_incantation_p2(clk_args_t *args)
+{
+    const uint8_t *req;
+    tile_t *tile;
+
+    if (!is_valid_level(args->trantorian->lvl)) {
+        dprintf(args->trantorian->socket, "ko\n");
+        return;
+    }
+    req = elevation_tab[args->trantorian->lvl - 1];
+    tile = get_trantorian_tile(args->trantorian);
+    if (!can_incantate(args->trantorian, req, tile)) {
+        dprintf(args->trantorian->socket, "ko\n");
+        return;
+    }
+    complete_incantation(args->trantorian, req, tile);
+    (void)args;
+}
+
 void handle_incantation(trn_t *trantorian, char **args)
 {
     const uint8_t *req;
     tile_t *tile;
+    clk_args_t *clock_args = NULL;
+    clk_node_t *node = NULL;
 
     if (!is_valid_level(trantorian->lvl)) {
         dprintf(trantorian->socket, "ko\n");
@@ -180,11 +223,27 @@ void handle_incantation(trn_t *trantorian, char **args)
         dprintf(trantorian->socket, "ko\n");
         return;
     }
-    dprintf(trantorian->socket, "Elevation underway\n");
-    if (!can_incantate(trantorian, req, tile)) {
-        dprintf(trantorian->socket, "ko\n");
-        return;
+    for (size_t i = 0; i < my_server()->info.fd_count; i++) {
+        printf("FD %zu: %d\n", i, my_server()->info.fds[i].fd);
+        if (my_server()->info.fds[i].fd > 0
+        && my_server()->info.clients[i].type == GUI) {
+            printf("Sending incantation to GUI client %zu\n", i);
+            dprintf(my_server()->info.fds[i].fd,
+                   "pic %zu %zu %d #%ld\n", trantorian->pos.x, trantorian->pos.y,
+                   trantorian->lvl, get_trantorian_index(trantorian));
+        }
     }
-    complete_incantation(trantorian, req, tile);
     (void)args;
+    (void)clock_args;
+    (void)node;
+    dprintf(trantorian->socket, "Elevation underway\n");
+    clock_args = alloc_args(trantorian, args, 300, ONE_SHOT_CLOCK);
+    node = alloc_node(&handle_incantation_p2, clock_args);
+    clock_list(node, ADD);
+    // if (!can_incantate(trantorian, req, tile)) {
+    //     dprintf(trantorian->socket, "ko\n");
+    //     return;
+    // }
+    // complete_incantation(trantorian, req, tile);
+    // (void)args;
 }

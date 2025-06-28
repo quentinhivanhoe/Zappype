@@ -34,7 +34,7 @@ static int compute_broadcast_direction(trn_t *sender, size_t i)
     return mapping[dir_index][sector];
 }
 
-static size_t get_trantorian_index(trn_t *trantorian)
+size_t get_trantorian_index(trn_t *trantorian)
 {
     for (size_t i = 0; i < my_server()->params.max_clients; i++) {
         if (my_server()->info.fds[i].fd == -1)
