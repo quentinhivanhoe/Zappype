@@ -18,6 +18,7 @@ trn_t init_egg(size_t team_id)
     egg.team_id = team_id;
     egg.lvl = 1;
     egg.inventory[FOOD] = 10;
+    my_server()->params.teams[team_id].egg_count++;
     return egg;
 }
 
@@ -29,7 +30,6 @@ void setup_team(void)
 
     for (size_t i = 0; my_server()->params.teams[i].name; i++) {
         for (size_t j = 0; j < egg_nbr; j++) {
-            my_server()->params.teams[i].egg_count++;
             clients[(i * egg_nbr) + (j + 1)].type = EGG;
             clients[(i * egg_nbr) + (j + 1)].data.ia_client = init_egg(i);
             fds[(i * egg_nbr) + (j + 1)].fd = 0;

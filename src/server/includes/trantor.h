@@ -72,6 +72,7 @@ typedef struct tile_s {
 } tile_t;
 
 tile_t get_object(tile_t *tile, ssize_t x, ssize_t y);
+size_t get_trantorian_index(trn_t *trantorian);
 
 extern const float density_table[OBJECT_DEFINED + 1];
 

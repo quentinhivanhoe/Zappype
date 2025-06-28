@@ -5,6 +5,7 @@
 ** clock_list
 */
 #include "../includes/clock.h"
+#include "../includes/server.h"
 #include <stdio.h>
 #include <string.h>
 #include <errno.h>
@@ -104,6 +105,7 @@ void update_clock(sll_t **list)
         while ((*list)->prev)
             (*list) = (*list)->prev;
     parse_req();
+    end_game(my_server()->params.teams);
 }
 
 void clock_list(clk_node_t *node, clk_act_t action)

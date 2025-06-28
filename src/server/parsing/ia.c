@@ -15,13 +15,13 @@ static const ia_cmd_t cmd_table[] = {
     { "Left", handle_left, 7 },
     { "Look", handle_look, 7 },
     { "Inventory", handle_inventory, 1 },
-    // { "Broadcast", handle_broadcast, 7 },
+    { "Broadcast", handle_broadcast, 7 },
     { "Connect_nbr", handle_connect_nbr, 0 },
-    // { "Fork", handle_fork, 42 },
-    // { "Eject", handle_eject, 7 },
+    { "Fork", handle_fork, 42 },
+    { "Eject", handle_eject, 7 },
     { "Take", handle_take, 7 },
     { "Set", handle_set, 7 },
-    // { "Incantation", handle_incantation, 300 },
+    { "Incantation", handle_incantation, 300 },
     { NULL, NULL, 0 }
 };
 
@@ -43,6 +43,7 @@ void handle_ia_command(trn_t *trn, const char *input, char *token)
 
     for (int i = 0; cmd_table[i].cmd != NULL; i++) {
         if (strcmp(cmd_table[i].cmd, token) == 0) {
+            send_pic(trn, token);
             fprintf(stderr, "%s: added to the clock list\n", token);
             args = split_args(input);
             add_req(trn, args, cmd_table[i].handler, cmd_table[i].delay);

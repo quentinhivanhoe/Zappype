@@ -122,7 +122,7 @@ class Client:
         self.ip = "127.0.0.1" if ip == "localhost" else ip
         self.clientSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-    def read(self, bufferSize=1):
+    def read(self, bufferSize=1024):
         try:
             data = ""
             while True:
@@ -184,10 +184,19 @@ class AI:
                 print(f"[ERROR] Réception: {e}")
                 self.running = False
 
+    # def send_command(self, command):
+    #     self.client.write(command)
+    #     self.nbResToWait += 1
+    #     self.cmd_resp_queue.append([command.strip(), None])
     def send_command(self, command):
+        # if not command.endswith('\n'):
+        #     command += '\n'
+        print(f"[SEND] {command.strip()}")
         self.client.write(command)
         self.nbResToWait += 1
         self.cmd_resp_queue.append([command.strip(), None])
+
+
 
     def send_loop(self):
         while self.running:
@@ -209,13 +218,13 @@ class AI:
                 self.isDead = True
                 print(f"[INFO] Mort détectée suite à la commande : {cmd}")
                 continue
-            if cmd == "incantation" and res == "ko":
+            if cmd == "incantation" and res == "ko caca":
                 self.isLeveling == False
                 continue
             if cmd == "incantation" and res == "Elevation underway":
                 self.isLeveling == True
                 continue
-            if cmd.startswith("take") and res == "ko":
+            if cmd.startswith("take") and res == "ko pipi":
                 self.takeFailed = True
             if cmd == "inventory":
                 fillInventory(res)
@@ -223,7 +232,7 @@ class AI:
             elif cmd == "look":
                 self.lookInventory = formatLook(res)
                 print(f"[DEBUG] Vision mise à jour après : {cmd}")
-            elif res in ["ok", "ko"]:
+            elif res in ["ok", "ko llala"]:
                 print(f"[DEBUG] Réponse simple à '{cmd}' => {res}")
             else:
                 print(f"[WARN] Réponse inconnue pour '{cmd}' => {res}")
@@ -257,7 +266,7 @@ class AI:
         for resource, quantity in self.inventory.items():
             if quantity > 0:
                 for _ in range(quantity):
-                    self.send_command(f"Set {resource}")
+                    self.send_command(f"Set {resource}\n")
 
     def simulation(self):
         welcome = self.client.read()
@@ -307,10 +316,14 @@ class AI:
                 self.wait_all_resp()
                 idx = detNearRessources(self.lookInventory, "food")
                 respArray = detPath(idx)
+                # for res in respArray:
+                #     self.client.write(res)
+                #     self.nbResToWait += 1
+                #     time.sleep(ELAPSED_SLEEP)
                 for res in respArray:
-                    self.client.write(res)
-                    self.nbResToWait += 1
+                    self.send_command(res)
                     time.sleep(ELAPSED_SLEEP)
+
                 self.send_command("Take food\n")
                 time.sleep(ELAPSED_SLEEP)
                 self.wait_all_resp()

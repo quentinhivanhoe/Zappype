@@ -30,6 +30,7 @@ static const gui_command_entry_t gui_command_table[] = {
     { "pnu", spn_command },
     { "pls", pls_command },
     { "els", els_command },
+    { "enu", enu_command },
     { NULL, NULL }
 };
 
