@@ -11,8 +11,10 @@ import getopt
 import time
 import pprint
 import random
+import subprocess
+import os
 
-ELAPSED_SLEEP = 0
+ELAPSED_SLEEP = 0.2
 INVENTORY_ITEM = 6
 ai = None
 
@@ -170,6 +172,7 @@ class AI:
         self.cmd_resp_queue = []
         self.isLeveling = False
         self.lookInventory = []
+        self.freeSlots = 0
 
     def receive_loop(self):
         while self.running:
@@ -178,15 +181,16 @@ class AI:
                 if data:
                     print(f"[SERVER] {data.strip()}")
                 else:
-                    print("[INFO] Serveur fermé la connexion.")
+                    print("[INFO] Connection closed by the host.")
                     self.running = False
             except Exception as e:
-                print(f"[ERROR] Réception: {e}")
+                print(f"[ERROR] Receive: {e}")
                 self.running = False
 
     def send_command(self, command):
         self.client.write(command)
         self.nbResToWait += 1
+        time.sleep(ELAPSED_SLEEP)
         self.cmd_resp_queue.append([command.strip(), None])
 
     def send_loop(self):
@@ -198,7 +202,7 @@ class AI:
                     break
                 self.client.write(msg + "\n")
             except Exception as e:
-                print(f"[ERROR] Envoi: {e}")
+                print(f"[ERROR] Send: {e}")
                 self.running = False
     def parse_response(self):
         for cmd, res in self.cmd_resp_queue:
@@ -207,9 +211,14 @@ class AI:
 
             if res == "dead":
                 self.isDead = True
-                # exit(84)
                 print(f"[INFO] Mort détectée suite à la commande : {cmd}")
                 break
+            elif res.startswith("eject"):
+                break
+            elif cmd == "connect_nbr":
+                self.freeSlots = int(res)
+            elif cmd == "fork" and res == "ok":
+                self.fork_new_ai()
             elif cmd == "incantation" and res == "ko":
                 self.isLeveling == False
                 break
@@ -220,14 +229,14 @@ class AI:
                 self.takeFailed = True
             elif cmd == "inventory":
                 fillInventory(res)
-                print(f"[DEBUG] Inventaire mis à jour après : {cmd}")
+                print(f"[DEBUG] Inventory : {cmd}")
             elif cmd == "look":
                 self.lookInventory = formatLook(res)
-                print(f"[DEBUG] Vision mise à jour après : {cmd}")
+                print(f"[DEBUG] Update look : {cmd}")
             elif res in ["ok", "ko"]:
-                print(f"[DEBUG] Réponse simple à '{cmd}' => {res}")
+                print(f"[DEBUG] Command: '{cmd}' => Res: '{res}'")
             else:
-                print(f"[WARN] Réponse inconnue pour '{cmd}' => {res}")
+                print(f"[WARN] Unknown response '{cmd}' => {res}")
     def wait_all_resp(self):
         self.resArray = []
         idx = 0
@@ -244,7 +253,7 @@ class AI:
         self.nbResToWait = 0
 
         if self.debug:
-            print("[DEBUG] Commande / Réponse :")
+            print("[DEBUG] Command / Response :")
             for cmd, resp in self.cmd_resp_queue:
                 print(f"  > {cmd} => {resp}")
 
@@ -253,106 +262,159 @@ class AI:
         self.nbResToWait = 0
         return result
 
-
     def setAllObjects(self):
         for resource, quantity in self.inventory.items():
             if quantity > 0:
                 for _ in range(quantity):
-                    self.send_command(f"Set {resource}")
+                    self.send_command(f"Set {resource}\n")
+
+    def collect_food(self):
+        self.send_command("Look\n")
+        self.wait_all_resp()
+        idx = detNearRessources(self.lookInventory, "food")
+        if idx == -1:
+            direction = random.choice(["Left\n", "Right\n", "Forward\n"])
+            self.send_command(direction)
+            self.wait_all_resp()
+            return
+        steps = detPath(idx)
+        for step in steps:
+            self.send_command(step)
+            self.wait_all_resp()
+        self.send_command("Take food\n")
+        self.wait_all_resp()
+
+    def try_level_up(self):
+        print(f"[INFO] Attempting Level Up (Level {self.level})")
+        self.setAllObjects()
+        self.wait_all_resp()
+        self.send_command("Incantation\n")
+        responses = self.wait_all_resp()
+        _, last_resp = responses[-1]
+        last_resp = last_resp.strip()
+
+        if last_resp == "Elevation underway":
+            if self.debug:
+                print("[DEBUG] Elevating...")
+            while True:
+                buffer = self.client.read()
+                if buffer:
+                    buffer = buffer.strip()
+                    if buffer.startswith("Current level"):
+                        try:
+                            self.level = int(buffer.split()[-1])
+                            print(f"[INFO] New Level: {self.level}")
+                        except ValueError:
+                            print(f"[WARN] Bad format: {buffer}")
+                        break
+                    else:
+                        if self.debug:
+                            print(f"[INFO] Incantation feedback: {buffer}")
+                        if "ko" in buffer:
+                            print("[INFO] Incantation failed.")
+                            break
+        else:
+            print("[INFO] Incantation failed or not ready.")
+
+    def collect_resources(self):
+        required = elevationCondition[str(self.level)]["ressources"]
+        for res, qty in required.items():
+            if self.inventory.get(res, 0) < qty:
+                if self.debug:
+                    print(f"[DEBUG] Searching {res}")
+                self.send_command("Look\n")
+                self.wait_all_resp()
+                idx = detNearRessources(self.lookInventory, res)
+                if idx == -1:
+                    direction = random.choice(["Left\n", "Right\n", "Forward\n"])
+                    self.send_command(direction)
+                    self.wait_all_resp()
+                    return
+                steps = detPath(idx)
+                for step in steps:
+                    self.send_command(step)
+                    self.wait_all_resp()
+                self.send_command(f"Take {res}\n")
+                self.wait_all_resp()
+                return
+
+    def breed(self):
+        self.send_command("Connect_nbr\n")
+        self.wait_all_resp()
+        if self.freeSlots <= 0:
+            print("[INFO] No free slots to breed.")
+            return
+        self.send_command("Fork\n")
+        self.wait_all_resp()
+        print("[INFO] Breeding initiated.")
+        self.freeSlots -= 1
+        if self.debug:
+            print(f"[DEBUG] Free slots after breeding: {self.freeSlots}")
+
+    def fork_new_ai(self):
+        cmd = [
+            "./zappy_ai",
+            "-h", self.client.ip,
+            "-n", self.client.teamName,
+            "-p", str(self.client.port)
+        ]
+        if self.debug:
+            print(f"[DEBUG] Forking new AI with command: {' '.join(cmd)}")
+        try:
+            subprocess.Popen(
+                cmd,
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL,
+                stdin=subprocess.DEVNULL,
+                close_fds=True,
+                start_new_session=True
+            )
+            print("[INFO] New AI process started in detached mode.")
+        except Exception as e:
+            print(f"[ERROR] Failed to fork new AI: {e}")
+
 
     def simulation(self):
         welcome = self.client.read()
         if welcome.strip() != "WELCOME":
-            print("Erreur protocole de connexion")
+            print("[ERROR] Wrong connection's protocole.")
             return
         self.client.write(f"{self.client.teamName}\n")
-        print(f"[INFO] Connecté : {self.client.read().strip()}")
-        print(f"[INFO] Message serveur : {self.client.read().strip()}")
-        while self.isDead != True:
+        self.freeSlots = int(self.client.read().strip())
+        print(f"[INFO] Connected : {self.freeSlots}")
+        print(f"[INFO] Servor message : {self.client.read().strip()}")
+
+        state = "IDLE"
+
+        while not self.isDead:
             self.send_command("Inventory\n")
             self.wait_all_resp()
-            if self.debug == True:
-                pprint.pprint(self.inventory)
-            if checkElevationCondition(ai.inventory, ai.level):
-                print("You can level up!")
-
-                self.setAllObjects()
-                self.wait_all_resp()
-                self.send_command("Incantation\n")
-                cmds = self.wait_all_resp()
-                if self.debug == True:
-                    print(cmds)
-                _ , last_resp = cmds[-1]
-                last_resp = last_resp.strip()
-                if last_resp == "Elevation underway":
-                    if self.debug:
-                        print("[DEBUG] Élévation en cours...")
-                    while True:
-                        buffer = self.client.read()
-                        if buffer:
-                            buffer = buffer.strip()
-                            if buffer.startswith("Current level"):
-                                try:
-                                    self.level = int(buffer.split()[-1])
-                                    print(f"[INFO] Nouveau niveau atteint : {self.level}")
-                                    break
-                                except ValueError:
-                                    print(f"[WARN] Format inattendu : {buffer}")
-                                    break
-                    continue
-                else:
-                    print("[INFO] Élévation impossible.")
-                    continue
-            elif ai.food < 3:
-                self.send_command("Look\n")
-                time.sleep(ELAPSED_SLEEP)
-                self.wait_all_resp()
-                idx = detNearRessources(self.lookInventory, "food")
-                respArray = detPath(idx)
-                for res in respArray:
-                    self.client.write(res)
-                    self.nbResToWait += 1
-                    time.sleep(ELAPSED_SLEEP)
-                self.send_command("Take food\n")
-                time.sleep(ELAPSED_SLEEP)
-                self.wait_all_resp()
-                if self.takeFailed == True:
-                    direction = random.choice(["Left\n", "Right\n", "Forward\n", "Forward\n"])
-                    print(f"Take food failed.")
-                    self.send_command(direction)
-                    time.sleep(ELAPSED_SLEEP)
-                    self.wait_all_resp()
-                    self.takeFailed = False
+            breed_chance = random.random()
+            if breed_chance < 0.2 and self.freeSlots > 0 and self.food >= 10:
+                state = "BREED"
             else:
-                for resource, required in elevationCondition[str(ai.level)]["ressources"].items():
-                    print(f"Search {resource}")
-                    if self.inventory[resource] < required:
-                        self.send_command("Look\n")
-                        time.sleep(ELAPSED_SLEEP)
-                        self.wait_all_resp()
-                        idx = detNearRessources(self.lookInventory, resource)
-                        if idx == -1:
-                            print(f"[WARN] {resource} not found nearby.")
-                            self.takeFailed = True
-                            continue
-                        respArray = detPath(idx)
-                        for res in respArray:
-                            self.send_command(res)
-                            time.sleep(ELAPSED_SLEEP)
-                        self.send_command(f"Take {resource}\n")
-                        time.sleep(ELAPSED_SLEEP)
-                        self.wait_all_resp()
-                    if self.takeFailed == True:
-                        direction = random.choice(["Left\n", "Right\n", "Forward\n", "Forward\n"])
-                        print(f"Take {resource} failed.")
-                        self.send_command(direction)
-                        time.sleep(ELAPSED_SLEEP)
-                        self.wait_all_resp()
-                        self.takeFailed = False
-                    break
+                if self.food < 10:
+                    state = "COLLECT_FOOD"
+                elif checkElevationCondition(self.inventory, self.level):
+                    state = "LEVEL_UP"
+                else:
+                    state = "COLLECT_RESOURCES"
+
+            if self.debug:
+                print(f"[DEBUG] Current State: {state}")
+
+            if state == "COLLECT_FOOD":
+                self.collect_food()
+            elif state == "LEVEL_UP":
+                self.try_level_up()
+            elif state == "COLLECT_RESOURCES":
+                self.collect_resources()
+            elif state == "BREED":
+                self.breed()
+            else:
+                time.sleep(ELAPSED_SLEEP)
 
 def fillInventory(inventoryString):
-
     cleaned = inventoryString.strip().replace('[', '').replace(']', '').replace('\n', '')
     slots = cleaned.split(',')
 
@@ -368,7 +430,6 @@ def fillInventory(inventoryString):
                 ai.food = qty
             elif name in ai.inventory:
                 ai.inventory[name] = qty
-
 
 def checkElevationCondition(inventory, level):
     required = elevationCondition[str(level)]["ressources"]
@@ -460,22 +521,3 @@ def process_ai():
     ai.simulation()
     ai.client.closeConnection()
     print("You are dead\n")
-
-# example = "player linemate, linemate player player, food deraumere , mendiane phiras,food linemate player player, deraumere , mendiane phiras, sibur"
-# tile_tab = formatLook(example)
-# index = detNearRessources(tile_tab, "player")
-# index = detNearRessources(tile_tab, "player")
-
-# fillInventory("[linemate 1, deraumere 2, food 5, sibur 0, mendiane 0, phiras 1, thystame 0]")
-
-# from pprint import pprint
-# pprint(tile_tab)
-# print(detNearRessources(tile_tab, "sibur"))
-# print(detNearRessources(tile_tab, "food"))
-# print(detNearRessources(tile_tab, "phiras"))
-# # print(detNearRessources(tile_tab, "food"))
-# print(detPath(detNearRessources(tile_tab, "sibur")))
-# print(detPath(detNearRessources(tile_tab, "food")))
-# print(detPath(detNearRessources(tile_tab, "phiras")))
-# print(detPath(detNearRessources(tile_tab, "toot")))
-
