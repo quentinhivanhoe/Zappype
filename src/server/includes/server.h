@@ -84,5 +84,8 @@ void pdr_command(int player_id, obj_idx_t object);
 void pgt_command(int player_id, obj_idx_t object);
 void ebo_command(size_t id);
 void els_command(int client_fd, char **cmd);
+void send_pic(trn_t *trn, char *token);
+void send_pie(trn_t *trantorian, bool state);
+void send_pex(trn_t *trantorian);
 
 #endif /* !SERVER_H_ */

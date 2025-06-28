@@ -41,7 +41,7 @@ static void print_tile(pos_t pos, int gui_id)
 
 static void print_inv(int trn_id, int gui_id)
 {
-    client_t* client = get_client(trn_id);
+    client_t *client = get_client(trn_id);
     trn_t trn = {0};
 
     if (!client)
