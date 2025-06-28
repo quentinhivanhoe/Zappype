@@ -43,6 +43,7 @@ void handle_ia_command(trn_t *trn, const char *input, char *token)
 
     for (int i = 0; cmd_table[i].cmd != NULL; i++) {
         if (strcmp(cmd_table[i].cmd, token) == 0) {
+            send_pic(trn, token);
             fprintf(stderr, "%s: added to the clock list\n", token);
             args = split_args(input);
             add_req(trn, args, cmd_table[i].handler, cmd_table[i].delay);

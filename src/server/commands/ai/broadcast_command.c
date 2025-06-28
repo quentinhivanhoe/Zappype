@@ -34,19 +34,6 @@ static int compute_broadcast_direction(trn_t *sender, size_t i)
     return mapping[dir_index][sector];
 }
 
-static size_t get_trantorian_index(trn_t *trantorian)
-{
-    for (size_t i = 0; i < my_server()->params.max_clients; i++) {
-        if (my_server()->info.fds[i].fd == -1)
-            continue;
-        if (my_server()->info.clients[i].type == IA &&
-            &my_server()->info.clients[i].data.ia_client == trantorian) {
-            return i;
-        }
-    }
-    return 0;
-}
-
 void handle_broadcast(trn_t *trantorian, char **args)
 {
     if (!args || !args[1]) {

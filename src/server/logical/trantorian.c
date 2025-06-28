@@ -28,3 +28,16 @@ void trantorian_death(__attribute_maybe_unused__ clk_args_t *args)
         if (clients[i].type == IA)
             decrease_food_bar(&clients[i].data.ia_client, i);
 }
+
+size_t get_trantorian_index(trn_t *trantorian)
+{
+    for (size_t i = 0; i < my_server()->params.max_clients; i++) {
+        if (my_server()->info.fds[i].fd == -1)
+            continue;
+        if (my_server()->info.clients[i].type == IA &&
+            &my_server()->info.clients[i].data.ia_client == trantorian) {
+            return i;
+        }
+    }
+    return 0;
+}

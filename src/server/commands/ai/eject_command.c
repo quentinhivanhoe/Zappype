@@ -31,6 +31,12 @@ void move_player(trn_t *trantorian, int dir, int width, int height)
         trantorian->pos.x = (trantorian->pos.x + width - 1) % width;
 }
 
+static void send_eject(trn_t *trantorian, int dir)
+{
+    dprintf(trantorian->socket, "eject: %d\n", dir);
+    send_pex(trantorian);
+}
+
 /**
  * @brief Handles the `Eject` command for a trantorian.
  *
@@ -61,7 +67,7 @@ void handle_eject(trn_t *trantorian, __attribute_maybe_unused__ char **args)
             continue;
         if (other->pos.x == x && other->pos.y == y) {
             move_player(other, trantorian->pos.dir, width, height);
-            dprintf(other->socket, "eject: %d\n", trantorian->pos.dir);
+            send_eject(other, trantorian->pos.dir);
             has_ejected = true;
         }
     }

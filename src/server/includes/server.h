@@ -85,5 +85,9 @@ void pgt_command(int player_id, obj_idx_t object);
 void ebo_command(size_t id);
 void els_command(int client_fd, char **cmd);
 trn_t init_egg(size_t team_id);
+void send_pic(trn_t *trn, char *token);
+void send_pie(trn_t *trantorian, bool state);
+void send_pex(trn_t *trantorian);
+void smg_command(size_t client_id, const char *format, ...);
 
 #endif /* !SERVER_H_ */
