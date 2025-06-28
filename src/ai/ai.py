@@ -260,6 +260,76 @@ class AI:
                 for _ in range(quantity):
                     self.send_command(f"Set {resource}\n")
 
+    def collect_food(self):
+        self.send_command("Look\n")
+        self.wait_all_resp()
+        idx = detNearRessources(self.lookInventory, "food")
+        if idx == -1:
+            direction = random.choice(["Left\n", "Right\n", "Forward\n"])
+            self.send_command(direction)
+            self.wait_all_resp()
+            return
+        steps = detPath(idx)
+        for step in steps:
+            self.send_command(step)
+            self.wait_all_resp()
+        self.send_command("Take food\n")
+        self.wait_all_resp()
+
+    def try_level_up(self):
+        print(f"[INFO] Attempting Level Up (Level {self.level})")
+        self.setAllObjects()
+        self.wait_all_resp()
+        self.send_command("Incantation\n")
+        responses = self.wait_all_resp()
+        _, last_resp = responses[-1]
+        last_resp = last_resp.strip()
+
+        if last_resp == "Elevation underway":
+            if self.debug:
+                print("[DEBUG] Elevating...")
+            while True:
+                buffer = self.client.read()
+                if buffer:
+                    buffer = buffer.strip()
+                    if buffer.startswith("Current level"):
+                        try:
+                            self.level = int(buffer.split()[-1])
+                            print(f"[INFO] New Level: {self.level}")
+                        except ValueError:
+                            print(f"[WARN] Bad format: {buffer}")
+                        break
+                    else:
+                        if self.debug:
+                            print(f"[INFO] Incantation feedback: {buffer}")
+                        if "ko" in buffer:
+                            print("[INFO] Incantation failed.")
+                            break
+        else:
+            print("[INFO] Incantation failed or not ready.")
+
+    def collect_resources(self):
+        required = elevationCondition[str(self.level)]["ressources"]
+        for res, qty in required.items():
+            if self.inventory.get(res, 0) < qty:
+                if self.debug:
+                    print(f"[DEBUG] Searching {res}")
+                self.send_command("Look\n")
+                self.wait_all_resp()
+                idx = detNearRessources(self.lookInventory, res)
+                if idx == -1:
+                    direction = random.choice(["Left\n", "Right\n", "Forward\n"])
+                    self.send_command(direction)
+                    self.wait_all_resp()
+                    return
+                steps = detPath(idx)
+                for step in steps:
+                    self.send_command(step)
+                    self.wait_all_resp()
+                self.send_command(f"Take {res}\n")
+                self.wait_all_resp()
+                return
+
     def simulation(self):
         welcome = self.client.read()
         if welcome.strip() != "WELCOME":
@@ -268,91 +338,31 @@ class AI:
         self.client.write(f"{self.client.teamName}\n")
         print(f"[INFO] Connected : {self.client.read().strip()}")
         print(f"[INFO] Servor message : {self.client.read().strip()}")
-        while self.isDead != True:
+
+        state = "IDLE"
+
+        while not self.isDead:
             self.send_command("Inventory\n")
             self.wait_all_resp()
-            if self.debug == True:
-                pprint.pprint(self.inventory)
-            if checkElevationCondition(ai.inventory, ai.level):
-                print("Start Leveling...")
-                print(f"Your current lvl {self.level}")
-                self.setAllObjects()
-                self.wait_all_resp()
-                self.send_command("Incantation\n")
-                cmds = self.wait_all_resp()
-                if self.debug == True:
-                    print(cmds)
-                _ , last_resp = cmds[-1]
-                last_resp = last_resp.strip()
-                if last_resp == "Elevation underway":
-                    if self.debug:
-                        print("[DEBUG] Elevating...")
-                    while True:
-                        buffer = self.client.read()
-                        if buffer:
-                            buffer = buffer.strip()
-                            if buffer.startswith("Current level"):
-                                try:
-                                    self.level = int(buffer.split()[-1])
-                                    print(f"[INFO] New Level : {self.level}")
-                                    break
-                                except ValueError:
-                                    print(f"[WARN] Wrong format : {buffer}")
-                                    break
-                            else:
-                                print("[INFO] Can't leveling.")
-                                break
-                    continue
-                else:
-                    print("[INFO] Can't leveling.")
-                    continue
-            elif ai.food < 10:
-                self.send_command("Look\n")
-                time.sleep(ELAPSED_SLEEP)
-                self.wait_all_resp()
-                idx = detNearRessources(self.lookInventory, "food")
-                respArray = detPath(idx)
-                for res in respArray:
-                    self.client.write(res)
-                    self.nbResToWait += 1
-                    time.sleep(ELAPSED_SLEEP)
-                self.send_command("Take food\n")
-                time.sleep(ELAPSED_SLEEP)
-                self.wait_all_resp()
-                if self.takeFailed == True:
-                    direction = random.choice(["Left\n", "Right\n", "Forward\n", "Forward\n"])
-                    print(f"Take food failed.")
-                    self.send_command(direction)
-                    time.sleep(ELAPSED_SLEEP)
-                    self.wait_all_resp()
-                    self.takeFailed = False
+
+            if self.food < 10:
+                state = "COLLECT_FOOD"
+            elif checkElevationCondition(self.inventory, self.level):
+                state = "LEVEL_UP"
             else:
-                for resource, required in elevationCondition[str(ai.level)]["ressources"].items():
-                    if self.inventory[resource] < required:
-                        print(f"Search {resource}")
-                        self.send_command("Look\n")
-                        time.sleep(ELAPSED_SLEEP)
-                        self.wait_all_resp()
-                        idx = detNearRessources(self.lookInventory, resource)
-                        if idx == -1:
-                            print(f"[WARN] {resource} not found nearby.")
-                            self.takeFailed = True
-                            continue
-                        respArray = detPath(idx)
-                        for res in respArray:
-                            self.send_command(res)
-                            time.sleep(ELAPSED_SLEEP)
-                        self.send_command(f"Take {resource}\n")
-                        time.sleep(ELAPSED_SLEEP)
-                        self.wait_all_resp()
-                        if self.takeFailed == True:
-                            direction = random.choice(["Left\n", "Right\n", "Forward\n", "Forward\n"])
-                            print(f"Take {resource} failed.")
-                            self.send_command(direction)
-                            time.sleep(ELAPSED_SLEEP)
-                            self.wait_all_resp()
-                            self.takeFailed = False
-                            break
+                state = "COLLECT_RESOURCES"
+
+            if self.debug:
+                print(f"[DEBUG] Current State: {state}")
+
+            if state == "COLLECT_FOOD":
+                self.collect_food()
+            elif state == "LEVEL_UP":
+                self.try_level_up()
+            elif state == "COLLECT_RESOURCES":
+                self.collect_resources()
+            else:
+                time.sleep(ELAPSED_SLEEP)
 
 def fillInventory(inventoryString):
     cleaned = inventoryString.strip().replace('[', '').replace(']', '').replace('\n', '')
