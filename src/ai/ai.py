@@ -286,7 +286,7 @@ class AI:
                 last_resp = last_resp.strip()
                 if last_resp == "Elevation underway":
                     if self.debug:
-                        print("[DEBUG] Élévation en cours...")
+                        print("[DEBUG] Elevating...")
                     while True:
                         buffer = self.client.read()
                         if buffer:
