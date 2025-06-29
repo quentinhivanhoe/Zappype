@@ -339,7 +339,7 @@ namespace Zappy
              * 
              * @param window 
              */
-            void render(sf::RenderWindow &window) const;
+            void render(sf::RenderWindow &window);
 
             /**
              * @brief Update the button

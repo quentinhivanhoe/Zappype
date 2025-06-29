@@ -192,7 +192,7 @@ Zappy::Buttons &Zappy::Buttons::function()
     return *this;
 }
 
-void Zappy::Buttons::render(sf::RenderWindow &window) const
+void Zappy::Buttons::render(sf::RenderWindow &window)
 {
     window.draw(this->_bg);
     window.draw(this->_title);

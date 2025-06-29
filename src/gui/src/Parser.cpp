@@ -299,7 +299,6 @@ void Zappy::Parser::managePPO(std::vector<std::string> args, [[maybe_unused]] Za
     targetTrantorian->setTilePos(pos);
     targetTrantorian->getSprite()->getSprite().setPosition(network->getGui()->getMap()->getTiles()[pos.y][pos.x]->getCenter().getX(), network->getGui()->getMap()->getTiles()[pos.y][pos.x]->getCenter().getY());
     targetTrantorian->setDirection(std::stoi(args[4]));
-    network->getGui()->getTileInfo()->updateTrantorButtonsTab();
     if (network->getGui()->isDebugging())
         Parser::showArgs(args);
 }
@@ -418,7 +417,6 @@ void Zappy::Parser::managePNW(std::vector<std::string> args, [[maybe_unused]] Za
     newTrantorian->setTeamName(args[6]);
     newTrantorian->getSprite()->getSprite().setPosition(network->getGui()->getMap()->getTiles()[pos.y][pos.x]->getCenter().getX(), network->getGui()->getMap()->getTiles()[pos.y][pos.x]->getCenter().getY());
     network->getGui()->getMap()->addTrantorian(newTrantorian);
-    network->getGui()->getTileInfo()->updateTrantorButtonsTab();
     if (network->getGui()->isDebugging())
         Parser::showArgs(args);
 }
