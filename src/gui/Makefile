@@ -8,17 +8,18 @@
 NAME = zappy_gui
 
 RESSOURCES_SOURCE = ressources
-
 RESSOURCES_TARGET = ./assets
 
-CPPFLAGS = -std=c++20 -Wall -Iincludes -Wextra -Werror -fno-gnu-unique -lsfml-graphics -lsfml-window -lsfml-system -lsfml-network
+CXXFLAGS = -std=c++20 -Wall -Wextra -Werror -Iincludes -fno-gnu-unique
+LDFLAGS = -lsfml-graphics -lsfml-window -lsfml-system -lsfml-network -ldl
 
-SRC = $(shell find -name "*.cpp")
-
+SRC = $(shell find src -name "*.cpp")
 OBJ = $(SRC:.cpp=.o)
 
-all: $(OBJ)
-	@g++ $(CPPFLAGS) -ldl -o $(NAME) $(OBJ)
+all: $(NAME)
+
+$(NAME): $(OBJ)
+	$(CXX) -o $(NAME) $(OBJ) $(LDFLAGS)
 	@cp -r $(RESSOURCES_SOURCE) $(RESSOURCES_TARGET)
 
 clean:
