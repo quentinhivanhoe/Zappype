@@ -69,17 +69,22 @@ void Zappy::Network::recieveFromServer()
     Parser parser;
     sf::Clock clock;
     while (!this->_isShuttingDown) {
-        if (clock.getElapsedTime().asSeconds() > 10) {
-            clock.restart();
-            this->send("mct\n");
-        }
-        std::string recievedString = this->receive(false);
-        if (!recievedString.empty()) {
-            std::vector<std::string> tab = Parser::splitLine(recievedString, "\n");
-            for (size_t i = 0; i < tab.size(); i++) {
-                std::vector<std::string> args = Parser::parseLine(tab[i], ' ');
-                parser.manageResponse(args, this);
+        try {
+            if (clock.getElapsedTime().asSeconds() > 10) {
+                clock.restart();
+                this->send("mct\n");
             }
+            std::string recievedString = this->receive(false);
+            if (!recievedString.empty()) {
+                std::vector<std::string> tab = Parser::splitLine(recievedString, "\n");
+                for (size_t i = 0; i < tab.size(); i++) {
+                    std::vector<std::string> args = Parser::parseLine(tab[i], ' ');
+                    parser.manageResponse(args, this);
+                }
+            }
+        } catch(const Error& e) {
+            this->_isShuttingDown = true;
+            this->getGui()->quitGameToMenu();
         }
     }
     this->_socket.disconnect();
