@@ -37,6 +37,7 @@ Zappy is a network game set on a toroidal (wrap-around) tile map, where teams of
 | `make clean` | Removes object files and temporary files |
 | `make fclean`| Removes all build artifacts, including the executable |
 | `make re` | Cleans and rebuilds the project             |
+| `make doc` | Create an HTML Documentation of the GUI located in doc/             |
 
 ---
 
