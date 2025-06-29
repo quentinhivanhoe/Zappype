@@ -1,0 +1,54 @@
+\hypertarget{MouseStatus_8hpp_source}{}\doxysection{Mouse\+Status.\+hpp}
+\label{MouseStatus_8hpp_source}\index{MouseStatus.hpp@{MouseStatus.hpp}}
+\mbox{\hyperlink{MouseStatus_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{MouseStatus_8hpp_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{MouseStatus_8hpp_source_l00002}00002\ \textcolor{comment}{**\ EPITECH\ PROJECT,\ 2025}}
+\DoxyCodeLine{\Hypertarget{MouseStatus_8hpp_source_l00003}00003\ \textcolor{comment}{**\ Zappy}}
+\DoxyCodeLine{\Hypertarget{MouseStatus_8hpp_source_l00004}00004\ \textcolor{comment}{**\ File\ description:}}
+\DoxyCodeLine{\Hypertarget{MouseStatus_8hpp_source_l00005}00005\ \textcolor{comment}{**\ mouse\ class}}
+\DoxyCodeLine{\Hypertarget{MouseStatus_8hpp_source_l00006}00006\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{MouseStatus_8hpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{MouseStatus_8hpp_source_l00008}00008\ \textcolor{preprocessor}{\#ifndef\ MOUSE\_H}}
+\DoxyCodeLine{\Hypertarget{MouseStatus_8hpp_source_l00009}00009\ \textcolor{preprocessor}{\ \ \ \ \#define\ MOUSE\_H}}
+\DoxyCodeLine{\Hypertarget{MouseStatus_8hpp_source_l00010}00010\ \textcolor{preprocessor}{\ \ \ \ \#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{\Hypertarget{MouseStatus_8hpp_source_l00011}00011\ \textcolor{preprocessor}{\ \ \ \ \#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{MouseStatus_8hpp_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{MouseStatus_8hpp_source_l00013}00013\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceZappy}{Zappy}}}
+\DoxyCodeLine{\Hypertarget{MouseStatus_8hpp_source_l00014}00014\ \{}
+\DoxyCodeLine{\Hypertarget{MouseStatus_8hpp_source_l00015}\mbox{\hyperlink{classZappy_1_1MouseStatus}{00015}}\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classZappy_1_1MouseStatus}{MouseStatus}}}
+\DoxyCodeLine{\Hypertarget{MouseStatus_8hpp_source_l00016}00016\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{MouseStatus_8hpp_source_l00017}00017\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{MouseStatus_8hpp_source_l00018}\mbox{\hyperlink{classZappy_1_1MouseStatus_ae50f584cc29eef9850c17193a825a2f5}{00018}}\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classZappy_1_1MouseStatus_ae50f584cc29eef9850c17193a825a2f5}{\_pressed}};}
+\DoxyCodeLine{\Hypertarget{MouseStatus_8hpp_source_l00019}\mbox{\hyperlink{classZappy_1_1MouseStatus_aea8f6ff6c6b42c8a0747bb45fe65cfe2}{00019}}\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classZappy_1_1MouseStatus_aea8f6ff6c6b42c8a0747bb45fe65cfe2}{\_hold}};}
+\DoxyCodeLine{\Hypertarget{MouseStatus_8hpp_source_l00020}\mbox{\hyperlink{classZappy_1_1MouseStatus_a6af49eb2e1098223f9c0f6e392f91cef}{00020}}\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classZappy_1_1MouseStatus_a6af49eb2e1098223f9c0f6e392f91cef}{\_released}};}
+\DoxyCodeLine{\Hypertarget{MouseStatus_8hpp_source_l00021}\mbox{\hyperlink{classZappy_1_1MouseStatus_a8ff9e78bb7e01aa73511aabae7c73b33}{00021}}\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classZappy_1_1MouseStatus_a8ff9e78bb7e01aa73511aabae7c73b33}{\_isForUi}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{MouseStatus_8hpp_source_l00022}\mbox{\hyperlink{classZappy_1_1MouseStatus_af3b50ab9b9429c89d977427ea0d60052}{00022}}\ \ \ \ \ \ \ \ \ \ \ \ \ sf::RectangleShape\ \mbox{\hyperlink{classZappy_1_1MouseStatus_af3b50ab9b9429c89d977427ea0d60052}{\_hitbox}};}
+\DoxyCodeLine{\Hypertarget{MouseStatus_8hpp_source_l00023}00023\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{MouseStatus_8hpp_source_l00024}00024\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classZappy_1_1MouseStatus}{MouseStatus}}(\textcolor{keywordtype}{bool}\ isForUi\ =\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{MouseStatus_8hpp_source_l00025}\mbox{\hyperlink{classZappy_1_1MouseStatus_abe71e3a9c5f46b39d06bf1993eb1ea3f}{00025}}\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classZappy_1_1MouseStatus_abe71e3a9c5f46b39d06bf1993eb1ea3f}{\string~MouseStatus}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{\Hypertarget{MouseStatus_8hpp_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{MouseStatus_8hpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{MouseStatus_8hpp_source_l00034}\mbox{\hyperlink{classZappy_1_1MouseStatus_a9db0b66e9736acfce91b0e1ebf1859c9}{00034}}\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classZappy_1_1MouseStatus_a9db0b66e9736acfce91b0e1ebf1859c9}{pressed}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classZappy_1_1MouseStatus_ae50f584cc29eef9850c17193a825a2f5}{\_pressed}};\};}
+\DoxyCodeLine{\Hypertarget{MouseStatus_8hpp_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{MouseStatus_8hpp_source_l00042}\mbox{\hyperlink{classZappy_1_1MouseStatus_aef121c4a8a9436e7262f345f4369d343}{00042}}\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classZappy_1_1MouseStatus_aef121c4a8a9436e7262f345f4369d343}{hold}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classZappy_1_1MouseStatus_aea8f6ff6c6b42c8a0747bb45fe65cfe2}{\_hold}};\};}
+\DoxyCodeLine{\Hypertarget{MouseStatus_8hpp_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{MouseStatus_8hpp_source_l00050}\mbox{\hyperlink{classZappy_1_1MouseStatus_a4c5e31b0b3b255f6c1bd24889b8237fd}{00050}}\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classZappy_1_1MouseStatus_a4c5e31b0b3b255f6c1bd24889b8237fd}{released}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classZappy_1_1MouseStatus_a6af49eb2e1098223f9c0f6e392f91cef}{\_released}};\};}
+\DoxyCodeLine{\Hypertarget{MouseStatus_8hpp_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{MouseStatus_8hpp_source_l00057}\mbox{\hyperlink{classZappy_1_1MouseStatus_a311092225bd2500509c47aa68f341d05}{00057}}\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1MouseStatus_a311092225bd2500509c47aa68f341d05}{setPressed}}(\textcolor{keywordtype}{bool}\ status)\ \{\ this-\/>\_pressed\ =\ status;\ \};}
+\DoxyCodeLine{\Hypertarget{MouseStatus_8hpp_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{MouseStatus_8hpp_source_l00064}\mbox{\hyperlink{classZappy_1_1MouseStatus_a7391ee0bb9bd2fe74f00bb44d674d798}{00064}}\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1MouseStatus_a7391ee0bb9bd2fe74f00bb44d674d798}{setHold}}(\textcolor{keywordtype}{bool}\ status)\ \{\ this-\/>\_hold\ =\ status;\ \};}
+\DoxyCodeLine{\Hypertarget{MouseStatus_8hpp_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{MouseStatus_8hpp_source_l00071}\mbox{\hyperlink{classZappy_1_1MouseStatus_a0cf8897878709ce3ec4894d0a5b886a5}{00071}}\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1MouseStatus_a0cf8897878709ce3ec4894d0a5b886a5}{setReleased}}(\textcolor{keywordtype}{bool}\ status)\ \{\ this-\/>\_released\ =\ status;\ \};}
+\DoxyCodeLine{\Hypertarget{MouseStatus_8hpp_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{MouseStatus_8hpp_source_l00078}\mbox{\hyperlink{classZappy_1_1MouseStatus_a9d9ac10a648e2290f146659a454d2f45}{00078}}\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1MouseStatus_a9d9ac10a648e2290f146659a454d2f45}{show}}(sf::RenderWindow\ \&window)\ \{\ window.draw(this-\/>\_hitbox);\ \};}
+\DoxyCodeLine{\Hypertarget{MouseStatus_8hpp_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{MouseStatus_8hpp_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classZappy_1_1MouseStatus_a26600c455bd2545b4fe511235115faa8}{hover}}(sf::RectangleShape\ other);}
+\DoxyCodeLine{\Hypertarget{MouseStatus_8hpp_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{MouseStatus_8hpp_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1MouseStatus_a91366862bb1a6894a1c82cf99d9a2bd7}{update}}(sf::RenderWindow\ \&window);}
+\DoxyCodeLine{\Hypertarget{MouseStatus_8hpp_source_l00095}00095\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{MouseStatus_8hpp_source_l00096}00096\ \}\ \textcolor{comment}{//\ namespace\ Zappy}}
+\DoxyCodeLine{\Hypertarget{MouseStatus_8hpp_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{MouseStatus_8hpp_source_l00098}00098\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ !MOUSE\_H\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

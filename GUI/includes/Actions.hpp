@@ -18,9 +18,33 @@ namespace Zappy {
     public:
         Actions(/* args */);
         ~Actions();
+
+        /**
+         * @brief Get the Name object
+         * 
+         * @return std::string 
+         */
         inline std::string getName() const {return this->_name;};
+
+        /**
+         * @brief Set the Name object
+         * 
+         * @param name 
+         */
         inline void setName(std::string name){this->_name = name;};
+
+        /**
+         * @brief Set the Function object
+         * 
+         * @param function 
+         */
         inline void setFunction(std::function<const int&()> function){this->_function = function;};
+
+        /**
+         * @brief Call the function of the Action (deprecated)
+         * 
+         * @param param 
+         */
         void function(const int& param);
 
     };

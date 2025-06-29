@@ -8,8 +8,9 @@
 #include "../includes/Buttons.hpp"
 #include <iostream>
 
-Zappy::Buttons::Buttons()
+Zappy::Buttons::Buttons(Zappy::GUI *gui)
 {
+    this->_gui = gui;
     this->_font.loadFromFile("assets/arial.ttf");
     this->_bg.setFillColor(sf::Color::White);
     this->_bg.setOutlineColor(sf::Color::Black);
@@ -126,7 +127,7 @@ Zappy::Buttons &Zappy::Buttons::setTextOutlineColor(sf::Color color)
     return *this;
 }
 
-Zappy::Buttons &Zappy::Buttons::setFunction(std::function<void(void *)> function)
+Zappy::Buttons &Zappy::Buttons::setFunction(void (GUI:: *function)())
 {
     this->_function = function;
     return *this;
@@ -175,19 +176,19 @@ Zappy::Buttons &Zappy::Buttons::scaleDown(float step)
     return *this;
 }
 
-Zappy::Buttons &Zappy::Buttons::operator()(void *parameters)
+Zappy::Buttons &Zappy::Buttons::operator()()
 {
     if (!this->_function)
         return *this;
-    this->_function(parameters);
+    (this->_gui->*this->_function)();
     return *this;
 }
 
-Zappy::Buttons &Zappy::Buttons::function(void *parameters)
+Zappy::Buttons &Zappy::Buttons::function()
 {
     if (!this->_function)
         return *this;
-    this->_function(parameters);
+    (this->_gui->*this->_function)();
     return *this;
 }
 
@@ -202,15 +203,16 @@ void Zappy::Buttons::update(MouseStatus mouse)
     float colorRed = this->_fillColor.r + 50 - 150 * mouse.hold();
     float colorGreen = this->_fillColor.g + 50 - 150 * mouse.hold();
     float colorBlue = this->_fillColor.b + 50 - 150 * mouse.hold();
+    float alpha = this->_fillColor.a;
     Math::Clamp::function(colorRed, 0, 255);
     Math::Clamp::function(colorGreen, 0, 255);
     Math::Clamp::function(colorBlue, 0, 255);
     this->_bg.setFillColor(this->_fillColor);
     if (mouse.hover(this->_bg)) {
         this->scaleUp(0.02);
-        this->_bg.setFillColor(sf::Color(colorRed, colorGreen, colorBlue));
-        if (mouse.pressed() && this->_function)
-            this->_function(nullptr);
+        this->_bg.setFillColor(sf::Color(colorRed, colorGreen, colorBlue, alpha));
+        if (mouse.pressed() && this->_function && this->_gui)
+            this->function();
     } else {
         this->scaleDown(0.02);
     }

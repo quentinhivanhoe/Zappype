@@ -7,8 +7,9 @@
 
 #include "../includes/Map.hpp"
 
-Zappy::Map::Map(Vector2D size)
+Zappy::Map::Map(GUI *gui, Vector2D size)
 {
+    this->_gui = gui;
     _size = size;
     this->init();
 }
@@ -56,6 +57,7 @@ void Zappy::Map::init()
             std::cout << tile->getTile()->getSprite().getPosition().x << " " << tile->getTile()->getSprite().getPosition().y << std::endl;
             tile.get()->setCenter(Vector2D(offset.getX() + (size.getX()), offset.getY() + (size.getY())));
             tile.get()->setPos(offset);
+            tile->initButton(this->_gui, tile);
             tmp.push_back(tile);
             id_tmp++;
         }
@@ -80,4 +82,5 @@ void Zappy::Map::addEgg(std::shared_ptr<Egg> egg)
     if (!_teams[egg->getTeamName()])
         this->_teams[egg->getTeamName()] = std::make_shared<Team>(egg->getTeamName());
     this->_teams[egg->getTeamName()]->addEgg(egg);
+    std::cout << "egg created" << std::endl;
 }

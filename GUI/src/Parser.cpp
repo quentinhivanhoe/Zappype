@@ -38,6 +38,7 @@ void Zappy::Parser::manageResponse(std::vector<std::string> args, [[maybe_unused
         {"msz", &Zappy::Parser::manageMSZ},
         {"pls", &Zappy::Parser::manageSPI},
         {"pnu", &Zappy::Parser::manageSPN},
+        {"enu", &Zappy::Parser::manageENU},
         {"bct", &Zappy::Parser::manageBCT},
         {"ppo", &Zappy::Parser::managePPO},
         {"plv", &Zappy::Parser::managePLV},
@@ -172,6 +173,20 @@ void Zappy::Parser::manageSPN([[maybe_unused]] std::vector<std::string> args, [[
     Parser::showArgs(args);
 }
 
+void Zappy::Parser::manageENU([[maybe_unused]] std::vector<std::string> args, [[maybe_unused]] Zappy::Network *network)
+{
+    if (args.size() != 2) {
+        std::cout << "Wrong number of args, response failed." << std::endl;
+        return;
+    }
+    if (!Parser::isNum(args[1])) {
+        std::cout << "Args must be positive numbers." << std::endl;
+        return;
+    }
+    network->setEggNb(std::stoi(args[1]));
+    Parser::showArgs(args);
+}
+
 void Zappy::Parser::manageSPI([[maybe_unused]] std::vector<std::string> args, [[maybe_unused]] Zappy::Network *network)
 {
     if (args.size() != 8) {
@@ -202,7 +217,35 @@ void Zappy::Parser::manageSPI([[maybe_unused]] std::vector<std::string> args, [[
     targetTrantorian->setTeamName(args[6]);
     targetTrantorian->setLevel(std::stoi(args[7]));
     network->getGui()->getMap()->addTrantorian(targetTrantorian);
-    network->getGui()->getMap()->getTrantorianByID(std::stoi(args[1].substr(1)))->getSprite()->getSprite().setPosition(network->getGui()->getMap()->getTiles()[pos.y][pos.x]->getCenter().getX(), network->getGui()->getMap()->getTiles()[pos.y][pos.x]->getCenter().getY() + 70);
+    network->getGui()->getMap()->getTrantorianByID(std::stoi(args[1].substr(1)))->getSprite()->getSprite().setPosition(network->getGui()->getMap()->getTiles()[pos.y][pos.x]->getCenter().getX(), network->getGui()->getMap()->getTiles()[pos.y][pos.x]->getCenter().getY());
+    Parser::showArgs(args);
+}
+
+void Zappy::Parser::manageELS(std::vector<std::string> args, [[maybe_unused]] Zappy::Network *network)
+{
+    if (args.size() != 5) {
+        std::cout << "Wrong number of args, response failed." << std::endl;
+        return;
+    }
+    if (!Parser::isIndex(args[1])) {
+        std::cout << "Index must be a # followed by a positive number." << std::endl;
+        return;
+    }
+    if (!Parser::isNum(args[2]) || !Parser::isNum(args[3])) {
+        std::cout << "Args must be positive numbers." << std::endl;
+        return;
+    }
+    std::shared_ptr<Egg> targetEgg = network->getGui()->getMap()->getEggById(std::stoi(args[1].substr(1)));
+    if (!targetEgg)
+        targetEgg = std::make_shared<Egg>();
+    sf::Vector2i pos = {std::stoi(args[2]), std::stoi(args[3])};
+    std::shared_ptr<Tile> targetTile = network->getGui()->getMap()->getTiles()[pos.y][pos.x];
+    targetEgg->setId(std::stoi(args[1].substr(1)));
+    targetEgg->setIndexPos(pos);
+    targetEgg->setTeamName(args[4]);
+    network->getGui()->getMap()->addEgg(targetEgg);
+    targetEgg->getDrawable()->getSprite().setPosition(targetTile->getCenter().getX() + targetTile->getOffsetsList()[0].getX(), targetTile->getCenter().getY() + targetTile->getOffsetsList()[0].getY() + 70);
+    network->getGui()->getMap()->getEggById(std::stoi(args[1].substr(1)))->getDrawable()->getSprite().setPosition(targetTile->getCenter().getX() + targetTile->getOffsetsList()[0].getX(), targetTile->getCenter().getY() + targetTile->getOffsetsList()[0].getY() + 70);
     Parser::showArgs(args);
 }
 
@@ -227,7 +270,7 @@ void Zappy::Parser::managePPO(std::vector<std::string> args, [[maybe_unused]] Za
         return;
     sf::Vector2i pos = {std::stoi(args[2]), std::stoi(args[3])};
     targetTrantorian->setTilePos(pos);
-    targetTrantorian->getSprite()->getSprite().setPosition(network->getGui()->getMap()->getTiles()[pos.y][pos.x]->getCenter().getX(), network->getGui()->getMap()->getTiles()[pos.y][pos.x]->getCenter().getY() + 70);
+    targetTrantorian->getSprite()->getSprite().setPosition(network->getGui()->getMap()->getTiles()[pos.y][pos.x]->getCenter().getX(), network->getGui()->getMap()->getTiles()[pos.y][pos.x]->getCenter().getY());
     targetTrantorian->setDirection(std::stoi(args[4]));
     network->getGui()->getTileInfo()->updateTrantorButtonsTab();
     Parser::showArgs(args);
@@ -329,8 +372,7 @@ void Zappy::Parser::managePNW(std::vector<std::string> args, [[maybe_unused]] Za
     newTrantorian->setDirection(std::stoi(args[4]));
     newTrantorian->setLevel(std::stoi(args[5]));
     newTrantorian->setTeamName(args[6]);
-    newTrantorian->getSprite()->getSprite().setPosition(network->getGui()->getMap()->getTiles()[pos.y][pos.x]->getCenter().getX(), network->getGui()->getMap()->getTiles()[pos.y][pos.x]->getCenter().getY() + 70);
-    std::cout << pos.x << " : " << pos.y << std::endl;
+    newTrantorian->getSprite()->getSprite().setPosition(network->getGui()->getMap()->getTiles()[pos.y][pos.x]->getCenter().getX(), network->getGui()->getMap()->getTiles()[pos.y][pos.x]->getCenter().getY());
     network->getGui()->getMap()->addTrantorian(newTrantorian);
     network->getGui()->getTileInfo()->updateTrantorButtonsTab();
     Parser::showArgs(args);
@@ -382,7 +424,12 @@ void Zappy::Parser::managePIC(std::vector<std::string> args, [[maybe_unused]] Za
             return;
         }
     }
-    // Start incantation for N players
+    for (size_t i = 4; i < args.size(); i++) {
+        std::shared_ptr<Trantorian> targetTrantorian = network->getGui()->getMap()->getTrantorianByID(std::stoi(args[i].substr(1)));
+        if (!targetTrantorian)
+            return;
+        targetTrantorian->elevate();
+    }
     Parser::showArgs(args);
 }
 
@@ -396,7 +443,26 @@ void Zappy::Parser::managePIE(std::vector<std::string> args, [[maybe_unused]] Za
         std::cout << "Args must be positive numbers." << std::endl;
         return;
     }
-    // End incantation at pos
+    sf::Vector2f pos;
+    for (auto trantorian : network->getGui()->getMap()->getAllTrantorians()) {
+        if (!trantorian.second)
+            continue;
+        if (trantorian.second->getTilePos().x == std::stoi(args[1]) && trantorian.second->getTilePos().y == std::stoi(args[2])) {
+            trantorian.second->idle();
+            trantorian.second->setState("Idling");
+            network->askPlayerLevel({std::to_string(trantorian.second->getID())});
+            pos = trantorian.second->getSprite()->getSprite().getPosition();
+        }
+    }
+    pos.y -= 20;
+    pos.x += 20;
+    if (args[3] == "T") {
+        std::shared_ptr<OneShotAnimationPlayer> animation = std::make_shared<OneShotAnimationPlayer>(10, sf::Vector2f(0.5, 0.5), sf::Vector2f(256, 256), sf::Vector2f(2560, 256), pos, "assets/elevation_sucess.png");
+        network->getGui()->addToAnimationTab(animation);
+    } else {
+        std::shared_ptr<OneShotAnimationPlayer> animation = std::make_shared<OneShotAnimationPlayer>(4, sf::Vector2f(0.5, 0.5), sf::Vector2f(256, 256), sf::Vector2f(1024, 256), pos, "assets/elevation_fail.png");
+        network->getGui()->addToAnimationTab(animation);
+    }
     Parser::showArgs(args);
 }
 
@@ -427,7 +493,10 @@ void Zappy::Parser::managePDR(std::vector<std::string> args, [[maybe_unused]] Za
         std::cout << "Index must be a # followed by a positive number." << std::endl;
         return;
     }
-    //understand function;
+    std::shared_ptr<Trantorian> targetTrantorian = network->getGui()->getMap()->getTrantorianByID(std::stoi(args[1].substr(1)));
+    if (!targetTrantorian)
+        return;
+    targetTrantorian->setState("Dropping item");
     Parser::showArgs(args);
 }
 
@@ -441,7 +510,14 @@ void Zappy::Parser::managePGT(std::vector<std::string> args, [[maybe_unused]] Za
         std::cout << "Index must be a # followed by a positive number." << std::endl;
         return;
     }
-    //understand function;
+    std::shared_ptr<Trantorian> targetTrantorian = network->getGui()->getMap()->getTrantorianByID(std::stoi(args[1].substr(1)));
+    if (!targetTrantorian)
+        return;
+    if (args[2] == "food") {
+        std::shared_ptr<OneShotAnimationPlayer> animation = std::make_shared<OneShotAnimationPlayer>(10, sf::Vector2f(0.5, 0.5), sf::Vector2f(256, 256), sf::Vector2f(1536, 256), targetTrantorian->getSprite()->getSprite().getPosition(), "assets/food_sheet.png");
+        network->getGui()->addToAnimationTab(animation);
+    }
+    targetTrantorian->setState("Getting item");
     Parser::showArgs(args);
 }
 
@@ -455,7 +531,11 @@ void Zappy::Parser::managePDI(std::vector<std::string> args, [[maybe_unused]] Za
         std::cout << "Index must be a # followed by a positive number." << std::endl;
         return;
     }
-    //kill player function
+    std::shared_ptr<Trantorian> targetTrantorian = network->getGui()->getMap()->getTrantorianByID(std::stoi(args[1].substr(1)));
+    if (!targetTrantorian)
+        return;
+    targetTrantorian->kill();
+    targetTrantorian->setState("Dead");
     Parser::showArgs(args);
 }
 
@@ -492,38 +572,7 @@ void Zappy::Parser::manageEBO(std::vector<std::string> args, [[maybe_unused]] Za
     std::shared_ptr<Egg> targetEgg = network->getGui()->getMap()->getEggById(std::stoi(args[1].substr(1)));
     if (!targetEgg)
         return;
-    network->getGui()->getMap()->getAllEggs().erase(std::stoi(args[1].substr(1)));
-    Parser::showArgs(args);
-}
-
-void Zappy::Parser::manageELS(std::vector<std::string> args, [[maybe_unused]] Zappy::Network *network)
-{
-    if (args.size() != 5) {
-        std::cout << "Wrong number of args, response failed." << std::endl;
-        return;
-    }
-    if (!Parser::isIndex(args[1])) {
-        std::cout << "Index must be a # followed by a positive number." << std::endl;
-        return;
-    }
-    if (!Parser::isNum(args[2]) || !Parser::isNum(args[3])) {
-        std::cout << "Args must be positive numbers." << std::endl;
-        return;
-    }
-    bool creating = false;
-    std::shared_ptr<Egg> targetEgg = network->getGui()->getMap()->getEggById(std::stoi(args[1].substr(1)));
-    if (!targetEgg) {
-        targetEgg = std::make_shared<Egg>();
-        creating = true;
-    }
-    sf::Vector2i pos = {std::stoi(args[2]), std::stoi(args[3])};
-    std::shared_ptr<Tile> targetTile = network->getGui()->getMap()->getTiles()[pos.y][pos.x];
-    targetEgg->setId(std::stoi(args[1].substr(1)));
-    targetEgg->setIndexPos(pos);
-    targetEgg->setTeamName(args[4]);
-    targetEgg->getDrawable()->getSprite().setPosition(targetTile->getCenter().getX() + targetTile->getOffsetsList()[0].getX(), targetTile->getCenter().getY() + targetTile->getOffsetsList()[0].getY() + 70);
-    if (creating)
-        network->getGui()->getMap()->addEgg(targetEgg);
+    network->getGui()->getMap()->removeEggById(targetEgg->getId());
     Parser::showArgs(args);
 }
 
@@ -540,7 +589,7 @@ void Zappy::Parser::manageEDI(std::vector<std::string> args, [[maybe_unused]] Za
     std::shared_ptr<Egg> targetEgg = network->getGui()->getMap()->getEggById(std::stoi(args[1].substr(1)));
     if (!targetEgg)
         return;
-    network->getGui()->getMap()->getAllEggs().erase(std::stoi(args[1].substr(1)));
+    network->getGui()->getMap()->removeEggById(targetEgg->getId());
     Parser::showArgs(args);
 }
 
@@ -550,7 +599,9 @@ void Zappy::Parser::manageSEG(std::vector<std::string> args, [[maybe_unused]] Za
         std::cout << "Wrong number of args, response failed." << std::endl;
         return;
     }
-    // End game function
+    network->getGui()->setLastTeamAlive(args[1]);
+    network->getGui()->endGame();
+    network->shutDown();
     Parser::showArgs(args);
 }
 

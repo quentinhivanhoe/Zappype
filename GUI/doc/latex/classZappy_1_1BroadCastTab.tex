@@ -1,0 +1,248 @@
+\hypertarget{classZappy_1_1BroadCastTab}{}\doxysection{Zappy\+::Broad\+Cast\+Tab Class Reference}
+\label{classZappy_1_1BroadCastTab}\index{Zappy::BroadCastTab@{Zappy::BroadCastTab}}
+
+
+{\ttfamily \#include $<$Broad\+Cast\+Tab.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classZappy_1_1BroadCastTab_a5b7dad10602dbe4fc9820e9161bb3d86}{Broad\+Cast\+Tab}} ()
+\item 
+\mbox{\hyperlink{classZappy_1_1BroadCastTab_a75d46bc3bed7a4970b8fe1ed9c3e142f}{$\sim$\+Broad\+Cast\+Tab}} ()=default
+\item 
+void \mbox{\hyperlink{classZappy_1_1BroadCastTab_ac90e1601fa5d48f32ed9d19ea1e1b055}{update}} ()
+\begin{DoxyCompactList}\small\item\em Update the broadcast tab. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1BroadCastTab_ade402cf5d86ac5b9ebeb990f40111414}{draw\+Text}} (const std\+::string \&string, sf\+::\+Vector2f position, sf\+::\+Color color, int character\+Size, sf\+::\+Render\+Window \&window)
+\begin{DoxyCompactList}\small\item\em Draw a text on the window with the given parameters. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1BroadCastTab_a8083ff6e2f97f3a6bb81d0666039979d}{render}} (sf\+::\+Render\+Window \&window)
+\begin{DoxyCompactList}\small\item\em Render the broadcast tab. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classZappy_1_1BroadCastTab_a8b5dd97beafe0fa41bd25a6a6285847c}{get\+Messages}} () const
+\begin{DoxyCompactList}\small\item\em Get the Messages object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1BroadCastTab_a068b46ef71c23f12d249e685772a9f80}{push\+To\+Messages}} (const std\+::string \&messages)
+\begin{DoxyCompactList}\small\item\em Add a message (line) into the broadcast tab. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1BroadCastTab_af43852a84c4b4a53c67d4266b2d4849d}{reset\+Timer}} ()
+\begin{DoxyCompactList}\small\item\em Reset the timer for oldest messsage deletion. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+sf\+::\+Rectangle\+Shape \mbox{\hyperlink{classZappy_1_1BroadCastTab_a89f9179e3d8b6fc0812cd8fc18af5dac}{\+\_\+bg}}
+\item 
+sf\+::\+Clock \mbox{\hyperlink{classZappy_1_1BroadCastTab_aa3f022fddf56917a5efed5dcf956e7d5}{\+\_\+clock}}
+\item 
+sf\+::\+Text \mbox{\hyperlink{classZappy_1_1BroadCastTab_aef71784133fe30117871ae6d70ef1e5f}{\+\_\+text}}
+\item 
+sf\+::\+Font \mbox{\hyperlink{classZappy_1_1BroadCastTab_a226c2d64e9d09829dd0cf2b210e86a35}{\+\_\+font}}
+\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classZappy_1_1BroadCastTab_a2f1308954fc9fc5678505e00fe884554}{\+\_\+messages}}
+\item 
+size\+\_\+t \mbox{\hyperlink{classZappy_1_1BroadCastTab_ae9d62e51b4c4cd2e860a81e3fdd2ee92}{\+\_\+max\+Messages\+Size}} = 10
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{BroadCastTab_8hpp_source_l00017}{17}} of file \mbox{\hyperlink{BroadCastTab_8hpp_source}{Broad\+Cast\+Tab.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classZappy_1_1BroadCastTab_a5b7dad10602dbe4fc9820e9161bb3d86}\label{classZappy_1_1BroadCastTab_a5b7dad10602dbe4fc9820e9161bb3d86}} 
+\index{Zappy::BroadCastTab@{Zappy::BroadCastTab}!BroadCastTab@{BroadCastTab}}
+\index{BroadCastTab@{BroadCastTab}!Zappy::BroadCastTab@{Zappy::BroadCastTab}}
+\doxysubsubsection{\texorpdfstring{BroadCastTab()}{BroadCastTab()}}
+{\footnotesize\ttfamily Zappy\+::\+Broad\+Cast\+Tab\+::\+Broad\+Cast\+Tab (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{BroadCastTab_8cpp_source_l00010}{10}} of file \mbox{\hyperlink{BroadCastTab_8cpp_source}{Broad\+Cast\+Tab.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1BroadCastTab_a75d46bc3bed7a4970b8fe1ed9c3e142f}\label{classZappy_1_1BroadCastTab_a75d46bc3bed7a4970b8fe1ed9c3e142f}} 
+\index{Zappy::BroadCastTab@{Zappy::BroadCastTab}!````~BroadCastTab@{$\sim$BroadCastTab}}
+\index{````~BroadCastTab@{$\sim$BroadCastTab}!Zappy::BroadCastTab@{Zappy::BroadCastTab}}
+\doxysubsubsection{\texorpdfstring{$\sim$BroadCastTab()}{~BroadCastTab()}}
+{\footnotesize\ttfamily Zappy\+::\+Broad\+Cast\+Tab\+::$\sim$\+Broad\+Cast\+Tab (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classZappy_1_1BroadCastTab_ade402cf5d86ac5b9ebeb990f40111414}\label{classZappy_1_1BroadCastTab_ade402cf5d86ac5b9ebeb990f40111414}} 
+\index{Zappy::BroadCastTab@{Zappy::BroadCastTab}!drawText@{drawText}}
+\index{drawText@{drawText}!Zappy::BroadCastTab@{Zappy::BroadCastTab}}
+\doxysubsubsection{\texorpdfstring{drawText()}{drawText()}}
+{\footnotesize\ttfamily void Zappy\+::\+Broad\+Cast\+Tab\+::draw\+Text (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{string,  }\item[{sf\+::\+Vector2f}]{position,  }\item[{sf\+::\+Color}]{color,  }\item[{int}]{character\+Size,  }\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})}
+
+
+
+Draw a text on the window with the given parameters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em string} & \\
+\hline
+{\em position} & \\
+\hline
+{\em color} & \\
+\hline
+{\em character\+Size} & \\
+\hline
+{\em window} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{BroadCastTab_8cpp_source_l00022}{22}} of file \mbox{\hyperlink{BroadCastTab_8cpp_source}{Broad\+Cast\+Tab.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1BroadCastTab_a8b5dd97beafe0fa41bd25a6a6285847c}\label{classZappy_1_1BroadCastTab_a8b5dd97beafe0fa41bd25a6a6285847c}} 
+\index{Zappy::BroadCastTab@{Zappy::BroadCastTab}!getMessages@{getMessages}}
+\index{getMessages@{getMessages}!Zappy::BroadCastTab@{Zappy::BroadCastTab}}
+\doxysubsubsection{\texorpdfstring{getMessages()}{getMessages()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::string $>$ Zappy\+::\+Broad\+Cast\+Tab\+::get\+Messages (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the Messages object. 
+
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$std\+::string$>$ 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{BroadCastTab_8hpp_source_l00060}{60}} of file \mbox{\hyperlink{BroadCastTab_8hpp_source}{Broad\+Cast\+Tab.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1BroadCastTab_a068b46ef71c23f12d249e685772a9f80}\label{classZappy_1_1BroadCastTab_a068b46ef71c23f12d249e685772a9f80}} 
+\index{Zappy::BroadCastTab@{Zappy::BroadCastTab}!pushToMessages@{pushToMessages}}
+\index{pushToMessages@{pushToMessages}!Zappy::BroadCastTab@{Zappy::BroadCastTab}}
+\doxysubsubsection{\texorpdfstring{pushToMessages()}{pushToMessages()}}
+{\footnotesize\ttfamily void Zappy\+::\+Broad\+Cast\+Tab\+::push\+To\+Messages (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{messages }\end{DoxyParamCaption})}
+
+
+
+Add a message (line) into the broadcast tab. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em messages} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{BroadCastTab_8cpp_source_l00055}{55}} of file \mbox{\hyperlink{BroadCastTab_8cpp_source}{Broad\+Cast\+Tab.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1BroadCastTab_a8083ff6e2f97f3a6bb81d0666039979d}\label{classZappy_1_1BroadCastTab_a8083ff6e2f97f3a6bb81d0666039979d}} 
+\index{Zappy::BroadCastTab@{Zappy::BroadCastTab}!render@{render}}
+\index{render@{render}!Zappy::BroadCastTab@{Zappy::BroadCastTab}}
+\doxysubsubsection{\texorpdfstring{render()}{render()}}
+{\footnotesize\ttfamily void Zappy\+::\+Broad\+Cast\+Tab\+::render (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})}
+
+
+
+Render the broadcast tab. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{BroadCastTab_8cpp_source_l00031}{31}} of file \mbox{\hyperlink{BroadCastTab_8cpp_source}{Broad\+Cast\+Tab.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1BroadCastTab_af43852a84c4b4a53c67d4266b2d4849d}\label{classZappy_1_1BroadCastTab_af43852a84c4b4a53c67d4266b2d4849d}} 
+\index{Zappy::BroadCastTab@{Zappy::BroadCastTab}!resetTimer@{resetTimer}}
+\index{resetTimer@{resetTimer}!Zappy::BroadCastTab@{Zappy::BroadCastTab}}
+\doxysubsubsection{\texorpdfstring{resetTimer()}{resetTimer()}}
+{\footnotesize\ttfamily void Zappy\+::\+Broad\+Cast\+Tab\+::reset\+Timer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Reset the timer for oldest messsage deletion. 
+
+
+
+Definition at line \mbox{\hyperlink{BroadCastTab_8hpp_source_l00073}{73}} of file \mbox{\hyperlink{BroadCastTab_8hpp_source}{Broad\+Cast\+Tab.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1BroadCastTab_ac90e1601fa5d48f32ed9d19ea1e1b055}\label{classZappy_1_1BroadCastTab_ac90e1601fa5d48f32ed9d19ea1e1b055}} 
+\index{Zappy::BroadCastTab@{Zappy::BroadCastTab}!update@{update}}
+\index{update@{update}!Zappy::BroadCastTab@{Zappy::BroadCastTab}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Zappy\+::\+Broad\+Cast\+Tab\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Update the broadcast tab. 
+
+
+
+Definition at line \mbox{\hyperlink{BroadCastTab_8cpp_source_l00043}{43}} of file \mbox{\hyperlink{BroadCastTab_8cpp_source}{Broad\+Cast\+Tab.\+cpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classZappy_1_1BroadCastTab_a89f9179e3d8b6fc0812cd8fc18af5dac}\label{classZappy_1_1BroadCastTab_a89f9179e3d8b6fc0812cd8fc18af5dac}} 
+\index{Zappy::BroadCastTab@{Zappy::BroadCastTab}!\_bg@{\_bg}}
+\index{\_bg@{\_bg}!Zappy::BroadCastTab@{Zappy::BroadCastTab}}
+\doxysubsubsection{\texorpdfstring{\_bg}{\_bg}}
+{\footnotesize\ttfamily sf\+::\+Rectangle\+Shape Zappy\+::\+Broad\+Cast\+Tab\+::\+\_\+bg\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{BroadCastTab_8hpp_source_l00020}{20}} of file \mbox{\hyperlink{BroadCastTab_8hpp_source}{Broad\+Cast\+Tab.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1BroadCastTab_aa3f022fddf56917a5efed5dcf956e7d5}\label{classZappy_1_1BroadCastTab_aa3f022fddf56917a5efed5dcf956e7d5}} 
+\index{Zappy::BroadCastTab@{Zappy::BroadCastTab}!\_clock@{\_clock}}
+\index{\_clock@{\_clock}!Zappy::BroadCastTab@{Zappy::BroadCastTab}}
+\doxysubsubsection{\texorpdfstring{\_clock}{\_clock}}
+{\footnotesize\ttfamily sf\+::\+Clock Zappy\+::\+Broad\+Cast\+Tab\+::\+\_\+clock\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{BroadCastTab_8hpp_source_l00021}{21}} of file \mbox{\hyperlink{BroadCastTab_8hpp_source}{Broad\+Cast\+Tab.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1BroadCastTab_a226c2d64e9d09829dd0cf2b210e86a35}\label{classZappy_1_1BroadCastTab_a226c2d64e9d09829dd0cf2b210e86a35}} 
+\index{Zappy::BroadCastTab@{Zappy::BroadCastTab}!\_font@{\_font}}
+\index{\_font@{\_font}!Zappy::BroadCastTab@{Zappy::BroadCastTab}}
+\doxysubsubsection{\texorpdfstring{\_font}{\_font}}
+{\footnotesize\ttfamily sf\+::\+Font Zappy\+::\+Broad\+Cast\+Tab\+::\+\_\+font\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{BroadCastTab_8hpp_source_l00023}{23}} of file \mbox{\hyperlink{BroadCastTab_8hpp_source}{Broad\+Cast\+Tab.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1BroadCastTab_ae9d62e51b4c4cd2e860a81e3fdd2ee92}\label{classZappy_1_1BroadCastTab_ae9d62e51b4c4cd2e860a81e3fdd2ee92}} 
+\index{Zappy::BroadCastTab@{Zappy::BroadCastTab}!\_maxMessagesSize@{\_maxMessagesSize}}
+\index{\_maxMessagesSize@{\_maxMessagesSize}!Zappy::BroadCastTab@{Zappy::BroadCastTab}}
+\doxysubsubsection{\texorpdfstring{\_maxMessagesSize}{\_maxMessagesSize}}
+{\footnotesize\ttfamily size\+\_\+t Zappy\+::\+Broad\+Cast\+Tab\+::\+\_\+max\+Messages\+Size = 10\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{BroadCastTab_8hpp_source_l00026}{26}} of file \mbox{\hyperlink{BroadCastTab_8hpp_source}{Broad\+Cast\+Tab.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1BroadCastTab_a2f1308954fc9fc5678505e00fe884554}\label{classZappy_1_1BroadCastTab_a2f1308954fc9fc5678505e00fe884554}} 
+\index{Zappy::BroadCastTab@{Zappy::BroadCastTab}!\_messages@{\_messages}}
+\index{\_messages@{\_messages}!Zappy::BroadCastTab@{Zappy::BroadCastTab}}
+\doxysubsubsection{\texorpdfstring{\_messages}{\_messages}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::string$>$ Zappy\+::\+Broad\+Cast\+Tab\+::\+\_\+messages\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{BroadCastTab_8hpp_source_l00025}{25}} of file \mbox{\hyperlink{BroadCastTab_8hpp_source}{Broad\+Cast\+Tab.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1BroadCastTab_aef71784133fe30117871ae6d70ef1e5f}\label{classZappy_1_1BroadCastTab_aef71784133fe30117871ae6d70ef1e5f}} 
+\index{Zappy::BroadCastTab@{Zappy::BroadCastTab}!\_text@{\_text}}
+\index{\_text@{\_text}!Zappy::BroadCastTab@{Zappy::BroadCastTab}}
+\doxysubsubsection{\texorpdfstring{\_text}{\_text}}
+{\footnotesize\ttfamily sf\+::\+Text Zappy\+::\+Broad\+Cast\+Tab\+::\+\_\+text\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{BroadCastTab_8hpp_source_l00022}{22}} of file \mbox{\hyperlink{BroadCastTab_8hpp_source}{Broad\+Cast\+Tab.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{BroadCastTab_8hpp}{Broad\+Cast\+Tab.\+hpp}}\item 
+\mbox{\hyperlink{BroadCastTab_8cpp}{Broad\+Cast\+Tab.\+cpp}}\end{DoxyCompactItemize}

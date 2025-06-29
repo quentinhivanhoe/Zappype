@@ -1,0 +1,631 @@
+\hypertarget{Parser_8cpp_source}{}\doxysection{Parser.\+cpp}
+\label{Parser_8cpp_source}\index{Parser.cpp@{Parser.cpp}}
+\mbox{\hyperlink{Parser_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00002}00002\ \textcolor{comment}{**\ EPITECH\ PROJECT,\ 2025}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00003}00003\ \textcolor{comment}{**\ Zappy}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00004}00004\ \textcolor{comment}{**\ File\ description:}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00005}00005\ \textcolor{comment}{**\ Parser\ functions}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00006}00006\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00008}00008\ \textcolor{preprocessor}{\#include\ "{}../includes/Parser.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00010}\mbox{\hyperlink{classZappy_1_1Parser_aec9f21f3ae75fe711bc8a17e32c9630a}{00010}}\ std::vector<std::string>\ \mbox{\hyperlink{classZappy_1_1Parser_aec9f21f3ae75fe711bc8a17e32c9630a}{Zappy::Parser::parseLine}}(\textcolor{keyword}{const}\ std::string\&\ line,\ \textcolor{keywordtype}{char}\ delimiter)}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00011}00011\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00012}00012\ \ \ \ \ std::vector<std::string>\ tab;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00013}00013\ \ \ \ \ std::string\ temp\ =\ line;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00014}00014\ \ \ \ \ \textcolor{keywordflow}{while}\ (temp.find(\textcolor{charliteral}{'\(\backslash\)n'})\ !=\ temp.npos)}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00015}00015\ \ \ \ \ \ \ \ \ temp.replace(temp.find(\textcolor{charliteral}{'\(\backslash\)n'}),\ 1,\ \textcolor{stringliteral}{"{}\ "{}});}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00016}00016\ \ \ \ \ std::stringstream\ tempLine(temp);}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00017}00017\ \ \ \ \ std::string\ element;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00018}00018\ \ \ \ \ \textcolor{keywordflow}{while}\ (std::getline(tempLine,\ element,\ delimiter))}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00019}00019\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!element.empty())}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00020}00020\ \ \ \ \ \ \ \ \ \ \ \ \ tab.push\_back(element);}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00021}00021\ \ \ \ \ \textcolor{keywordflow}{return}\ tab;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00022}00022\ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00024}\mbox{\hyperlink{classZappy_1_1Parser_a4f7df1146ee5c44e53ac6cc09067d65a}{00024}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Parser_a4f7df1146ee5c44e53ac6cc09067d65a}{Zappy::Parser::showArgs}}(std::vector<std::string>\ args)}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00025}00025\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00026}00026\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\{"{}};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00027}00027\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ args.size();\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00028}00028\ \ \ \ \ \ \ \ \ std::cout\ <<\ args[i];}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00029}00029\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ +\ 1\ <\ args.size())}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{},\ "{}};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00031}00031\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00032}00032\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\}"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00033}00033\ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00035}\mbox{\hyperlink{classZappy_1_1Parser_ab38f56b8404cc5c3644a6c37e5efe9d8}{00035}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Parser_ab38f56b8404cc5c3644a6c37e5efe9d8}{Zappy::Parser::manageResponse}}(std::vector<std::string>\ args,\ [[maybe\_unused]]\ \mbox{\hyperlink{classZappy_1_1Network}{Zappy::Network}}\ *network)}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00036}00036\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00037}00037\ \ \ \ \ std::map<std::string,\ void\ (\mbox{\hyperlink{classZappy_1_1Parser}{Zappy::Parser}}::\ *)(std::vector<std::string>,\ \mbox{\hyperlink{classZappy_1_1Network}{Network}}\ *)>\ funcTab\ =\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00038}00038\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}msz"{}},\ \&\mbox{\hyperlink{classZappy_1_1Parser_a908eb73712e8da442776826ca7621982}{Zappy::Parser::manageMSZ}}\},}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00039}00039\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}pls"{}},\ \&\mbox{\hyperlink{classZappy_1_1Parser_a8b67dbe18a501d3933bcb20e8228a098}{Zappy::Parser::manageSPI}}\},}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00040}00040\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}pnu"{}},\ \&\mbox{\hyperlink{classZappy_1_1Parser_a178c91608b4c23660e08bcf42cb90aca}{Zappy::Parser::manageSPN}}\},}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00041}00041\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}enu"{}},\ \&\mbox{\hyperlink{classZappy_1_1Parser_ae8927c9344956fef07895852e80068dc}{Zappy::Parser::manageENU}}\},}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00042}00042\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}bct"{}},\ \&\mbox{\hyperlink{classZappy_1_1Parser_a19ee7f9fa814a254ce5b17f6a6dfd6fb}{Zappy::Parser::manageBCT}}\},}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00043}00043\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}ppo"{}},\ \&\mbox{\hyperlink{classZappy_1_1Parser_a211045b5d10a4526a6df14a2491bb4a4}{Zappy::Parser::managePPO}}\},}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00044}00044\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}plv"{}},\ \&\mbox{\hyperlink{classZappy_1_1Parser_a6db07dd59f51a6c40e3a811e36e8a903}{Zappy::Parser::managePLV}}\},}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00045}00045\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}pin"{}},\ \&\mbox{\hyperlink{classZappy_1_1Parser_ad5775c526a28c48baec927228039cfd7}{Zappy::Parser::managePIN}}\},}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00046}00046\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}sgt"{}},\ \&\mbox{\hyperlink{classZappy_1_1Parser_a4dfef6a37cf7a794e7670d3544be6e0b}{Zappy::Parser::manageSGT}}\},}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00047}00047\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}sst"{}},\ \&\mbox{\hyperlink{classZappy_1_1Parser_a5b0aeaf3be0c897ee2f5213a3984ad1c}{Zappy::Parser::manageSST}}\},}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00048}00048\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}pnw"{}},\ \&\mbox{\hyperlink{classZappy_1_1Parser_a337578045e66ee40a6c99077d9969f84}{Zappy::Parser::managePNW}}\},}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00049}00049\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}pex"{}},\ \&\mbox{\hyperlink{classZappy_1_1Parser_a5af02fe851548ea90dde23089c0519a2}{Zappy::Parser::managePEX}}\},}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00050}00050\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}pbc"{}},\ \&\mbox{\hyperlink{classZappy_1_1Parser_a7e6eeef616410d008a928dfb98b1ca5e}{Zappy::Parser::managePBC}}\},}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00051}00051\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}pic"{}},\ \&\mbox{\hyperlink{classZappy_1_1Parser_ac110fc1d8743b24d00e66cbf0fc21cac}{Zappy::Parser::managePIC}}\},}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00052}00052\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}pie"{}},\ \&\mbox{\hyperlink{classZappy_1_1Parser_aea4e39551e6688f4e0bcd78509cd4f31}{Zappy::Parser::managePIE}}\},}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00053}00053\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}pfk"{}},\ \&\mbox{\hyperlink{classZappy_1_1Parser_aa83131ebe9a6b837bea2f5c77b943865}{Zappy::Parser::managePFK}}\},}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00054}00054\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}pdr"{}},\ \&\mbox{\hyperlink{classZappy_1_1Parser_ad9113f80eaa56a10d8b10172b90f30e9}{Zappy::Parser::managePDR}}\},}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00055}00055\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}pgt"{}},\ \&\mbox{\hyperlink{classZappy_1_1Parser_ae2ffe57810b0d827f58af308dc8e3ca8}{Zappy::Parser::managePGT}}\},}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00056}00056\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}pdi"{}},\ \&\mbox{\hyperlink{classZappy_1_1Parser_af660eb1478e19d7bf69a6636446e58f6}{Zappy::Parser::managePDI}}\},}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00057}00057\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}enw"{}},\ \&\mbox{\hyperlink{classZappy_1_1Parser_a6efe157a1869463b4ecebdb659c2d7f4}{Zappy::Parser::manageENW}}\},}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00058}00058\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}ebo"{}},\ \&\mbox{\hyperlink{classZappy_1_1Parser_acf5f057917e0ee56e07828f16c976dd6}{Zappy::Parser::manageEBO}}\},}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00059}00059\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}edi"{}},\ \&\mbox{\hyperlink{classZappy_1_1Parser_ae6835c4b8b3ae2d8dd98cb8bd004a3d4}{Zappy::Parser::manageEDI}}\},}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00060}00060\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}els"{}},\ \&\mbox{\hyperlink{classZappy_1_1Parser_ac6b3d5c270a2572ccc5708fccee12d31}{Zappy::Parser::manageELS}}\},}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00061}00061\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}seg"{}},\ \&\mbox{\hyperlink{classZappy_1_1Parser_a03c3214e850bcb4a1c2b0d13f2756219}{Zappy::Parser::manageSEG}}\},}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00062}00062\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}smg"{}},\ \&\mbox{\hyperlink{classZappy_1_1Parser_a4949333fe97dc976e394bf425693fe6b}{Zappy::Parser::manageSMG}}\},}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00063}00063\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}suc"{}},\ \&\mbox{\hyperlink{classZappy_1_1Parser_abbd7d7fd30a124850aa63de3e49b1bfe}{Zappy::Parser::manageSUC}}\},}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00064}00064\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}sbp"{}},\ \&\mbox{\hyperlink{classZappy_1_1Parser_a2e495b18d40a2792978d6fd32f57e2ba}{Zappy::Parser::manageSBP}}\},}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00065}00065\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00066}00066\ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Parser_a4f7df1146ee5c44e53ac6cc09067d65a}{Parser::showArgs}}(args);}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00067}00067\ \ \ \ \ \textcolor{keywordflow}{if}\ (funcTab[args.front()])}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00068}00068\ \ \ \ \ \ \ \ \ (this-\/>*funcTab[args.front()])(args,\ network);}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00069}00069\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00070}00070\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}response\ not\ found"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00071}00071\ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00073}\mbox{\hyperlink{classZappy_1_1Parser_ac4f72d89bb990954bd56022bc81f56dc}{00073}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classZappy_1_1Parser_ac4f72d89bb990954bd56022bc81f56dc}{Zappy::Parser::isNum}}(\textcolor{keyword}{const}\ std::string\&\ \textcolor{keywordtype}{string})}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00074}00074\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00075}00075\ \ \ \ \ std::regex\ regExp(\textcolor{stringliteral}{"{}[0-\/9]+"{}});}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00076}00076\ \ \ \ \ \textcolor{keywordflow}{return}\ std::regex\_match(\textcolor{keywordtype}{string},\ regExp);}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00077}00077\ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00079}\mbox{\hyperlink{classZappy_1_1Parser_acd2bb8ea3b2975f9cdfbd63997b2c5ea}{00079}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classZappy_1_1Parser_acd2bb8ea3b2975f9cdfbd63997b2c5ea}{Zappy::Parser::isIndex}}(\textcolor{keyword}{const}\ std::string\&\ \textcolor{keywordtype}{string})}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00080}00080\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00081}00081\ \ \ \ \ std::regex\ regExp(\textcolor{stringliteral}{"{}\#[0-\/9]+"{}});}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00082}00082\ \ \ \ \ \textcolor{keywordflow}{return}\ std::regex\_match(\textcolor{keywordtype}{string},\ regExp);}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00083}00083\ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00085}\mbox{\hyperlink{classZappy_1_1Parser_a61fc1fc5521102d210609e5e7b553634}{00085}}\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classZappy_1_1Parser_a61fc1fc5521102d210609e5e7b553634}{Zappy::Parser::nbOccur}}(\textcolor{keyword}{const}\ std::string\&\ \textcolor{keywordtype}{string},\ \textcolor{keyword}{const}\ std::string\&\ key)}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00086}00086\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00087}00087\ \ \ \ \ std::string\ tempString\ =\ string;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00088}00088\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ count\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00089}00089\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ pos\ =\ tempString.find(key);}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00090}00090\ \ \ \ \ \textcolor{keywordflow}{while}\ (pos\ !=\ tempString.npos)\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00091}00091\ \ \ \ \ \ \ \ \ tempString\ =\ tempString.substr(pos\ +\ key.size());}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00092}00092\ \ \ \ \ \ \ \ \ pos\ =\ tempString.find(key);}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00093}00093\ \ \ \ \ \ \ \ \ count++;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00094}00094\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00095}00095\ \ \ \ \ \textcolor{keywordflow}{return}\ count;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00096}00096\ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00098}\mbox{\hyperlink{classZappy_1_1Parser_a6a9f98ca40a329a516011fccb947249c}{00098}}\ std::vector<std::string>\ \mbox{\hyperlink{classZappy_1_1Parser_a6a9f98ca40a329a516011fccb947249c}{Zappy::Parser::splitLine}}(\textcolor{keyword}{const}\ std::string\&\ \textcolor{keywordtype}{string},\ \textcolor{keyword}{const}\ std::string\&\ sep)}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00099}00099\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00100}00100\ \ \ \ \ std::string\ tempString\ =\ string;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00101}00101\ \ \ \ \ std::vector<std::string>\ tab;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00102}00102\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ pos\ =\ tempString.find(sep);}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00103}00103\ \ \ \ \ \textcolor{keywordflow}{while}\ (pos\ !=\ tempString.npos)\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00104}00104\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!tempString.substr(0,\ pos).empty())}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ tab.push\_back(tempString.substr(0,\ pos));}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00106}00106\ \ \ \ \ \ \ \ \ tempString\ =\ tempString.substr(pos\ +\ sep.size());}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00107}00107\ \ \ \ \ \ \ \ \ pos\ =\ tempString.find(sep);}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00108}00108\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00109}00109\ \ \ \ \ \textcolor{keywordflow}{return}\ tab;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00110}00110\ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00111}00111\ }
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00112}\mbox{\hyperlink{classZappy_1_1Parser_ada77ef6591d2879ca15d1b0a7c2c6789}{00112}}\ std::vector<std::string>\ \mbox{\hyperlink{classZappy_1_1Parser_ada77ef6591d2879ca15d1b0a7c2c6789}{Zappy::Parser::argsToString}}(std::vector<int>\ args)}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00113}00113\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00114}00114\ \ \ \ \ std::vector<std::string>\ tab;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00115}00115\ }
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00116}00116\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ item:\ args)}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00117}00117\ \ \ \ \ \ \ \ \ tab.push\_back(std::to\_string(item));}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00118}00118\ \ \ \ \ \textcolor{keywordflow}{return}\ tab;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00119}00119\ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00120}00120\ }
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00121}00121\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\///}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00123}\mbox{\hyperlink{classZappy_1_1Parser_a908eb73712e8da442776826ca7621982}{00123}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Parser_a908eb73712e8da442776826ca7621982}{Zappy::Parser::manageMSZ}}([[maybe\_unused]]\ std::vector<std::string>\ args,\ [[maybe\_unused]]\ \mbox{\hyperlink{classZappy_1_1Network}{Zappy::Network}}\ *network)}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00124}00124\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00125}00125\ \ \ \ \ \textcolor{keywordflow}{if}\ (args.size()\ !=\ 3)\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00126}00126\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Wrong\ number\ of\ args,\ response\ failed."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00127}00127\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00128}00128\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00129}00129\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classZappy_1_1Parser_ac4f72d89bb990954bd56022bc81f56dc}{Parser::isNum}}(args[1])\ ||\ !\mbox{\hyperlink{classZappy_1_1Parser_ac4f72d89bb990954bd56022bc81f56dc}{Parser::isNum}}(args[2]))\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00130}00130\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Args\ must\ be\ positive\ numbers."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00131}00131\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00132}00132\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00133}00133\ \ \ \ \ network-\/>setMapSize(\{std::stoi(args[1]),\ std::stoi(args[2])\});}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00134}00134\ \ \ \ \ network-\/>getGui()-\/>setMapSize(\{std::stoi(args[1]),\ std::stoi(args[2])\});}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00135}00135\ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Parser_a4f7df1146ee5c44e53ac6cc09067d65a}{Parser::showArgs}}(args);}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00136}00136\ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00137}00137\ }
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00138}\mbox{\hyperlink{classZappy_1_1Parser_a19ee7f9fa814a254ce5b17f6a6dfd6fb}{00138}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Parser_a19ee7f9fa814a254ce5b17f6a6dfd6fb}{Zappy::Parser::manageBCT}}([[maybe\_unused]]\ std::vector<std::string>\ args,\ [[maybe\_unused]]\ \mbox{\hyperlink{classZappy_1_1Network}{Zappy::Network}}\ *network)}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00139}00139\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00140}00140\ \ \ \ \ \textcolor{keywordflow}{if}\ (args.size()\ !=\ 10)\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00141}00141\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Wrong\ number\ of\ args,\ response\ failed."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00142}00142\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00143}00143\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00144}00144\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 1;\ i\ <\ args.size();\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00145}00145\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classZappy_1_1Parser_ac4f72d89bb990954bd56022bc81f56dc}{Parser::isNum}}(args[i]))\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00146}00146\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Args\ must\ be\ positive\ numbers."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00147}00147\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00148}00148\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00149}00149\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00150}00150\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ posX\ =\ std::stoi(args[1]);}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00151}00151\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ posY\ =\ std::stoi(args[2]);}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00152}00152\ \ \ \ \ \textcolor{keywordflow}{if}\ (posY\ >=\ network-\/>getGui()-\/>getMap()-\/>getTiles().size())}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00153}00153\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classZappy_1_1Parser_a4f7df1146ee5c44e53ac6cc09067d65a}{Parser::showArgs}}(args);}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00154}00154\ \ \ \ \ \textcolor{keywordflow}{if}\ (posX\ >=\ network-\/>getGui()-\/>getMap()-\/>getTiles()[posY].size())}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00155}00155\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classZappy_1_1Parser_a4f7df1146ee5c44e53ac6cc09067d65a}{Parser::showArgs}}(args);}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00156}00156\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 3;\ i\ <\ args.size();\ i++)}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00157}00157\ \ \ \ \ \ \ \ \ network-\/>getGui()-\/>getMap()-\/>getTiles()[posY][posX]-\/>setNItem(\textcolor{keyword}{static\_cast<}\mbox{\hyperlink{namespaceZappy_a1c44af85d003dd823a82c7ae89a1a7ec}{Item}}\textcolor{keyword}{>}(i\ -\/\ 2),\ std::stoi(args[i]));}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00158}00158\ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Parser_a4f7df1146ee5c44e53ac6cc09067d65a}{Parser::showArgs}}(args);}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00159}00159\ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00160}00160\ }
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00161}\mbox{\hyperlink{classZappy_1_1Parser_a178c91608b4c23660e08bcf42cb90aca}{00161}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Parser_a178c91608b4c23660e08bcf42cb90aca}{Zappy::Parser::manageSPN}}([[maybe\_unused]]\ std::vector<std::string>\ args,\ [[maybe\_unused]]\ \mbox{\hyperlink{classZappy_1_1Network}{Zappy::Network}}\ *network)}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00162}00162\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00163}00163\ \ \ \ \ \textcolor{keywordflow}{if}\ (args.size()\ !=\ 2)\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00164}00164\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Wrong\ number\ of\ args,\ response\ failed."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00165}00165\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00166}00166\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00167}00167\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classZappy_1_1Parser_ac4f72d89bb990954bd56022bc81f56dc}{Parser::isNum}}(args[1]))\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00168}00168\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Args\ must\ be\ positive\ numbers."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00169}00169\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00170}00170\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00171}00171\ \ \ \ \ network-\/>setPlayerNb(std::stoi(args[1]));}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00172}00172\ \ \ \ \ network-\/>getGui()-\/>setPlayerNb(std::stoi(args[1]));}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00173}00173\ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Parser_a4f7df1146ee5c44e53ac6cc09067d65a}{Parser::showArgs}}(args);}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00174}00174\ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00175}00175\ }
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00176}\mbox{\hyperlink{classZappy_1_1Parser_ae8927c9344956fef07895852e80068dc}{00176}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Parser_ae8927c9344956fef07895852e80068dc}{Zappy::Parser::manageENU}}([[maybe\_unused]]\ std::vector<std::string>\ args,\ [[maybe\_unused]]\ \mbox{\hyperlink{classZappy_1_1Network}{Zappy::Network}}\ *network)}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00177}00177\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00178}00178\ \ \ \ \ \textcolor{keywordflow}{if}\ (args.size()\ !=\ 2)\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00179}00179\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Wrong\ number\ of\ args,\ response\ failed."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00180}00180\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00181}00181\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00182}00182\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classZappy_1_1Parser_ac4f72d89bb990954bd56022bc81f56dc}{Parser::isNum}}(args[1]))\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00183}00183\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Args\ must\ be\ positive\ numbers."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00184}00184\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00185}00185\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00186}00186\ \ \ \ \ network-\/>setEggNb(std::stoi(args[1]));}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00187}00187\ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Parser_a4f7df1146ee5c44e53ac6cc09067d65a}{Parser::showArgs}}(args);}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00188}00188\ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00189}00189\ }
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00190}\mbox{\hyperlink{classZappy_1_1Parser_a8b67dbe18a501d3933bcb20e8228a098}{00190}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Parser_a8b67dbe18a501d3933bcb20e8228a098}{Zappy::Parser::manageSPI}}([[maybe\_unused]]\ std::vector<std::string>\ args,\ [[maybe\_unused]]\ \mbox{\hyperlink{classZappy_1_1Network}{Zappy::Network}}\ *network)}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00191}00191\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00192}00192\ \ \ \ \ \textcolor{keywordflow}{if}\ (args.size()\ !=\ 8)\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00193}00193\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Wrong\ number\ of\ args,\ response\ failed."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00194}00194\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00195}00195\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00196}00196\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classZappy_1_1Parser_acd2bb8ea3b2975f9cdfbd63997b2c5ea}{Parser::isIndex}}(args[1]))\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00197}00197\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Index\ must\ be\ a\ \#\ followed\ by\ a\ positive\ number."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00198}00198\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00199}00199\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00200}00200\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 2;\ i\ <\ 5;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00201}00201\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classZappy_1_1Parser_ac4f72d89bb990954bd56022bc81f56dc}{Parser::isNum}}(args[i]))\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00202}00202\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Args\ must\ be\ positive\ numbers."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00203}00203\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00204}00204\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00205}00205\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00206}00206\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classZappy_1_1Parser_ac4f72d89bb990954bd56022bc81f56dc}{Parser::isNum}}(args[7]))\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00207}00207\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Args\ must\ be\ positive\ numbers."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00208}00208\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00209}00209\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00210}00210\ \ \ \ \ std::shared\_ptr<Trantorian>\ targetTrantorian\ =\ network-\/>getGui()-\/>getMap()-\/>getTrantorianByID(std::stoi(args[1].substr(1)));}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00211}00211\ \ \ \ \ \textcolor{keywordflow}{if}\ (!targetTrantorian)}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00212}00212\ \ \ \ \ \ \ \ \ targetTrantorian\ =\ std::make\_shared<Trantorian>();}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00213}00213\ \ \ \ \ sf::Vector2i\ pos\ =\ \{std::stoi(args[2]),\ std::stoi(args[3])\};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00214}00214\ \ \ \ \ targetTrantorian-\/>setId(std::stoi(args[1].substr(1)));}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00215}00215\ \ \ \ \ targetTrantorian-\/>setTilePos(pos);}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00216}00216\ \ \ \ \ targetTrantorian-\/>setDirection(std::stoi(args[4]));}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00217}00217\ \ \ \ \ targetTrantorian-\/>setTeamName(args[6]);}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00218}00218\ \ \ \ \ targetTrantorian-\/>setLevel(std::stoi(args[7]));}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00219}00219\ \ \ \ \ network-\/>getGui()-\/>getMap()-\/>addTrantorian(targetTrantorian);}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00220}00220\ \ \ \ \ network-\/>getGui()-\/>getMap()-\/>getTrantorianByID(std::stoi(args[1].substr(1)))-\/>getSprite()-\/>getSprite().setPosition(network-\/>getGui()-\/>getMap()-\/>getTiles()[pos.y][pos.x]-\/>getCenter().getX(),\ network-\/>getGui()-\/>getMap()-\/>getTiles()[pos.y][pos.x]-\/>getCenter().getY());}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00221}00221\ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Parser_a4f7df1146ee5c44e53ac6cc09067d65a}{Parser::showArgs}}(args);}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00222}00222\ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00223}00223\ }
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00224}\mbox{\hyperlink{classZappy_1_1Parser_ac6b3d5c270a2572ccc5708fccee12d31}{00224}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Parser_ac6b3d5c270a2572ccc5708fccee12d31}{Zappy::Parser::manageELS}}(std::vector<std::string>\ args,\ [[maybe\_unused]]\ \mbox{\hyperlink{classZappy_1_1Network}{Zappy::Network}}\ *network)}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00225}00225\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00226}00226\ \ \ \ \ \textcolor{keywordflow}{if}\ (args.size()\ !=\ 5)\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00227}00227\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Wrong\ number\ of\ args,\ response\ failed."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00228}00228\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00229}00229\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00230}00230\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classZappy_1_1Parser_acd2bb8ea3b2975f9cdfbd63997b2c5ea}{Parser::isIndex}}(args[1]))\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00231}00231\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Index\ must\ be\ a\ \#\ followed\ by\ a\ positive\ number."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00232}00232\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00233}00233\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00234}00234\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classZappy_1_1Parser_ac4f72d89bb990954bd56022bc81f56dc}{Parser::isNum}}(args[2])\ ||\ !\mbox{\hyperlink{classZappy_1_1Parser_ac4f72d89bb990954bd56022bc81f56dc}{Parser::isNum}}(args[3]))\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00235}00235\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Args\ must\ be\ positive\ numbers."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00236}00236\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00237}00237\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00238}00238\ \ \ \ \ std::shared\_ptr<Egg>\ targetEgg\ =\ network-\/>getGui()-\/>getMap()-\/>getEggById(std::stoi(args[1].substr(1)));}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00239}00239\ \ \ \ \ \textcolor{keywordflow}{if}\ (!targetEgg)}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00240}00240\ \ \ \ \ \ \ \ \ targetEgg\ =\ std::make\_shared<Egg>();}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00241}00241\ \ \ \ \ sf::Vector2i\ pos\ =\ \{std::stoi(args[2]),\ std::stoi(args[3])\};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00242}00242\ \ \ \ \ std::shared\_ptr<Tile>\ targetTile\ =\ network-\/>getGui()-\/>getMap()-\/>getTiles()[pos.y][pos.x];}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00243}00243\ \ \ \ \ targetEgg-\/>setId(std::stoi(args[1].substr(1)));}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00244}00244\ \ \ \ \ targetEgg-\/>setIndexPos(pos);}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00245}00245\ \ \ \ \ targetEgg-\/>setTeamName(args[4]);}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00246}00246\ \ \ \ \ network-\/>getGui()-\/>getMap()-\/>addEgg(targetEgg);}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00247}00247\ \ \ \ \ targetEgg-\/>getDrawable()-\/>getSprite().setPosition(targetTile-\/>getCenter().getX()\ +\ targetTile-\/>getOffsetsList()[0].getX(),\ targetTile-\/>getCenter().getY()\ +\ targetTile-\/>getOffsetsList()[0].getY()\ +\ 70);}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00248}00248\ \ \ \ \ network-\/>getGui()-\/>getMap()-\/>getEggById(std::stoi(args[1].substr(1)))-\/>getDrawable()-\/>getSprite().setPosition(targetTile-\/>getCenter().getX()\ +\ targetTile-\/>getOffsetsList()[0].getX(),\ targetTile-\/>getCenter().getY()\ +\ targetTile-\/>getOffsetsList()[0].getY()\ +\ 70);}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00249}00249\ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Parser_a4f7df1146ee5c44e53ac6cc09067d65a}{Parser::showArgs}}(args);}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00250}00250\ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00251}00251\ }
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00252}\mbox{\hyperlink{classZappy_1_1Parser_a211045b5d10a4526a6df14a2491bb4a4}{00252}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Parser_a211045b5d10a4526a6df14a2491bb4a4}{Zappy::Parser::managePPO}}(std::vector<std::string>\ args,\ [[maybe\_unused]]\ \mbox{\hyperlink{classZappy_1_1Network}{Zappy::Network}}\ *network)}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00253}00253\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00254}00254\ \ \ \ \ \textcolor{keywordflow}{if}\ (args.size()\ !=\ 5)\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00255}00255\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Wrong\ number\ of\ args,\ response\ failed."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00256}00256\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00257}00257\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00258}00258\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classZappy_1_1Parser_acd2bb8ea3b2975f9cdfbd63997b2c5ea}{Parser::isIndex}}(args[1]))\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00259}00259\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Index\ must\ be\ a\ \#\ followed\ by\ a\ positive\ number."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00260}00260\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00261}00261\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00262}00262\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 2;\ i\ <\ args.size();\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00263}00263\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classZappy_1_1Parser_ac4f72d89bb990954bd56022bc81f56dc}{Parser::isNum}}(args[i]))\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00264}00264\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Args\ must\ be\ positive\ numbers."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00265}00265\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00266}00266\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00267}00267\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00268}00268\ \ \ \ \ std::shared\_ptr<Trantorian>\ targetTrantorian\ =\ network-\/>getGui()-\/>getMap()-\/>getTrantorianByID(std::stoi(args[1].substr(1)));}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00269}00269\ \ \ \ \ \textcolor{keywordflow}{if}\ (!targetTrantorian)}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00270}00270\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00271}00271\ \ \ \ \ sf::Vector2i\ pos\ =\ \{std::stoi(args[2]),\ std::stoi(args[3])\};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00272}00272\ \ \ \ \ targetTrantorian-\/>setTilePos(pos);}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00273}00273\ \ \ \ \ targetTrantorian-\/>getSprite()-\/>getSprite().setPosition(network-\/>getGui()-\/>getMap()-\/>getTiles()[pos.y][pos.x]-\/>getCenter().getX(),\ network-\/>getGui()-\/>getMap()-\/>getTiles()[pos.y][pos.x]-\/>getCenter().getY());}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00274}00274\ \ \ \ \ targetTrantorian-\/>setDirection(std::stoi(args[4]));}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00275}00275\ \ \ \ \ network-\/>getGui()-\/>getTileInfo()-\/>updateTrantorButtonsTab();}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00276}00276\ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Parser_a4f7df1146ee5c44e53ac6cc09067d65a}{Parser::showArgs}}(args);}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00277}00277\ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00278}00278\ }
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00279}\mbox{\hyperlink{classZappy_1_1Parser_a6db07dd59f51a6c40e3a811e36e8a903}{00279}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Parser_a6db07dd59f51a6c40e3a811e36e8a903}{Zappy::Parser::managePLV}}(std::vector<std::string>\ args,\ [[maybe\_unused]]\ \mbox{\hyperlink{classZappy_1_1Network}{Zappy::Network}}\ *network)}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00280}00280\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00281}00281\ \ \ \ \ \textcolor{keywordflow}{if}\ (args.size()\ !=\ 3)\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00282}00282\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Wrong\ number\ of\ args,\ response\ failed."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00283}00283\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00284}00284\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00285}00285\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classZappy_1_1Parser_acd2bb8ea3b2975f9cdfbd63997b2c5ea}{Parser::isIndex}}(args[1]))\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00286}00286\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Index\ must\ be\ a\ \#\ followed\ by\ a\ positive\ number."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00287}00287\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00288}00288\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00289}00289\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classZappy_1_1Parser_ac4f72d89bb990954bd56022bc81f56dc}{Parser::isNum}}(args[2]))\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00290}00290\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Level\ must\ be\ a\ positive\ number."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00291}00291\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00292}00292\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00293}00293\ \ \ \ \ std::shared\_ptr<Trantorian>\ targetTrantorian\ =\ network-\/>getGui()-\/>getMap()-\/>getTrantorianByID(std::stoi(args[1].substr(1)));}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00294}00294\ \ \ \ \ \textcolor{keywordflow}{if}\ (!targetTrantorian)}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00295}00295\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00296}00296\ \ \ \ \ targetTrantorian-\/>setLevel(std::stoi(args[2]));}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00297}00297\ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Parser_a4f7df1146ee5c44e53ac6cc09067d65a}{Parser::showArgs}}(args);}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00298}00298\ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00299}00299\ }
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00300}\mbox{\hyperlink{classZappy_1_1Parser_ad5775c526a28c48baec927228039cfd7}{00300}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Parser_ad5775c526a28c48baec927228039cfd7}{Zappy::Parser::managePIN}}(std::vector<std::string>\ args,\ [[maybe\_unused]]\ \mbox{\hyperlink{classZappy_1_1Network}{Zappy::Network}}\ *network)}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00301}00301\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00302}00302\ \ \ \ \ \textcolor{keywordflow}{if}\ (args.size()\ !=\ 11)\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00303}00303\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Wrong\ number\ of\ args,\ response\ failed."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00304}00304\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00305}00305\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00306}00306\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classZappy_1_1Parser_acd2bb8ea3b2975f9cdfbd63997b2c5ea}{Parser::isIndex}}(args[1]))\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00307}00307\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Index\ must\ be\ a\ \#\ followed\ by\ a\ positive\ number."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00308}00308\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00309}00309\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00310}00310\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 2;\ i\ <\ args.size();\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00311}00311\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classZappy_1_1Parser_ac4f72d89bb990954bd56022bc81f56dc}{Parser::isNum}}(args[i]))\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00312}00312\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Args\ must\ be\ positive\ numbers."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00313}00313\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00314}00314\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00315}00315\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00316}00316\ \ \ \ \ std::shared\_ptr<Trantorian>\ targetTrantorian\ =\ network-\/>getGui()-\/>getMap()-\/>getTrantorianByID(std::stoi(args[1].substr(1)));}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00317}00317\ \ \ \ \ \textcolor{keywordflow}{if}\ (!targetTrantorian)}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00318}00318\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00319}00319\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 4;\ i\ <\ args.size();\ i++)}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00320}00320\ \ \ \ \ \ \ \ \ targetTrantorian-\/>getInventory()-\/>setNItem(\textcolor{keyword}{static\_cast<}\mbox{\hyperlink{namespaceZappy_a1c44af85d003dd823a82c7ae89a1a7ec}{Item}}\textcolor{keyword}{>}(i\ -\/\ 3),\ std::stoi(args[i]));}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00321}00321\ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Parser_a4f7df1146ee5c44e53ac6cc09067d65a}{Parser::showArgs}}(args);}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00322}00322\ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00323}00323\ }
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00324}\mbox{\hyperlink{classZappy_1_1Parser_a4dfef6a37cf7a794e7670d3544be6e0b}{00324}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Parser_a4dfef6a37cf7a794e7670d3544be6e0b}{Zappy::Parser::manageSGT}}(std::vector<std::string>\ args,\ [[maybe\_unused]]\ \mbox{\hyperlink{classZappy_1_1Network}{Zappy::Network}}\ *network)}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00325}00325\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00326}00326\ \ \ \ \ \textcolor{keywordflow}{if}\ (args.size()\ !=\ 2)\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00327}00327\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Wrong\ number\ of\ args,\ response\ failed."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00328}00328\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00329}00329\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00330}00330\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classZappy_1_1Parser_ac4f72d89bb990954bd56022bc81f56dc}{Parser::isNum}}(args[1]))\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00331}00331\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Args\ must\ be\ positive\ numbers."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00332}00332\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00333}00333\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00334}00334\ \ \ \ \ network-\/>getGui()-\/>setTimeUnit(std::stoi(args[1]));}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00335}00335\ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Parser_a4f7df1146ee5c44e53ac6cc09067d65a}{Parser::showArgs}}(args);}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00336}00336\ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00337}00337\ }
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00338}\mbox{\hyperlink{classZappy_1_1Parser_a5b0aeaf3be0c897ee2f5213a3984ad1c}{00338}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Parser_a5b0aeaf3be0c897ee2f5213a3984ad1c}{Zappy::Parser::manageSST}}(std::vector<std::string>\ args,\ [[maybe\_unused]]\ \mbox{\hyperlink{classZappy_1_1Network}{Zappy::Network}}\ *network)}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00339}00339\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00340}00340\ \ \ \ \ \textcolor{keywordflow}{if}\ (args.size()\ !=\ 2)\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00341}00341\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Wrong\ number\ of\ args,\ response\ failed."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00342}00342\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00343}00343\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00344}00344\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classZappy_1_1Parser_ac4f72d89bb990954bd56022bc81f56dc}{Parser::isNum}}(args[1]))\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00345}00345\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Args\ must\ be\ positive\ numbers."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00346}00346\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00347}00347\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00348}00348\ \ \ \ \ network-\/>getGui()-\/>setTimeUnit(std::stoi(args[1]));}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00349}00349\ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Parser_a4f7df1146ee5c44e53ac6cc09067d65a}{Parser::showArgs}}(args);}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00350}00350\ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00351}00351\ }
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00352}\mbox{\hyperlink{classZappy_1_1Parser_a337578045e66ee40a6c99077d9969f84}{00352}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Parser_a337578045e66ee40a6c99077d9969f84}{Zappy::Parser::managePNW}}(std::vector<std::string>\ args,\ [[maybe\_unused]]\ \mbox{\hyperlink{classZappy_1_1Network}{Zappy::Network}}\ *network)}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00353}00353\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00354}00354\ \ \ \ \ \textcolor{keywordflow}{if}\ (args.size()\ !=\ 7)\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00355}00355\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Wrong\ number\ of\ args,\ response\ failed."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00356}00356\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00357}00357\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00358}00358\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classZappy_1_1Parser_acd2bb8ea3b2975f9cdfbd63997b2c5ea}{Parser::isIndex}}(args[1]))\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00359}00359\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Index\ must\ be\ a\ \#\ followed\ by\ a\ positive\ number."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00360}00360\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00361}00361\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00362}00362\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 2;\ i\ <\ args.size()\ -\/\ 1;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00363}00363\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classZappy_1_1Parser_ac4f72d89bb990954bd56022bc81f56dc}{Parser::isNum}}(args[i]))\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00364}00364\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Args\ must\ be\ positive\ numbers."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00365}00365\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00366}00366\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00367}00367\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00368}00368\ \ \ \ \ std::shared\_ptr<Trantorian>\ newTrantorian\ =\ std::make\_shared<Trantorian>();}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00369}00369\ \ \ \ \ sf::Vector2i\ pos\ =\ \{std::stoi(args[2]),\ std::stoi(args[3])\};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00370}00370\ \ \ \ \ newTrantorian-\/>setId(std::stoi(args[1].substr(1)));}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00371}00371\ \ \ \ \ newTrantorian-\/>setTilePos(pos);}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00372}00372\ \ \ \ \ newTrantorian-\/>setDirection(std::stoi(args[4]));}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00373}00373\ \ \ \ \ newTrantorian-\/>setLevel(std::stoi(args[5]));}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00374}00374\ \ \ \ \ newTrantorian-\/>setTeamName(args[6]);}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00375}00375\ \ \ \ \ newTrantorian-\/>getSprite()-\/>getSprite().setPosition(network-\/>getGui()-\/>getMap()-\/>getTiles()[pos.y][pos.x]-\/>getCenter().getX(),\ network-\/>getGui()-\/>getMap()-\/>getTiles()[pos.y][pos.x]-\/>getCenter().getY());}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00376}00376\ \ \ \ \ network-\/>getGui()-\/>getMap()-\/>addTrantorian(newTrantorian);}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00377}00377\ \ \ \ \ network-\/>getGui()-\/>getTileInfo()-\/>updateTrantorButtonsTab();}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00378}00378\ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Parser_a4f7df1146ee5c44e53ac6cc09067d65a}{Parser::showArgs}}(args);}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00379}00379\ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00380}00380\ }
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00381}\mbox{\hyperlink{classZappy_1_1Parser_a5af02fe851548ea90dde23089c0519a2}{00381}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Parser_a5af02fe851548ea90dde23089c0519a2}{Zappy::Parser::managePEX}}(std::vector<std::string>\ args,\ [[maybe\_unused]]\ \mbox{\hyperlink{classZappy_1_1Network}{Zappy::Network}}\ *network)}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00382}00382\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00383}00383\ \ \ \ \ \textcolor{keywordflow}{if}\ (args.size()\ !=\ 2)\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00384}00384\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Wrong\ number\ of\ args,\ response\ failed."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00385}00385\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00386}00386\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00387}00387\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classZappy_1_1Parser_acd2bb8ea3b2975f9cdfbd63997b2c5ea}{Parser::isIndex}}(args[1]))\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00388}00388\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Index\ must\ be\ a\ \#\ followed\ by\ a\ positive\ number."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00389}00389\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00390}00390\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00391}00391\ \ \ \ \ \textcolor{comment}{//player\ expulsion\ ?}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00392}00392\ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Parser_a4f7df1146ee5c44e53ac6cc09067d65a}{Parser::showArgs}}(args);}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00393}00393\ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00394}00394\ }
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00395}\mbox{\hyperlink{classZappy_1_1Parser_a7e6eeef616410d008a928dfb98b1ca5e}{00395}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Parser_a7e6eeef616410d008a928dfb98b1ca5e}{Zappy::Parser::managePBC}}(std::vector<std::string>\ args,\ [[maybe\_unused]]\ \mbox{\hyperlink{classZappy_1_1Network}{Zappy::Network}}\ *network)}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00396}00396\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00397}00397\ \ \ \ \ \textcolor{keywordflow}{if}\ (args.size()\ !=\ 3)\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00398}00398\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Wrong\ number\ of\ args,\ response\ failed."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00399}00399\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00400}00400\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00401}00401\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classZappy_1_1Parser_acd2bb8ea3b2975f9cdfbd63997b2c5ea}{Parser::isIndex}}(args[1]))\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00402}00402\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Index\ must\ be\ a\ \#\ followed\ by\ a\ positive\ number."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00403}00403\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00404}00404\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00405}00405\ \ \ \ \ network-\/>getGui()-\/>getBroadCastTab()-\/>resetTimer();}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00406}00406\ \ \ \ \ network-\/>getGui()-\/>getBroadCastTab()-\/>pushToMessages(args[1]\ +\ \textcolor{stringliteral}{"{}:\ "{}}\ +\ args[2]);}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00407}00407\ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00408}00408\ }
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00409}\mbox{\hyperlink{classZappy_1_1Parser_ac110fc1d8743b24d00e66cbf0fc21cac}{00409}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Parser_ac110fc1d8743b24d00e66cbf0fc21cac}{Zappy::Parser::managePIC}}(std::vector<std::string>\ args,\ [[maybe\_unused]]\ \mbox{\hyperlink{classZappy_1_1Network}{Zappy::Network}}\ *network)}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00410}00410\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00411}00411\ \ \ \ \ \textcolor{keywordflow}{if}\ (args.size()\ <\ 5)\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00412}00412\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Wrong\ number\ of\ args,\ response\ failed."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00413}00413\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00414}00414\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00415}00415\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 1;\ i\ <\ 4;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00416}00416\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classZappy_1_1Parser_ac4f72d89bb990954bd56022bc81f56dc}{Parser::isNum}}(args[i]))\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00417}00417\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Args\ must\ be\ positive\ numbers."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00418}00418\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00419}00419\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00420}00420\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00421}00421\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 4;\ i\ <\ args.size();\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00422}00422\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classZappy_1_1Parser_acd2bb8ea3b2975f9cdfbd63997b2c5ea}{Parser::isIndex}}(args[i]))\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00423}00423\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Index\ must\ be\ a\ \#\ followed\ by\ a\ positive\ number."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00424}00424\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00425}00425\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00426}00426\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00427}00427\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 4;\ i\ <\ args.size();\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00428}00428\ \ \ \ \ \ \ \ \ std::shared\_ptr<Trantorian>\ targetTrantorian\ =\ network-\/>getGui()-\/>getMap()-\/>getTrantorianByID(std::stoi(args[i].substr(1)));}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00429}00429\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!targetTrantorian)}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00430}00430\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00431}00431\ \ \ \ \ \ \ \ \ targetTrantorian-\/>elevate();}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00432}00432\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00433}00433\ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Parser_a4f7df1146ee5c44e53ac6cc09067d65a}{Parser::showArgs}}(args);}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00434}00434\ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00435}00435\ }
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00436}\mbox{\hyperlink{classZappy_1_1Parser_aea4e39551e6688f4e0bcd78509cd4f31}{00436}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Parser_aea4e39551e6688f4e0bcd78509cd4f31}{Zappy::Parser::managePIE}}(std::vector<std::string>\ args,\ [[maybe\_unused]]\ \mbox{\hyperlink{classZappy_1_1Network}{Zappy::Network}}\ *network)}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00437}00437\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00438}00438\ \ \ \ \ \textcolor{keywordflow}{if}\ (args.size()\ <\ 4)\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00439}00439\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Wrong\ number\ of\ args,\ response\ failed."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00440}00440\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00441}00441\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00442}00442\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classZappy_1_1Parser_ac4f72d89bb990954bd56022bc81f56dc}{Parser::isNum}}(args[1])\ ||\ !\mbox{\hyperlink{classZappy_1_1Parser_ac4f72d89bb990954bd56022bc81f56dc}{Parser::isNum}}(args[2]))\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00443}00443\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Args\ must\ be\ positive\ numbers."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00444}00444\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00445}00445\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00446}00446\ \ \ \ \ sf::Vector2f\ pos;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00447}00447\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ trantorian\ :\ network-\/>getGui()-\/>getMap()-\/>getAllTrantorians())\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00448}00448\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!trantorian.second)}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00449}00449\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00450}00450\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (trantorian.second-\/>getTilePos().x\ ==\ std::stoi(args[1])\ \&\&\ trantorian.second-\/>getTilePos().y\ ==\ std::stoi(args[2]))\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00451}00451\ \ \ \ \ \ \ \ \ \ \ \ \ trantorian.second-\/>idle();}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00452}00452\ \ \ \ \ \ \ \ \ \ \ \ \ trantorian.second-\/>setState(\textcolor{stringliteral}{"{}Idling"{}});}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00453}00453\ \ \ \ \ \ \ \ \ \ \ \ \ network-\/>askPlayerLevel(\{std::to\_string(trantorian.second-\/>getID())\});}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00454}00454\ \ \ \ \ \ \ \ \ \ \ \ \ pos\ =\ trantorian.second-\/>getSprite()-\/>getSprite().getPosition();}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00455}00455\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00456}00456\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00457}00457\ \ \ \ \ pos.y\ -\/=\ 20;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00458}00458\ \ \ \ \ pos.x\ +=\ 20;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00459}00459\ \ \ \ \ \textcolor{keywordflow}{if}\ (args[3]\ ==\ \textcolor{stringliteral}{"{}T"{}})\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00460}00460\ \ \ \ \ \ \ \ \ std::shared\_ptr<OneShotAnimationPlayer>\ animation\ =\ std::make\_shared<OneShotAnimationPlayer>(10,\ sf::Vector2f(0.5,\ 0.5),\ sf::Vector2f(256,\ 256),\ sf::Vector2f(2560,\ 256),\ pos,\ \textcolor{stringliteral}{"{}assets/elevation\_sucess.png"{}});}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00461}00461\ \ \ \ \ \ \ \ \ network-\/>getGui()-\/>addToAnimationTab(animation);}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00462}00462\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00463}00463\ \ \ \ \ \ \ \ \ std::shared\_ptr<OneShotAnimationPlayer>\ animation\ =\ std::make\_shared<OneShotAnimationPlayer>(4,\ sf::Vector2f(0.5,\ 0.5),\ sf::Vector2f(256,\ 256),\ sf::Vector2f(1024,\ 256),\ pos,\ \textcolor{stringliteral}{"{}assets/elevation\_fail.png"{}});}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00464}00464\ \ \ \ \ \ \ \ \ network-\/>getGui()-\/>addToAnimationTab(animation);}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00465}00465\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00466}00466\ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Parser_a4f7df1146ee5c44e53ac6cc09067d65a}{Parser::showArgs}}(args);}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00467}00467\ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00468}00468\ }
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00469}\mbox{\hyperlink{classZappy_1_1Parser_aa83131ebe9a6b837bea2f5c77b943865}{00469}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Parser_aa83131ebe9a6b837bea2f5c77b943865}{Zappy::Parser::managePFK}}(std::vector<std::string>\ args,\ [[maybe\_unused]]\ \mbox{\hyperlink{classZappy_1_1Network}{Zappy::Network}}\ *network)}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00470}00470\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00471}00471\ \ \ \ \ \textcolor{keywordflow}{if}\ (args.size()\ !=\ 2)\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00472}00472\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Wrong\ number\ of\ args,\ response\ failed."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00473}00473\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00474}00474\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00475}00475\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classZappy_1_1Parser_acd2bb8ea3b2975f9cdfbd63997b2c5ea}{Parser::isIndex}}(args[1]))\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00476}00476\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Index\ must\ be\ a\ \#\ followed\ by\ a\ positive\ number."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00477}00477\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00478}00478\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00479}00479\ \ \ \ \ std::shared\_ptr<Trantorian>\ targetTrantorian\ =\ network-\/>getGui()-\/>getMap()-\/>getTrantorianByID(std::stoi(args[1].substr(1)));}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00480}00480\ \ \ \ \ \textcolor{keywordflow}{if}\ (!targetTrantorian)}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00481}00481\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00482}00482\ \ \ \ \ targetTrantorian-\/>setState(\textcolor{stringliteral}{"{}Forking"{}});}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00483}00483\ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Parser_a4f7df1146ee5c44e53ac6cc09067d65a}{Parser::showArgs}}(args);}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00484}00484\ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00485}00485\ }
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00486}\mbox{\hyperlink{classZappy_1_1Parser_ad9113f80eaa56a10d8b10172b90f30e9}{00486}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Parser_ad9113f80eaa56a10d8b10172b90f30e9}{Zappy::Parser::managePDR}}(std::vector<std::string>\ args,\ [[maybe\_unused]]\ \mbox{\hyperlink{classZappy_1_1Network}{Zappy::Network}}\ *network)}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00487}00487\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00488}00488\ \ \ \ \ \textcolor{keywordflow}{if}\ (args.size()\ !=\ 3)\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00489}00489\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Wrong\ number\ of\ args,\ response\ failed."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00490}00490\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00491}00491\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00492}00492\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classZappy_1_1Parser_acd2bb8ea3b2975f9cdfbd63997b2c5ea}{Parser::isIndex}}(args[1]))\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00493}00493\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Index\ must\ be\ a\ \#\ followed\ by\ a\ positive\ number."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00494}00494\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00495}00495\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00496}00496\ \ \ \ \ std::shared\_ptr<Trantorian>\ targetTrantorian\ =\ network-\/>getGui()-\/>getMap()-\/>getTrantorianByID(std::stoi(args[1].substr(1)));}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00497}00497\ \ \ \ \ \textcolor{keywordflow}{if}\ (!targetTrantorian)}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00498}00498\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00499}00499\ \ \ \ \ targetTrantorian-\/>setState(\textcolor{stringliteral}{"{}Dropping\ item"{}});}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00500}00500\ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Parser_a4f7df1146ee5c44e53ac6cc09067d65a}{Parser::showArgs}}(args);}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00501}00501\ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00502}00502\ }
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00503}\mbox{\hyperlink{classZappy_1_1Parser_ae2ffe57810b0d827f58af308dc8e3ca8}{00503}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Parser_ae2ffe57810b0d827f58af308dc8e3ca8}{Zappy::Parser::managePGT}}(std::vector<std::string>\ args,\ [[maybe\_unused]]\ \mbox{\hyperlink{classZappy_1_1Network}{Zappy::Network}}\ *network)}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00504}00504\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00505}00505\ \ \ \ \ \textcolor{keywordflow}{if}\ (args.size()\ !=\ 3)\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00506}00506\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Wrong\ number\ of\ args,\ response\ failed."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00507}00507\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00508}00508\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00509}00509\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classZappy_1_1Parser_acd2bb8ea3b2975f9cdfbd63997b2c5ea}{Parser::isIndex}}(args[1]))\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00510}00510\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Index\ must\ be\ a\ \#\ followed\ by\ a\ positive\ number."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00511}00511\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00512}00512\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00513}00513\ \ \ \ \ std::shared\_ptr<Trantorian>\ targetTrantorian\ =\ network-\/>getGui()-\/>getMap()-\/>getTrantorianByID(std::stoi(args[1].substr(1)));}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00514}00514\ \ \ \ \ \textcolor{keywordflow}{if}\ (!targetTrantorian)}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00515}00515\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00516}00516\ \ \ \ \ \textcolor{keywordflow}{if}\ (args[2]\ ==\ \textcolor{stringliteral}{"{}food"{}})\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00517}00517\ \ \ \ \ \ \ \ \ std::shared\_ptr<OneShotAnimationPlayer>\ animation\ =\ std::make\_shared<OneShotAnimationPlayer>(10,\ sf::Vector2f(0.5,\ 0.5),\ sf::Vector2f(256,\ 256),\ sf::Vector2f(1536,\ 256),\ targetTrantorian-\/>getSprite()-\/>getSprite().getPosition(),\ \textcolor{stringliteral}{"{}assets/food\_sheet.png"{}});}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00518}00518\ \ \ \ \ \ \ \ \ network-\/>getGui()-\/>addToAnimationTab(animation);}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00519}00519\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00520}00520\ \ \ \ \ targetTrantorian-\/>setState(\textcolor{stringliteral}{"{}Getting\ item"{}});}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00521}00521\ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Parser_a4f7df1146ee5c44e53ac6cc09067d65a}{Parser::showArgs}}(args);}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00522}00522\ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00523}00523\ }
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00524}\mbox{\hyperlink{classZappy_1_1Parser_af660eb1478e19d7bf69a6636446e58f6}{00524}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Parser_af660eb1478e19d7bf69a6636446e58f6}{Zappy::Parser::managePDI}}(std::vector<std::string>\ args,\ [[maybe\_unused]]\ \mbox{\hyperlink{classZappy_1_1Network}{Zappy::Network}}\ *network)}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00525}00525\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00526}00526\ \ \ \ \ \textcolor{keywordflow}{if}\ (args.size()\ !=\ 2)\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00527}00527\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Wrong\ number\ of\ args,\ response\ failed."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00528}00528\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00529}00529\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00530}00530\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classZappy_1_1Parser_acd2bb8ea3b2975f9cdfbd63997b2c5ea}{Parser::isIndex}}(args[1]))\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00531}00531\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Index\ must\ be\ a\ \#\ followed\ by\ a\ positive\ number."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00532}00532\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00533}00533\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00534}00534\ \ \ \ \ std::shared\_ptr<Trantorian>\ targetTrantorian\ =\ network-\/>getGui()-\/>getMap()-\/>getTrantorianByID(std::stoi(args[1].substr(1)));}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00535}00535\ \ \ \ \ \textcolor{keywordflow}{if}\ (!targetTrantorian)}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00536}00536\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00537}00537\ \ \ \ \ targetTrantorian-\/>kill();}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00538}00538\ \ \ \ \ targetTrantorian-\/>setState(\textcolor{stringliteral}{"{}Dead"{}});}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00539}00539\ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Parser_a4f7df1146ee5c44e53ac6cc09067d65a}{Parser::showArgs}}(args);}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00540}00540\ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00541}00541\ }
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00542}\mbox{\hyperlink{classZappy_1_1Parser_a6efe157a1869463b4ecebdb659c2d7f4}{00542}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Parser_a6efe157a1869463b4ecebdb659c2d7f4}{Zappy::Parser::manageENW}}(std::vector<std::string>\ args,\ [[maybe\_unused]]\ \mbox{\hyperlink{classZappy_1_1Network}{Zappy::Network}}\ *network)}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00543}00543\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00544}00544\ \ \ \ \ \textcolor{keywordflow}{if}\ (args.size()\ !=\ 5)\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00545}00545\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Wrong\ number\ of\ args,\ response\ failed."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00546}00546\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00547}00547\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00548}00548\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classZappy_1_1Parser_acd2bb8ea3b2975f9cdfbd63997b2c5ea}{Parser::isIndex}}(args[1])\ ||\ !\mbox{\hyperlink{classZappy_1_1Parser_acd2bb8ea3b2975f9cdfbd63997b2c5ea}{Parser::isIndex}}(args[2]))\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00549}00549\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Index\ must\ be\ a\ \#\ followed\ by\ a\ positive\ number."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00550}00550\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00551}00551\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00552}00552\ \ \ \ \ std::shared\_ptr<Trantorian>\ targetTrantorian\ =\ network-\/>getGui()-\/>getMap()-\/>getTrantorianByID(std::stoi(args[2].substr(1)));}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00553}00553\ \ \ \ \ \textcolor{keywordflow}{if}\ (!targetTrantorian)}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00554}00554\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00555}00555\ \ \ \ \ sf::Vector2i\ pos\ =\ \{std::stoi(args[3]),\ std::stoi(args[4])\};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00556}00556\ \ \ \ \ std::shared\_ptr<Tile>\ targetTile\ =\ network-\/>getGui()-\/>getMap()-\/>getTiles()[pos.y][pos.x];}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00557}00557\ \ \ \ \ std::shared\_ptr<Egg>\ newEgg\ =\ std::make\_shared<Egg>(std::stoi(args[1].substr(1)),\ pos,\ targetTrantorian-\/>getTeamName());}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00558}00558\ \ \ \ \ newEgg-\/>getDrawable()-\/>getSprite().setPosition(targetTile-\/>getCenter().getX()\ +\ targetTile-\/>getOffsetsList()[0].getX(),\ targetTile-\/>getCenter().getY()\ +\ targetTile-\/>getOffsetsList()[0].getY()\ +\ 70);}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00559}00559\ \ \ \ \ network-\/>getGui()-\/>getMap()-\/>addEgg(newEgg);}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00560}00560\ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00561}00561\ }
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00562}\mbox{\hyperlink{classZappy_1_1Parser_acf5f057917e0ee56e07828f16c976dd6}{00562}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Parser_acf5f057917e0ee56e07828f16c976dd6}{Zappy::Parser::manageEBO}}(std::vector<std::string>\ args,\ [[maybe\_unused]]\ \mbox{\hyperlink{classZappy_1_1Network}{Zappy::Network}}\ *network)}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00563}00563\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00564}00564\ \ \ \ \ \textcolor{keywordflow}{if}\ (args.size()\ !=\ 2)\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00565}00565\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Wrong\ number\ of\ args,\ response\ failed."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00566}00566\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00567}00567\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00568}00568\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classZappy_1_1Parser_acd2bb8ea3b2975f9cdfbd63997b2c5ea}{Parser::isIndex}}(args[1]))\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00569}00569\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Index\ must\ be\ a\ \#\ followed\ by\ a\ positive\ number."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00570}00570\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00571}00571\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00572}00572\ \ \ \ \ std::shared\_ptr<Egg>\ targetEgg\ =\ network-\/>getGui()-\/>getMap()-\/>getEggById(std::stoi(args[1].substr(1)));}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00573}00573\ \ \ \ \ \textcolor{keywordflow}{if}\ (!targetEgg)}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00574}00574\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00575}00575\ \ \ \ \ network-\/>getGui()-\/>getMap()-\/>removeEggById(targetEgg-\/>getId());}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00576}00576\ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Parser_a4f7df1146ee5c44e53ac6cc09067d65a}{Parser::showArgs}}(args);}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00577}00577\ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00578}00578\ }
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00579}\mbox{\hyperlink{classZappy_1_1Parser_ae6835c4b8b3ae2d8dd98cb8bd004a3d4}{00579}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Parser_ae6835c4b8b3ae2d8dd98cb8bd004a3d4}{Zappy::Parser::manageEDI}}(std::vector<std::string>\ args,\ [[maybe\_unused]]\ \mbox{\hyperlink{classZappy_1_1Network}{Zappy::Network}}\ *network)}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00580}00580\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00581}00581\ \ \ \ \ \textcolor{keywordflow}{if}\ (args.size()\ !=\ 2)\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00582}00582\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Wrong\ number\ of\ args,\ response\ failed."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00583}00583\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00584}00584\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00585}00585\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classZappy_1_1Parser_acd2bb8ea3b2975f9cdfbd63997b2c5ea}{Parser::isIndex}}(args[1]))\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00586}00586\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Index\ must\ be\ a\ \#\ followed\ by\ a\ positive\ number."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00587}00587\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00588}00588\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00589}00589\ \ \ \ \ std::shared\_ptr<Egg>\ targetEgg\ =\ network-\/>getGui()-\/>getMap()-\/>getEggById(std::stoi(args[1].substr(1)));}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00590}00590\ \ \ \ \ \textcolor{keywordflow}{if}\ (!targetEgg)}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00591}00591\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00592}00592\ \ \ \ \ network-\/>getGui()-\/>getMap()-\/>removeEggById(targetEgg-\/>getId());}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00593}00593\ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Parser_a4f7df1146ee5c44e53ac6cc09067d65a}{Parser::showArgs}}(args);}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00594}00594\ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00595}00595\ }
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00596}\mbox{\hyperlink{classZappy_1_1Parser_a03c3214e850bcb4a1c2b0d13f2756219}{00596}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Parser_a03c3214e850bcb4a1c2b0d13f2756219}{Zappy::Parser::manageSEG}}(std::vector<std::string>\ args,\ [[maybe\_unused]]\ \mbox{\hyperlink{classZappy_1_1Network}{Zappy::Network}}\ *network)}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00597}00597\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00598}00598\ \ \ \ \ \textcolor{keywordflow}{if}\ (args.size()\ !=\ 2)\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00599}00599\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Wrong\ number\ of\ args,\ response\ failed."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00600}00600\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00601}00601\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00602}00602\ \ \ \ \ network-\/>getGui()-\/>setLastTeamAlive(args[1]);}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00603}00603\ \ \ \ \ network-\/>getGui()-\/>endGame();}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00604}00604\ \ \ \ \ network-\/>shutDown();}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00605}00605\ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Parser_a4f7df1146ee5c44e53ac6cc09067d65a}{Parser::showArgs}}(args);}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00606}00606\ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00607}00607\ }
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00608}\mbox{\hyperlink{classZappy_1_1Parser_a4949333fe97dc976e394bf425693fe6b}{00608}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Parser_a4949333fe97dc976e394bf425693fe6b}{Zappy::Parser::manageSMG}}(std::vector<std::string>\ args,\ [[maybe\_unused]]\ \mbox{\hyperlink{classZappy_1_1Network}{Zappy::Network}}\ *network)}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00609}00609\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00610}00610\ \ \ \ \ \textcolor{keywordflow}{if}\ (args.size()\ !=\ 2)\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00611}00611\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Wrong\ number\ of\ args,\ response\ failed."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00612}00612\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00613}00613\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00614}00614\ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Parser_a4f7df1146ee5c44e53ac6cc09067d65a}{Parser::showArgs}}(args);}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00615}00615\ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00616}00616\ }
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00617}\mbox{\hyperlink{classZappy_1_1Parser_abbd7d7fd30a124850aa63de3e49b1bfe}{00617}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Parser_abbd7d7fd30a124850aa63de3e49b1bfe}{Zappy::Parser::manageSUC}}(std::vector<std::string>\ args,\ [[maybe\_unused]]\ \mbox{\hyperlink{classZappy_1_1Network}{Zappy::Network}}\ *network)}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00618}00618\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00619}00619\ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Parser_a4f7df1146ee5c44e53ac6cc09067d65a}{Parser::showArgs}}(args);}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00620}00620\ \}}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00621}00621\ }
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00622}\mbox{\hyperlink{classZappy_1_1Parser_a2e495b18d40a2792978d6fd32f57e2ba}{00622}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Parser_a2e495b18d40a2792978d6fd32f57e2ba}{Zappy::Parser::manageSBP}}(std::vector<std::string>\ args,\ [[maybe\_unused]]\ \mbox{\hyperlink{classZappy_1_1Network}{Zappy::Network}}\ *network)}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00623}00623\ \{}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00624}00624\ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Parser_a4f7df1146ee5c44e53ac6cc09067d65a}{Parser::showArgs}}(args);}
+\DoxyCodeLine{\Hypertarget{Parser_8cpp_source_l00625}00625\ \}}
+
+\end{DoxyCode}

@@ -55,22 +55,33 @@ void Zappy::Network::initProcess()
 {
     this->askToServer("Team", {});
     this->askToServer("PlayerNb", {});
+    this->askToServer("EggNb", {});
     this->askToServer("MapSize", {});
     this->_gui->initMap(this->_mapSize.x, this->_mapSize.y);
     this->askToServer("MapContent", {});
     this->askToServer("PlayersInfo", {});
+    this->askToServer("EggsInfo", {});
 }
 
 void Zappy::Network::recieveFromServer()
 {
     Parser parser;
+    sf::Clock clock;
     while (!this->_isShuttingDown) {
+        if (clock.getElapsedTime().asSeconds() > 10) {
+            clock.restart();
+            this->send("mct\n");
+        }
         std::string recievedString = this->receive(false);
         if (!recievedString.empty()) {
-            std::vector<std::string> args = Parser::parseLine(recievedString, ' ');
-            parser.manageResponse(args, this);
+            std::vector<std::string> tab = Parser::splitLine(recievedString, "\n");
+            for (size_t i = 0; i < tab.size(); i++) {
+                std::vector<std::string> args = Parser::parseLine(tab[i], ' ');
+                parser.manageResponse(args, this);
+            }
         }
     }
+    this->_socket.disconnect();
 }
 
 void Zappy::Network::askToServer(const std::string& command, std::vector<int> args)
@@ -78,6 +89,7 @@ void Zappy::Network::askToServer(const std::string& command, std::vector<int> ar
     std::map<std::string, void (Network:: *)()> funcTabNoArgs = {
         {"Team", &Network::askTeam},
         {"PlayerNb", &Network::askPlayerNb},
+        {"EggNb", &Network::askEggNb},
         {"PlayersInfo", &Network::askPlayersInfo},
         {"MapSize", &Network::askMapSize},
         {"MapContent", &Network::askMapContent},
@@ -102,12 +114,24 @@ void Zappy::Network::askTeam()
 {
     this->send("GRAPHIC\n");
     [[maybe_unused]] std::string recievedString = this->receive();
+    if (recievedString == "Maximum number of GUI clients reached.\n")
+        throw Error("Server slot full", "Network Init function");
+
     std::cout << "[DEBUG from GUI] Authentification sucess" << std::endl;
 }
 
 void Zappy::Network::askPlayerNb()
 {
     this->send("pnu\n");
+    std::string recievedString = this->receive();
+    Parser parser;
+    std::vector<std::string> args = Parser::parseLine(recievedString, ' ');
+    parser.manageResponse(args, this);
+}
+
+void Zappy::Network::askEggNb()
+{
+    this->send("enu\n");
     std::string recievedString = this->receive();
     Parser parser;
     std::vector<std::string> args = Parser::parseLine(recievedString, ' ');
@@ -130,6 +154,28 @@ void Zappy::Network::askPlayersInfo()
             break;
     }
     std::vector<std::string> tab = Parser::splitLine(playersInfo, "\n");
+    for (size_t i = 0; i < tab.size(); i++) {
+        std::vector<std::string> args = Parser::parseLine(tab[i], ' ');
+        parser.manageResponse(args, this);
+    }
+}
+
+void Zappy::Network::askEggsInfo()
+{
+    if (this->_eggNb <= 0) {
+        std::cout << "Must have player number set before asking for players info." << std::endl;
+        return;
+    }
+    this->send("els\n");
+    Parser parser;
+    std::string eggsInfo = "";
+    while (true) {
+        std::string recievedString = this->receive(false);
+        eggsInfo.append(recievedString);
+        if (static_cast<int>(Parser::nbOccur(eggsInfo, "els")) >= this->_eggNb)
+            break;
+    }
+    std::vector<std::string> tab = Parser::splitLine(eggsInfo, "\n");
     for (size_t i = 0; i < tab.size(); i++) {
         std::vector<std::string> args = Parser::parseLine(tab[i], ' ');
         parser.manageResponse(args, this);
@@ -174,11 +220,6 @@ void Zappy::Network::askTimeUnitRequest()
     Parser parser;
     std::vector<std::string> args = Parser::parseLine(recievedString, ' ');
     parser.manageResponse(args, this);
-}
-
-void Zappy::Network::askEggsInfo()
-{
-    this->send("els\n");
 }
 
 void Zappy::Network::askTileContent([[maybe_unused]] std::vector<std::string> args)

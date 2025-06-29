@@ -15,6 +15,16 @@ Zappy::Tile::Tile(size_t id)
     }
 }
 
+void Zappy::Tile::initButton(Zappy::GUI *gui, std::shared_ptr<Tile> tile)
+{
+    this->_innerButton = std::make_shared<TileButtons>(gui, tile);
+    this->_innerButton->setPosition(sf::Vector2f(this->_pos.getX() + 195, this->_pos.getY() + 180));
+    this->_innerButton->setBgFillColor(sf::Color(255, 255, 255, 100));
+    this->_innerButton->setSize({200, 110});
+    this->_innerButton->setMaxScale({1, 1});
+    this->_innerButton->setMinScale({1, 1});
+}
+
 Zappy::Tile::~Tile()
 {
 

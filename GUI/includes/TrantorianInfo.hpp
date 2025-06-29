@@ -38,13 +38,63 @@ namespace Zappy
             TrantorianInfo(GUI *gui);
             inline ~TrantorianInfo() = default;
 
+            /**
+             * @brief Update the Trantorian info
+             * 
+             * @param mouse 
+             */
             void update(MouseStatus mouse);
+
+            /**
+             * @brief Draw the Trantorian Info
+             * 
+             * @param window 
+             */
             void render(sf::RenderWindow &window);
+
+            /**
+             * @brief Set the Trantorian object
+             * 
+             * @param trantorian 
+             */
             void setTrantorian(std::shared_ptr<Trantorian> trantorian);
+
+            /**
+             * @brief Draw a text in the window with the given parameters
+             * 
+             * @param string 
+             * @param position 
+             * @param color 
+             * @param characterSize 
+             * @param window 
+             */
             void drawText(const std::string& string, sf::Vector2f position, sf::Color color, int characterSize, sf::RenderWindow &window);
+
+            /**
+             * @brief hide the trantorian info
+             * 
+             */
             inline void hide() { this->_hiding = true; };
+
+            /**
+             * @brief Get the hiding state of the trantorian info
+             * 
+             * @return true 
+             * @return false 
+             */
             inline bool isHiding() const { return this->_hiding; };
+
+            /**
+             * @brief Manage the hiding state of the trantorian info
+             * 
+             */
             void manageHiding();
+
+            /**
+             * @brief Get the Trantorian object
+             * 
+             * @return std::shared_ptr<Trantorian> 
+             */
             inline std::shared_ptr<Trantorian> getTrantorian() const { return this->_trantorian; };
     };
 } // namespace Zappy

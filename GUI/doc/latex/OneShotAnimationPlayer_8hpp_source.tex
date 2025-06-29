@@ -1,0 +1,48 @@
+\hypertarget{OneShotAnimationPlayer_8hpp_source}{}\doxysection{One\+Shot\+Animation\+Player.\+hpp}
+\label{OneShotAnimationPlayer_8hpp_source}\index{OneShotAnimationPlayer.hpp@{OneShotAnimationPlayer.hpp}}
+\mbox{\hyperlink{OneShotAnimationPlayer_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{OneShotAnimationPlayer_8hpp_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{OneShotAnimationPlayer_8hpp_source_l00002}00002\ \textcolor{comment}{**\ EPITECH\ PROJECT,\ 2025}}
+\DoxyCodeLine{\Hypertarget{OneShotAnimationPlayer_8hpp_source_l00003}00003\ \textcolor{comment}{**\ Zappy}}
+\DoxyCodeLine{\Hypertarget{OneShotAnimationPlayer_8hpp_source_l00004}00004\ \textcolor{comment}{**\ File\ description:}}
+\DoxyCodeLine{\Hypertarget{OneShotAnimationPlayer_8hpp_source_l00005}00005\ \textcolor{comment}{**\ One\ Shot\ Animation\ Player\ Header}}
+\DoxyCodeLine{\Hypertarget{OneShotAnimationPlayer_8hpp_source_l00006}00006\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{OneShotAnimationPlayer_8hpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{OneShotAnimationPlayer_8hpp_source_l00008}00008\ \textcolor{preprocessor}{\#ifndef\ ONE\_SHOT\_ANIMATION\_PLAYER\_H}}
+\DoxyCodeLine{\Hypertarget{OneShotAnimationPlayer_8hpp_source_l00009}00009\ \textcolor{preprocessor}{\ \ \ \ \#define\ ONE\_SHOT\_ANIMATION\_PLAYER\_H}}
+\DoxyCodeLine{\Hypertarget{OneShotAnimationPlayer_8hpp_source_l00010}00010\ \textcolor{preprocessor}{\ \ \ \ \#include\ <memory>}}
+\DoxyCodeLine{\Hypertarget{OneShotAnimationPlayer_8hpp_source_l00011}00011\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}\mbox{\hyperlink{Drawable_8hpp}{Drawable.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{OneShotAnimationPlayer_8hpp_source_l00012}00012\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceZappy}{Zappy}}}
+\DoxyCodeLine{\Hypertarget{OneShotAnimationPlayer_8hpp_source_l00013}00013\ \{}
+\DoxyCodeLine{\Hypertarget{OneShotAnimationPlayer_8hpp_source_l00014}\mbox{\hyperlink{classZappy_1_1OneShotAnimationPlayer}{00014}}\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classZappy_1_1OneShotAnimationPlayer}{OneShotAnimationPlayer}}}
+\DoxyCodeLine{\Hypertarget{OneShotAnimationPlayer_8hpp_source_l00015}00015\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{OneShotAnimationPlayer_8hpp_source_l00016}00016\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{OneShotAnimationPlayer_8hpp_source_l00017}\mbox{\hyperlink{classZappy_1_1OneShotAnimationPlayer_a0bffdac4a2b8f84492c99488aebdd96b}{00017}}\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classZappy_1_1OneShotAnimationPlayer_a0bffdac4a2b8f84492c99488aebdd96b}{\_alive}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{OneShotAnimationPlayer_8hpp_source_l00018}\mbox{\hyperlink{classZappy_1_1OneShotAnimationPlayer_a90dc0b3d9b16e8b94bcdf539e110945e}{00018}}\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classZappy_1_1OneShotAnimationPlayer_a90dc0b3d9b16e8b94bcdf539e110945e}{\_isFading}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{OneShotAnimationPlayer_8hpp_source_l00019}\mbox{\hyperlink{classZappy_1_1OneShotAnimationPlayer_ac5a060ee34558ce06ab5e17f3934fd78}{00019}}\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{classZappy_1_1OneShotAnimationPlayer_ac5a060ee34558ce06ab5e17f3934fd78}{\_path}};}
+\DoxyCodeLine{\Hypertarget{OneShotAnimationPlayer_8hpp_source_l00020}\mbox{\hyperlink{classZappy_1_1OneShotAnimationPlayer_a6384e04a6df4fc7638fed2ffd8978c4e}{00020}}\ \ \ \ \ \ \ \ \ \ \ \ \ std::shared\_ptr<Drawable>\ \mbox{\hyperlink{classZappy_1_1OneShotAnimationPlayer_a6384e04a6df4fc7638fed2ffd8978c4e}{\_spriteSheet}};}
+\DoxyCodeLine{\Hypertarget{OneShotAnimationPlayer_8hpp_source_l00021}\mbox{\hyperlink{classZappy_1_1OneShotAnimationPlayer_a30fc4a29fbab4796394a454b60eb8fc6}{00021}}\ \ \ \ \ \ \ \ \ \ \ \ \ sf::Clock\ \mbox{\hyperlink{classZappy_1_1OneShotAnimationPlayer_a30fc4a29fbab4796394a454b60eb8fc6}{\_innerClock}};}
+\DoxyCodeLine{\Hypertarget{OneShotAnimationPlayer_8hpp_source_l00022}\mbox{\hyperlink{classZappy_1_1OneShotAnimationPlayer_a91167204dc9e7503ba7086ed58bb146d}{00022}}\ \ \ \ \ \ \ \ \ \ \ \ \ sf::Vector2f\ \mbox{\hyperlink{classZappy_1_1OneShotAnimationPlayer_a91167204dc9e7503ba7086ed58bb146d}{\_fullSize}};}
+\DoxyCodeLine{\Hypertarget{OneShotAnimationPlayer_8hpp_source_l00023}\mbox{\hyperlink{classZappy_1_1OneShotAnimationPlayer_a103629c3c5ed110ee87568aee5090a66}{00023}}\ \ \ \ \ \ \ \ \ \ \ \ \ sf::Vector2f\ \mbox{\hyperlink{classZappy_1_1OneShotAnimationPlayer_a103629c3c5ed110ee87568aee5090a66}{\_singleTileSize}};}
+\DoxyCodeLine{\Hypertarget{OneShotAnimationPlayer_8hpp_source_l00024}\mbox{\hyperlink{classZappy_1_1OneShotAnimationPlayer_a7405884ea1125f8ed81de34c8f4cf23d}{00024}}\ \ \ \ \ \ \ \ \ \ \ \ \ sf::Vector2f\ \mbox{\hyperlink{classZappy_1_1OneShotAnimationPlayer_a7405884ea1125f8ed81de34c8f4cf23d}{\_scale}};}
+\DoxyCodeLine{\Hypertarget{OneShotAnimationPlayer_8hpp_source_l00025}\mbox{\hyperlink{classZappy_1_1OneShotAnimationPlayer_a2b185b08ab2ccf351a1a504e70076834}{00025}}\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classZappy_1_1OneShotAnimationPlayer_a2b185b08ab2ccf351a1a504e70076834}{\_frameRate}};}
+\DoxyCodeLine{\Hypertarget{OneShotAnimationPlayer_8hpp_source_l00026}\mbox{\hyperlink{classZappy_1_1OneShotAnimationPlayer_a43889c176448b7fedefa381cad9f6e47}{00026}}\ \ \ \ \ \ \ \ \ \ \ \ \ sf::IntRect\ \mbox{\hyperlink{classZappy_1_1OneShotAnimationPlayer_a43889c176448b7fedefa381cad9f6e47}{\_innerRect}};}
+\DoxyCodeLine{\Hypertarget{OneShotAnimationPlayer_8hpp_source_l00027}\mbox{\hyperlink{classZappy_1_1OneShotAnimationPlayer_a799cf45c41fec5a858dc55ea7b3eac4f}{00027}}\ \ \ \ \ \ \ \ \ \ \ \ \ sf::Vector2f\ \mbox{\hyperlink{classZappy_1_1OneShotAnimationPlayer_a799cf45c41fec5a858dc55ea7b3eac4f}{\_pos}};}
+\DoxyCodeLine{\Hypertarget{OneShotAnimationPlayer_8hpp_source_l00028}\mbox{\hyperlink{classZappy_1_1OneShotAnimationPlayer_a84ef81601832188b372a675f68905988}{00028}}\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classZappy_1_1OneShotAnimationPlayer_a84ef81601832188b372a675f68905988}{alphaValue}}\ =\ 255;}
+\DoxyCodeLine{\Hypertarget{OneShotAnimationPlayer_8hpp_source_l00029}00029\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{OneShotAnimationPlayer_8hpp_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classZappy_1_1OneShotAnimationPlayer}{OneShotAnimationPlayer}}(\textcolor{keywordtype}{int}\ framerate\ =\ \{30\},\ sf::Vector2f\ scale\ =\ \{1,\ 1\},\ sf::Vector2f\ singleTileSize\ =\ \{100,\ 100\},\ sf::Vector2f\ fullSize\ =\ \{100,\ 100\},\ sf::Vector2f\ pos\ =\ \{100,\ 100\},\ \textcolor{keyword}{const}\ std::string\&\ spritePath\ =\ \textcolor{stringliteral}{"{}assets/default.jpeg"{}});}
+\DoxyCodeLine{\Hypertarget{OneShotAnimationPlayer_8hpp_source_l00031}\mbox{\hyperlink{classZappy_1_1OneShotAnimationPlayer_aca3228601f7bd4ec27b3b37fd512215a}{00031}}\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classZappy_1_1OneShotAnimationPlayer_aca3228601f7bd4ec27b3b37fd512215a}{\string~OneShotAnimationPlayer}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{\Hypertarget{OneShotAnimationPlayer_8hpp_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{OneShotAnimationPlayer_8hpp_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1OneShotAnimationPlayer_a59abf9a394250be65fcadf7f729b4203}{update}}();}
+\DoxyCodeLine{\Hypertarget{OneShotAnimationPlayer_8hpp_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{OneShotAnimationPlayer_8hpp_source_l00045}\mbox{\hyperlink{classZappy_1_1OneShotAnimationPlayer_a1fcd6398bba4b7ed95e338b3b0595619}{00045}}\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classZappy_1_1OneShotAnimationPlayer_a1fcd6398bba4b7ed95e338b3b0595619}{isAlive}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classZappy_1_1OneShotAnimationPlayer_a0bffdac4a2b8f84492c99488aebdd96b}{\_alive}};\ \};}
+\DoxyCodeLine{\Hypertarget{OneShotAnimationPlayer_8hpp_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{OneShotAnimationPlayer_8hpp_source_l00052}\mbox{\hyperlink{classZappy_1_1OneShotAnimationPlayer_a39750ad98ad91e26828f6f29baeb1265}{00052}}\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ std::shared\_ptr<Drawable>\ \mbox{\hyperlink{classZappy_1_1OneShotAnimationPlayer_a39750ad98ad91e26828f6f29baeb1265}{getDrawable}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classZappy_1_1OneShotAnimationPlayer_a6384e04a6df4fc7638fed2ffd8978c4e}{\_spriteSheet}};\ \};}
+\DoxyCodeLine{\Hypertarget{OneShotAnimationPlayer_8hpp_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{OneShotAnimationPlayer_8hpp_source_l00054}00054\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{OneShotAnimationPlayer_8hpp_source_l00055}00055\ \}\ \textcolor{comment}{//\ namespace\ Zappy}}
+\DoxyCodeLine{\Hypertarget{OneShotAnimationPlayer_8hpp_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{OneShotAnimationPlayer_8hpp_source_l00057}00057\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ !ONE\_SHOT\_ANIMATION\_PLAYER\_H\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

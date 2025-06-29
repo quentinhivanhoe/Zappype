@@ -29,8 +29,26 @@ namespace Zappy
         public:
             OneShotAnimationPlayer(int framerate = {30}, sf::Vector2f scale = {1, 1}, sf::Vector2f singleTileSize = {100, 100}, sf::Vector2f fullSize = {100, 100}, sf::Vector2f pos = {100, 100}, const std::string& spritePath = "assets/default.jpeg");
             inline ~OneShotAnimationPlayer() = default;
+
+            /**
+             * @brief Update all the animation
+             * 
+             */
             void update();
+
+            /**
+             * @brief get the state of the animation
+             * 
+             * @return true 
+             * @return false 
+             */
             inline bool isAlive() const { return this->_alive; };
+
+            /**
+             * @brief Get the Drawable object
+             * 
+             * @return std::shared_ptr<Drawable> 
+             */
             inline std::shared_ptr<Drawable> getDrawable() const { return this->_spriteSheet; };
 
     };

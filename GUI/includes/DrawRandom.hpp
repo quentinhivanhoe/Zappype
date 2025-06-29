@@ -33,13 +33,81 @@ namespace Zappy
         DrawRandom(std::string filePath, int number, float scale);
         DrawRandom(int starNb, int cloudNb, float starScale, float cloudScale);
         ~DrawRandom();
+
+        /**
+         * @brief Fade the sprite
+         * 
+         * @param window 
+         * @param time 
+         * @param fadeSpeed 
+         * @param sprite 
+         */
         void fadeSprite(sf::RenderWindow &window, float time, float fadeSpeed, std::shared_ptr<Drawable> sprite);
+
+        /**
+         * @brief Lerp function
+         * 
+         * @param pos 
+         * @param lerp 
+         * @param speed 
+         * @return sf::Vector2f 
+         */
         sf::Vector2f lerp(sf::Vector2f pos, sf::Vector2f lerp, float speed);
+
+        /**
+         * @brief Run function
+         * 
+         * @param window 
+         * @param night 
+         * @param time 
+         * @param fade 
+         * @return int 
+         */
         int run(sf::RenderWindow &window, bool night, float time, bool fade);
+
+        /**
+         * @brief Run function for Star
+         * 
+         * @param window 
+         * @param time 
+         * @param fade 
+         * @return int 
+         */
         int runStar(sf::RenderWindow &window, float time, bool fade);
+
+        /**
+         * @brief Run function for clouds
+         * 
+         * @param window 
+         * @param time 
+         * @param fade 
+         * @return int 
+         */
         int runCloud(sf::RenderWindow &window, float time, bool fade);
+
+        /**
+         * @brief Run function for rendering
+         * 
+         * @param window 
+         * @param night 
+         * @param time 
+         */
         void runDraw(sf::RenderWindow &window, bool night, float time);
+
+        /**
+         * @brief Render the moon and the sun
+         * 
+         * @param window 
+         * @param night 
+         * @param time 
+         */
         void drawMoonSun(sf::RenderWindow &window, bool night, float time);
+
+        /**
+         * @brief Get the Sprite object
+         * 
+         * @return std::shared_ptr<Drawable> 
+         */
         std::shared_ptr<Drawable> getSprite() {return this->_sprite;};
     };
     

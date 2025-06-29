@@ -18,15 +18,15 @@ Zappy::DrawRandom::DrawRandom(int starNb, int cloudNb, float starScale, float cl
 {
     this->_starNb = starNb;
     this->_cloudNb = cloudNb;
-    this->_star = std::make_shared<Drawable>("../GUI/assets/Star.png", starScale);
-    this->_moon = std::make_shared<Drawable>("../GUI/assets/moon.png", 1);
-    this->_sun = std::make_shared<Drawable>("../GUI/assets/sun.png", 1);
+    this->_star = std::make_shared<Drawable>("assets/Star.png", starScale);
+    this->_moon = std::make_shared<Drawable>("assets/moon.png", 1);
+    this->_sun = std::make_shared<Drawable>("assets/sun.png", 1);
     this->_sun->getSprite().setPosition(sf::Vector2f(100, 1500));
     this->_moon->getSprite().setPosition(sf::Vector2f(100, 1500));
-    this->_cloud.push_back(std::make_shared<Drawable>("../GUI/assets/nuage.png", cloudScale));
-    this->_cloud.push_back(std::make_shared<Drawable>("../GUI/assets/nuage_gris.png", cloudScale));
-    this->_cloud.push_back(std::make_shared<Drawable>("../GUI/assets/nuage_visage.png", cloudScale));
-    this->_cloud.push_back(std::make_shared<Drawable>("../GUI/assets/nuage_sourire.png", cloudScale));
+    this->_cloud.push_back(std::make_shared<Drawable>("assets/nuage.png", cloudScale));
+    this->_cloud.push_back(std::make_shared<Drawable>("assets/nuage_gris.png", cloudScale));
+    this->_cloud.push_back(std::make_shared<Drawable>("assets/nuage_visage.png", cloudScale));
+    this->_cloud.push_back(std::make_shared<Drawable>("assets/nuage_sourire.png", cloudScale));
 }
     
 Zappy::DrawRandom::~DrawRandom()
@@ -189,16 +189,16 @@ int Zappy::DrawRandom::runCloud(sf::RenderWindow &window, float time, bool fade)
 void Zappy::DrawRandom::drawMoonSun(sf::RenderWindow &window, bool night, float time)
 {
     if (night){
-         if (time > 19.0f) {
-            this->_moon.get()->getSprite().setPosition(lerp(this->_moon.get()->getSprite().getPosition(), sf::Vector2f(100, 0), 6000.0));
+        if (time > 19.0f) {
+            this->_moon.get()->getSprite().setPosition(lerp(this->_moon.get()->getSprite().getPosition(), sf::Vector2f(100, 0), 600.0));
         } else if (time > 0.1f && time < 6.0f)
-            this->_moon.get()->getSprite().setPosition(lerp(this->_moon.get()->getSprite().getPosition(), sf::Vector2f(100, 1500), 35000.0));
+            this->_moon.get()->getSprite().setPosition(lerp(this->_moon.get()->getSprite().getPosition(), sf::Vector2f(100, 1500), 3500.0));
         window.draw(this->_moon.get()->getSprite());
     } else {
         if (time > 6.0f && time < 12.0f) {
-            this->_sun.get()->getSprite().setPosition(lerp(this->_sun.get()->getSprite().getPosition(), sf::Vector2f(100, 0), 15000.0));
-        } else if (time > 12.0f && time < 18.5f)
-            this->_sun.get()->getSprite().setPosition(lerp(this->_sun.get()->getSprite().getPosition(), sf::Vector2f(100, 1500), 30000.0));
+            this->_sun.get()->getSprite().setPosition(lerp(this->_sun.get()->getSprite().getPosition(), sf::Vector2f(100, 0), 1500.0));
+        } else if (time > 15.0f && time < 18.5f)
+            this->_sun.get()->getSprite().setPosition(lerp(this->_sun.get()->getSprite().getPosition(), sf::Vector2f(100, 1500), 3000.0));
         window.draw(this->_sun.get()->getSprite());
     }
 }

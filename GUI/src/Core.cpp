@@ -8,13 +8,9 @@
 #include "../includes/Core.hpp"
 
 
-Zappy::Core::Core(int argc, char **argv)
+Zappy::Core::Core()
 {
-    if (argc < 2)
-        throw Error("Not enough arguments. run ./zappy_gui \"ip\" \"port\"", "Core init");
-    if (!Parser::isNum(argv[2]))
-        throw Error("Port must be a positive number.", "Core init");
-    this->_gui = std::make_shared<GUI>(argv[1], std::stoi(argv[2]));
+    this->_gui = std::make_shared<GUI>();
 }
 
 Zappy::Core::~Core()

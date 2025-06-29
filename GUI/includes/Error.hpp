@@ -20,7 +20,19 @@ namespace Zappy
         public:
             inline Error(const std::string& what, const std::string& where) : _what(what), _where(where) {};
             inline ~Error() = default;
+
+            /**
+             * @brief Get the cause of the exception
+             * 
+             * @return const char* 
+             */
             inline const char *what() const noexcept { return this->_what.c_str(); };
+
+            /**
+             * @brief Get the place of the exception
+             * 
+             * @return const char* 
+             */
             inline const char *where() const noexcept { return this->_where.c_str(); };
     };
 } // namespace Zappy

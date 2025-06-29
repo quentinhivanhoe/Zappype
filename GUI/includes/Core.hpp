@@ -16,11 +16,9 @@ namespace Zappy
     class Core
     {
         private:
-            int _argc;
-            char **_argv;
             std::shared_ptr<GUI> _gui;
         public:
-            Core(int argc = 0, char **argv = nullptr);
+            Core();
             ~Core();
     };
 } // namespace Zappy
