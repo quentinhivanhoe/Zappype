@@ -48,7 +48,8 @@ void Zappy::Network::establishConnection(std::string ip, size_t socket)
     this->_status = _socket.connect(ipAddress, socket);
     if (this->_status != sf::Socket::Done)
         throw Error("Error", "Network Init function");
-    std::cout << "WELCOME MESSAGE FROM SERVER:" << this->receive() << std::endl;
+    if (this->_gui->isDebugging())
+        std::cout << "[DEBUG] WELCOME MESSAGE FROM SERVER:" << this->receive() << std::endl;
 }
 
 void Zappy::Network::initProcess()
@@ -116,8 +117,8 @@ void Zappy::Network::askTeam()
     [[maybe_unused]] std::string recievedString = this->receive();
     if (recievedString == "Maximum number of GUI clients reached.\n")
         throw Error("Server slot full", "Network Init function");
-
-    std::cout << "[DEBUG from GUI] Authentification sucess" << std::endl;
+    if (this->_gui->isDebugging())
+        std::cout << "[DEBUG from GUI] Authentification sucess" << std::endl;
 }
 
 void Zappy::Network::askPlayerNb()
@@ -141,7 +142,8 @@ void Zappy::Network::askEggNb()
 void Zappy::Network::askPlayersInfo()
 {
     if (this->_playerNb <= 0) {
-        std::cout << "Must have player number set before asking for players info." << std::endl;
+        if (this->_gui->isDebugging())
+            std::cout << "[DEBUG] Must have player number set before asking for players info." << std::endl;
         return;
     }
     this->send("pls\n");
@@ -163,7 +165,8 @@ void Zappy::Network::askPlayersInfo()
 void Zappy::Network::askEggsInfo()
 {
     if (this->_eggNb <= 0) {
-        std::cout << "Must have player number set before asking for players info." << std::endl;
+        if (this->_gui->isDebugging())
+            std::cout << "[DEBUG] Must have player number set before asking for players info." << std::endl;
         return;
     }
     this->send("els\n");
@@ -194,7 +197,8 @@ void Zappy::Network::askMapSize()
 void Zappy::Network::askMapContent()
 {
     if (this->_mapSize.x <= 0 || this->_mapSize.y <= 0) {
-        std::cout << "Must have map size set before asking for content." << std::endl;
+        if (this->_gui->isDebugging())
+            std::cout << "[DEBUG] Must have map size set before asking for content." << std::endl;
         return;
     }
     this->send("mct\n");
@@ -225,11 +229,13 @@ void Zappy::Network::askTimeUnitRequest()
 void Zappy::Network::askTileContent([[maybe_unused]] std::vector<std::string> args)
 {
     if (args.size() != 2) {
-        std::cout << "Wrong number of arguments" << std::endl;
+        if (this->_gui->isDebugging())
+            std::cout << "[DEBUG] Wrong number of arguments" << std::endl;
         return;
     }
     if (!Parser::isNum(args[0]) || !Parser::isNum(args[1])) {
-        std::cout << "Args must be positive numbers" << std::endl;
+        if (this->_gui->isDebugging())
+            std::cout << "[DEBUG] Args must be positive numbers" << std::endl;
         return;
     }
     this->send("bct " + args[0] + " " + args[1] + "\n");
@@ -242,11 +248,13 @@ void Zappy::Network::askTileContent([[maybe_unused]] std::vector<std::string> ar
 void Zappy::Network::askPlayerPos([[maybe_unused]] std::vector<std::string> args)
 {
     if (args.size() != 1) {
-        std::cout << "Wrong number of arguments" << std::endl;
+        if (this->_gui->isDebugging())
+            std::cout << "[DEBUG] Wrong number of arguments" << std::endl;
         return;
     }
     if (!Parser::isNum(args[0])) {
-        std::cout << "Args must be positive numbers" << std::endl;
+        if (this->_gui->isDebugging())
+            std::cout << "[DEBUG] Args must be positive numbers" << std::endl;
         return;
     }
     this->send("ppo #" + args[0] + "\n");
@@ -259,11 +267,13 @@ void Zappy::Network::askPlayerPos([[maybe_unused]] std::vector<std::string> args
 void Zappy::Network::askPlayerLevel([[maybe_unused]] std::vector<std::string> args)
 {
     if (args.size() != 1) {
-        std::cout << "Wrong number of arguments" << std::endl;
+        if (this->_gui->isDebugging())
+            std::cout << "[DEBUG] Wrong number of arguments" << std::endl;
         return;
     }
     if (!Parser::isNum(args[0])) {
-        std::cout << "Args must be positive numbers" << std::endl;
+        if (this->_gui->isDebugging())
+            std::cout << "[DEBUG] Args must be positive numbers" << std::endl;
         return;
     }
     this->send("plv #" + args[0] + "\n");
@@ -276,14 +286,16 @@ void Zappy::Network::askPlayerLevel([[maybe_unused]] std::vector<std::string> ar
 void Zappy::Network::askPlayerInventory([[maybe_unused]] std::vector<std::string> args)
 {
     if (args.size() != 1) {
-        std::cout << "Wrong number of arguments" << std::endl;
+        if (this->_gui->isDebugging())
+            std::cout << "[DEBUG] Wrong number of arguments" << std::endl;
         return;
     }
     if (!Parser::isNum(args[0])) {
-        std::cout << "Args must be positive numbers" << std::endl;
+        if (this->_gui->isDebugging())
+            std::cout << "[DEBUG] Args must be positive numbers" << std::endl;
         return;
     }
-    this->send("plin #" + args[0] + "\n");
+    this->send("pin #" + args[0] + "\n");
     std::string recievedString = this->receive();
     Parser parser;
     std::vector<std::string> responseArgs = Parser::parseLine(recievedString, ' ');
@@ -293,11 +305,13 @@ void Zappy::Network::askPlayerInventory([[maybe_unused]] std::vector<std::string
 void Zappy::Network::askTimeUnitModif([[maybe_unused]] std::vector<std::string> args)
 {
     if (args.size() != 1) {
-        std::cout << "Wrong number of arguments" << std::endl;
+        if (this->_gui->isDebugging())
+            std::cout << "[DEBUG] Wrong number of arguments" << std::endl;
         return;
     }
     if (!Parser::isNum(args[0])) {
-        std::cout << "Args must be positive numbers" << std::endl;
+        if (this->_gui->isDebugging())
+            std::cout << "DEBUGArgs must be positive numbers" << std::endl;
         return;
     }
     this->send("sst " + args[0] + "\n");

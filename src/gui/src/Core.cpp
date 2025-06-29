@@ -8,9 +8,14 @@
 #include "../includes/Core.hpp"
 
 
-Zappy::Core::Core()
+Zappy::Core::Core(int argc, char **argv)
 {
-    this->_gui = std::make_shared<GUI>();
+    bool isDebugging = false;
+    if (argc > 1) {
+        if (std::string(argv[1]) == "-d")
+            isDebugging = true;
+    }
+    this->_gui = std::make_shared<GUI>(isDebugging);
 }
 
 Zappy::Core::~Core()

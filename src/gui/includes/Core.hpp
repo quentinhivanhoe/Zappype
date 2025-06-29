@@ -18,7 +18,7 @@ namespace Zappy
         private:
             std::shared_ptr<GUI> _gui;
         public:
-            Core();
+            Core(int argc = 0, char **argv = nullptr);
             ~Core();
     };
 } // namespace Zappy

@@ -23,7 +23,7 @@ std::vector<std::string> Zappy::Parser::parseLine(const std::string& line, char 
 
 void Zappy::Parser::showArgs(std::vector<std::string> args)
 {
-    std::cout << "{";
+    std::cout << "[Debug] {";
     for (size_t i = 0; i < args.size(); i++) {
         std::cout << args[i];
         if (i + 1 < args.size())
@@ -63,11 +63,14 @@ void Zappy::Parser::manageResponse(std::vector<std::string> args, [[maybe_unused
         {"suc", &Zappy::Parser::manageSUC},
         {"sbp", &Zappy::Parser::manageSBP},
     };
-    Parser::showArgs(args);
+    if (args.empty())
+        return;
     if (funcTab[args.front()])
         (this->*funcTab[args.front()])(args, network);
-    else
-        std::cout << "response not found" << std::endl;
+    else {
+        if (network->getGui()->isDebugging())
+            std::cout << "[DEBUG] response not found" << std::endl;
+    }
 }
 
 bool Zappy::Parser::isNum(const std::string& string)
@@ -123,27 +126,32 @@ std::vector<std::string> Zappy::Parser::argsToString(std::vector<int> args)
 void Zappy::Parser::manageMSZ([[maybe_unused]] std::vector<std::string> args, [[maybe_unused]] Zappy::Network *network)
 {
     if (args.size() != 3) {
-        std::cout << "Wrong number of args, response failed." << std::endl;
+        if (network->getGui()->isDebugging())
+            std::cout << "[DEBUG] Wrong number of args, response failed." << std::endl;
         return;
     }
     if (!Parser::isNum(args[1]) || !Parser::isNum(args[2])) {
-        std::cout << "Args must be positive numbers." << std::endl;
+        if (network->getGui()->isDebugging())
+            std::cout << "[DEBUG] Args must be positive numbers." << std::endl;
         return;
     }
     network->setMapSize({std::stoi(args[1]), std::stoi(args[2])});
     network->getGui()->setMapSize({std::stoi(args[1]), std::stoi(args[2])});
-    Parser::showArgs(args);
+    if (network->getGui()->isDebugging())
+        Parser::showArgs(args);
 }
 
 void Zappy::Parser::manageBCT([[maybe_unused]] std::vector<std::string> args, [[maybe_unused]] Zappy::Network *network)
 {
     if (args.size() != 10) {
-        std::cout << "Wrong number of args, response failed." << std::endl;
+        if (network->getGui()->isDebugging())
+            std::cout << "[DEBUG] Wrong number of args, response failed." << std::endl;
         return;
     }
     for (size_t i = 1; i < args.size(); i++) {
         if (!Parser::isNum(args[i])) {
-            std::cout << "Args must be positive numbers." << std::endl;
+        if (network->getGui()->isDebugging())
+                std::cout << "[DEBUG] Args must be positive numbers." << std::endl;
             return;
         }
     }
@@ -155,56 +163,67 @@ void Zappy::Parser::manageBCT([[maybe_unused]] std::vector<std::string> args, [[
         return Parser::showArgs(args);
     for (size_t i = 3; i < args.size(); i++)
         network->getGui()->getMap()->getTiles()[posY][posX]->setNItem(static_cast<Item>(i - 2), std::stoi(args[i]));
-    Parser::showArgs(args);
+    if (network->getGui()->isDebugging())
+        Parser::showArgs(args);
 }
 
 void Zappy::Parser::manageSPN([[maybe_unused]] std::vector<std::string> args, [[maybe_unused]] Zappy::Network *network)
 {
     if (args.size() != 2) {
-        std::cout << "Wrong number of args, response failed." << std::endl;
+        if (network->getGui()->isDebugging())
+            std::cout << "[DEBUG] Wrong number of args, response failed." << std::endl;
         return;
     }
     if (!Parser::isNum(args[1])) {
-        std::cout << "Args must be positive numbers." << std::endl;
+        if (network->getGui()->isDebugging())
+            std::cout << "[DEBUG] Args must be positive numbers." << std::endl;
         return;
     }
     network->setPlayerNb(std::stoi(args[1]));
     network->getGui()->setPlayerNb(std::stoi(args[1]));
-    Parser::showArgs(args);
+    if (network->getGui()->isDebugging())
+        Parser::showArgs(args);
 }
 
 void Zappy::Parser::manageENU([[maybe_unused]] std::vector<std::string> args, [[maybe_unused]] Zappy::Network *network)
 {
     if (args.size() != 2) {
-        std::cout << "Wrong number of args, response failed." << std::endl;
+        if (network->getGui()->isDebugging())
+            std::cout << "[DEBUG] Wrong number of args, response failed." << std::endl;
         return;
     }
     if (!Parser::isNum(args[1])) {
-        std::cout << "Args must be positive numbers." << std::endl;
+        if (network->getGui()->isDebugging())
+            std::cout << "[DEBUG] Args must be positive numbers." << std::endl;
         return;
     }
     network->setEggNb(std::stoi(args[1]));
-    Parser::showArgs(args);
+    if (network->getGui()->isDebugging())
+        Parser::showArgs(args);
 }
 
 void Zappy::Parser::manageSPI([[maybe_unused]] std::vector<std::string> args, [[maybe_unused]] Zappy::Network *network)
 {
     if (args.size() != 8) {
-        std::cout << "Wrong number of args, response failed." << std::endl;
+        if (network->getGui()->isDebugging())
+            std::cout << "[DEBUG] Wrong number of args, response failed." << std::endl;
         return;
     }
     if (!Parser::isIndex(args[1])) {
-        std::cout << "Index must be a # followed by a positive number." << std::endl;
+        if (network->getGui()->isDebugging())
+            std::cout << "[DEBUG] Index must be a # followed by a positive number." << std::endl;
         return;
     }
     for (size_t i = 2; i < 5; i++) {
         if (!Parser::isNum(args[i])) {
-            std::cout << "Args must be positive numbers." << std::endl;
+        if (network->getGui()->isDebugging())
+                std::cout << "[DEBUG] Args must be positive numbers." << std::endl;
             return;
         }
     }
     if (!Parser::isNum(args[7])) {
-        std::cout << "Args must be positive numbers." << std::endl;
+        if (network->getGui()->isDebugging())
+            std::cout << "[DEBUG] Args must be positive numbers." << std::endl;
         return;
     }
     std::shared_ptr<Trantorian> targetTrantorian = network->getGui()->getMap()->getTrantorianByID(std::stoi(args[1].substr(1)));
@@ -218,21 +237,25 @@ void Zappy::Parser::manageSPI([[maybe_unused]] std::vector<std::string> args, [[
     targetTrantorian->setLevel(std::stoi(args[7]));
     network->getGui()->getMap()->addTrantorian(targetTrantorian);
     network->getGui()->getMap()->getTrantorianByID(std::stoi(args[1].substr(1)))->getSprite()->getSprite().setPosition(network->getGui()->getMap()->getTiles()[pos.y][pos.x]->getCenter().getX(), network->getGui()->getMap()->getTiles()[pos.y][pos.x]->getCenter().getY());
-    Parser::showArgs(args);
+    if (network->getGui()->isDebugging())
+        Parser::showArgs(args);
 }
 
 void Zappy::Parser::manageELS(std::vector<std::string> args, [[maybe_unused]] Zappy::Network *network)
 {
     if (args.size() != 5) {
-        std::cout << "Wrong number of args, response failed." << std::endl;
+        if (network->getGui()->isDebugging())
+            std::cout << "[DEBUG] Wrong number of args, response failed." << std::endl;
         return;
     }
     if (!Parser::isIndex(args[1])) {
-        std::cout << "Index must be a # followed by a positive number." << std::endl;
+        if (network->getGui()->isDebugging())
+            std::cout << "[DEBUG] Index must be a # followed by a positive number." << std::endl;
         return;
     }
     if (!Parser::isNum(args[2]) || !Parser::isNum(args[3])) {
-        std::cout << "Args must be positive numbers." << std::endl;
+        if (network->getGui()->isDebugging())
+            std::cout << "[DEBUG] Args must be positive numbers." << std::endl;
         return;
     }
     std::shared_ptr<Egg> targetEgg = network->getGui()->getMap()->getEggById(std::stoi(args[1].substr(1)));
@@ -246,22 +269,26 @@ void Zappy::Parser::manageELS(std::vector<std::string> args, [[maybe_unused]] Za
     network->getGui()->getMap()->addEgg(targetEgg);
     targetEgg->getDrawable()->getSprite().setPosition(targetTile->getCenter().getX() + targetTile->getOffsetsList()[0].getX(), targetTile->getCenter().getY() + targetTile->getOffsetsList()[0].getY() + 70);
     network->getGui()->getMap()->getEggById(std::stoi(args[1].substr(1)))->getDrawable()->getSprite().setPosition(targetTile->getCenter().getX() + targetTile->getOffsetsList()[0].getX(), targetTile->getCenter().getY() + targetTile->getOffsetsList()[0].getY() + 70);
-    Parser::showArgs(args);
+    if (network->getGui()->isDebugging())
+        Parser::showArgs(args);
 }
 
 void Zappy::Parser::managePPO(std::vector<std::string> args, [[maybe_unused]] Zappy::Network *network)
 {
     if (args.size() != 5) {
-        std::cout << "Wrong number of args, response failed." << std::endl;
+        if (network->getGui()->isDebugging())
+            std::cout << "[DEBUG] Wrong number of args, response failed." << std::endl;
         return;
     }
     if (!Parser::isIndex(args[1])) {
-        std::cout << "Index must be a # followed by a positive number." << std::endl;
+        if (network->getGui()->isDebugging())
+            std::cout << "[DEBUG] Index must be a # followed by a positive number." << std::endl;
         return;
     }
     for (size_t i = 2; i < args.size(); i++) {
         if (!Parser::isNum(args[i])) {
-            std::cout << "Args must be positive numbers." << std::endl;
+        if (network->getGui()->isDebugging())
+                std::cout << "[DEBUG] Args must be positive numbers." << std::endl;
             return;
         }
     }
@@ -273,17 +300,20 @@ void Zappy::Parser::managePPO(std::vector<std::string> args, [[maybe_unused]] Za
     targetTrantorian->getSprite()->getSprite().setPosition(network->getGui()->getMap()->getTiles()[pos.y][pos.x]->getCenter().getX(), network->getGui()->getMap()->getTiles()[pos.y][pos.x]->getCenter().getY());
     targetTrantorian->setDirection(std::stoi(args[4]));
     network->getGui()->getTileInfo()->updateTrantorButtonsTab();
-    Parser::showArgs(args);
+    if (network->getGui()->isDebugging())
+        Parser::showArgs(args);
 }
 
 void Zappy::Parser::managePLV(std::vector<std::string> args, [[maybe_unused]] Zappy::Network *network)
 {
     if (args.size() != 3) {
-        std::cout << "Wrong number of args, response failed." << std::endl;
+        if (network->getGui()->isDebugging())
+            std::cout << "[DEBUG] Wrong number of args, response failed." << std::endl;
         return;
     }
     if (!Parser::isIndex(args[1])) {
-        std::cout << "Index must be a # followed by a positive number." << std::endl;
+        if (network->getGui()->isDebugging())
+            std::cout << "[DEBUG] Index must be a # followed by a positive number." << std::endl;
         return;
     }
     if (!Parser::isNum(args[2])) {
@@ -294,22 +324,26 @@ void Zappy::Parser::managePLV(std::vector<std::string> args, [[maybe_unused]] Za
     if (!targetTrantorian)
         return;
     targetTrantorian->setLevel(std::stoi(args[2]));
-    Parser::showArgs(args);
+    if (network->getGui()->isDebugging())
+        Parser::showArgs(args);
 }
 
 void Zappy::Parser::managePIN(std::vector<std::string> args, [[maybe_unused]] Zappy::Network *network)
 {
     if (args.size() != 11) {
-        std::cout << "Wrong number of args, response failed." << std::endl;
+        if (network->getGui()->isDebugging())
+            std::cout << "[DEBUG] Wrong number of args, response failed." << std::endl;
         return;
     }
     if (!Parser::isIndex(args[1])) {
-        std::cout << "Index must be a # followed by a positive number." << std::endl;
+        if (network->getGui()->isDebugging())
+            std::cout << "[DEBUG] Index must be a # followed by a positive number." << std::endl;
         return;
     }
     for (size_t i = 2; i < args.size(); i++) {
         if (!Parser::isNum(args[i])) {
-            std::cout << "Args must be positive numbers." << std::endl;
+        if (network->getGui()->isDebugging())
+                std::cout << "[DEBUG] Args must be positive numbers." << std::endl;
             return;
         }
     }
@@ -318,50 +352,60 @@ void Zappy::Parser::managePIN(std::vector<std::string> args, [[maybe_unused]] Za
         return;
     for (size_t i = 4; i < args.size(); i++)
         targetTrantorian->getInventory()->setNItem(static_cast<Item>(i - 3), std::stoi(args[i]));
-    Parser::showArgs(args);
+    if (network->getGui()->isDebugging())
+        Parser::showArgs(args);
 }
 
 void Zappy::Parser::manageSGT(std::vector<std::string> args, [[maybe_unused]] Zappy::Network *network)
 {
     if (args.size() != 2) {
-        std::cout << "Wrong number of args, response failed." << std::endl;
+        if (network->getGui()->isDebugging())
+            std::cout << "[DEBUG] Wrong number of args, response failed." << std::endl;
         return;
     }
     if (!Parser::isNum(args[1])) {
-        std::cout << "Args must be positive numbers." << std::endl;
+        if (network->getGui()->isDebugging())
+            std::cout << "[DEBUG] Args must be positive numbers." << std::endl;
         return;
     }
     network->getGui()->setTimeUnit(std::stoi(args[1]));
-    Parser::showArgs(args);
+    if (network->getGui()->isDebugging())
+        Parser::showArgs(args);
 }
 
 void Zappy::Parser::manageSST(std::vector<std::string> args, [[maybe_unused]] Zappy::Network *network)
 {
     if (args.size() != 2) {
-        std::cout << "Wrong number of args, response failed." << std::endl;
+        if (network->getGui()->isDebugging())
+            std::cout << "[DEBUG] Wrong number of args, response failed." << std::endl;
         return;
     }
     if (!Parser::isNum(args[1])) {
-        std::cout << "Args must be positive numbers." << std::endl;
+        if (network->getGui()->isDebugging())
+            std::cout << "[DEBUG] Args must be positive numbers." << std::endl;
         return;
     }
     network->getGui()->setTimeUnit(std::stoi(args[1]));
-    Parser::showArgs(args);
+    if (network->getGui()->isDebugging())
+        Parser::showArgs(args);
 }
 
 void Zappy::Parser::managePNW(std::vector<std::string> args, [[maybe_unused]] Zappy::Network *network)
 {
     if (args.size() != 7) {
-        std::cout << "Wrong number of args, response failed." << std::endl;
+        if (network->getGui()->isDebugging())
+            std::cout << "[DEBUG] Wrong number of args, response failed." << std::endl;
         return;
     }
     if (!Parser::isIndex(args[1])) {
-        std::cout << "Index must be a # followed by a positive number." << std::endl;
+        if (network->getGui()->isDebugging())
+            std::cout << "[DEBUG] Index must be a # followed by a positive number." << std::endl;
         return;
     }
     for (size_t i = 2; i < args.size() - 1; i++) {
         if (!Parser::isNum(args[i])) {
-            std::cout << "Args must be positive numbers." << std::endl;
+        if (network->getGui()->isDebugging())
+                std::cout << "[DEBUG] Args must be positive numbers." << std::endl;
             return;
         }
     }
@@ -375,31 +419,40 @@ void Zappy::Parser::managePNW(std::vector<std::string> args, [[maybe_unused]] Za
     newTrantorian->getSprite()->getSprite().setPosition(network->getGui()->getMap()->getTiles()[pos.y][pos.x]->getCenter().getX(), network->getGui()->getMap()->getTiles()[pos.y][pos.x]->getCenter().getY());
     network->getGui()->getMap()->addTrantorian(newTrantorian);
     network->getGui()->getTileInfo()->updateTrantorButtonsTab();
-    Parser::showArgs(args);
+    if (network->getGui()->isDebugging())
+        Parser::showArgs(args);
 }
 
 void Zappy::Parser::managePEX(std::vector<std::string> args, [[maybe_unused]] Zappy::Network *network)
 {
     if (args.size() != 2) {
-        std::cout << "Wrong number of args, response failed." << std::endl;
+        if (network->getGui()->isDebugging())
+            std::cout << "[DEBUG] Wrong number of args, response failed." << std::endl;
         return;
     }
     if (!Parser::isIndex(args[1])) {
-        std::cout << "Index must be a # followed by a positive number." << std::endl;
+        if (network->getGui()->isDebugging())
+            std::cout << "[DEBUG] Index must be a # followed by a positive number." << std::endl;
         return;
     }
-    //player expulsion ?
-    Parser::showArgs(args);
+    std::shared_ptr<Trantorian> targetTrantorian = network->getGui()->getMap()->getTrantorianByID(std::stoi(args[1].substr(1)));
+    if (!targetTrantorian)
+        return;
+    targetTrantorian->setState("Expulsed");
+    if (network->getGui()->isDebugging())
+        Parser::showArgs(args);
 }
 
 void Zappy::Parser::managePBC(std::vector<std::string> args, [[maybe_unused]] Zappy::Network *network)
 {
     if (args.size() != 3) {
-        std::cout << "Wrong number of args, response failed." << std::endl;
+        if (network->getGui()->isDebugging())
+            std::cout << "[DEBUG] Wrong number of args, response failed." << std::endl;
         return;
     }
     if (!Parser::isIndex(args[1])) {
-        std::cout << "Index must be a # followed by a positive number." << std::endl;
+        if (network->getGui()->isDebugging())
+            std::cout << "[DEBUG] Index must be a # followed by a positive number." << std::endl;
         return;
     }
     network->getGui()->getBroadCastTab()->resetTimer();
@@ -409,18 +462,21 @@ void Zappy::Parser::managePBC(std::vector<std::string> args, [[maybe_unused]] Za
 void Zappy::Parser::managePIC(std::vector<std::string> args, [[maybe_unused]] Zappy::Network *network)
 {
     if (args.size() < 5) {
-        std::cout << "Wrong number of args, response failed." << std::endl;
+        if (network->getGui()->isDebugging())
+            std::cout << "[DEBUG] Wrong number of args, response failed." << std::endl;
         return;
     }
     for (size_t i = 1; i < 4; i++) {
         if (!Parser::isNum(args[i])) {
-            std::cout << "Args must be positive numbers." << std::endl;
+        if (network->getGui()->isDebugging())
+                std::cout << "[DEBUG] Args must be positive numbers." << std::endl;
             return;
         }
     }
     for (size_t i = 4; i < args.size(); i++) {
         if (!Parser::isIndex(args[i])) {
-            std::cout << "Index must be a # followed by a positive number." << std::endl;
+        if (network->getGui()->isDebugging())
+                std::cout << "[DEBUG] Index must be a # followed by a positive number." << std::endl;
             return;
         }
     }
@@ -429,18 +485,22 @@ void Zappy::Parser::managePIC(std::vector<std::string> args, [[maybe_unused]] Za
         if (!targetTrantorian)
             return;
         targetTrantorian->elevate();
+        targetTrantorian->setState("Elevating");
     }
-    Parser::showArgs(args);
+    if (network->getGui()->isDebugging())
+        Parser::showArgs(args);
 }
 
 void Zappy::Parser::managePIE(std::vector<std::string> args, [[maybe_unused]] Zappy::Network *network)
 {
     if (args.size() < 4) {
-        std::cout << "Wrong number of args, response failed." << std::endl;
+        if (network->getGui()->isDebugging())
+            std::cout << "[DEBUG] Wrong number of args, response failed." << std::endl;
         return;
     }
     if (!Parser::isNum(args[1]) || !Parser::isNum(args[2])) {
-        std::cout << "Args must be positive numbers." << std::endl;
+        if (network->getGui()->isDebugging())
+            std::cout << "[DEBUG] Args must be positive numbers." << std::endl;
         return;
     }
     sf::Vector2f pos;
@@ -463,51 +523,60 @@ void Zappy::Parser::managePIE(std::vector<std::string> args, [[maybe_unused]] Za
         std::shared_ptr<OneShotAnimationPlayer> animation = std::make_shared<OneShotAnimationPlayer>(4, sf::Vector2f(0.5, 0.5), sf::Vector2f(256, 256), sf::Vector2f(1024, 256), pos, "assets/elevation_fail.png");
         network->getGui()->addToAnimationTab(animation);
     }
-    Parser::showArgs(args);
+    if (network->getGui()->isDebugging())
+        Parser::showArgs(args);
 }
 
 void Zappy::Parser::managePFK(std::vector<std::string> args, [[maybe_unused]] Zappy::Network *network)
 {
     if (args.size() != 2) {
-        std::cout << "Wrong number of args, response failed." << std::endl;
+        if (network->getGui()->isDebugging())
+            std::cout << "[DEBUG] Wrong number of args, response failed." << std::endl;
         return;
     }
     if (!Parser::isIndex(args[1])) {
-        std::cout << "Index must be a # followed by a positive number." << std::endl;
+        if (network->getGui()->isDebugging())
+            std::cout << "[DEBUG] Index must be a # followed by a positive number." << std::endl;
         return;
     }
     std::shared_ptr<Trantorian> targetTrantorian = network->getGui()->getMap()->getTrantorianByID(std::stoi(args[1].substr(1)));
     if (!targetTrantorian)
         return;
     targetTrantorian->setState("Forking");
-    Parser::showArgs(args);
+    if (network->getGui()->isDebugging())
+        Parser::showArgs(args);
 }
 
 void Zappy::Parser::managePDR(std::vector<std::string> args, [[maybe_unused]] Zappy::Network *network)
 {
     if (args.size() != 3) {
-        std::cout << "Wrong number of args, response failed." << std::endl;
+        if (network->getGui()->isDebugging())
+            std::cout << "[DEBUG] Wrong number of args, response failed." << std::endl;
         return;
     }
     if (!Parser::isIndex(args[1])) {
-        std::cout << "Index must be a # followed by a positive number." << std::endl;
+        if (network->getGui()->isDebugging())
+            std::cout << "[DEBUG] Index must be a # followed by a positive number." << std::endl;
         return;
     }
     std::shared_ptr<Trantorian> targetTrantorian = network->getGui()->getMap()->getTrantorianByID(std::stoi(args[1].substr(1)));
     if (!targetTrantorian)
         return;
     targetTrantorian->setState("Dropping item");
-    Parser::showArgs(args);
+    if (network->getGui()->isDebugging())
+        Parser::showArgs(args);
 }
 
 void Zappy::Parser::managePGT(std::vector<std::string> args, [[maybe_unused]] Zappy::Network *network)
 {
     if (args.size() != 3) {
-        std::cout << "Wrong number of args, response failed." << std::endl;
+        if (network->getGui()->isDebugging())
+            std::cout << "[DEBUG] Wrong number of args, response failed." << std::endl;
         return;
     }
     if (!Parser::isIndex(args[1])) {
-        std::cout << "Index must be a # followed by a positive number." << std::endl;
+        if (network->getGui()->isDebugging())
+            std::cout << "[DEBUG] Index must be a # followed by a positive number." << std::endl;
         return;
     }
     std::shared_ptr<Trantorian> targetTrantorian = network->getGui()->getMap()->getTrantorianByID(std::stoi(args[1].substr(1)));
@@ -518,17 +587,20 @@ void Zappy::Parser::managePGT(std::vector<std::string> args, [[maybe_unused]] Za
         network->getGui()->addToAnimationTab(animation);
     }
     targetTrantorian->setState("Getting item");
-    Parser::showArgs(args);
+    if (network->getGui()->isDebugging())
+        Parser::showArgs(args);
 }
 
 void Zappy::Parser::managePDI(std::vector<std::string> args, [[maybe_unused]] Zappy::Network *network)
 {
     if (args.size() != 2) {
-        std::cout << "Wrong number of args, response failed." << std::endl;
+        if (network->getGui()->isDebugging())
+            std::cout << "[DEBUG] Wrong number of args, response failed." << std::endl;
         return;
     }
     if (!Parser::isIndex(args[1])) {
-        std::cout << "Index must be a # followed by a positive number." << std::endl;
+        if (network->getGui()->isDebugging())
+            std::cout << "[DEBUG] Index must be a # followed by a positive number." << std::endl;
         return;
     }
     std::shared_ptr<Trantorian> targetTrantorian = network->getGui()->getMap()->getTrantorianByID(std::stoi(args[1].substr(1)));
@@ -536,17 +608,20 @@ void Zappy::Parser::managePDI(std::vector<std::string> args, [[maybe_unused]] Za
         return;
     targetTrantorian->kill();
     targetTrantorian->setState("Dead");
-    Parser::showArgs(args);
+    if (network->getGui()->isDebugging())
+        Parser::showArgs(args);
 }
 
 void Zappy::Parser::manageENW(std::vector<std::string> args, [[maybe_unused]] Zappy::Network *network)
 {
     if (args.size() != 5) {
-        std::cout << "Wrong number of args, response failed." << std::endl;
+        if (network->getGui()->isDebugging())
+            std::cout << "[DEBUG] Wrong number of args, response failed." << std::endl;
         return;
     }
     if (!Parser::isIndex(args[1]) || !Parser::isIndex(args[2])) {
-        std::cout << "Index must be a # followed by a positive number." << std::endl;
+        if (network->getGui()->isDebugging())
+            std::cout << "[DEBUG] Index must be a # followed by a positive number." << std::endl;
         return;
     }
     std::shared_ptr<Trantorian> targetTrantorian = network->getGui()->getMap()->getTrantorianByID(std::stoi(args[2].substr(1)));
@@ -557,69 +632,83 @@ void Zappy::Parser::manageENW(std::vector<std::string> args, [[maybe_unused]] Za
     std::shared_ptr<Egg> newEgg = std::make_shared<Egg>(std::stoi(args[1].substr(1)), pos, targetTrantorian->getTeamName());
     newEgg->getDrawable()->getSprite().setPosition(targetTile->getCenter().getX() + targetTile->getOffsetsList()[0].getX(), targetTile->getCenter().getY() + targetTile->getOffsetsList()[0].getY() + 70);
     network->getGui()->getMap()->addEgg(newEgg);
+    if (network->getGui()->isDebugging())
+        Parser::showArgs(args);
 }
 
 void Zappy::Parser::manageEBO(std::vector<std::string> args, [[maybe_unused]] Zappy::Network *network)
 {
     if (args.size() != 2) {
-        std::cout << "Wrong number of args, response failed." << std::endl;
+        if (network->getGui()->isDebugging())
+            std::cout << "[DEBUG] Wrong number of args, response failed." << std::endl;
         return;
     }
     if (!Parser::isIndex(args[1])) {
-        std::cout << "Index must be a # followed by a positive number." << std::endl;
+        if (network->getGui()->isDebugging())
+            std::cout << "[DEBUG] Index must be a # followed by a positive number." << std::endl;
         return;
     }
     std::shared_ptr<Egg> targetEgg = network->getGui()->getMap()->getEggById(std::stoi(args[1].substr(1)));
     if (!targetEgg)
         return;
     network->getGui()->getMap()->removeEggById(targetEgg->getId());
-    Parser::showArgs(args);
+    if (network->getGui()->isDebugging())
+        Parser::showArgs(args);
 }
 
 void Zappy::Parser::manageEDI(std::vector<std::string> args, [[maybe_unused]] Zappy::Network *network)
 {
     if (args.size() != 2) {
-        std::cout << "Wrong number of args, response failed." << std::endl;
+        if (network->getGui()->isDebugging())
+            std::cout << "[DEBUG] Wrong number of args, response failed." << std::endl;
         return;
     }
     if (!Parser::isIndex(args[1])) {
-        std::cout << "Index must be a # followed by a positive number." << std::endl;
+        if (network->getGui()->isDebugging())
+            std::cout << "[DEBUG] Index must be a # followed by a positive number." << std::endl;
         return;
     }
     std::shared_ptr<Egg> targetEgg = network->getGui()->getMap()->getEggById(std::stoi(args[1].substr(1)));
     if (!targetEgg)
         return;
     network->getGui()->getMap()->removeEggById(targetEgg->getId());
-    Parser::showArgs(args);
+    if (network->getGui()->isDebugging())
+        Parser::showArgs(args);
 }
 
 void Zappy::Parser::manageSEG(std::vector<std::string> args, [[maybe_unused]] Zappy::Network *network)
 {
     if (args.size() != 2) {
-        std::cout << "Wrong number of args, response failed." << std::endl;
+        if (network->getGui()->isDebugging())
+            std::cout << "[DEBUG] Wrong number of args, response failed." << std::endl;
         return;
     }
     network->getGui()->setLastTeamAlive(args[1]);
     network->getGui()->endGame();
     network->shutDown();
-    Parser::showArgs(args);
+    if (network->getGui()->isDebugging())
+        Parser::showArgs(args);
 }
 
 void Zappy::Parser::manageSMG(std::vector<std::string> args, [[maybe_unused]] Zappy::Network *network)
 {
     if (args.size() != 2) {
-        std::cout << "Wrong number of args, response failed." << std::endl;
+        if (network->getGui()->isDebugging())
+            std::cout << "[DEBUG] Wrong number of args, response failed." << std::endl;
         return;
     }
-    Parser::showArgs(args);
+    if (network->getGui()->isDebugging())
+        Parser::showArgs(args);
 }
 
 void Zappy::Parser::manageSUC(std::vector<std::string> args, [[maybe_unused]] Zappy::Network *network)
 {
-    Parser::showArgs(args);
+    if (network->getGui()->isDebugging())
+        Parser::showArgs(args);
 }
 
 void Zappy::Parser::manageSBP(std::vector<std::string> args, [[maybe_unused]] Zappy::Network *network)
 {
-    Parser::showArgs(args);
+    if (network->getGui()->isDebugging())
+        Parser::showArgs(args);
 }
