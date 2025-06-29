@@ -5,41 +5,43 @@
 ## Makefile
 ##
 
-NAME		=	zappy
+NAME = zappy
 
 SERVER = zappy_server
-
+GUI = zappy_gui
 AI = zappy_ai
 
-GUI = zappy_gui
-
-$(SERVER): $(AI) $(GUI)
-	@echo "Building Server..."
-	mkdir -p build
-	mkdir -p build/Server
-	cd build/Server && cmake ../.. && make
-	@echo "Server built successfully."
-	cd ../..
-
-$(AI):
-	@echo "Building AI..."
-	make -C ./src/ai
-	mv src/ai/$(AI) .
-
-$(GUI):
-	@echo "Building GUI..."
+BUILD_DIR = build
 
 all: $(AI) $(SERVER) $(GUI)
 
+$(AI):
+	@echo "Building AI..."
+	$(MAKE) -C ./src/ai
+	@mv -f ./src/ai/$(AI) .
+
+$(SERVER):
+	@echo "Building Server..."
+	mkdir -p $(BUILD_DIR)/server
+	cmake -S ./src/server -B $(BUILD_DIR)/server -DCMAKE_RUNTIME_OUTPUT_DIRECTORY="$(PWD)"
+	$(MAKE) -C $(BUILD_DIR)/server
+	@echo "Server built successfully."
+
+$(GUI):
+	@echo "Building GUI..."
+	mkdir -p $(BUILD_DIR)/gui
+	cmake -S ./src/gui -B $(BUILD_DIR)/gui -DCMAKE_RUNTIME_OUTPUT_DIRECTORY="$(PWD)"
+	$(MAKE) -C $(BUILD_DIR)/gui
+	@echo "GUI built successfully."
+
 clean:
-	rm -rf build
-	make -C ./src/ai clean
+	rm -rf $(BUILD_DIR)
+	$(MAKE) -C ./src/ai clean
 
 fclean: clean
-	rm -rf $(SERVER)
-	rm -rf $(AI)
-	rm -rf $(GUI)
+	rm -f $(SERVER) $(GUI) $(AI)
+	rm -rf ./assets
 
 re: fclean all
 
-.PHONY: $(SERVER) $(AI) $(GUI) all clean fclean re
+.PHONY: all clean fclean re $(SERVER) $(GUI) $(AI)
