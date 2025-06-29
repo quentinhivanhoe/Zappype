@@ -1,0 +1,88 @@
+\hypertarget{Tile_8hpp_source}{}\doxysection{Tile.\+hpp}
+\label{Tile_8hpp_source}\index{Tile.hpp@{Tile.hpp}}
+\mbox{\hyperlink{Tile_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00002}00002\ \textcolor{comment}{**\ EPITECH\ PROJECT,\ 2025}}
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00003}00003\ \textcolor{comment}{**\ Zappype}}
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00004}00004\ \textcolor{comment}{**\ File\ description:}}
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00005}00005\ \textcolor{comment}{**\ Tile}}
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00006}00006\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00008}00008\ \textcolor{preprocessor}{\#ifndef\ TILE\_HPP\_}}
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00009}00009\ \textcolor{preprocessor}{\ \ \ \ \#define\ TILE\_HPP\_}}
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00010}00010\ \textcolor{preprocessor}{\ \ \ \ \#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00011}00011\ \textcolor{preprocessor}{\ \ \ \ \#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00012}00012\ \textcolor{preprocessor}{\ \ \ \ \#include\ <memory>}}
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00013}00013\ \textcolor{preprocessor}{\ \ \ \ \#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00014}00014\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}\mbox{\hyperlink{Vector2D_8hpp}{Math/Vector2D.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00015}00015\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}\mbox{\hyperlink{GUI_8hpp}{GUI.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00016}00016\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}\mbox{\hyperlink{TileButtons_8hpp}{TileButtons.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00017}00017\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}\mbox{\hyperlink{Drawable_8hpp}{Drawable.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00019}00019\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceZappy}{Zappy}}}
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00020}00020\ \{}
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00021}\mbox{\hyperlink{namespaceZappy_a1c44af85d003dd823a82c7ae89a1a7ec}{00021}}\ \ \ \ \ \textcolor{keyword}{enum}\ \mbox{\hyperlink{namespaceZappy_a1c44af85d003dd823a82c7ae89a1a7ec}{Item}}\ \{}
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00022}\mbox{\hyperlink{namespaceZappy_a1c44af85d003dd823a82c7ae89a1a7eca32dc0c28c366b16a880c6812c03d7207}{00022}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceZappy_a1c44af85d003dd823a82c7ae89a1a7eca32dc0c28c366b16a880c6812c03d7207}{EGG}}\ =\ 0,}
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00023}\mbox{\hyperlink{namespaceZappy_a1c44af85d003dd823a82c7ae89a1a7eca920e9b0d8e14e9d806ae943f19fdd049}{00023}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceZappy_a1c44af85d003dd823a82c7ae89a1a7eca920e9b0d8e14e9d806ae943f19fdd049}{FOOD}}\ =\ 1,}
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00024}00024\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceZappy_a1c44af85d003dd823a82c7ae89a1a7eca47e48dfb5ab68ae87ea7c4ba3333c008}{LINEMATE}}\ =\ 2,}
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00025}00025\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceZappy_a1c44af85d003dd823a82c7ae89a1a7eca60fd36310ca43eea55c678c433613f30}{DERAUMERE}}\ =\ 3,}
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00026}00026\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceZappy_a1c44af85d003dd823a82c7ae89a1a7eca0c93175eeae01621d51f93e3180f0d9f}{SIBUR}}\ =\ 4,}
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00027}00027\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceZappy_a1c44af85d003dd823a82c7ae89a1a7ecad0ab22052afb7a4848e098ca063b42db}{MENDIANE}}\ =\ 5,}
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00028}00028\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceZappy_a1c44af85d003dd823a82c7ae89a1a7eca8aaf6ca726fb0dd420679f34434c6e68}{PHIRAS}}\ =\ 6,}
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00029}00029\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceZappy_a1c44af85d003dd823a82c7ae89a1a7eca16005c5ea9382e807472eff155f64025}{THYSTAME}}\ =\ 7,}
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00030}00030\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00031}\mbox{\hyperlink{classZappy_1_1Tile}{00031}}\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classZappy_1_1Tile}{Tile}}}
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00032}00032\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00033}00033\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00034}\mbox{\hyperlink{classZappy_1_1Tile_a850eaab6a65667a2c19c761fb7e9289c}{00034}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classZappy_1_1Tile_a850eaab6a65667a2c19c761fb7e9289c}{\_id}};}
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00035}\mbox{\hyperlink{classZappy_1_1Tile_a638ea5070bcb1ae1613263c8557c8bb7}{00035}}\ \ \ \ \ \ \ \ \ std::vector<size\_t>\ \mbox{\hyperlink{classZappy_1_1Tile_a638ea5070bcb1ae1613263c8557c8bb7}{\_items}};}
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00036}\mbox{\hyperlink{classZappy_1_1Tile_a4ace38ebc89aef6bc108eda2c5aed0f9}{00036}}\ \ \ \ \ \ \ \ \ std::vector<Vector2D>\ \mbox{\hyperlink{classZappy_1_1Tile_a4ace38ebc89aef6bc108eda2c5aed0f9}{offsets\_list}};}
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00037}\mbox{\hyperlink{classZappy_1_1Tile_a37d358552d4c0ab8103bccb60a4b98ef}{00037}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVector2D}{Vector2D}}\ \mbox{\hyperlink{classZappy_1_1Tile_a37d358552d4c0ab8103bccb60a4b98ef}{\_pos}};}
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00038}\mbox{\hyperlink{classZappy_1_1Tile_ae3ecc58efb6fbfda4b95fa35ce702011}{00038}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVector2D}{Vector2D}}\ \mbox{\hyperlink{classZappy_1_1Tile_ae3ecc58efb6fbfda4b95fa35ce702011}{\_center}};}
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00039}\mbox{\hyperlink{classZappy_1_1Tile_ae7bfd213d8f1a4b7be3995370b548777}{00039}}\ \ \ \ \ \ \ \ \ sf::Vector2i\ \mbox{\hyperlink{classZappy_1_1Tile_ae7bfd213d8f1a4b7be3995370b548777}{\_index}};}
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00040}\mbox{\hyperlink{classZappy_1_1Tile_acdb24cf01c4e8b554ae9bd58a93f585d}{00040}}\ \ \ \ \ \ \ \ \ std::shared\_ptr<Drawable>\mbox{\hyperlink{classZappy_1_1Tile_acdb24cf01c4e8b554ae9bd58a93f585d}{\_tile}}\ =\ std::make\_shared<Drawable>(\textcolor{stringliteral}{"{}assets/map.png"{}},\ 0.5\ *\ 3.07);}
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00041}\mbox{\hyperlink{classZappy_1_1Tile_ae504157fb2f795a7462a44c5164bcafe}{00041}}\ \ \ \ \ \ \ \ \ std::shared\_ptr<TileButtons>\ \mbox{\hyperlink{classZappy_1_1Tile_ae504157fb2f795a7462a44c5164bcafe}{\_innerButton}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00042}\mbox{\hyperlink{classZappy_1_1Tile_a1dd2652c999fb02909f42d882d29c8fe}{00042}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classZappy_1_1Tile_a1dd2652c999fb02909f42d882d29c8fe}{\_activity}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00043}00043\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00044}00044\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Tile}{Tile}}(\textcolor{keywordtype}{size\_t}\ \textcolor{keywordtype}{id}\ =\ -\/1);}
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00045}00045\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Tile_ae7766c081da9ae222c9ba647ef5e92aa}{\string~Tile}}();}
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00053}00053\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classZappy_1_1Tile_ae3165646a614823d993c7f8ea582a702}{getNItem}}(\mbox{\hyperlink{namespaceZappy_a1c44af85d003dd823a82c7ae89a1a7ec}{Item}}\ name);}
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00060}\mbox{\hyperlink{classZappy_1_1Tile_ac4d2dd12f0c57cc7d5003856c573c3c8}{00060}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classZappy_1_1Tile_ac4d2dd12f0c57cc7d5003856c573c3c8}{getId}}()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classZappy_1_1Tile_a850eaab6a65667a2c19c761fb7e9289c}{\_id}};\};}
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00068}00068\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Tile_a3f2854a6656fbc7d3a67cfa3ad8bbb6f}{setNItem}}(\mbox{\hyperlink{namespaceZappy_a1c44af85d003dd823a82c7ae89a1a7ec}{Item}}\ name,\ \textcolor{keywordtype}{size\_t}\ value);}
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00076}00076\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Tile_a91dd2e3d4e4d2825e1c53124c1200b6c}{initButton}}(\mbox{\hyperlink{classZappy_1_1GUI}{GUI}}\ *gui,\ std::shared\_ptr<Tile>\ tile);}
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00077}00077\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00083}00083\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Tile_a8d62c6fba5420b3044055c23534c1464}{setOffsetsList}}(std::vector<Vector2D>\ offsets);}
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00090}\mbox{\hyperlink{classZappy_1_1Tile_afe7b6369fbaf8392889a9bec5a8b9eb6}{00090}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ std::vector<Vector2D>\ \mbox{\hyperlink{classZappy_1_1Tile_afe7b6369fbaf8392889a9bec5a8b9eb6}{getOffsetsList}}()\ \{\textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classZappy_1_1Tile_a4ace38ebc89aef6bc108eda2c5aed0f9}{offsets\_list}};\};}
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00097}\mbox{\hyperlink{classZappy_1_1Tile_a9fe96ea6e0d0bc7cdb6e142ac76d0b8b}{00097}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ std::vector<size\_t>\ \mbox{\hyperlink{classZappy_1_1Tile_a9fe96ea6e0d0bc7cdb6e142ac76d0b8b}{getItems}}()\{\textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classZappy_1_1Tile_a638ea5070bcb1ae1613263c8557c8bb7}{\_items}};\};}
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00104}\mbox{\hyperlink{classZappy_1_1Tile_a4d8bff88a3922fc4babe4df9f94994c4}{00104}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classVector2D}{Vector2D}}\ \mbox{\hyperlink{classZappy_1_1Tile_a4d8bff88a3922fc4babe4df9f94994c4}{getPos}}()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classZappy_1_1Tile_a37d358552d4c0ab8103bccb60a4b98ef}{\_pos}};\};}
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00105}00105\ }
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00111}\mbox{\hyperlink{classZappy_1_1Tile_a175d74e27d1879719fabb71339aa7183}{00111}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ std::shared\_ptr<Drawable>\ \mbox{\hyperlink{classZappy_1_1Tile_a175d74e27d1879719fabb71339aa7183}{getTile}}()\ \{\textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classZappy_1_1Tile_acdb24cf01c4e8b554ae9bd58a93f585d}{\_tile}};\};}
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00119}\mbox{\hyperlink{classZappy_1_1Tile_ab5bb35731643cb02df8d9ef7c84f59f5}{00119}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Tile_ab5bb35731643cb02df8d9ef7c84f59f5}{setPos}}(\mbox{\hyperlink{classVector2D}{Vector2D}}\ pos)\ \{this-\/>\_pos\ =\ pos;\};}
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00120}00120\ }
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00126}\mbox{\hyperlink{classZappy_1_1Tile_a901cfb675b8587f06a0decd2564b9344}{00126}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classVector2D}{Vector2D}}\ \mbox{\hyperlink{classZappy_1_1Tile_a901cfb675b8587f06a0decd2564b9344}{getCenter}}()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classZappy_1_1Tile_ae3ecc58efb6fbfda4b95fa35ce702011}{\_center}};\};}
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00127}00127\ }
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00133}\mbox{\hyperlink{classZappy_1_1Tile_aed6d9e7cab1539cf37ca4c2471507ada}{00133}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Tile_aed6d9e7cab1539cf37ca4c2471507ada}{setCenter}}(\mbox{\hyperlink{classVector2D}{Vector2D}}\ Center)\ \{this-\/>\_center\ =\ Center;\};}
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00140}\mbox{\hyperlink{classZappy_1_1Tile_aa16097ce36380ef4c61fc1e1d8663094}{00140}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classZappy_1_1Tile_aa16097ce36380ef4c61fc1e1d8663094}{getActivity}}()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classZappy_1_1Tile_a1dd2652c999fb02909f42d882d29c8fe}{\_activity}};\};}
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00141}00141\ }
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00147}\mbox{\hyperlink{classZappy_1_1Tile_a42fa53c32d4d5bb1e90002407ea1b568}{00147}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Tile_a42fa53c32d4d5bb1e90002407ea1b568}{setActivity}}(\textcolor{keywordtype}{bool}\ activity)\ \{this-\/>\_activity\ =\ activity;\};}
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00148}00148\ }
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00154}\mbox{\hyperlink{classZappy_1_1Tile_a822408c6e8d4f328183f3ca0aebc9ab3}{00154}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Tile_a822408c6e8d4f328183f3ca0aebc9ab3}{setIndex}}(sf::Vector2i\ index)\ \{\ this-\/>\_index\ =\ index;\ \};}
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00155}00155\ }
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00161}\mbox{\hyperlink{classZappy_1_1Tile_a287ff8ee363a869aa52738fa29241faf}{00161}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ sf::Vector2i\ \mbox{\hyperlink{classZappy_1_1Tile_a287ff8ee363a869aa52738fa29241faf}{getIndex}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classZappy_1_1Tile_ae7bfd213d8f1a4b7be3995370b548777}{\_index}};\ \};}
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00162}00162\ }
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00168}\mbox{\hyperlink{classZappy_1_1Tile_a8157db0340b15350aa940cb8fdb06ac2}{00168}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ std::shared\_ptr<TileButtons>\ \mbox{\hyperlink{classZappy_1_1Tile_a8157db0340b15350aa940cb8fdb06ac2}{getButton}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classZappy_1_1Tile_ae504157fb2f795a7462a44c5164bcafe}{\_innerButton}};\ \};}
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00169}00169\ \ \ \ \ \};\ }
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00170}00170\ \}}
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00171}00171\ }
+\DoxyCodeLine{\Hypertarget{Tile_8hpp_source_l00172}00172\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ !TILE\_HPP\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

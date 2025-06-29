@@ -1,0 +1,869 @@
+\hypertarget{classZappy_1_1Parser}{}\doxysection{Zappy\+::Parser Class Reference}
+\label{classZappy_1_1Parser}\index{Zappy::Parser@{Zappy::Parser}}
+
+
+{\ttfamily \#include $<$Parser.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classZappy_1_1Parser_a16e881d18bc1cca54fa63def79d3eb98}{Parser}} ()=default
+\item 
+\mbox{\hyperlink{classZappy_1_1Parser_acec6970376a04ef69a9748906b3c777c}{$\sim$\+Parser}} ()=default
+\item 
+void \mbox{\hyperlink{classZappy_1_1Parser_ab38f56b8404cc5c3644a6c37e5efe9d8}{manage\+Response}} (std\+::vector$<$ std\+::string $>$ args, \mbox{\hyperlink{classZappy_1_1Network}{Network}} $\ast$network)
+\begin{DoxyCompactList}\small\item\em Manage globally any response from the server. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \mbox{\hyperlink{classZappy_1_1Parser_ac4f72d89bb990954bd56022bc81f56dc}{is\+Num}} (const std\+::string \&string)
+\begin{DoxyCompactList}\small\item\em Is num function. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{classZappy_1_1Parser_acd2bb8ea3b2975f9cdfbd63997b2c5ea}{is\+Index}} (const std\+::string \&string)
+\begin{DoxyCompactList}\small\item\em is index function \+: exemple -\/\texorpdfstring{$>$}{>} \#1 \end{DoxyCompactList}\item 
+static size\+\_\+t \mbox{\hyperlink{classZappy_1_1Parser_a61fc1fc5521102d210609e5e7b553634}{nb\+Occur}} (const std\+::string \&string, const std\+::string \&key)
+\begin{DoxyCompactList}\small\item\em get the occurences number of a key in the string \end{DoxyCompactList}\item 
+static std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classZappy_1_1Parser_a6a9f98ca40a329a516011fccb947249c}{split\+Line}} (const std\+::string \&string, const std\+::string \&sep)
+\begin{DoxyCompactList}\small\item\em spplit the line into a vector \end{DoxyCompactList}\item 
+static std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classZappy_1_1Parser_aec9f21f3ae75fe711bc8a17e32c9630a}{parse\+Line}} (const std\+::string \&line, char delimiter)
+\begin{DoxyCompactList}\small\item\em Parse the line to transform it into a vector. \end{DoxyCompactList}\item 
+static std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classZappy_1_1Parser_ada77ef6591d2879ca15d1b0a7c2c6789}{args\+To\+String}} (std\+::vector$<$ int $>$ args)
+\begin{DoxyCompactList}\small\item\em transorm a vector of int into a vector of string \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classZappy_1_1Parser_a4f7df1146ee5c44e53ac6cc09067d65a}{show\+Args}} (std\+::vector$<$ std\+::string $>$ args)
+\begin{DoxyCompactList}\small\item\em show the elements of the given vector \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classZappy_1_1Parser_a908eb73712e8da442776826ca7621982}{manage\+MSZ}} (std\+::vector$<$ std\+::string $>$ args, \mbox{\hyperlink{classZappy_1_1Network}{Network}} $\ast$network)
+\begin{DoxyCompactList}\small\item\em Manage the map size command. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1Parser_a19ee7f9fa814a254ce5b17f6a6dfd6fb}{manage\+BCT}} (std\+::vector$<$ std\+::string $>$ args, \mbox{\hyperlink{classZappy_1_1Network}{Network}} $\ast$network)
+\begin{DoxyCompactList}\small\item\em manage the tile content command \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1Parser_a211045b5d10a4526a6df14a2491bb4a4}{manage\+PPO}} (std\+::vector$<$ std\+::string $>$ args, \mbox{\hyperlink{classZappy_1_1Network}{Network}} $\ast$network)
+\begin{DoxyCompactList}\small\item\em manage the player position command \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1Parser_a6db07dd59f51a6c40e3a811e36e8a903}{manage\+PLV}} (std\+::vector$<$ std\+::string $>$ args, \mbox{\hyperlink{classZappy_1_1Network}{Network}} $\ast$network)
+\begin{DoxyCompactList}\small\item\em manage the payer level command \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1Parser_ad5775c526a28c48baec927228039cfd7}{manage\+PIN}} (std\+::vector$<$ std\+::string $>$ args, \mbox{\hyperlink{classZappy_1_1Network}{Network}} $\ast$network)
+\begin{DoxyCompactList}\small\item\em manage the player inventory command \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1Parser_a4dfef6a37cf7a794e7670d3544be6e0b}{manage\+SGT}} (std\+::vector$<$ std\+::string $>$ args, \mbox{\hyperlink{classZappy_1_1Network}{Network}} $\ast$network)
+\begin{DoxyCompactList}\small\item\em manage the server time unit requet command \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1Parser_a5b0aeaf3be0c897ee2f5213a3984ad1c}{manage\+SST}} (std\+::vector$<$ std\+::string $>$ args, \mbox{\hyperlink{classZappy_1_1Network}{Network}} $\ast$network)
+\begin{DoxyCompactList}\small\item\em manage the server time modification command \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1Parser_a337578045e66ee40a6c99077d9969f84}{manage\+PNW}} (std\+::vector$<$ std\+::string $>$ args, \mbox{\hyperlink{classZappy_1_1Network}{Network}} $\ast$network)
+\begin{DoxyCompactList}\small\item\em manage the new player command \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1Parser_a5af02fe851548ea90dde23089c0519a2}{manage\+PEX}} (std\+::vector$<$ std\+::string $>$ args, \mbox{\hyperlink{classZappy_1_1Network}{Network}} $\ast$network)
+\begin{DoxyCompactList}\small\item\em manage the expulsion of the player \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1Parser_a7e6eeef616410d008a928dfb98b1ca5e}{manage\+PBC}} (std\+::vector$<$ std\+::string $>$ args, \mbox{\hyperlink{classZappy_1_1Network}{Network}} $\ast$network)
+\begin{DoxyCompactList}\small\item\em manage the broadcast from a player command \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1Parser_ac110fc1d8743b24d00e66cbf0fc21cac}{manage\+PIC}} (std\+::vector$<$ std\+::string $>$ args, \mbox{\hyperlink{classZappy_1_1Network}{Network}} $\ast$network)
+\begin{DoxyCompactList}\small\item\em manage the start of incantation command \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1Parser_aea4e39551e6688f4e0bcd78509cd4f31}{manage\+PIE}} (std\+::vector$<$ std\+::string $>$ args, \mbox{\hyperlink{classZappy_1_1Network}{Network}} $\ast$network)
+\begin{DoxyCompactList}\small\item\em manage the end of incantation command \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1Parser_aa83131ebe9a6b837bea2f5c77b943865}{manage\+PFK}} (std\+::vector$<$ std\+::string $>$ args, \mbox{\hyperlink{classZappy_1_1Network}{Network}} $\ast$network)
+\begin{DoxyCompactList}\small\item\em Manage the forking command. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1Parser_ad9113f80eaa56a10d8b10172b90f30e9}{manage\+PDR}} (std\+::vector$<$ std\+::string $>$ args, \mbox{\hyperlink{classZappy_1_1Network}{Network}} $\ast$network)
+\begin{DoxyCompactList}\small\item\em manage the player drop item command \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1Parser_ae2ffe57810b0d827f58af308dc8e3ca8}{manage\+PGT}} (std\+::vector$<$ std\+::string $>$ args, \mbox{\hyperlink{classZappy_1_1Network}{Network}} $\ast$network)
+\begin{DoxyCompactList}\small\item\em manage the player get item command \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1Parser_af660eb1478e19d7bf69a6636446e58f6}{manage\+PDI}} (std\+::vector$<$ std\+::string $>$ args, \mbox{\hyperlink{classZappy_1_1Network}{Network}} $\ast$network)
+\begin{DoxyCompactList}\small\item\em manage death of player command \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1Parser_a6efe157a1869463b4ecebdb659c2d7f4}{manage\+ENW}} (std\+::vector$<$ std\+::string $>$ args, \mbox{\hyperlink{classZappy_1_1Network}{Network}} $\ast$network)
+\begin{DoxyCompactList}\small\item\em manage new egg command \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1Parser_acf5f057917e0ee56e07828f16c976dd6}{manage\+EBO}} (std\+::vector$<$ std\+::string $>$ args, \mbox{\hyperlink{classZappy_1_1Network}{Network}} $\ast$network)
+\begin{DoxyCompactList}\small\item\em manage birth of player from egg command \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1Parser_ac6b3d5c270a2572ccc5708fccee12d31}{manage\+ELS}} (std\+::vector$<$ std\+::string $>$ args, \mbox{\hyperlink{classZappy_1_1Network}{Network}} $\ast$network)
+\begin{DoxyCompactList}\small\item\em manage egg list command \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1Parser_ae6835c4b8b3ae2d8dd98cb8bd004a3d4}{manage\+EDI}} (std\+::vector$<$ std\+::string $>$ args, \mbox{\hyperlink{classZappy_1_1Network}{Network}} $\ast$network)
+\begin{DoxyCompactList}\small\item\em manage egg death command \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1Parser_a03c3214e850bcb4a1c2b0d13f2756219}{manage\+SEG}} (std\+::vector$<$ std\+::string $>$ args, \mbox{\hyperlink{classZappy_1_1Network}{Network}} $\ast$network)
+\begin{DoxyCompactList}\small\item\em manage end of game commmand \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1Parser_a4949333fe97dc976e394bf425693fe6b}{manage\+SMG}} (std\+::vector$<$ std\+::string $>$ args, \mbox{\hyperlink{classZappy_1_1Network}{Network}} $\ast$network)
+\begin{DoxyCompactList}\small\item\em manage server message command \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1Parser_abbd7d7fd30a124850aa63de3e49b1bfe}{manage\+SUC}} (std\+::vector$<$ std\+::string $>$ args, \mbox{\hyperlink{classZappy_1_1Network}{Network}} $\ast$network)
+\begin{DoxyCompactList}\small\item\em manage server unknown command \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1Parser_a2e495b18d40a2792978d6fd32f57e2ba}{manage\+SBP}} (std\+::vector$<$ std\+::string $>$ args, \mbox{\hyperlink{classZappy_1_1Network}{Network}} $\ast$network)
+\begin{DoxyCompactList}\small\item\em manage server bad parameters command \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1Parser_a8b67dbe18a501d3933bcb20e8228a098}{manage\+SPI}} (std\+::vector$<$ std\+::string $>$ args, \mbox{\hyperlink{classZappy_1_1Network}{Network}} $\ast$network)
+\begin{DoxyCompactList}\small\item\em manage player list command \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1Parser_a178c91608b4c23660e08bcf42cb90aca}{manage\+SPN}} (std\+::vector$<$ std\+::string $>$ args, \mbox{\hyperlink{classZappy_1_1Network}{Network}} $\ast$network)
+\begin{DoxyCompactList}\small\item\em manage player number command \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1Parser_ae8927c9344956fef07895852e80068dc}{manage\+ENU}} (std\+::vector$<$ std\+::string $>$ args, \mbox{\hyperlink{classZappy_1_1Network}{Network}} $\ast$network)
+\begin{DoxyCompactList}\small\item\em manage egg number command \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{Parser_8hpp_source_l00021}{21}} of file \mbox{\hyperlink{Parser_8hpp_source}{Parser.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classZappy_1_1Parser_a16e881d18bc1cca54fa63def79d3eb98}\label{classZappy_1_1Parser_a16e881d18bc1cca54fa63def79d3eb98}} 
+\index{Zappy::Parser@{Zappy::Parser}!Parser@{Parser}}
+\index{Parser@{Parser}!Zappy::Parser@{Zappy::Parser}}
+\doxysubsubsection{\texorpdfstring{Parser()}{Parser()}}
+{\footnotesize\ttfamily Zappy\+::\+Parser\+::\+Parser (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [default]}}
+
+\mbox{\Hypertarget{classZappy_1_1Parser_acec6970376a04ef69a9748906b3c777c}\label{classZappy_1_1Parser_acec6970376a04ef69a9748906b3c777c}} 
+\index{Zappy::Parser@{Zappy::Parser}!````~Parser@{$\sim$Parser}}
+\index{````~Parser@{$\sim$Parser}!Zappy::Parser@{Zappy::Parser}}
+\doxysubsubsection{\texorpdfstring{$\sim$Parser()}{~Parser()}}
+{\footnotesize\ttfamily Zappy\+::\+Parser\+::$\sim$\+Parser (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classZappy_1_1Parser_ada77ef6591d2879ca15d1b0a7c2c6789}\label{classZappy_1_1Parser_ada77ef6591d2879ca15d1b0a7c2c6789}} 
+\index{Zappy::Parser@{Zappy::Parser}!argsToString@{argsToString}}
+\index{argsToString@{argsToString}!Zappy::Parser@{Zappy::Parser}}
+\doxysubsubsection{\texorpdfstring{argsToString()}{argsToString()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::string $>$ Zappy\+::\+Parser\+::args\+To\+String (\begin{DoxyParamCaption}\item[{std\+::vector$<$ int $>$}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+transorm a vector of int into a vector of string 
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$std\+::string$>$ 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Parser_8cpp_source_l00112}{112}} of file \mbox{\hyperlink{Parser_8cpp_source}{Parser.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1Parser_acd2bb8ea3b2975f9cdfbd63997b2c5ea}\label{classZappy_1_1Parser_acd2bb8ea3b2975f9cdfbd63997b2c5ea}} 
+\index{Zappy::Parser@{Zappy::Parser}!isIndex@{isIndex}}
+\index{isIndex@{isIndex}!Zappy::Parser@{Zappy::Parser}}
+\doxysubsubsection{\texorpdfstring{isIndex()}{isIndex()}}
+{\footnotesize\ttfamily bool Zappy\+::\+Parser\+::is\+Index (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{string }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+is index function \+: exemple -\/\texorpdfstring{$>$}{>} \#1 
+
+
+\begin{DoxyParams}{Parameters}
+{\em string} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Parser_8cpp_source_l00079}{79}} of file \mbox{\hyperlink{Parser_8cpp_source}{Parser.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1Parser_ac4f72d89bb990954bd56022bc81f56dc}\label{classZappy_1_1Parser_ac4f72d89bb990954bd56022bc81f56dc}} 
+\index{Zappy::Parser@{Zappy::Parser}!isNum@{isNum}}
+\index{isNum@{isNum}!Zappy::Parser@{Zappy::Parser}}
+\doxysubsubsection{\texorpdfstring{isNum()}{isNum()}}
+{\footnotesize\ttfamily bool Zappy\+::\+Parser\+::is\+Num (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{string }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Is num function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em string} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Parser_8cpp_source_l00073}{73}} of file \mbox{\hyperlink{Parser_8cpp_source}{Parser.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1Parser_a19ee7f9fa814a254ce5b17f6a6dfd6fb}\label{classZappy_1_1Parser_a19ee7f9fa814a254ce5b17f6a6dfd6fb}} 
+\index{Zappy::Parser@{Zappy::Parser}!manageBCT@{manageBCT}}
+\index{manageBCT@{manageBCT}!Zappy::Parser@{Zappy::Parser}}
+\doxysubsubsection{\texorpdfstring{manageBCT()}{manageBCT()}}
+{\footnotesize\ttfamily void Zappy\+::\+Parser\+::manage\+BCT (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$}]{args,  }\item[{\mbox{\hyperlink{classZappy_1_1Network}{Zappy\+::\+Network}} $\ast$}]{network }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+manage the tile content command 
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & \\
+\hline
+{\em network} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Parser_8cpp_source_l00138}{138}} of file \mbox{\hyperlink{Parser_8cpp_source}{Parser.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1Parser_acf5f057917e0ee56e07828f16c976dd6}\label{classZappy_1_1Parser_acf5f057917e0ee56e07828f16c976dd6}} 
+\index{Zappy::Parser@{Zappy::Parser}!manageEBO@{manageEBO}}
+\index{manageEBO@{manageEBO}!Zappy::Parser@{Zappy::Parser}}
+\doxysubsubsection{\texorpdfstring{manageEBO()}{manageEBO()}}
+{\footnotesize\ttfamily void Zappy\+::\+Parser\+::manage\+EBO (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$}]{args,  }\item[{\mbox{\hyperlink{classZappy_1_1Network}{Zappy\+::\+Network}} $\ast$}]{network }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+manage birth of player from egg command 
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & \\
+\hline
+{\em network} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Parser_8cpp_source_l00562}{562}} of file \mbox{\hyperlink{Parser_8cpp_source}{Parser.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1Parser_ae6835c4b8b3ae2d8dd98cb8bd004a3d4}\label{classZappy_1_1Parser_ae6835c4b8b3ae2d8dd98cb8bd004a3d4}} 
+\index{Zappy::Parser@{Zappy::Parser}!manageEDI@{manageEDI}}
+\index{manageEDI@{manageEDI}!Zappy::Parser@{Zappy::Parser}}
+\doxysubsubsection{\texorpdfstring{manageEDI()}{manageEDI()}}
+{\footnotesize\ttfamily void Zappy\+::\+Parser\+::manage\+EDI (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$}]{args,  }\item[{\mbox{\hyperlink{classZappy_1_1Network}{Zappy\+::\+Network}} $\ast$}]{network }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+manage egg death command 
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & \\
+\hline
+{\em network} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Parser_8cpp_source_l00579}{579}} of file \mbox{\hyperlink{Parser_8cpp_source}{Parser.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1Parser_ac6b3d5c270a2572ccc5708fccee12d31}\label{classZappy_1_1Parser_ac6b3d5c270a2572ccc5708fccee12d31}} 
+\index{Zappy::Parser@{Zappy::Parser}!manageELS@{manageELS}}
+\index{manageELS@{manageELS}!Zappy::Parser@{Zappy::Parser}}
+\doxysubsubsection{\texorpdfstring{manageELS()}{manageELS()}}
+{\footnotesize\ttfamily void Zappy\+::\+Parser\+::manage\+ELS (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$}]{args,  }\item[{\mbox{\hyperlink{classZappy_1_1Network}{Zappy\+::\+Network}} $\ast$}]{network }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+manage egg list command 
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & \\
+\hline
+{\em network} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Parser_8cpp_source_l00224}{224}} of file \mbox{\hyperlink{Parser_8cpp_source}{Parser.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1Parser_ae8927c9344956fef07895852e80068dc}\label{classZappy_1_1Parser_ae8927c9344956fef07895852e80068dc}} 
+\index{Zappy::Parser@{Zappy::Parser}!manageENU@{manageENU}}
+\index{manageENU@{manageENU}!Zappy::Parser@{Zappy::Parser}}
+\doxysubsubsection{\texorpdfstring{manageENU()}{manageENU()}}
+{\footnotesize\ttfamily void Zappy\+::\+Parser\+::manage\+ENU (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$}]{args,  }\item[{\mbox{\hyperlink{classZappy_1_1Network}{Zappy\+::\+Network}} $\ast$}]{network }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+manage egg number command 
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & \\
+\hline
+{\em network} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Parser_8cpp_source_l00176}{176}} of file \mbox{\hyperlink{Parser_8cpp_source}{Parser.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1Parser_a6efe157a1869463b4ecebdb659c2d7f4}\label{classZappy_1_1Parser_a6efe157a1869463b4ecebdb659c2d7f4}} 
+\index{Zappy::Parser@{Zappy::Parser}!manageENW@{manageENW}}
+\index{manageENW@{manageENW}!Zappy::Parser@{Zappy::Parser}}
+\doxysubsubsection{\texorpdfstring{manageENW()}{manageENW()}}
+{\footnotesize\ttfamily void Zappy\+::\+Parser\+::manage\+ENW (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$}]{args,  }\item[{\mbox{\hyperlink{classZappy_1_1Network}{Zappy\+::\+Network}} $\ast$}]{network }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+manage new egg command 
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & \\
+\hline
+{\em network} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Parser_8cpp_source_l00542}{542}} of file \mbox{\hyperlink{Parser_8cpp_source}{Parser.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1Parser_a908eb73712e8da442776826ca7621982}\label{classZappy_1_1Parser_a908eb73712e8da442776826ca7621982}} 
+\index{Zappy::Parser@{Zappy::Parser}!manageMSZ@{manageMSZ}}
+\index{manageMSZ@{manageMSZ}!Zappy::Parser@{Zappy::Parser}}
+\doxysubsubsection{\texorpdfstring{manageMSZ()}{manageMSZ()}}
+{\footnotesize\ttfamily void Zappy\+::\+Parser\+::manage\+MSZ (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$}]{args,  }\item[{\mbox{\hyperlink{classZappy_1_1Network}{Zappy\+::\+Network}} $\ast$}]{network }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Manage the map size command. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & \\
+\hline
+{\em network} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Parser_8cpp_source_l00123}{123}} of file \mbox{\hyperlink{Parser_8cpp_source}{Parser.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1Parser_a7e6eeef616410d008a928dfb98b1ca5e}\label{classZappy_1_1Parser_a7e6eeef616410d008a928dfb98b1ca5e}} 
+\index{Zappy::Parser@{Zappy::Parser}!managePBC@{managePBC}}
+\index{managePBC@{managePBC}!Zappy::Parser@{Zappy::Parser}}
+\doxysubsubsection{\texorpdfstring{managePBC()}{managePBC()}}
+{\footnotesize\ttfamily void Zappy\+::\+Parser\+::manage\+PBC (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$}]{args,  }\item[{\mbox{\hyperlink{classZappy_1_1Network}{Zappy\+::\+Network}} $\ast$}]{network }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+manage the broadcast from a player command 
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & \\
+\hline
+{\em network} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Parser_8cpp_source_l00395}{395}} of file \mbox{\hyperlink{Parser_8cpp_source}{Parser.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1Parser_af660eb1478e19d7bf69a6636446e58f6}\label{classZappy_1_1Parser_af660eb1478e19d7bf69a6636446e58f6}} 
+\index{Zappy::Parser@{Zappy::Parser}!managePDI@{managePDI}}
+\index{managePDI@{managePDI}!Zappy::Parser@{Zappy::Parser}}
+\doxysubsubsection{\texorpdfstring{managePDI()}{managePDI()}}
+{\footnotesize\ttfamily void Zappy\+::\+Parser\+::manage\+PDI (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$}]{args,  }\item[{\mbox{\hyperlink{classZappy_1_1Network}{Zappy\+::\+Network}} $\ast$}]{network }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+manage death of player command 
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & \\
+\hline
+{\em network} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Parser_8cpp_source_l00524}{524}} of file \mbox{\hyperlink{Parser_8cpp_source}{Parser.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1Parser_ad9113f80eaa56a10d8b10172b90f30e9}\label{classZappy_1_1Parser_ad9113f80eaa56a10d8b10172b90f30e9}} 
+\index{Zappy::Parser@{Zappy::Parser}!managePDR@{managePDR}}
+\index{managePDR@{managePDR}!Zappy::Parser@{Zappy::Parser}}
+\doxysubsubsection{\texorpdfstring{managePDR()}{managePDR()}}
+{\footnotesize\ttfamily void Zappy\+::\+Parser\+::manage\+PDR (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$}]{args,  }\item[{\mbox{\hyperlink{classZappy_1_1Network}{Zappy\+::\+Network}} $\ast$}]{network }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+manage the player drop item command 
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & \\
+\hline
+{\em network} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Parser_8cpp_source_l00486}{486}} of file \mbox{\hyperlink{Parser_8cpp_source}{Parser.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1Parser_a5af02fe851548ea90dde23089c0519a2}\label{classZappy_1_1Parser_a5af02fe851548ea90dde23089c0519a2}} 
+\index{Zappy::Parser@{Zappy::Parser}!managePEX@{managePEX}}
+\index{managePEX@{managePEX}!Zappy::Parser@{Zappy::Parser}}
+\doxysubsubsection{\texorpdfstring{managePEX()}{managePEX()}}
+{\footnotesize\ttfamily void Zappy\+::\+Parser\+::manage\+PEX (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$}]{args,  }\item[{\mbox{\hyperlink{classZappy_1_1Network}{Zappy\+::\+Network}} $\ast$}]{network }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+manage the expulsion of the player 
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & \\
+\hline
+{\em network} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Parser_8cpp_source_l00381}{381}} of file \mbox{\hyperlink{Parser_8cpp_source}{Parser.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1Parser_aa83131ebe9a6b837bea2f5c77b943865}\label{classZappy_1_1Parser_aa83131ebe9a6b837bea2f5c77b943865}} 
+\index{Zappy::Parser@{Zappy::Parser}!managePFK@{managePFK}}
+\index{managePFK@{managePFK}!Zappy::Parser@{Zappy::Parser}}
+\doxysubsubsection{\texorpdfstring{managePFK()}{managePFK()}}
+{\footnotesize\ttfamily void Zappy\+::\+Parser\+::manage\+PFK (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$}]{args,  }\item[{\mbox{\hyperlink{classZappy_1_1Network}{Zappy\+::\+Network}} $\ast$}]{network }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Manage the forking command. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & \\
+\hline
+{\em network} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Parser_8cpp_source_l00469}{469}} of file \mbox{\hyperlink{Parser_8cpp_source}{Parser.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1Parser_ae2ffe57810b0d827f58af308dc8e3ca8}\label{classZappy_1_1Parser_ae2ffe57810b0d827f58af308dc8e3ca8}} 
+\index{Zappy::Parser@{Zappy::Parser}!managePGT@{managePGT}}
+\index{managePGT@{managePGT}!Zappy::Parser@{Zappy::Parser}}
+\doxysubsubsection{\texorpdfstring{managePGT()}{managePGT()}}
+{\footnotesize\ttfamily void Zappy\+::\+Parser\+::manage\+PGT (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$}]{args,  }\item[{\mbox{\hyperlink{classZappy_1_1Network}{Zappy\+::\+Network}} $\ast$}]{network }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+manage the player get item command 
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & \\
+\hline
+{\em network} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Parser_8cpp_source_l00503}{503}} of file \mbox{\hyperlink{Parser_8cpp_source}{Parser.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1Parser_ac110fc1d8743b24d00e66cbf0fc21cac}\label{classZappy_1_1Parser_ac110fc1d8743b24d00e66cbf0fc21cac}} 
+\index{Zappy::Parser@{Zappy::Parser}!managePIC@{managePIC}}
+\index{managePIC@{managePIC}!Zappy::Parser@{Zappy::Parser}}
+\doxysubsubsection{\texorpdfstring{managePIC()}{managePIC()}}
+{\footnotesize\ttfamily void Zappy\+::\+Parser\+::manage\+PIC (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$}]{args,  }\item[{\mbox{\hyperlink{classZappy_1_1Network}{Zappy\+::\+Network}} $\ast$}]{network }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+manage the start of incantation command 
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & \\
+\hline
+{\em network} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Parser_8cpp_source_l00409}{409}} of file \mbox{\hyperlink{Parser_8cpp_source}{Parser.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1Parser_aea4e39551e6688f4e0bcd78509cd4f31}\label{classZappy_1_1Parser_aea4e39551e6688f4e0bcd78509cd4f31}} 
+\index{Zappy::Parser@{Zappy::Parser}!managePIE@{managePIE}}
+\index{managePIE@{managePIE}!Zappy::Parser@{Zappy::Parser}}
+\doxysubsubsection{\texorpdfstring{managePIE()}{managePIE()}}
+{\footnotesize\ttfamily void Zappy\+::\+Parser\+::manage\+PIE (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$}]{args,  }\item[{\mbox{\hyperlink{classZappy_1_1Network}{Zappy\+::\+Network}} $\ast$}]{network }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+manage the end of incantation command 
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & \\
+\hline
+{\em network} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Parser_8cpp_source_l00436}{436}} of file \mbox{\hyperlink{Parser_8cpp_source}{Parser.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1Parser_ad5775c526a28c48baec927228039cfd7}\label{classZappy_1_1Parser_ad5775c526a28c48baec927228039cfd7}} 
+\index{Zappy::Parser@{Zappy::Parser}!managePIN@{managePIN}}
+\index{managePIN@{managePIN}!Zappy::Parser@{Zappy::Parser}}
+\doxysubsubsection{\texorpdfstring{managePIN()}{managePIN()}}
+{\footnotesize\ttfamily void Zappy\+::\+Parser\+::manage\+PIN (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$}]{args,  }\item[{\mbox{\hyperlink{classZappy_1_1Network}{Zappy\+::\+Network}} $\ast$}]{network }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+manage the player inventory command 
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & \\
+\hline
+{\em network} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Parser_8cpp_source_l00300}{300}} of file \mbox{\hyperlink{Parser_8cpp_source}{Parser.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1Parser_a6db07dd59f51a6c40e3a811e36e8a903}\label{classZappy_1_1Parser_a6db07dd59f51a6c40e3a811e36e8a903}} 
+\index{Zappy::Parser@{Zappy::Parser}!managePLV@{managePLV}}
+\index{managePLV@{managePLV}!Zappy::Parser@{Zappy::Parser}}
+\doxysubsubsection{\texorpdfstring{managePLV()}{managePLV()}}
+{\footnotesize\ttfamily void Zappy\+::\+Parser\+::manage\+PLV (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$}]{args,  }\item[{\mbox{\hyperlink{classZappy_1_1Network}{Zappy\+::\+Network}} $\ast$}]{network }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+manage the payer level command 
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & \\
+\hline
+{\em network} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Parser_8cpp_source_l00279}{279}} of file \mbox{\hyperlink{Parser_8cpp_source}{Parser.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1Parser_a337578045e66ee40a6c99077d9969f84}\label{classZappy_1_1Parser_a337578045e66ee40a6c99077d9969f84}} 
+\index{Zappy::Parser@{Zappy::Parser}!managePNW@{managePNW}}
+\index{managePNW@{managePNW}!Zappy::Parser@{Zappy::Parser}}
+\doxysubsubsection{\texorpdfstring{managePNW()}{managePNW()}}
+{\footnotesize\ttfamily void Zappy\+::\+Parser\+::manage\+PNW (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$}]{args,  }\item[{\mbox{\hyperlink{classZappy_1_1Network}{Zappy\+::\+Network}} $\ast$}]{network }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+manage the new player command 
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & \\
+\hline
+{\em network} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Parser_8cpp_source_l00352}{352}} of file \mbox{\hyperlink{Parser_8cpp_source}{Parser.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1Parser_a211045b5d10a4526a6df14a2491bb4a4}\label{classZappy_1_1Parser_a211045b5d10a4526a6df14a2491bb4a4}} 
+\index{Zappy::Parser@{Zappy::Parser}!managePPO@{managePPO}}
+\index{managePPO@{managePPO}!Zappy::Parser@{Zappy::Parser}}
+\doxysubsubsection{\texorpdfstring{managePPO()}{managePPO()}}
+{\footnotesize\ttfamily void Zappy\+::\+Parser\+::manage\+PPO (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$}]{args,  }\item[{\mbox{\hyperlink{classZappy_1_1Network}{Zappy\+::\+Network}} $\ast$}]{network }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+manage the player position command 
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & \\
+\hline
+{\em network} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Parser_8cpp_source_l00252}{252}} of file \mbox{\hyperlink{Parser_8cpp_source}{Parser.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1Parser_ab38f56b8404cc5c3644a6c37e5efe9d8}\label{classZappy_1_1Parser_ab38f56b8404cc5c3644a6c37e5efe9d8}} 
+\index{Zappy::Parser@{Zappy::Parser}!manageResponse@{manageResponse}}
+\index{manageResponse@{manageResponse}!Zappy::Parser@{Zappy::Parser}}
+\doxysubsubsection{\texorpdfstring{manageResponse()}{manageResponse()}}
+{\footnotesize\ttfamily void Zappy\+::\+Parser\+::manage\+Response (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$}]{args,  }\item[{\mbox{\hyperlink{classZappy_1_1Network}{Zappy\+::\+Network}} $\ast$}]{network }\end{DoxyParamCaption})}
+
+
+
+Manage globally any response from the server. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & \\
+\hline
+{\em network} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Parser_8cpp_source_l00035}{35}} of file \mbox{\hyperlink{Parser_8cpp_source}{Parser.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1Parser_a2e495b18d40a2792978d6fd32f57e2ba}\label{classZappy_1_1Parser_a2e495b18d40a2792978d6fd32f57e2ba}} 
+\index{Zappy::Parser@{Zappy::Parser}!manageSBP@{manageSBP}}
+\index{manageSBP@{manageSBP}!Zappy::Parser@{Zappy::Parser}}
+\doxysubsubsection{\texorpdfstring{manageSBP()}{manageSBP()}}
+{\footnotesize\ttfamily void Zappy\+::\+Parser\+::manage\+SBP (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$}]{args,  }\item[{\mbox{\hyperlink{classZappy_1_1Network}{Zappy\+::\+Network}} $\ast$}]{network }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+manage server bad parameters command 
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & \\
+\hline
+{\em network} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Parser_8cpp_source_l00622}{622}} of file \mbox{\hyperlink{Parser_8cpp_source}{Parser.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1Parser_a03c3214e850bcb4a1c2b0d13f2756219}\label{classZappy_1_1Parser_a03c3214e850bcb4a1c2b0d13f2756219}} 
+\index{Zappy::Parser@{Zappy::Parser}!manageSEG@{manageSEG}}
+\index{manageSEG@{manageSEG}!Zappy::Parser@{Zappy::Parser}}
+\doxysubsubsection{\texorpdfstring{manageSEG()}{manageSEG()}}
+{\footnotesize\ttfamily void Zappy\+::\+Parser\+::manage\+SEG (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$}]{args,  }\item[{\mbox{\hyperlink{classZappy_1_1Network}{Zappy\+::\+Network}} $\ast$}]{network }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+manage end of game commmand 
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & \\
+\hline
+{\em network} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Parser_8cpp_source_l00596}{596}} of file \mbox{\hyperlink{Parser_8cpp_source}{Parser.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1Parser_a4dfef6a37cf7a794e7670d3544be6e0b}\label{classZappy_1_1Parser_a4dfef6a37cf7a794e7670d3544be6e0b}} 
+\index{Zappy::Parser@{Zappy::Parser}!manageSGT@{manageSGT}}
+\index{manageSGT@{manageSGT}!Zappy::Parser@{Zappy::Parser}}
+\doxysubsubsection{\texorpdfstring{manageSGT()}{manageSGT()}}
+{\footnotesize\ttfamily void Zappy\+::\+Parser\+::manage\+SGT (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$}]{args,  }\item[{\mbox{\hyperlink{classZappy_1_1Network}{Zappy\+::\+Network}} $\ast$}]{network }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+manage the server time unit requet command 
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & \\
+\hline
+{\em network} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Parser_8cpp_source_l00324}{324}} of file \mbox{\hyperlink{Parser_8cpp_source}{Parser.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1Parser_a4949333fe97dc976e394bf425693fe6b}\label{classZappy_1_1Parser_a4949333fe97dc976e394bf425693fe6b}} 
+\index{Zappy::Parser@{Zappy::Parser}!manageSMG@{manageSMG}}
+\index{manageSMG@{manageSMG}!Zappy::Parser@{Zappy::Parser}}
+\doxysubsubsection{\texorpdfstring{manageSMG()}{manageSMG()}}
+{\footnotesize\ttfamily void Zappy\+::\+Parser\+::manage\+SMG (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$}]{args,  }\item[{\mbox{\hyperlink{classZappy_1_1Network}{Zappy\+::\+Network}} $\ast$}]{network }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+manage server message command 
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & \\
+\hline
+{\em network} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Parser_8cpp_source_l00608}{608}} of file \mbox{\hyperlink{Parser_8cpp_source}{Parser.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1Parser_a8b67dbe18a501d3933bcb20e8228a098}\label{classZappy_1_1Parser_a8b67dbe18a501d3933bcb20e8228a098}} 
+\index{Zappy::Parser@{Zappy::Parser}!manageSPI@{manageSPI}}
+\index{manageSPI@{manageSPI}!Zappy::Parser@{Zappy::Parser}}
+\doxysubsubsection{\texorpdfstring{manageSPI()}{manageSPI()}}
+{\footnotesize\ttfamily void Zappy\+::\+Parser\+::manage\+SPI (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$}]{args,  }\item[{\mbox{\hyperlink{classZappy_1_1Network}{Zappy\+::\+Network}} $\ast$}]{network }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+manage player list command 
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & \\
+\hline
+{\em network} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Parser_8cpp_source_l00190}{190}} of file \mbox{\hyperlink{Parser_8cpp_source}{Parser.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1Parser_a178c91608b4c23660e08bcf42cb90aca}\label{classZappy_1_1Parser_a178c91608b4c23660e08bcf42cb90aca}} 
+\index{Zappy::Parser@{Zappy::Parser}!manageSPN@{manageSPN}}
+\index{manageSPN@{manageSPN}!Zappy::Parser@{Zappy::Parser}}
+\doxysubsubsection{\texorpdfstring{manageSPN()}{manageSPN()}}
+{\footnotesize\ttfamily void Zappy\+::\+Parser\+::manage\+SPN (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$}]{args,  }\item[{\mbox{\hyperlink{classZappy_1_1Network}{Zappy\+::\+Network}} $\ast$}]{network }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+manage player number command 
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & \\
+\hline
+{\em network} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Parser_8cpp_source_l00161}{161}} of file \mbox{\hyperlink{Parser_8cpp_source}{Parser.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1Parser_a5b0aeaf3be0c897ee2f5213a3984ad1c}\label{classZappy_1_1Parser_a5b0aeaf3be0c897ee2f5213a3984ad1c}} 
+\index{Zappy::Parser@{Zappy::Parser}!manageSST@{manageSST}}
+\index{manageSST@{manageSST}!Zappy::Parser@{Zappy::Parser}}
+\doxysubsubsection{\texorpdfstring{manageSST()}{manageSST()}}
+{\footnotesize\ttfamily void Zappy\+::\+Parser\+::manage\+SST (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$}]{args,  }\item[{\mbox{\hyperlink{classZappy_1_1Network}{Zappy\+::\+Network}} $\ast$}]{network }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+manage the server time modification command 
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & \\
+\hline
+{\em network} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Parser_8cpp_source_l00338}{338}} of file \mbox{\hyperlink{Parser_8cpp_source}{Parser.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1Parser_abbd7d7fd30a124850aa63de3e49b1bfe}\label{classZappy_1_1Parser_abbd7d7fd30a124850aa63de3e49b1bfe}} 
+\index{Zappy::Parser@{Zappy::Parser}!manageSUC@{manageSUC}}
+\index{manageSUC@{manageSUC}!Zappy::Parser@{Zappy::Parser}}
+\doxysubsubsection{\texorpdfstring{manageSUC()}{manageSUC()}}
+{\footnotesize\ttfamily void Zappy\+::\+Parser\+::manage\+SUC (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$}]{args,  }\item[{\mbox{\hyperlink{classZappy_1_1Network}{Zappy\+::\+Network}} $\ast$}]{network }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+manage server unknown command 
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & \\
+\hline
+{\em network} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Parser_8cpp_source_l00617}{617}} of file \mbox{\hyperlink{Parser_8cpp_source}{Parser.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1Parser_a61fc1fc5521102d210609e5e7b553634}\label{classZappy_1_1Parser_a61fc1fc5521102d210609e5e7b553634}} 
+\index{Zappy::Parser@{Zappy::Parser}!nbOccur@{nbOccur}}
+\index{nbOccur@{nbOccur}!Zappy::Parser@{Zappy::Parser}}
+\doxysubsubsection{\texorpdfstring{nbOccur()}{nbOccur()}}
+{\footnotesize\ttfamily size\+\_\+t Zappy\+::\+Parser\+::nb\+Occur (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{string,  }\item[{const std\+::string \&}]{key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+get the occurences number of a key in the string 
+
+
+\begin{DoxyParams}{Parameters}
+{\em string} & \\
+\hline
+{\em key} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+size\+\_\+t 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Parser_8cpp_source_l00085}{85}} of file \mbox{\hyperlink{Parser_8cpp_source}{Parser.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1Parser_aec9f21f3ae75fe711bc8a17e32c9630a}\label{classZappy_1_1Parser_aec9f21f3ae75fe711bc8a17e32c9630a}} 
+\index{Zappy::Parser@{Zappy::Parser}!parseLine@{parseLine}}
+\index{parseLine@{parseLine}!Zappy::Parser@{Zappy::Parser}}
+\doxysubsubsection{\texorpdfstring{parseLine()}{parseLine()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::string $>$ Zappy\+::\+Parser\+::parse\+Line (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{line,  }\item[{char}]{delimiter }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Parse the line to transform it into a vector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em line} & \\
+\hline
+{\em delimiter} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$std\+::string$>$ 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Parser_8cpp_source_l00010}{10}} of file \mbox{\hyperlink{Parser_8cpp_source}{Parser.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1Parser_a4f7df1146ee5c44e53ac6cc09067d65a}\label{classZappy_1_1Parser_a4f7df1146ee5c44e53ac6cc09067d65a}} 
+\index{Zappy::Parser@{Zappy::Parser}!showArgs@{showArgs}}
+\index{showArgs@{showArgs}!Zappy::Parser@{Zappy::Parser}}
+\doxysubsubsection{\texorpdfstring{showArgs()}{showArgs()}}
+{\footnotesize\ttfamily void Zappy\+::\+Parser\+::show\+Args (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+show the elements of the given vector 
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Parser_8cpp_source_l00024}{24}} of file \mbox{\hyperlink{Parser_8cpp_source}{Parser.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1Parser_a6a9f98ca40a329a516011fccb947249c}\label{classZappy_1_1Parser_a6a9f98ca40a329a516011fccb947249c}} 
+\index{Zappy::Parser@{Zappy::Parser}!splitLine@{splitLine}}
+\index{splitLine@{splitLine}!Zappy::Parser@{Zappy::Parser}}
+\doxysubsubsection{\texorpdfstring{splitLine()}{splitLine()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::string $>$ Zappy\+::\+Parser\+::split\+Line (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{string,  }\item[{const std\+::string \&}]{sep }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+spplit the line into a vector 
+
+
+\begin{DoxyParams}{Parameters}
+{\em string} & \\
+\hline
+{\em sep} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$std\+::string$>$ 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Parser_8cpp_source_l00098}{98}} of file \mbox{\hyperlink{Parser_8cpp_source}{Parser.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Parser_8hpp}{Parser.\+hpp}}\item 
+\mbox{\hyperlink{Parser_8cpp}{Parser.\+cpp}}\end{DoxyCompactItemize}

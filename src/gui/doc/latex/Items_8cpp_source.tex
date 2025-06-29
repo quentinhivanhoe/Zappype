@@ -1,0 +1,28 @@
+\hypertarget{Items_8cpp_source}{}\doxysection{Items.\+cpp}
+\label{Items_8cpp_source}\index{Items.cpp@{Items.cpp}}
+\mbox{\hyperlink{Items_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{Items_8cpp_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{Items_8cpp_source_l00002}00002\ \textcolor{comment}{**\ EPITECH\ PROJECT,\ 2025}}
+\DoxyCodeLine{\Hypertarget{Items_8cpp_source_l00003}00003\ \textcolor{comment}{**\ Zappype}}
+\DoxyCodeLine{\Hypertarget{Items_8cpp_source_l00004}00004\ \textcolor{comment}{**\ File\ description:}}
+\DoxyCodeLine{\Hypertarget{Items_8cpp_source_l00005}00005\ \textcolor{comment}{**\ Items}}
+\DoxyCodeLine{\Hypertarget{Items_8cpp_source_l00006}00006\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{Items_8cpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{Items_8cpp_source_l00008}00008\ \textcolor{preprocessor}{\#include\ "{}../includes/Items.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{Items_8cpp_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{Items_8cpp_source_l00010}\mbox{\hyperlink{classZappy_1_1Items_aaf7c14984f2ba08aeb294c658d3afb80}{00010}}\ \mbox{\hyperlink{classZappy_1_1Items_aaf7c14984f2ba08aeb294c658d3afb80}{Zappy::Items::Items}}(std::string\ fileName,\ \textcolor{keywordtype}{size\_t}\ \textcolor{keywordtype}{id})}
+\DoxyCodeLine{\Hypertarget{Items_8cpp_source_l00011}00011\ \{}
+\DoxyCodeLine{\Hypertarget{Items_8cpp_source_l00012}00012\ \ \ \ \ this-\/>\mbox{\hyperlink{classZappy_1_1Items_a739ce493de391dba1d74e1503a40bb2d}{\_id}}\ =\ id;}
+\DoxyCodeLine{\Hypertarget{Items_8cpp_source_l00013}00013\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Creating\ Item\ with\ :\(\backslash\)"{}"{}}\ <<\ fileName\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)"{}"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Items_8cpp_source_l00014}00014\ \ \ \ \ this-\/>\mbox{\hyperlink{classZappy_1_1Items_aa2c9033f80c42ef4c6a2743c25972576}{\_sprite}}\ =\ std::make\_shared<Drawable>(fileName,\ 0.075\ *\ 12.34);}
+\DoxyCodeLine{\Hypertarget{Items_8cpp_source_l00015}00015\ \ \ \ \ this-\/>\mbox{\hyperlink{classZappy_1_1Items_aa2c9033f80c42ef4c6a2743c25972576}{\_sprite}}-\/>getSprite().setOrigin(sf::Vector2f(this-\/>\mbox{\hyperlink{classZappy_1_1Items_aa2c9033f80c42ef4c6a2743c25972576}{\_sprite}}-\/>getTexture().getSize().x\ /\ 2.0,\ this-\/>\_sprite-\/>getTexture().getSize().y\ /\ 2.0));}
+\DoxyCodeLine{\Hypertarget{Items_8cpp_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{Items_8cpp_source_l00017}00017\ \ \ \ \ \textcolor{comment}{//\ this-\/>\_sprite.get().setOrigin(sf::Vector2f(this-\/>getTexture().getSize().x\ /\ 2.0,\ this-\/>getTexture().getSize().y\ /\ 2.0));}}
+\DoxyCodeLine{\Hypertarget{Items_8cpp_source_l00018}00018\ \}}
+\DoxyCodeLine{\Hypertarget{Items_8cpp_source_l00019}00019\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Items_8cpp_source_l00020}\mbox{\hyperlink{classZappy_1_1Items_ac86a88bae6a2f2be959af2607276274f}{00020}}\ \mbox{\hyperlink{classZappy_1_1Items_ac86a88bae6a2f2be959af2607276274f}{Zappy::Items::\string~Items}}()}
+\DoxyCodeLine{\Hypertarget{Items_8cpp_source_l00021}00021\ \{}
+\DoxyCodeLine{\Hypertarget{Items_8cpp_source_l00022}00022\ \}}
+
+\end{DoxyCode}

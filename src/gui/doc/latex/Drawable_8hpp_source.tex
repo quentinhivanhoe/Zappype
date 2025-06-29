@@ -1,0 +1,49 @@
+\hypertarget{Drawable_8hpp_source}{}\doxysection{Drawable.\+hpp}
+\label{Drawable_8hpp_source}\index{Drawable.hpp@{Drawable.hpp}}
+\mbox{\hyperlink{Drawable_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{Drawable_8hpp_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{Drawable_8hpp_source_l00002}00002\ \textcolor{comment}{**\ EPITECH\ PROJECT,\ 2025}}
+\DoxyCodeLine{\Hypertarget{Drawable_8hpp_source_l00003}00003\ \textcolor{comment}{**\ Zappype}}
+\DoxyCodeLine{\Hypertarget{Drawable_8hpp_source_l00004}00004\ \textcolor{comment}{**\ File\ description:}}
+\DoxyCodeLine{\Hypertarget{Drawable_8hpp_source_l00005}00005\ \textcolor{comment}{**\ Drawable}}
+\DoxyCodeLine{\Hypertarget{Drawable_8hpp_source_l00006}00006\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{Drawable_8hpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{Drawable_8hpp_source_l00008}00008\ \textcolor{preprocessor}{\#ifndef\ DRAWABLE\_HPP\_}}
+\DoxyCodeLine{\Hypertarget{Drawable_8hpp_source_l00009}00009\ \textcolor{preprocessor}{\#define\ DRAWABLE\_HPP\_}}
+\DoxyCodeLine{\Hypertarget{Drawable_8hpp_source_l00010}00010\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}SFML/Graphics.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{Drawable_8hpp_source_l00011}00011\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}\mbox{\hyperlink{Vector2D_8hpp}{Math/Vector2D.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{Drawable_8hpp_source_l00012}00012\ \textcolor{preprocessor}{\ \ \ \ \#include\ <algorithm>}}
+\DoxyCodeLine{\Hypertarget{Drawable_8hpp_source_l00013}00013\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceZappy}{Zappy}}}
+\DoxyCodeLine{\Hypertarget{Drawable_8hpp_source_l00014}00014\ \{}
+\DoxyCodeLine{\Hypertarget{Drawable_8hpp_source_l00015}\mbox{\hyperlink{classZappy_1_1Drawable}{00015}}\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classZappy_1_1Drawable}{Drawable}}\ \{}
+\DoxyCodeLine{\Hypertarget{Drawable_8hpp_source_l00016}00016\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{Drawable_8hpp_source_l00017}\mbox{\hyperlink{classZappy_1_1Drawable_a94c0f2c33c7458e565af642f12ac7c91}{00017}}\ \ \ \ \ \ \ \ \ \ \ \ \ sf::Texture\ \mbox{\hyperlink{classZappy_1_1Drawable_a94c0f2c33c7458e565af642f12ac7c91}{\_texture}};}
+\DoxyCodeLine{\Hypertarget{Drawable_8hpp_source_l00018}\mbox{\hyperlink{classZappy_1_1Drawable_a8c3f6bbfb2c41233933f79fa5cfbb6a9}{00018}}\ \ \ \ \ \ \ \ \ \ \ \ \ sf::Sprite\ \mbox{\hyperlink{classZappy_1_1Drawable_a8c3f6bbfb2c41233933f79fa5cfbb6a9}{\_sprite}};}
+\DoxyCodeLine{\Hypertarget{Drawable_8hpp_source_l00019}\mbox{\hyperlink{classZappy_1_1Drawable_a8ad1804de4daefd6220bb5a78b955da5}{00019}}\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<Vector2D>\ \mbox{\hyperlink{classZappy_1_1Drawable_a8ad1804de4daefd6220bb5a78b955da5}{offsets}};}
+\DoxyCodeLine{\Hypertarget{Drawable_8hpp_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{Drawable_8hpp_source_l00021}00021\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{Drawable_8hpp_source_l00022}00022\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Drawable}{Drawable}}(std::string\ texture\_path\ =\ \textcolor{stringliteral}{"{}assets/default.jpeg"{}},\ \textcolor{keywordtype}{float}\ scale\ =\ 1.0);}
+\DoxyCodeLine{\Hypertarget{Drawable_8hpp_source_l00023}00023\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Drawable_a77797751fb3b172b2b9d216ca1d1abbe}{\string~Drawable}}();}
+\DoxyCodeLine{\Hypertarget{Drawable_8hpp_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{Drawable_8hpp_source_l00030}\mbox{\hyperlink{classZappy_1_1Drawable_aa0e37bed67d2efef161f599f9b10c65f}{00030}}\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ sf::Texture\ \&\mbox{\hyperlink{classZappy_1_1Drawable_aa0e37bed67d2efef161f599f9b10c65f}{getTexture}}()\{\textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classZappy_1_1Drawable_a94c0f2c33c7458e565af642f12ac7c91}{\_texture}};\};}
+\DoxyCodeLine{\Hypertarget{Drawable_8hpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{Drawable_8hpp_source_l00037}\mbox{\hyperlink{classZappy_1_1Drawable_a374678ee613e50f96f3a079e096d01cd}{00037}}\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ sf::Sprite\ \&\mbox{\hyperlink{classZappy_1_1Drawable_a374678ee613e50f96f3a079e096d01cd}{getSprite}}()\{\textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classZappy_1_1Drawable_a8c3f6bbfb2c41233933f79fa5cfbb6a9}{\_sprite}};\};}
+\DoxyCodeLine{\Hypertarget{Drawable_8hpp_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{Drawable_8hpp_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Drawable_a89eac1aebae90e612c95e687ab26a029}{set\_offsets}}();}
+\DoxyCodeLine{\Hypertarget{Drawable_8hpp_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{Drawable_8hpp_source_l00050}\mbox{\hyperlink{classZappy_1_1Drawable_aa628625c9b464c39dc65e45fd85bcc70}{00050}}\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<Vector2D>\ \mbox{\hyperlink{classZappy_1_1Drawable_aa628625c9b464c39dc65e45fd85bcc70}{get\_offsets}}()\{\textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classZappy_1_1Drawable_a8ad1804de4daefd6220bb5a78b955da5}{offsets}};\};}
+\DoxyCodeLine{\Hypertarget{Drawable_8hpp_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{Drawable_8hpp_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Drawable_afb7219fd5f4be5fd5598e35aaf88713f}{shuffler}}(std::vector<Vector2D>\ tab,\ \textcolor{keywordtype}{unsigned}\ seed);}
+\DoxyCodeLine{\Hypertarget{Drawable_8hpp_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{Drawable_8hpp_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Drawable_a3d7ff4cd75546e9339180d65b8238075}{setTexture}}(sf::Texture\ texture);}
+\DoxyCodeLine{\Hypertarget{Drawable_8hpp_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{Drawable_8hpp_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Drawable_a4be730deae26a6ac56395d3619baa63a}{updateTextureFromPath}}(std::string\ filepath);}
+\DoxyCodeLine{\Hypertarget{Drawable_8hpp_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{Drawable_8hpp_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Drawable_af047d4d951b7d1fd5526d6fe35b379fd}{setSprite}}(sf::Sprite\ sprite);}
+\DoxyCodeLine{\Hypertarget{Drawable_8hpp_source_l00080}00080\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{Drawable_8hpp_source_l00081}00081\ \}}
+\DoxyCodeLine{\Hypertarget{Drawable_8hpp_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{Drawable_8hpp_source_l00083}00083\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ !DRAWABLE\_HPP\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}
