@@ -1,0 +1,66 @@
+\hypertarget{BroadCastTab_8cpp_source}{}\doxysection{Broad\+Cast\+Tab.\+cpp}
+\label{BroadCastTab_8cpp_source}\index{BroadCastTab.cpp@{BroadCastTab.cpp}}
+\mbox{\hyperlink{BroadCastTab_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{BroadCastTab_8cpp_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{BroadCastTab_8cpp_source_l00002}00002\ \textcolor{comment}{**\ EPITECH\ PROJECT,\ 2025}}
+\DoxyCodeLine{\Hypertarget{BroadCastTab_8cpp_source_l00003}00003\ \textcolor{comment}{**\ Zappy}}
+\DoxyCodeLine{\Hypertarget{BroadCastTab_8cpp_source_l00004}00004\ \textcolor{comment}{**\ File\ description:}}
+\DoxyCodeLine{\Hypertarget{BroadCastTab_8cpp_source_l00005}00005\ \textcolor{comment}{**\ BroadCastTab\ functions}}
+\DoxyCodeLine{\Hypertarget{BroadCastTab_8cpp_source_l00006}00006\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{BroadCastTab_8cpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{BroadCastTab_8cpp_source_l00008}00008\ \textcolor{preprocessor}{\#include\ "{}../includes/BroadCastTab.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{BroadCastTab_8cpp_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{BroadCastTab_8cpp_source_l00010}\mbox{\hyperlink{classZappy_1_1BroadCastTab_a5b7dad10602dbe4fc9820e9161bb3d86}{00010}}\ \mbox{\hyperlink{classZappy_1_1BroadCastTab_a5b7dad10602dbe4fc9820e9161bb3d86}{Zappy::BroadCastTab::BroadCastTab}}()}
+\DoxyCodeLine{\Hypertarget{BroadCastTab_8cpp_source_l00011}00011\ \{}
+\DoxyCodeLine{\Hypertarget{BroadCastTab_8cpp_source_l00012}00012\ \ \ \ \ this-\/>\mbox{\hyperlink{classZappy_1_1BroadCastTab_a89f9179e3d8b6fc0812cd8fc18af5dac}{\_bg}}.setSize(sf::Vector2f(600,\ 200));}
+\DoxyCodeLine{\Hypertarget{BroadCastTab_8cpp_source_l00013}00013\ \ \ \ \ this-\/>\mbox{\hyperlink{classZappy_1_1BroadCastTab_a89f9179e3d8b6fc0812cd8fc18af5dac}{\_bg}}.setFillColor(sf::Color(255,\ 255,\ 255,\ 150));}
+\DoxyCodeLine{\Hypertarget{BroadCastTab_8cpp_source_l00014}00014\ \ \ \ \ this-\/>\mbox{\hyperlink{classZappy_1_1BroadCastTab_a89f9179e3d8b6fc0812cd8fc18af5dac}{\_bg}}.setOutlineColor(sf::Color(150,\ 150,\ 150));}
+\DoxyCodeLine{\Hypertarget{BroadCastTab_8cpp_source_l00015}00015\ \ \ \ \ this-\/>\mbox{\hyperlink{classZappy_1_1BroadCastTab_a89f9179e3d8b6fc0812cd8fc18af5dac}{\_bg}}.setOutlineThickness(2);}
+\DoxyCodeLine{\Hypertarget{BroadCastTab_8cpp_source_l00016}00016\ \ \ \ \ this-\/>\mbox{\hyperlink{classZappy_1_1BroadCastTab_a89f9179e3d8b6fc0812cd8fc18af5dac}{\_bg}}.setOrigin(300,\ 100);}
+\DoxyCodeLine{\Hypertarget{BroadCastTab_8cpp_source_l00017}00017\ \ \ \ \ this-\/>\mbox{\hyperlink{classZappy_1_1BroadCastTab_a89f9179e3d8b6fc0812cd8fc18af5dac}{\_bg}}.setPosition(1920\ -\/\ (this-\/>\mbox{\hyperlink{classZappy_1_1BroadCastTab_a89f9179e3d8b6fc0812cd8fc18af5dac}{\_bg}}.getSize().x\ /\ 2)\ -\/\ 30,\ 1080\ -\/\ (this-\/>\_bg.getSize().y\ /\ 2)\ -\/\ 30);}
+\DoxyCodeLine{\Hypertarget{BroadCastTab_8cpp_source_l00018}00018\ \ \ \ \ this-\/>\mbox{\hyperlink{classZappy_1_1BroadCastTab_a226c2d64e9d09829dd0cf2b210e86a35}{\_font}}.loadFromFile(\textcolor{stringliteral}{"{}assets/arial.ttf"{}});}
+\DoxyCodeLine{\Hypertarget{BroadCastTab_8cpp_source_l00019}00019\ \ \ \ \ this-\/>\mbox{\hyperlink{classZappy_1_1BroadCastTab_aef71784133fe30117871ae6d70ef1e5f}{\_text}}.setFont(this-\/>\mbox{\hyperlink{classZappy_1_1BroadCastTab_a226c2d64e9d09829dd0cf2b210e86a35}{\_font}});}
+\DoxyCodeLine{\Hypertarget{BroadCastTab_8cpp_source_l00020}00020\ \}}
+\DoxyCodeLine{\Hypertarget{BroadCastTab_8cpp_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{BroadCastTab_8cpp_source_l00022}\mbox{\hyperlink{classZappy_1_1BroadCastTab_ade402cf5d86ac5b9ebeb990f40111414}{00022}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1BroadCastTab_ade402cf5d86ac5b9ebeb990f40111414}{Zappy::BroadCastTab::drawText}}(\textcolor{keyword}{const}\ std::string\&\ \textcolor{keywordtype}{string},\ sf::Vector2f\ position,\ sf::Color\ color,\ \textcolor{keywordtype}{int}\ characterSize,\ sf::RenderWindow\ \&window)}
+\DoxyCodeLine{\Hypertarget{BroadCastTab_8cpp_source_l00023}00023\ \{}
+\DoxyCodeLine{\Hypertarget{BroadCastTab_8cpp_source_l00024}00024\ \ \ \ \ this-\/>\_text.setString(\textcolor{keywordtype}{string});}
+\DoxyCodeLine{\Hypertarget{BroadCastTab_8cpp_source_l00025}00025\ \ \ \ \ this-\/>\_text.setPosition(position);}
+\DoxyCodeLine{\Hypertarget{BroadCastTab_8cpp_source_l00026}00026\ \ \ \ \ this-\/>\_text.setFillColor(color);}
+\DoxyCodeLine{\Hypertarget{BroadCastTab_8cpp_source_l00027}00027\ \ \ \ \ this-\/>\_text.setCharacterSize(characterSize);}
+\DoxyCodeLine{\Hypertarget{BroadCastTab_8cpp_source_l00028}00028\ \ \ \ \ window.draw(this-\/>\_text);}
+\DoxyCodeLine{\Hypertarget{BroadCastTab_8cpp_source_l00029}00029\ \}}
+\DoxyCodeLine{\Hypertarget{BroadCastTab_8cpp_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{BroadCastTab_8cpp_source_l00031}\mbox{\hyperlink{classZappy_1_1BroadCastTab_a8083ff6e2f97f3a6bb81d0666039979d}{00031}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1BroadCastTab_a8083ff6e2f97f3a6bb81d0666039979d}{Zappy::BroadCastTab::render}}(sf::RenderWindow\ \&window)}
+\DoxyCodeLine{\Hypertarget{BroadCastTab_8cpp_source_l00032}00032\ \{}
+\DoxyCodeLine{\Hypertarget{BroadCastTab_8cpp_source_l00033}00033\ \ \ \ \ sf::Vector2f\ bgPos\ =\ this-\/>\_bg.getPosition();}
+\DoxyCodeLine{\Hypertarget{BroadCastTab_8cpp_source_l00034}00034\ \ \ \ \ sf::Vector2f\ bgSize\ =\ this-\/>\_bg.getSize();}
+\DoxyCodeLine{\Hypertarget{BroadCastTab_8cpp_source_l00035}00035\ \ \ \ \ \textcolor{keywordflow}{if}\ (!this-\/>\_messages.size())}
+\DoxyCodeLine{\Hypertarget{BroadCastTab_8cpp_source_l00036}00036\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{BroadCastTab_8cpp_source_l00037}00037\ \ \ \ \ window.draw(this-\/>\_bg);}
+\DoxyCodeLine{\Hypertarget{BroadCastTab_8cpp_source_l00038}00038\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ this-\/>\_messages.size();\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{BroadCastTab_8cpp_source_l00039}00039\ \ \ \ \ \ \ \ \ this-\/>drawText(this-\/>\_messages[i],\ sf::Vector2f(bgPos.x\ -\/\ bgSize.x\ /\ 2\ +\ 20,\ bgPos.y\ +\ bgSize.y\ /\ 2\ -\/\ 45\ -\/\ (50\ *\ i)),\ sf::Color::Black,\ 30,\ window);}
+\DoxyCodeLine{\Hypertarget{BroadCastTab_8cpp_source_l00040}00040\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{BroadCastTab_8cpp_source_l00041}00041\ \}}
+\DoxyCodeLine{\Hypertarget{BroadCastTab_8cpp_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{BroadCastTab_8cpp_source_l00043}\mbox{\hyperlink{classZappy_1_1BroadCastTab_ac90e1601fa5d48f32ed9d19ea1e1b055}{00043}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1BroadCastTab_ac90e1601fa5d48f32ed9d19ea1e1b055}{Zappy::BroadCastTab::update}}()}
+\DoxyCodeLine{\Hypertarget{BroadCastTab_8cpp_source_l00044}00044\ \{}
+\DoxyCodeLine{\Hypertarget{BroadCastTab_8cpp_source_l00045}00045\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{BroadCastTab_8cpp_source_l00046}00046\ \ \ \ \ this-\/>\_bg.setSize(sf::Vector2f(this-\/>\_bg.getSize().x,\ this-\/>\_messages.size()\ *\ 50));}
+\DoxyCodeLine{\Hypertarget{BroadCastTab_8cpp_source_l00047}00047\ \ \ \ \ this-\/>\_bg.setOrigin(sf::Vector2f(this-\/>\_bg.getSize().x\ /\ 2.0,\ this-\/>\_bg.getSize().y\ /\ 2.0));}
+\DoxyCodeLine{\Hypertarget{BroadCastTab_8cpp_source_l00048}00048\ \ \ \ \ this-\/>\_bg.setPosition(1920\ -\/\ (this-\/>\_bg.getSize().x\ /\ 2)\ -\/\ 30,\ 1080\ -\/\ (this-\/>\_bg.getSize().y\ /\ 2)\ -\/\ 100);}
+\DoxyCodeLine{\Hypertarget{BroadCastTab_8cpp_source_l00049}00049\ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>\_clock.getElapsedTime().asMilliseconds()\ <\ 3000\ ||\ !this-\/>\_messages.size())}
+\DoxyCodeLine{\Hypertarget{BroadCastTab_8cpp_source_l00050}00050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{BroadCastTab_8cpp_source_l00051}00051\ \ \ \ \ this-\/>\_clock.restart();}
+\DoxyCodeLine{\Hypertarget{BroadCastTab_8cpp_source_l00052}00052\ \ \ \ \ this-\/>\_messages.pop\_back();}
+\DoxyCodeLine{\Hypertarget{BroadCastTab_8cpp_source_l00053}00053\ \}}
+\DoxyCodeLine{\Hypertarget{BroadCastTab_8cpp_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{BroadCastTab_8cpp_source_l00055}\mbox{\hyperlink{classZappy_1_1BroadCastTab_a068b46ef71c23f12d249e685772a9f80}{00055}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1BroadCastTab_a068b46ef71c23f12d249e685772a9f80}{Zappy::BroadCastTab::pushToMessages}}(\textcolor{keyword}{const}\ std::string\&\ messages)}
+\DoxyCodeLine{\Hypertarget{BroadCastTab_8cpp_source_l00056}00056\ \{}
+\DoxyCodeLine{\Hypertarget{BroadCastTab_8cpp_source_l00057}00057\ \ \ \ \ \textcolor{keywordflow}{while}\ (this-\/>\_messages.size()\ >=\ this-\/>\_maxMessagesSize)}
+\DoxyCodeLine{\Hypertarget{BroadCastTab_8cpp_source_l00058}00058\ \ \ \ \ \ \ \ \ this-\/>\_messages.pop\_back();}
+\DoxyCodeLine{\Hypertarget{BroadCastTab_8cpp_source_l00059}00059\ \ \ \ \ this-\/>\_messages.insert(this-\/>\_messages.begin(),\ messages);}
+\DoxyCodeLine{\Hypertarget{BroadCastTab_8cpp_source_l00060}00060\ \}}
+
+\end{DoxyCode}

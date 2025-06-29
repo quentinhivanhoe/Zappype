@@ -1,0 +1,1705 @@
+\hypertarget{classZappy_1_1GUI}{}\doxysection{Zappy\+::GUI Class Reference}
+\label{classZappy_1_1GUI}\index{Zappy::GUI@{Zappy::GUI}}
+
+
+{\ttfamily \#include $<$GUI.\+hpp$>$}
+
+
+
+Collaboration diagram for Zappy\+::GUI\+:
+% FIG 0
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classZappy_1_1GUI_ae78093746a7c0e69876d496cdcb67b26}{GUI}} ()
+\item 
+\mbox{\hyperlink{classZappy_1_1GUI_a4b6525fd6a58f0030cc92f8b06446f45}{$\sim$\+GUI}} ()
+\item 
+void \mbox{\hyperlink{classZappy_1_1GUI_ac0e5ba7653bd6622c1a0b67c0265d673}{init}} ()
+\begin{DoxyCompactList}\small\item\em Init needed components for the main game. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1GUI_a1b26eea07f223956c95ad79e08989a31}{run\+Game}} ()
+\begin{DoxyCompactList}\small\item\em Run the main game. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1GUI_a61d50c4e74513ea506bcb0d1fa14cb03}{run\+Menu}} ()
+\begin{DoxyCompactList}\small\item\em Run function for the Menu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1GUI_af54975720ede407e3aef801cb7e7ba42}{handle\+Menu\+Events}} ()
+\begin{DoxyCompactList}\small\item\em Handle the Events of the window from the menu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1GUI_a3837df65ae2fbe68190758ed0746f1f9}{manage\+Menu\+Page}} ()
+\begin{DoxyCompactList}\small\item\em Manage the Menu page (START OR QUIT) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1GUI_a1c27fdc30bc1fc977189c3db58bf61e7}{manage\+Connection\+Page}} ()
+\begin{DoxyCompactList}\small\item\em Manage the Connection page. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1GUI_a5aca46fff0c863efd65ec56fae840a02}{init\+Menu\+Buttons}} ()
+\begin{DoxyCompactList}\small\item\em Create the \mbox{\hyperlink{classZappy_1_1Buttons}{Buttons}} needed for the menu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1GUI_a3b7e24bf5f5a06cba2b0768a5073df17}{init\+Menu\+Connection\+Buttons}} ()
+\begin{DoxyCompactList}\small\item\em Create the \mbox{\hyperlink{classZappy_1_1Buttons}{Buttons}} needed for the connection page. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1GUI_aaac05f52631ff8bc32a95c80ba8f44a0}{quit}} ()
+\begin{DoxyCompactList}\small\item\em Quit the game. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1GUI_ae94bef7eeaacd5ace24665802ace7101}{go\+To\+Connection\+Page}} ()
+\begin{DoxyCompactList}\small\item\em Go to the connection page from the menu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1GUI_aa3743b9957e7d3a059c18ed70258215f}{go\+Back\+To\+Menu}} ()
+\begin{DoxyCompactList}\small\item\em Go back to the main menu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1GUI_a1c9f8fa602a44a84cca490871c06ade3}{init\+Connection\+Fields}} ()
+\begin{DoxyCompactList}\small\item\em Create the components for the connection page. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1GUI_ab8f0d597419840891dbe50ac8076c248}{connect}} ()
+\begin{DoxyCompactList}\small\item\em Connect function for a button. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1GUI_a3c5ebfc34dd401eba7f2891fdf9ec7a7}{select\+Ip}} ()
+\begin{DoxyCompactList}\small\item\em Select IP function for a button. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1GUI_ab0eb8e6aa925893a89d443f2dbc5e9c5}{confirm\+Ip}} ()
+\begin{DoxyCompactList}\small\item\em Confirm IP function for a button. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1GUI_af270c8f771dafd9c077b1c7982cca37a}{select\+Port}} ()
+\begin{DoxyCompactList}\small\item\em Select Port function for a button. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1GUI_ad32561a3aca1ae0d26a7a98d8307afd5}{confirm\+Port}} ()
+\begin{DoxyCompactList}\small\item\em Confirm Port function for a button. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1GUI_abef60844ae750145830be9656746bf25}{draw\+Text}} (const std\+::string \&string, sf\+::\+Vector2f position, sf\+::\+Color color, int character\+Size, sf\+::\+Render\+Window \&window)
+\begin{DoxyCompactList}\small\item\em Draw the text on the screen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1GUI_a2861030006879fa7bb7e37baf0803600}{render\+Ip\+And\+Port}} ()
+\begin{DoxyCompactList}\small\item\em Draw the IP and the PORT on the window (connection page) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1GUI_a8223cd161bf0c89a5e90b0b738a48f3a}{init\+Paths}} ()
+\begin{DoxyCompactList}\small\item\em Init the path for items. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1GUI_a2d39ad9628f44de403264570b026e1aa}{run}} ()
+\begin{DoxyCompactList}\small\item\em Run functions for the main game. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1GUI_ac8d65f6a5585599a325a63912cb3e5fa}{display\+\_\+map}} ()
+\begin{DoxyCompactList}\small\item\em Render the tiles on the screen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1GUI_a037dfd3cea0f35a0992f1a5536d779c3}{display\+\_\+sky}} ()
+\begin{DoxyCompactList}\small\item\em Render the sky on the screen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1GUI_a19c3dc6a3e0575a3a591523aaa454d4a}{display\+\_\+trantor}} ()
+\begin{DoxyCompactList}\small\item\em Render all the trantorians. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1GUI_af1b2e33c5efe75df032eec7e065ddc88}{display\+\_\+eggs}} ()
+\begin{DoxyCompactList}\small\item\em Render all the Eggs. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1GUI_a433a8ff82965b9c7410ebe6e2584bc08}{display\+One\+Shot\+Animation}} ()
+\begin{DoxyCompactList}\small\item\em Display all the active animations. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1GUI_ab069f5bb268b451c616927906f9f5220}{handle\+Window\+Events}} ()
+\begin{DoxyCompactList}\small\item\em Handle main game window events. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1GUI_adc8c53a2bf43e26f1c8d48ce8b825ce7}{zoom\+Scroll}} ()
+\begin{DoxyCompactList}\small\item\em Handle zoom with scroll wheel. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1GUI_abe20a16cf9160b2f641feb2d69227839}{touch\+View}} ()
+\begin{DoxyCompactList}\small\item\em Handle view position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1GUI_ad0ce3e3a0ec702695cf2348576457aa2}{update\+Clock}} ()
+\begin{DoxyCompactList}\small\item\em Update the clock. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1GUI_abce8c364d536f47f729a341c7cd1da03}{update\+Trantor}} ()
+\begin{DoxyCompactList}\small\item\em Update the trantorians. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1GUI_aeea648a7de2f0367216188ee73033771}{update}} ()
+\begin{DoxyCompactList}\small\item\em Update function for thread. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1GUI_ab44a00061c443c5855ccd14f8e2520f1}{handle\+Tile\+Buttons}} ()
+\begin{DoxyCompactList}\small\item\em Handle tile buttons for tile selection. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1GUI_a561279ec0c4db4b2ba5b7089f6d1410c}{manage\+End\+Of\+Game}} ()
+\begin{DoxyCompactList}\small\item\em Manage end of game. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1GUI_acab4065dd0f755d2800fdef6b9023149}{end\+Game}} ()
+\begin{DoxyCompactList}\small\item\em Notify the \mbox{\hyperlink{classZappy_1_1GUI}{GUI}} that the game has ended. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1GUI_a424ceb7779068347804ea89f22dd41be}{init\+End\+Screen\+Buttons}} ()
+\begin{DoxyCompactList}\small\item\em Create the buttons for the end screen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1GUI_a608af6b972bd787a2f07185ce6b8d0eb}{quit\+Game\+To\+Menu}} ()
+\begin{DoxyCompactList}\small\item\em Returns to the main menu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1GUI_af19c20effb82a15f2a58442e58a35e06}{set\+Last\+Team\+Alive}} (const std\+::string \&team\+Name)
+\begin{DoxyCompactList}\small\item\em Set the Last \mbox{\hyperlink{classZappy_1_1Team}{Team}} Alive object. \end{DoxyCompactList}\item 
+sf\+::\+Vector2f \mbox{\hyperlink{classZappy_1_1GUI_a562a5d5e3ef95e339b263d6ffe68b2f5}{vclamp}} (sf\+::\+Vector2f val, sf\+::\+Vector2f min, sf\+::\+Vector2f max)
+\begin{DoxyCompactList}\small\item\em View clamp function. \end{DoxyCompactList}\item 
+sf\+::\+Color \mbox{\hyperlink{classZappy_1_1GUI_aa011d3fc7da9b3efccb047654d4a212d}{lerp\+Color}} (const sf\+::\+Color \&a, sf\+::\+Color \&b, float t)
+\begin{DoxyCompactList}\small\item\em Lerp function for colors. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1GUI_a4cdbdbe772b7ad2064abe5b61b69e158}{update\+Sky}} ()
+\begin{DoxyCompactList}\small\item\em Update function for the sky. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classZappy_1_1GUI_a1c44b94f33ad1b12b63d69208e26e2cf}{get\+\_\+dist\+\_\+to\+\_\+cam}} (sf\+::\+View view, \mbox{\hyperlink{classVector2D}{Vector2D}} pos)
+\begin{DoxyCompactList}\small\item\em Get the dist to cam object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1GUI_a8bd493fa900d5fc9421f55fc934514a2}{init\+Map}} (double sizeX, double sizeY)
+\begin{DoxyCompactList}\small\item\em Init map with the given size. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classZappy_1_1Map}{Map}} $>$ \mbox{\hyperlink{classZappy_1_1GUI_a13361260bff73f712a2e8905cf551f5f}{get\+Map}} () const
+\begin{DoxyCompactList}\small\item\em Get the \mbox{\hyperlink{classZappy_1_1Map}{Map}} object. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classZappy_1_1GUI_a9c77752944d5944a23860f19f824607f}{get\+Tile\+Scale}} () const
+\begin{DoxyCompactList}\small\item\em Get the \mbox{\hyperlink{classZappy_1_1Tile}{Tile}} Scale object. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classZappy_1_1Network}{Network}} $>$ \mbox{\hyperlink{classZappy_1_1GUI_aad0fd0336315d9acbf2b2a58c5f0c9b9}{get\+Network}} () const
+\begin{DoxyCompactList}\small\item\em Get the \mbox{\hyperlink{classZappy_1_1Network}{Network}} object. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classZappy_1_1GUI_a90d1574b6005c05849ac7a5f1e81ab0a}{get\+Time\+Unit}} () const
+\begin{DoxyCompactList}\small\item\em Get the Time Unit object. \end{DoxyCompactList}\item 
+sf\+::\+View \& \mbox{\hyperlink{classZappy_1_1GUI_a76cc15e6ee6e992ab0073916b56f532e}{get\+View}} ()
+\begin{DoxyCompactList}\small\item\em Get the View object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1GUI_ad3dcfa7c7c128a788b6df44c0d961d57}{set\+Time\+Unit}} (int unit)
+\begin{DoxyCompactList}\small\item\em Set the Time Unit object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1GUI_a8c24e218e8c6ba57e02d40c6313b6954}{set\+Player\+Nb}} (int number)
+\begin{DoxyCompactList}\small\item\em Set the Player Nb object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1GUI_a882c100cdbfc2a95d3cf57c3c4810f82}{set\+Map\+Size}} (sf\+::\+Vector2i size)
+\begin{DoxyCompactList}\small\item\em Set the \mbox{\hyperlink{classZappy_1_1Map}{Map}} Size object. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classZappy_1_1GUI_a09bd2e0d28334e51dfe896a5534a7878}{get\+Player\+Nb}} () const
+\begin{DoxyCompactList}\small\item\em Get the Player Nb object. \end{DoxyCompactList}\item 
+sf\+::\+Vector2i \mbox{\hyperlink{classZappy_1_1GUI_a91f1c9eaa3ca7503dc2227799a06ec7c}{get\+Map\+Size}} () const
+\begin{DoxyCompactList}\small\item\em Get the \mbox{\hyperlink{classZappy_1_1Map}{Map}} Size object. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classZappy_1_1TileInfo}{Tile\+Info}} $>$ \mbox{\hyperlink{classZappy_1_1GUI_ab44958184f69d3b07e4e950c410ef544}{get\+Tile\+Info}} () const
+\begin{DoxyCompactList}\small\item\em Get the \mbox{\hyperlink{classZappy_1_1Tile}{Tile}} Info object. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classZappy_1_1TrantorianInfo}{Trantorian\+Info}} $>$ \mbox{\hyperlink{classZappy_1_1GUI_aabcba54a4817a2c5bab9cc4408f28cca}{get\+Trantorian\+Info}} () const
+\begin{DoxyCompactList}\small\item\em Get the \mbox{\hyperlink{classZappy_1_1Trantorian}{Trantorian}} Info object. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classZappy_1_1BroadCastTab}{Broad\+Cast\+Tab}} $>$ \mbox{\hyperlink{classZappy_1_1GUI_a51e672b009363bab716b03a070ed9bb8}{get\+Broad\+Cast\+Tab}} () const
+\begin{DoxyCompactList}\small\item\em Get the Broad Cast Tab object. \end{DoxyCompactList}\item 
+sf\+::\+Vector2i \mbox{\hyperlink{classZappy_1_1GUI_a435566243a2c9ccd016f5781aeaea94d}{get\+Center\+Tile\+Pos}} (float px, float py, float originX, float originY, float tile\+Width, float tile\+Height)
+\begin{DoxyCompactList}\small\item\em Get the Center \mbox{\hyperlink{classZappy_1_1Tile}{Tile}} Pos object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1GUI_aff28dbaef4a2776c05e77bc736f7f999}{add\+To\+Animation\+Tab}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classZappy_1_1OneShotAnimationPlayer}{One\+Shot\+Animation\+Player}} $>$ animation)
+\begin{DoxyCompactList}\small\item\em Add an active animation to the animation tab. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classZappy_1_1Items}{Items}} $>$ $>$ \mbox{\hyperlink{classZappy_1_1GUI_a9a0f4884cadb191c0c9d8d998061f5fe}{\+\_\+items}}
+\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classZappy_1_1GUI_a8379a1e4911705b0b07351b6dfa8bb19}{sprite\+Paths}}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classZappy_1_1Network}{Network}} $>$ \mbox{\hyperlink{classZappy_1_1GUI_ae543ac9e7178949a7d40cc0d2dfe1e6b}{\+\_\+network\+Info}}
+\item 
+sf\+::\+Render\+Window \mbox{\hyperlink{classZappy_1_1GUI_a837e342bc1ac9c450ad3e793ef578b96}{\+\_\+window}}
+\item 
+sf\+::\+View \mbox{\hyperlink{classZappy_1_1GUI_a7de6e5fabfc13f5fddcd4d3d5af89d9c}{\+\_\+view}}
+\item 
+sf\+::\+Text \mbox{\hyperlink{classZappy_1_1GUI_af3683df81eceeeac6e4fd6bae43aaca3}{\+\_\+\+Time\+Text}}
+\item 
+sf\+::\+Font \mbox{\hyperlink{classZappy_1_1GUI_a660787353a8506f0095d00d42d6e72ec}{\+\_\+\+Time\+Font}}
+\item 
+\mbox{\hyperlink{classZappy_1_1MouseStatus}{Mouse\+Status}} \mbox{\hyperlink{classZappy_1_1GUI_ade5f4b2344164ad4e32f39c01c18c484}{\+\_\+mouse}} = \mbox{\hyperlink{classZappy_1_1MouseStatus}{Mouse\+Status}}(false)
+\item 
+\mbox{\hyperlink{classZappy_1_1MouseStatus}{Mouse\+Status}} \mbox{\hyperlink{classZappy_1_1GUI_a9d7d86345ebfc56e55707de3298ddbbd}{\+\_\+ui\+Mouse}} = \mbox{\hyperlink{classZappy_1_1MouseStatus}{Mouse\+Status}}(true)
+\item 
+sf\+::\+Vertex\+Array \mbox{\hyperlink{classZappy_1_1GUI_a802a7b4da739e44e428407bb559863b8}{background}}
+\item 
+sf\+::\+Clock \mbox{\hyperlink{classZappy_1_1GUI_ac0986ccc4e4e75d84cc558cd6a86a37f}{\+\_\+clock}} = sf\+::\+Clock()
+\item 
+float \mbox{\hyperlink{classZappy_1_1GUI_aa7d14d9c35489896af3491af30aaa6fa}{time}} = 6.\+0f
+\item 
+bool \mbox{\hyperlink{classZappy_1_1GUI_ae53fc9385ada4a1f0365ef375b189aff}{night}} = true
+\item 
+std\+::string \mbox{\hyperlink{classZappy_1_1GUI_a13f463ee42bbf593899cecbe60911701}{\+\_\+ip}} = \char`\"{}127.\+0.\+0.\+1\char`\"{}
+\item 
+size\+\_\+t \mbox{\hyperlink{classZappy_1_1GUI_a2148d986690c87f220caa16e62a7d76e}{\+\_\+port}} = 0
+\item 
+\mbox{\hyperlink{classZappy_1_1Drawable}{Drawable}} \mbox{\hyperlink{classZappy_1_1GUI_a93a802dd63ac7b7eeaf8b64ba9cf717e}{tile}} = \mbox{\hyperlink{classZappy_1_1Drawable}{Drawable}}(\char`\"{}assets/map.\+png\char`\"{})
+\item 
+\mbox{\hyperlink{classZappy_1_1Drawable}{Drawable}} \mbox{\hyperlink{classZappy_1_1GUI_a1efff3ea684965a08163b4a0c6dd9f36}{sky}} = \mbox{\hyperlink{classZappy_1_1Drawable}{Drawable}}(\char`\"{}assets/sky.\+jpg\char`\"{})
+\item 
+\mbox{\hyperlink{classZappy_1_1DrawRandom}{Draw\+Random}} \mbox{\hyperlink{classZappy_1_1GUI_a9cab0edd80cce7e9238dba701fae8536}{\+\_\+effect}} = \mbox{\hyperlink{classZappy_1_1DrawRandom}{Draw\+Random}}(40, 6, 0.\+2, 0.\+1)
+\item 
+sf\+::\+Clock \mbox{\hyperlink{classZappy_1_1GUI_a48826b9ebc2425ac53df6997d25a5c81}{\+\_\+framerate\+Clock}}
+\item 
+std\+::thread \mbox{\hyperlink{classZappy_1_1GUI_aea3c9c1f119b6039c6e6aa7d47d519d8}{\+\_\+recieve\+Thread}}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classZappy_1_1Map}{Map}} $>$ \mbox{\hyperlink{classZappy_1_1GUI_a69a6a9173c2ec07af0abcd3cbdf588c4}{\+\_\+map}}
+\item 
+float \mbox{\hyperlink{classZappy_1_1GUI_a71cdce6c26e51cdca146ea6cd2dbe796}{tile\+\_\+scale}} = 0.\+5
+\item 
+sf\+::\+Event \mbox{\hyperlink{classZappy_1_1GUI_aaca09872cec915b53ebb76a7730c0642}{\+\_\+event}}
+\item 
+int \mbox{\hyperlink{classZappy_1_1GUI_abe2368885dc4309b261939ef54c04549}{\+\_\+player\+Nb}} = 0
+\item 
+sf\+::\+Vector2i \mbox{\hyperlink{classZappy_1_1GUI_afa837a5d0962962a65d95566fb0b9992}{\+\_\+map\+Size}}
+\item 
+int \mbox{\hyperlink{classZappy_1_1GUI_a5a4e12e22fc83cb1e3dae7ff66528b3c}{\+\_\+time\+Unit}} = 1
+\item 
+bool \mbox{\hyperlink{classZappy_1_1GUI_ab288b86dc4fe2f745c9c324fccc6be1d}{\+\_\+dragging}}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classZappy_1_1TileInfo}{Tile\+Info}} $>$ \mbox{\hyperlink{classZappy_1_1GUI_a12ccf7357811d0e309f95dd3d74c77a8}{\+\_\+tile\+Info}}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classZappy_1_1TrantorianInfo}{Trantorian\+Info}} $>$ \mbox{\hyperlink{classZappy_1_1GUI_a86515a53899d3c71d3d6993363c46712}{\+\_\+trantorian\+Info}}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classZappy_1_1BroadCastTab}{Broad\+Cast\+Tab}} $>$ \mbox{\hyperlink{classZappy_1_1GUI_ab2d7ac5c77fa5ee6bb8ca1f59468ecb3}{\+\_\+broadcast\+Tab}}
+\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classZappy_1_1OneShotAnimationPlayer}{One\+Shot\+Animation\+Player}} $>$ $>$ \mbox{\hyperlink{classZappy_1_1GUI_ab43069d5a844dac6dc48473a887d7872}{\+\_\+one\+Shot\+Animation\+Tab}}
+\item 
+bool \mbox{\hyperlink{classZappy_1_1GUI_a051a9b09e43558f5ffee246bdeddb325}{\+\_\+is\+Ending}} = false
+\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classZappy_1_1Buttons}{Buttons}} $>$ $>$ \mbox{\hyperlink{classZappy_1_1GUI_ab7146c8b002873e377b95a070ea2c596}{\+\_\+end\+Screen\+Buttons}}
+\item 
+\mbox{\hyperlink{classZappy_1_1Drawable}{Drawable}} \mbox{\hyperlink{classZappy_1_1GUI_aec70c9fc263e2f9a40b9d57d12076247}{\+\_\+menu\+Bg}} = \mbox{\hyperlink{classZappy_1_1Drawable}{Drawable}}(\char`\"{}assets/menu\+\_\+bg.\+jpg\char`\"{})
+\item 
+\mbox{\hyperlink{classZappy_1_1Drawable}{Drawable}} \mbox{\hyperlink{classZappy_1_1GUI_a2b7a100c23990118d496f47040bfa9b3}{\+\_\+menu\+Bg\+Dark}} = \mbox{\hyperlink{classZappy_1_1Drawable}{Drawable}}(\char`\"{}assets/menu\+\_\+bg\+\_\+dark.\+jpg\char`\"{})
+\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classZappy_1_1Buttons}{Buttons}} $>$ $>$ \mbox{\hyperlink{classZappy_1_1GUI_a119b3723bac2faabe6686d1497748e9a}{\+\_\+menu\+Buttons}}
+\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classZappy_1_1Buttons}{Buttons}} $>$ $>$ \mbox{\hyperlink{classZappy_1_1GUI_ad00661035647d3c182c32ee5f5afa7d6}{\+\_\+connection\+Buttons}}
+\item 
+bool \mbox{\hyperlink{classZappy_1_1GUI_a18d88b96517ceac710680f523c9693dd}{\+\_\+is\+On\+Connection\+Page}} = false
+\item 
+bool \mbox{\hyperlink{classZappy_1_1GUI_acf1b6f45735aa28af75834aa7357df98}{\+\_\+has\+Connection\+Failed}} = false
+\item 
+bool \mbox{\hyperlink{classZappy_1_1GUI_aa191e2481bc97691e8889da99a5cbe23}{\+\_\+port\+Selected}} = false
+\item 
+bool \mbox{\hyperlink{classZappy_1_1GUI_ade8c814fadb342668c98cf31d3c4c5e7}{\+\_\+ip\+Selected}} = false
+\item 
+bool \mbox{\hyperlink{classZappy_1_1GUI_a0ab8ccc828bc7e311c0019cbfe45b2c0}{\+\_\+game\+Is\+Running}} = false
+\item 
+sf\+::\+Rectangle\+Shape \mbox{\hyperlink{classZappy_1_1GUI_ab406bc15868809b1e60c99aa9c1ff181}{\+\_\+ip\+Rect}}
+\item 
+sf\+::\+Rectangle\+Shape \mbox{\hyperlink{classZappy_1_1GUI_af6f0c96f8c275033560e8c04c6284319}{\+\_\+port\+Rect}}
+\item 
+sf\+::\+Text \mbox{\hyperlink{classZappy_1_1GUI_a482b4c0d3bbb3455333bdadec6e29e43}{\+\_\+menu\+Text}}
+\item 
+sf\+::\+Font \mbox{\hyperlink{classZappy_1_1GUI_a9c12108c27b90837580da1235919604c}{\+\_\+font}}
+\item 
+std\+::string \mbox{\hyperlink{classZappy_1_1GUI_aaf8b1b1b5fb252b525c8ef95031162c3}{\+\_\+tmp\+Ip}} = \char`\"{}\char`\"{}
+\item 
+std\+::string \mbox{\hyperlink{classZappy_1_1GUI_aeb8d87a1abb84cbbaeb3dfeb58056159}{\+\_\+tmp\+Port}} = \char`\"{}\char`\"{}
+\item 
+std\+::string \mbox{\hyperlink{classZappy_1_1GUI_a200bb2b87628a2341bb66e3fac0b58a2}{\+\_\+last\+Team\+Alive}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00038}{38}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classZappy_1_1GUI_ae78093746a7c0e69876d496cdcb67b26}\label{classZappy_1_1GUI_ae78093746a7c0e69876d496cdcb67b26}} 
+\index{Zappy::GUI@{Zappy::GUI}!GUI@{GUI}}
+\index{GUI@{GUI}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{GUI()}{GUI()}}
+{\footnotesize\ttfamily Zappy\+::\+GUI\+::\+GUI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8cpp_source_l00009}{9}} of file \mbox{\hyperlink{GUI_8cpp_source}{GUI.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_a4b6525fd6a58f0030cc92f8b06446f45}\label{classZappy_1_1GUI_a4b6525fd6a58f0030cc92f8b06446f45}} 
+\index{Zappy::GUI@{Zappy::GUI}!````~GUI@{$\sim$GUI}}
+\index{````~GUI@{$\sim$GUI}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{$\sim$GUI()}{~GUI()}}
+{\footnotesize\ttfamily Zappy\+::\+GUI\+::$\sim$\+GUI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8cpp_source_l00015}{15}} of file \mbox{\hyperlink{GUI_8cpp_source}{GUI.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classZappy_1_1GUI_aff28dbaef4a2776c05e77bc736f7f999}\label{classZappy_1_1GUI_aff28dbaef4a2776c05e77bc736f7f999}} 
+\index{Zappy::GUI@{Zappy::GUI}!addToAnimationTab@{addToAnimationTab}}
+\index{addToAnimationTab@{addToAnimationTab}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{addToAnimationTab()}{addToAnimationTab()}}
+{\footnotesize\ttfamily void Zappy\+::\+GUI\+::add\+To\+Animation\+Tab (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classZappy_1_1OneShotAnimationPlayer}{One\+Shot\+Animation\+Player}} $>$}]{animation }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Add an active animation to the animation tab. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em animation} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00481}{481}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_ab0eb8e6aa925893a89d443f2dbc5e9c5}\label{classZappy_1_1GUI_ab0eb8e6aa925893a89d443f2dbc5e9c5}} 
+\index{Zappy::GUI@{Zappy::GUI}!confirmIp@{confirmIp}}
+\index{confirmIp@{confirmIp}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{confirmIp()}{confirmIp()}}
+{\footnotesize\ttfamily void Zappy\+::\+GUI\+::confirm\+Ip (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Confirm IP function for a button. 
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8cpp_source_l00211}{211}} of file \mbox{\hyperlink{GUI_8cpp_source}{GUI.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_ad32561a3aca1ae0d26a7a98d8307afd5}\label{classZappy_1_1GUI_ad32561a3aca1ae0d26a7a98d8307afd5}} 
+\index{Zappy::GUI@{Zappy::GUI}!confirmPort@{confirmPort}}
+\index{confirmPort@{confirmPort}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{confirmPort()}{confirmPort()}}
+{\footnotesize\ttfamily void Zappy\+::\+GUI\+::confirm\+Port (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Confirm Port function for a button. 
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8cpp_source_l00222}{222}} of file \mbox{\hyperlink{GUI_8cpp_source}{GUI.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_ab8f0d597419840891dbe50ac8076c248}\label{classZappy_1_1GUI_ab8f0d597419840891dbe50ac8076c248}} 
+\index{Zappy::GUI@{Zappy::GUI}!connect@{connect}}
+\index{connect@{connect}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{connect()}{connect()}}
+{\footnotesize\ttfamily void Zappy\+::\+GUI\+::connect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Connect function for a button. 
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8cpp_source_l00184}{184}} of file \mbox{\hyperlink{GUI_8cpp_source}{GUI.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_af1b2e33c5efe75df032eec7e065ddc88}\label{classZappy_1_1GUI_af1b2e33c5efe75df032eec7e065ddc88}} 
+\index{Zappy::GUI@{Zappy::GUI}!display\_eggs@{display\_eggs}}
+\index{display\_eggs@{display\_eggs}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{display\_eggs()}{display\_eggs()}}
+{\footnotesize\ttfamily void Zappy\+::\+GUI\+::display\+\_\+eggs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Render all the Eggs. 
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8cpp_source_l00710}{710}} of file \mbox{\hyperlink{GUI_8cpp_source}{GUI.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_ac8d65f6a5585599a325a63912cb3e5fa}\label{classZappy_1_1GUI_ac8d65f6a5585599a325a63912cb3e5fa}} 
+\index{Zappy::GUI@{Zappy::GUI}!display\_map@{display\_map}}
+\index{display\_map@{display\_map}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{display\_map()}{display\_map()}}
+{\footnotesize\ttfamily void Zappy\+::\+GUI\+::display\+\_\+map (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Render the tiles on the screen. 
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8cpp_source_l00660}{660}} of file \mbox{\hyperlink{GUI_8cpp_source}{GUI.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_a037dfd3cea0f35a0992f1a5536d779c3}\label{classZappy_1_1GUI_a037dfd3cea0f35a0992f1a5536d779c3}} 
+\index{Zappy::GUI@{Zappy::GUI}!display\_sky@{display\_sky}}
+\index{display\_sky@{display\_sky}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{display\_sky()}{display\_sky()}}
+{\footnotesize\ttfamily void Zappy\+::\+GUI\+::display\+\_\+sky (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Render the sky on the screen. 
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8cpp_source_l00687}{687}} of file \mbox{\hyperlink{GUI_8cpp_source}{GUI.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_a19c3dc6a3e0575a3a591523aaa454d4a}\label{classZappy_1_1GUI_a19c3dc6a3e0575a3a591523aaa454d4a}} 
+\index{Zappy::GUI@{Zappy::GUI}!display\_trantor@{display\_trantor}}
+\index{display\_trantor@{display\_trantor}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{display\_trantor()}{display\_trantor()}}
+{\footnotesize\ttfamily void Zappy\+::\+GUI\+::display\+\_\+trantor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Render all the trantorians. 
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8cpp_source_l00701}{701}} of file \mbox{\hyperlink{GUI_8cpp_source}{GUI.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_a433a8ff82965b9c7410ebe6e2584bc08}\label{classZappy_1_1GUI_a433a8ff82965b9c7410ebe6e2584bc08}} 
+\index{Zappy::GUI@{Zappy::GUI}!displayOneShotAnimation@{displayOneShotAnimation}}
+\index{displayOneShotAnimation@{displayOneShotAnimation}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{displayOneShotAnimation()}{displayOneShotAnimation()}}
+{\footnotesize\ttfamily void Zappy\+::\+GUI\+::display\+One\+Shot\+Animation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Display all the active animations. 
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8cpp_source_l00719}{719}} of file \mbox{\hyperlink{GUI_8cpp_source}{GUI.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_abef60844ae750145830be9656746bf25}\label{classZappy_1_1GUI_abef60844ae750145830be9656746bf25}} 
+\index{Zappy::GUI@{Zappy::GUI}!drawText@{drawText}}
+\index{drawText@{drawText}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{drawText()}{drawText()}}
+{\footnotesize\ttfamily void Zappy\+::\+GUI\+::draw\+Text (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{string,  }\item[{sf\+::\+Vector2f}]{position,  }\item[{sf\+::\+Color}]{color,  }\item[{int}]{character\+Size,  }\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})}
+
+
+
+Draw the text on the screen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em string} & \\
+\hline
+{\em position} & \\
+\hline
+{\em color} & \\
+\hline
+{\em character\+Size} & \\
+\hline
+{\em window} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{GUI_8cpp_source_l00019}{19}} of file \mbox{\hyperlink{GUI_8cpp_source}{GUI.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_acab4065dd0f755d2800fdef6b9023149}\label{classZappy_1_1GUI_acab4065dd0f755d2800fdef6b9023149}} 
+\index{Zappy::GUI@{Zappy::GUI}!endGame@{endGame}}
+\index{endGame@{endGame}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{endGame()}{endGame()}}
+{\footnotesize\ttfamily void Zappy\+::\+GUI\+::end\+Game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Notify the \mbox{\hyperlink{classZappy_1_1GUI}{GUI}} that the game has ended. 
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00308}{308}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_a1c44b94f33ad1b12b63d69208e26e2cf}\label{classZappy_1_1GUI_a1c44b94f33ad1b12b63d69208e26e2cf}} 
+\index{Zappy::GUI@{Zappy::GUI}!get\_dist\_to\_cam@{get\_dist\_to\_cam}}
+\index{get\_dist\_to\_cam@{get\_dist\_to\_cam}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{get\_dist\_to\_cam()}{get\_dist\_to\_cam()}}
+{\footnotesize\ttfamily float Zappy\+::\+GUI\+::get\+\_\+dist\+\_\+to\+\_\+cam (\begin{DoxyParamCaption}\item[{sf\+::\+View}]{view,  }\item[{\mbox{\hyperlink{classVector2D}{Vector2D}}}]{pos }\end{DoxyParamCaption})}
+
+
+
+Get the dist to cam object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em view} & \\
+\hline
+{\em pos} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{GUI_8cpp_source_l00548}{548}} of file \mbox{\hyperlink{GUI_8cpp_source}{GUI.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_a51e672b009363bab716b03a070ed9bb8}\label{classZappy_1_1GUI_a51e672b009363bab716b03a070ed9bb8}} 
+\index{Zappy::GUI@{Zappy::GUI}!getBroadCastTab@{getBroadCastTab}}
+\index{getBroadCastTab@{getBroadCastTab}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{getBroadCastTab()}{getBroadCastTab()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classZappy_1_1BroadCastTab}{Broad\+Cast\+Tab}} $>$ Zappy\+::\+GUI\+::get\+Broad\+Cast\+Tab (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the Broad Cast Tab object. 
+
+\begin{DoxyReturn}{Returns}
+std\+::shared\+\_\+ptr$<$\+Broad\+Cast\+Tab$>$ 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00461}{461}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_a435566243a2c9ccd016f5781aeaea94d}\label{classZappy_1_1GUI_a435566243a2c9ccd016f5781aeaea94d}} 
+\index{Zappy::GUI@{Zappy::GUI}!getCenterTilePos@{getCenterTilePos}}
+\index{getCenterTilePos@{getCenterTilePos}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{getCenterTilePos()}{getCenterTilePos()}}
+{\footnotesize\ttfamily sf\+::\+Vector2i Zappy\+::\+GUI\+::get\+Center\+Tile\+Pos (\begin{DoxyParamCaption}\item[{float}]{px,  }\item[{float}]{py,  }\item[{float}]{originX,  }\item[{float}]{originY,  }\item[{float}]{tile\+Width,  }\item[{float}]{tile\+Height }\end{DoxyParamCaption})}
+
+
+
+Get the Center \mbox{\hyperlink{classZappy_1_1Tile}{Tile}} Pos object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em px} & \\
+\hline
+{\em py} & \\
+\hline
+{\em originX} & \\
+\hline
+{\em originY} & \\
+\hline
+{\em tile\+Width} & \\
+\hline
+{\em tile\+Height} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+sf\+::\+Vector2i 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{GUI_8cpp_source_l00553}{553}} of file \mbox{\hyperlink{GUI_8cpp_source}{GUI.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_a13361260bff73f712a2e8905cf551f5f}\label{classZappy_1_1GUI_a13361260bff73f712a2e8905cf551f5f}} 
+\index{Zappy::GUI@{Zappy::GUI}!getMap@{getMap}}
+\index{getMap@{getMap}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{getMap()}{getMap()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classZappy_1_1Map}{Map}} $>$ Zappy\+::\+GUI\+::get\+Map (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the \mbox{\hyperlink{classZappy_1_1Map}{Map}} object. 
+
+\begin{DoxyReturn}{Returns}
+std\+::shared\+\_\+ptr$<$\+Map$>$ 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00377}{377}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_a91f1c9eaa3ca7503dc2227799a06ec7c}\label{classZappy_1_1GUI_a91f1c9eaa3ca7503dc2227799a06ec7c}} 
+\index{Zappy::GUI@{Zappy::GUI}!getMapSize@{getMapSize}}
+\index{getMapSize@{getMapSize}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{getMapSize()}{getMapSize()}}
+{\footnotesize\ttfamily sf\+::\+Vector2i Zappy\+::\+GUI\+::get\+Map\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the \mbox{\hyperlink{classZappy_1_1Map}{Map}} Size object. 
+
+\begin{DoxyReturn}{Returns}
+sf\+::\+Vector2i 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00440}{440}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_aad0fd0336315d9acbf2b2a58c5f0c9b9}\label{classZappy_1_1GUI_aad0fd0336315d9acbf2b2a58c5f0c9b9}} 
+\index{Zappy::GUI@{Zappy::GUI}!getNetwork@{getNetwork}}
+\index{getNetwork@{getNetwork}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{getNetwork()}{getNetwork()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classZappy_1_1Network}{Network}} $>$ Zappy\+::\+GUI\+::get\+Network (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the \mbox{\hyperlink{classZappy_1_1Network}{Network}} object. 
+
+\begin{DoxyReturn}{Returns}
+std\+::shared\+\_\+ptr$<$\+Network$>$ 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00391}{391}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_a09bd2e0d28334e51dfe896a5534a7878}\label{classZappy_1_1GUI_a09bd2e0d28334e51dfe896a5534a7878}} 
+\index{Zappy::GUI@{Zappy::GUI}!getPlayerNb@{getPlayerNb}}
+\index{getPlayerNb@{getPlayerNb}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{getPlayerNb()}{getPlayerNb()}}
+{\footnotesize\ttfamily int Zappy\+::\+GUI\+::get\+Player\+Nb (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the Player Nb object. 
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00433}{433}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_ab44958184f69d3b07e4e950c410ef544}\label{classZappy_1_1GUI_ab44958184f69d3b07e4e950c410ef544}} 
+\index{Zappy::GUI@{Zappy::GUI}!getTileInfo@{getTileInfo}}
+\index{getTileInfo@{getTileInfo}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{getTileInfo()}{getTileInfo()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classZappy_1_1TileInfo}{Tile\+Info}} $>$ Zappy\+::\+GUI\+::get\+Tile\+Info (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the \mbox{\hyperlink{classZappy_1_1Tile}{Tile}} Info object. 
+
+\begin{DoxyReturn}{Returns}
+std\+::shared\+\_\+ptr$<$\+Tile\+Info$>$ 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00447}{447}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_a9c77752944d5944a23860f19f824607f}\label{classZappy_1_1GUI_a9c77752944d5944a23860f19f824607f}} 
+\index{Zappy::GUI@{Zappy::GUI}!getTileScale@{getTileScale}}
+\index{getTileScale@{getTileScale}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{getTileScale()}{getTileScale()}}
+{\footnotesize\ttfamily float Zappy\+::\+GUI\+::get\+Tile\+Scale (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the \mbox{\hyperlink{classZappy_1_1Tile}{Tile}} Scale object. 
+
+\begin{DoxyReturn}{Returns}
+float 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00384}{384}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_a90d1574b6005c05849ac7a5f1e81ab0a}\label{classZappy_1_1GUI_a90d1574b6005c05849ac7a5f1e81ab0a}} 
+\index{Zappy::GUI@{Zappy::GUI}!getTimeUnit@{getTimeUnit}}
+\index{getTimeUnit@{getTimeUnit}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{getTimeUnit()}{getTimeUnit()}}
+{\footnotesize\ttfamily int Zappy\+::\+GUI\+::get\+Time\+Unit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the Time Unit object. 
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00398}{398}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_aabcba54a4817a2c5bab9cc4408f28cca}\label{classZappy_1_1GUI_aabcba54a4817a2c5bab9cc4408f28cca}} 
+\index{Zappy::GUI@{Zappy::GUI}!getTrantorianInfo@{getTrantorianInfo}}
+\index{getTrantorianInfo@{getTrantorianInfo}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{getTrantorianInfo()}{getTrantorianInfo()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classZappy_1_1TrantorianInfo}{Trantorian\+Info}} $>$ Zappy\+::\+GUI\+::get\+Trantorian\+Info (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the \mbox{\hyperlink{classZappy_1_1Trantorian}{Trantorian}} Info object. 
+
+\begin{DoxyReturn}{Returns}
+std\+::shared\+\_\+ptr$<$\+Trantorian\+Info$>$ 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00454}{454}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_a76cc15e6ee6e992ab0073916b56f532e}\label{classZappy_1_1GUI_a76cc15e6ee6e992ab0073916b56f532e}} 
+\index{Zappy::GUI@{Zappy::GUI}!getView@{getView}}
+\index{getView@{getView}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{getView()}{getView()}}
+{\footnotesize\ttfamily sf\+::\+View \& Zappy\+::\+GUI\+::get\+View (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the View object. 
+
+\begin{DoxyReturn}{Returns}
+sf\+::\+View\& 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00405}{405}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_aa3743b9957e7d3a059c18ed70258215f}\label{classZappy_1_1GUI_aa3743b9957e7d3a059c18ed70258215f}} 
+\index{Zappy::GUI@{Zappy::GUI}!goBackToMenu@{goBackToMenu}}
+\index{goBackToMenu@{goBackToMenu}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{goBackToMenu()}{goBackToMenu()}}
+{\footnotesize\ttfamily void Zappy\+::\+GUI\+::go\+Back\+To\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Go back to the main menu. 
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8cpp_source_l00233}{233}} of file \mbox{\hyperlink{GUI_8cpp_source}{GUI.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_ae94bef7eeaacd5ace24665802ace7101}\label{classZappy_1_1GUI_ae94bef7eeaacd5ace24665802ace7101}} 
+\index{Zappy::GUI@{Zappy::GUI}!goToConnectionPage@{goToConnectionPage}}
+\index{goToConnectionPage@{goToConnectionPage}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{goToConnectionPage()}{goToConnectionPage()}}
+{\footnotesize\ttfamily void Zappy\+::\+GUI\+::go\+To\+Connection\+Page (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Go to the connection page from the menu. 
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8cpp_source_l00239}{239}} of file \mbox{\hyperlink{GUI_8cpp_source}{GUI.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_af54975720ede407e3aef801cb7e7ba42}\label{classZappy_1_1GUI_af54975720ede407e3aef801cb7e7ba42}} 
+\index{Zappy::GUI@{Zappy::GUI}!handleMenuEvents@{handleMenuEvents}}
+\index{handleMenuEvents@{handleMenuEvents}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{handleMenuEvents()}{handleMenuEvents()}}
+{\footnotesize\ttfamily void Zappy\+::\+GUI\+::handle\+Menu\+Events (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Handle the Events of the window from the menu. 
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8cpp_source_l00453}{453}} of file \mbox{\hyperlink{GUI_8cpp_source}{GUI.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_ab44a00061c443c5855ccd14f8e2520f1}\label{classZappy_1_1GUI_ab44a00061c443c5855ccd14f8e2520f1}} 
+\index{Zappy::GUI@{Zappy::GUI}!handleTileButtons@{handleTileButtons}}
+\index{handleTileButtons@{handleTileButtons}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{handleTileButtons()}{handleTileButtons()}}
+{\footnotesize\ttfamily void Zappy\+::\+GUI\+::handle\+Tile\+Buttons (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Handle tile buttons for tile selection. 
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8cpp_source_l00636}{636}} of file \mbox{\hyperlink{GUI_8cpp_source}{GUI.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_ab069f5bb268b451c616927906f9f5220}\label{classZappy_1_1GUI_ab069f5bb268b451c616927906f9f5220}} 
+\index{Zappy::GUI@{Zappy::GUI}!handleWindowEvents@{handleWindowEvents}}
+\index{handleWindowEvents@{handleWindowEvents}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{handleWindowEvents()}{handleWindowEvents()}}
+{\footnotesize\ttfamily void Zappy\+::\+GUI\+::handle\+Window\+Events (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Handle main game window events. 
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8cpp_source_l00483}{483}} of file \mbox{\hyperlink{GUI_8cpp_source}{GUI.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_ac0e5ba7653bd6622c1a0b67c0265d673}\label{classZappy_1_1GUI_ac0e5ba7653bd6622c1a0b67c0265d673}} 
+\index{Zappy::GUI@{Zappy::GUI}!init@{init}}
+\index{init@{init}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily void Zappy\+::\+GUI\+::init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Init needed components for the main game. 
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8cpp_source_l00428}{428}} of file \mbox{\hyperlink{GUI_8cpp_source}{GUI.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_a1c9f8fa602a44a84cca490871c06ade3}\label{classZappy_1_1GUI_a1c9f8fa602a44a84cca490871c06ade3}} 
+\index{Zappy::GUI@{Zappy::GUI}!initConnectionFields@{initConnectionFields}}
+\index{initConnectionFields@{initConnectionFields}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{initConnectionFields()}{initConnectionFields()}}
+{\footnotesize\ttfamily void Zappy\+::\+GUI\+::init\+Connection\+Fields (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Create the components for the connection page. 
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8cpp_source_l00028}{28}} of file \mbox{\hyperlink{GUI_8cpp_source}{GUI.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_a424ceb7779068347804ea89f22dd41be}\label{classZappy_1_1GUI_a424ceb7779068347804ea89f22dd41be}} 
+\index{Zappy::GUI@{Zappy::GUI}!initEndScreenButtons@{initEndScreenButtons}}
+\index{initEndScreenButtons@{initEndScreenButtons}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{initEndScreenButtons()}{initEndScreenButtons()}}
+{\footnotesize\ttfamily void Zappy\+::\+GUI\+::init\+End\+Screen\+Buttons (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Create the buttons for the end screen. 
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8cpp_source_l00396}{396}} of file \mbox{\hyperlink{GUI_8cpp_source}{GUI.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_a8bd493fa900d5fc9421f55fc934514a2}\label{classZappy_1_1GUI_a8bd493fa900d5fc9421f55fc934514a2}} 
+\index{Zappy::GUI@{Zappy::GUI}!initMap@{initMap}}
+\index{initMap@{initMap}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{initMap()}{initMap()}}
+{\footnotesize\ttfamily void Zappy\+::\+GUI\+::init\+Map (\begin{DoxyParamCaption}\item[{double}]{sizeX,  }\item[{double}]{sizeY }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Init map with the given size. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sizeX} & \\
+\hline
+{\em sizeY} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00370}{370}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_a5aca46fff0c863efd65ec56fae840a02}\label{classZappy_1_1GUI_a5aca46fff0c863efd65ec56fae840a02}} 
+\index{Zappy::GUI@{Zappy::GUI}!initMenuButtons@{initMenuButtons}}
+\index{initMenuButtons@{initMenuButtons}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{initMenuButtons()}{initMenuButtons()}}
+{\footnotesize\ttfamily void Zappy\+::\+GUI\+::init\+Menu\+Buttons (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Create the \mbox{\hyperlink{classZappy_1_1Buttons}{Buttons}} needed for the menu. 
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8cpp_source_l00064}{64}} of file \mbox{\hyperlink{GUI_8cpp_source}{GUI.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_a3b7e24bf5f5a06cba2b0768a5073df17}\label{classZappy_1_1GUI_a3b7e24bf5f5a06cba2b0768a5073df17}} 
+\index{Zappy::GUI@{Zappy::GUI}!initMenuConnectionButtons@{initMenuConnectionButtons}}
+\index{initMenuConnectionButtons@{initMenuConnectionButtons}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{initMenuConnectionButtons()}{initMenuConnectionButtons()}}
+{\footnotesize\ttfamily void Zappy\+::\+GUI\+::init\+Menu\+Connection\+Buttons (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Create the \mbox{\hyperlink{classZappy_1_1Buttons}{Buttons}} needed for the connection page. 
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8cpp_source_l00096}{96}} of file \mbox{\hyperlink{GUI_8cpp_source}{GUI.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_a8223cd161bf0c89a5e90b0b738a48f3a}\label{classZappy_1_1GUI_a8223cd161bf0c89a5e90b0b738a48f3a}} 
+\index{Zappy::GUI@{Zappy::GUI}!initPaths@{initPaths}}
+\index{initPaths@{initPaths}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{initPaths()}{initPaths()}}
+{\footnotesize\ttfamily void Zappy\+::\+GUI\+::init\+Paths (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Init the path for items. 
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8cpp_source_l00441}{441}} of file \mbox{\hyperlink{GUI_8cpp_source}{GUI.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_aa011d3fc7da9b3efccb047654d4a212d}\label{classZappy_1_1GUI_aa011d3fc7da9b3efccb047654d4a212d}} 
+\index{Zappy::GUI@{Zappy::GUI}!lerpColor@{lerpColor}}
+\index{lerpColor@{lerpColor}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{lerpColor()}{lerpColor()}}
+{\footnotesize\ttfamily sf\+::\+Color Zappy\+::\+GUI\+::lerp\+Color (\begin{DoxyParamCaption}\item[{const sf\+::\+Color \&}]{a,  }\item[{sf\+::\+Color \&}]{b,  }\item[{float}]{t }\end{DoxyParamCaption})}
+
+
+
+Lerp function for colors. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & \\
+\hline
+{\em b} & \\
+\hline
+{\em t} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+sf\+::\+Color 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{GUI_8cpp_source_l00338}{338}} of file \mbox{\hyperlink{GUI_8cpp_source}{GUI.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_a1c27fdc30bc1fc977189c3db58bf61e7}\label{classZappy_1_1GUI_a1c27fdc30bc1fc977189c3db58bf61e7}} 
+\index{Zappy::GUI@{Zappy::GUI}!manageConnectionPage@{manageConnectionPage}}
+\index{manageConnectionPage@{manageConnectionPage}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{manageConnectionPage()}{manageConnectionPage()}}
+{\footnotesize\ttfamily void Zappy\+::\+GUI\+::manage\+Connection\+Page (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Manage the Connection page. 
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8cpp_source_l00267}{267}} of file \mbox{\hyperlink{GUI_8cpp_source}{GUI.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_a561279ec0c4db4b2ba5b7089f6d1410c}\label{classZappy_1_1GUI_a561279ec0c4db4b2ba5b7089f6d1410c}} 
+\index{Zappy::GUI@{Zappy::GUI}!manageEndOfGame@{manageEndOfGame}}
+\index{manageEndOfGame@{manageEndOfGame}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{manageEndOfGame()}{manageEndOfGame()}}
+{\footnotesize\ttfamily void Zappy\+::\+GUI\+::manage\+End\+Of\+Game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Manage end of game. 
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8cpp_source_l00586}{586}} of file \mbox{\hyperlink{GUI_8cpp_source}{GUI.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_a3837df65ae2fbe68190758ed0746f1f9}\label{classZappy_1_1GUI_a3837df65ae2fbe68190758ed0746f1f9}} 
+\index{Zappy::GUI@{Zappy::GUI}!manageMenuPage@{manageMenuPage}}
+\index{manageMenuPage@{manageMenuPage}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{manageMenuPage()}{manageMenuPage()}}
+{\footnotesize\ttfamily void Zappy\+::\+GUI\+::manage\+Menu\+Page (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Manage the Menu page (START OR QUIT) 
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8cpp_source_l00256}{256}} of file \mbox{\hyperlink{GUI_8cpp_source}{GUI.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_aaac05f52631ff8bc32a95c80ba8f44a0}\label{classZappy_1_1GUI_aaac05f52631ff8bc32a95c80ba8f44a0}} 
+\index{Zappy::GUI@{Zappy::GUI}!quit@{quit}}
+\index{quit@{quit}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{quit()}{quit()}}
+{\footnotesize\ttfamily void Zappy\+::\+GUI\+::quit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Quit the game. 
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8cpp_source_l00228}{228}} of file \mbox{\hyperlink{GUI_8cpp_source}{GUI.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_a608af6b972bd787a2f07185ce6b8d0eb}\label{classZappy_1_1GUI_a608af6b972bd787a2f07185ce6b8d0eb}} 
+\index{Zappy::GUI@{Zappy::GUI}!quitGameToMenu@{quitGameToMenu}}
+\index{quitGameToMenu@{quitGameToMenu}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{quitGameToMenu()}{quitGameToMenu()}}
+{\footnotesize\ttfamily void Zappy\+::\+GUI\+::quit\+Game\+To\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns to the main menu. 
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8cpp_source_l00390}{390}} of file \mbox{\hyperlink{GUI_8cpp_source}{GUI.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_a2861030006879fa7bb7e37baf0803600}\label{classZappy_1_1GUI_a2861030006879fa7bb7e37baf0803600}} 
+\index{Zappy::GUI@{Zappy::GUI}!renderIpAndPort@{renderIpAndPort}}
+\index{renderIpAndPort@{renderIpAndPort}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{renderIpAndPort()}{renderIpAndPort()}}
+{\footnotesize\ttfamily void Zappy\+::\+GUI\+::render\+Ip\+And\+Port (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Draw the IP and the PORT on the window (connection page) 
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8cpp_source_l00244}{244}} of file \mbox{\hyperlink{GUI_8cpp_source}{GUI.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_a2d39ad9628f44de403264570b026e1aa}\label{classZappy_1_1GUI_a2d39ad9628f44de403264570b026e1aa}} 
+\index{Zappy::GUI@{Zappy::GUI}!run@{run}}
+\index{run@{run}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily void Zappy\+::\+GUI\+::run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Run functions for the main game. 
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8cpp_source_l00603}{603}} of file \mbox{\hyperlink{GUI_8cpp_source}{GUI.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_a1b26eea07f223956c95ad79e08989a31}\label{classZappy_1_1GUI_a1b26eea07f223956c95ad79e08989a31}} 
+\index{Zappy::GUI@{Zappy::GUI}!runGame@{runGame}}
+\index{runGame@{runGame}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{runGame()}{runGame()}}
+{\footnotesize\ttfamily void Zappy\+::\+GUI\+::run\+Game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Run the main game. 
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8cpp_source_l00291}{291}} of file \mbox{\hyperlink{GUI_8cpp_source}{GUI.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_a61d50c4e74513ea506bcb0d1fa14cb03}\label{classZappy_1_1GUI_a61d50c4e74513ea506bcb0d1fa14cb03}} 
+\index{Zappy::GUI@{Zappy::GUI}!runMenu@{runMenu}}
+\index{runMenu@{runMenu}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{runMenu()}{runMenu()}}
+{\footnotesize\ttfamily void Zappy\+::\+GUI\+::run\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Run function for the Menu. 
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8cpp_source_l00047}{47}} of file \mbox{\hyperlink{GUI_8cpp_source}{GUI.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_a3c5ebfc34dd401eba7f2891fdf9ec7a7}\label{classZappy_1_1GUI_a3c5ebfc34dd401eba7f2891fdf9ec7a7}} 
+\index{Zappy::GUI@{Zappy::GUI}!selectIp@{selectIp}}
+\index{selectIp@{selectIp}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{selectIp()}{selectIp()}}
+{\footnotesize\ttfamily void Zappy\+::\+GUI\+::select\+Ip (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Select IP function for a button. 
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8cpp_source_l00205}{205}} of file \mbox{\hyperlink{GUI_8cpp_source}{GUI.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_af270c8f771dafd9c077b1c7982cca37a}\label{classZappy_1_1GUI_af270c8f771dafd9c077b1c7982cca37a}} 
+\index{Zappy::GUI@{Zappy::GUI}!selectPort@{selectPort}}
+\index{selectPort@{selectPort}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{selectPort()}{selectPort()}}
+{\footnotesize\ttfamily void Zappy\+::\+GUI\+::select\+Port (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Select Port function for a button. 
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8cpp_source_l00216}{216}} of file \mbox{\hyperlink{GUI_8cpp_source}{GUI.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_af19c20effb82a15f2a58442e58a35e06}\label{classZappy_1_1GUI_af19c20effb82a15f2a58442e58a35e06}} 
+\index{Zappy::GUI@{Zappy::GUI}!setLastTeamAlive@{setLastTeamAlive}}
+\index{setLastTeamAlive@{setLastTeamAlive}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{setLastTeamAlive()}{setLastTeamAlive()}}
+{\footnotesize\ttfamily void Zappy\+::\+GUI\+::set\+Last\+Team\+Alive (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{team\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the Last \mbox{\hyperlink{classZappy_1_1Team}{Team}} Alive object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em team\+Name} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00327}{327}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_a882c100cdbfc2a95d3cf57c3c4810f82}\label{classZappy_1_1GUI_a882c100cdbfc2a95d3cf57c3c4810f82}} 
+\index{Zappy::GUI@{Zappy::GUI}!setMapSize@{setMapSize}}
+\index{setMapSize@{setMapSize}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{setMapSize()}{setMapSize()}}
+{\footnotesize\ttfamily void Zappy\+::\+GUI\+::set\+Map\+Size (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2i}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the \mbox{\hyperlink{classZappy_1_1Map}{Map}} Size object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00426}{426}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_a8c24e218e8c6ba57e02d40c6313b6954}\label{classZappy_1_1GUI_a8c24e218e8c6ba57e02d40c6313b6954}} 
+\index{Zappy::GUI@{Zappy::GUI}!setPlayerNb@{setPlayerNb}}
+\index{setPlayerNb@{setPlayerNb}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{setPlayerNb()}{setPlayerNb()}}
+{\footnotesize\ttfamily void Zappy\+::\+GUI\+::set\+Player\+Nb (\begin{DoxyParamCaption}\item[{int}]{number }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the Player Nb object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em number} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00419}{419}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_ad3dcfa7c7c128a788b6df44c0d961d57}\label{classZappy_1_1GUI_ad3dcfa7c7c128a788b6df44c0d961d57}} 
+\index{Zappy::GUI@{Zappy::GUI}!setTimeUnit@{setTimeUnit}}
+\index{setTimeUnit@{setTimeUnit}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{setTimeUnit()}{setTimeUnit()}}
+{\footnotesize\ttfamily void Zappy\+::\+GUI\+::set\+Time\+Unit (\begin{DoxyParamCaption}\item[{int}]{unit }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the Time Unit object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em unit} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00412}{412}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_abe20a16cf9160b2f641feb2d69227839}\label{classZappy_1_1GUI_abe20a16cf9160b2f641feb2d69227839}} 
+\index{Zappy::GUI@{Zappy::GUI}!touchView@{touchView}}
+\index{touchView@{touchView}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{touchView()}{touchView()}}
+{\footnotesize\ttfamily void Zappy\+::\+GUI\+::touch\+View (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Handle view position. 
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8cpp_source_l00526}{526}} of file \mbox{\hyperlink{GUI_8cpp_source}{GUI.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_aeea648a7de2f0367216188ee73033771}\label{classZappy_1_1GUI_aeea648a7de2f0367216188ee73033771}} 
+\index{Zappy::GUI@{Zappy::GUI}!update@{update}}
+\index{update@{update}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Zappy\+::\+GUI\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Update function for thread. 
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8cpp_source_l00564}{564}} of file \mbox{\hyperlink{GUI_8cpp_source}{GUI.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_ad0ce3e3a0ec702695cf2348576457aa2}\label{classZappy_1_1GUI_ad0ce3e3a0ec702695cf2348576457aa2}} 
+\index{Zappy::GUI@{Zappy::GUI}!updateClock@{updateClock}}
+\index{updateClock@{updateClock}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{updateClock()}{updateClock()}}
+{\footnotesize\ttfamily void Zappy\+::\+GUI\+::update\+Clock (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Update the clock. 
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8cpp_source_l00312}{312}} of file \mbox{\hyperlink{GUI_8cpp_source}{GUI.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_a4cdbdbe772b7ad2064abe5b61b69e158}\label{classZappy_1_1GUI_a4cdbdbe772b7ad2064abe5b61b69e158}} 
+\index{Zappy::GUI@{Zappy::GUI}!updateSky@{updateSky}}
+\index{updateSky@{updateSky}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{updateSky()}{updateSky()}}
+{\footnotesize\ttfamily void Zappy\+::\+GUI\+::update\+Sky (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Update function for the sky. 
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8cpp_source_l00347}{347}} of file \mbox{\hyperlink{GUI_8cpp_source}{GUI.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_abce8c364d536f47f729a341c7cd1da03}\label{classZappy_1_1GUI_abce8c364d536f47f729a341c7cd1da03}} 
+\index{Zappy::GUI@{Zappy::GUI}!updateTrantor@{updateTrantor}}
+\index{updateTrantor@{updateTrantor}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{updateTrantor()}{updateTrantor()}}
+{\footnotesize\ttfamily void Zappy\+::\+GUI\+::update\+Trantor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Update the trantorians. 
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8cpp_source_l00692}{692}} of file \mbox{\hyperlink{GUI_8cpp_source}{GUI.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_a562a5d5e3ef95e339b263d6ffe68b2f5}\label{classZappy_1_1GUI_a562a5d5e3ef95e339b263d6ffe68b2f5}} 
+\index{Zappy::GUI@{Zappy::GUI}!vclamp@{vclamp}}
+\index{vclamp@{vclamp}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{vclamp()}{vclamp()}}
+{\footnotesize\ttfamily sf\+::\+Vector2f Zappy\+::\+GUI\+::vclamp (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{val,  }\item[{sf\+::\+Vector2f}]{min,  }\item[{sf\+::\+Vector2f}]{max }\end{DoxyParamCaption})}
+
+
+
+View clamp function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em val} & \\
+\hline
+{\em min} & \\
+\hline
+{\em max} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+sf\+::\+Vector2f 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{GUI_8cpp_source_l00512}{512}} of file \mbox{\hyperlink{GUI_8cpp_source}{GUI.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_adc8c53a2bf43e26f1c8d48ce8b825ce7}\label{classZappy_1_1GUI_adc8c53a2bf43e26f1c8d48ce8b825ce7}} 
+\index{Zappy::GUI@{Zappy::GUI}!zoomScroll@{zoomScroll}}
+\index{zoomScroll@{zoomScroll}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{zoomScroll()}{zoomScroll()}}
+{\footnotesize\ttfamily void Zappy\+::\+GUI\+::zoom\+Scroll (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Handle zoom with scroll wheel. 
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8cpp_source_l00497}{497}} of file \mbox{\hyperlink{GUI_8cpp_source}{GUI.\+cpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classZappy_1_1GUI_ab2d7ac5c77fa5ee6bb8ca1f59468ecb3}\label{classZappy_1_1GUI_ab2d7ac5c77fa5ee6bb8ca1f59468ecb3}} 
+\index{Zappy::GUI@{Zappy::GUI}!\_broadcastTab@{\_broadcastTab}}
+\index{\_broadcastTab@{\_broadcastTab}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{\_broadcastTab}{\_broadcastTab}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classZappy_1_1BroadCastTab}{Broad\+Cast\+Tab}}$>$ Zappy\+::\+GUI\+::\+\_\+broadcast\+Tab\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00070}{70}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_ac0986ccc4e4e75d84cc558cd6a86a37f}\label{classZappy_1_1GUI_ac0986ccc4e4e75d84cc558cd6a86a37f}} 
+\index{Zappy::GUI@{Zappy::GUI}!\_clock@{\_clock}}
+\index{\_clock@{\_clock}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{\_clock}{\_clock}}
+{\footnotesize\ttfamily sf\+::\+Clock Zappy\+::\+GUI\+::\+\_\+clock = sf\+::\+Clock()\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00051}{51}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_ad00661035647d3c182c32ee5f5afa7d6}\label{classZappy_1_1GUI_ad00661035647d3c182c32ee5f5afa7d6}} 
+\index{Zappy::GUI@{Zappy::GUI}!\_connectionButtons@{\_connectionButtons}}
+\index{\_connectionButtons@{\_connectionButtons}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{\_connectionButtons}{\_connectionButtons}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classZappy_1_1Buttons}{Buttons}}$>$ $>$ Zappy\+::\+GUI\+::\+\_\+connection\+Buttons\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00078}{78}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_ab288b86dc4fe2f745c9c324fccc6be1d}\label{classZappy_1_1GUI_ab288b86dc4fe2f745c9c324fccc6be1d}} 
+\index{Zappy::GUI@{Zappy::GUI}!\_dragging@{\_dragging}}
+\index{\_dragging@{\_dragging}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{\_dragging}{\_dragging}}
+{\footnotesize\ttfamily bool Zappy\+::\+GUI\+::\+\_\+dragging\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00067}{67}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_a9cab0edd80cce7e9238dba701fae8536}\label{classZappy_1_1GUI_a9cab0edd80cce7e9238dba701fae8536}} 
+\index{Zappy::GUI@{Zappy::GUI}!\_effect@{\_effect}}
+\index{\_effect@{\_effect}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{\_effect}{\_effect}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classZappy_1_1DrawRandom}{Draw\+Random}} Zappy\+::\+GUI\+::\+\_\+effect = \mbox{\hyperlink{classZappy_1_1DrawRandom}{Draw\+Random}}(40, 6, 0.\+2, 0.\+1)\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00058}{58}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_ab7146c8b002873e377b95a070ea2c596}\label{classZappy_1_1GUI_ab7146c8b002873e377b95a070ea2c596}} 
+\index{Zappy::GUI@{Zappy::GUI}!\_endScreenButtons@{\_endScreenButtons}}
+\index{\_endScreenButtons@{\_endScreenButtons}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{\_endScreenButtons}{\_endScreenButtons}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classZappy_1_1Buttons}{Buttons}}$>$ $>$ Zappy\+::\+GUI\+::\+\_\+end\+Screen\+Buttons\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00073}{73}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_aaca09872cec915b53ebb76a7730c0642}\label{classZappy_1_1GUI_aaca09872cec915b53ebb76a7730c0642}} 
+\index{Zappy::GUI@{Zappy::GUI}!\_event@{\_event}}
+\index{\_event@{\_event}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{\_event}{\_event}}
+{\footnotesize\ttfamily sf\+::\+Event Zappy\+::\+GUI\+::\+\_\+event\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00063}{63}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_a9c12108c27b90837580da1235919604c}\label{classZappy_1_1GUI_a9c12108c27b90837580da1235919604c}} 
+\index{Zappy::GUI@{Zappy::GUI}!\_font@{\_font}}
+\index{\_font@{\_font}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{\_font}{\_font}}
+{\footnotesize\ttfamily sf\+::\+Font Zappy\+::\+GUI\+::\+\_\+font\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00087}{87}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_a48826b9ebc2425ac53df6997d25a5c81}\label{classZappy_1_1GUI_a48826b9ebc2425ac53df6997d25a5c81}} 
+\index{Zappy::GUI@{Zappy::GUI}!\_framerateClock@{\_framerateClock}}
+\index{\_framerateClock@{\_framerateClock}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{\_framerateClock}{\_framerateClock}}
+{\footnotesize\ttfamily sf\+::\+Clock Zappy\+::\+GUI\+::\+\_\+framerate\+Clock\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00059}{59}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_a0ab8ccc828bc7e311c0019cbfe45b2c0}\label{classZappy_1_1GUI_a0ab8ccc828bc7e311c0019cbfe45b2c0}} 
+\index{Zappy::GUI@{Zappy::GUI}!\_gameIsRunning@{\_gameIsRunning}}
+\index{\_gameIsRunning@{\_gameIsRunning}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{\_gameIsRunning}{\_gameIsRunning}}
+{\footnotesize\ttfamily bool Zappy\+::\+GUI\+::\+\_\+game\+Is\+Running = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00083}{83}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_acf1b6f45735aa28af75834aa7357df98}\label{classZappy_1_1GUI_acf1b6f45735aa28af75834aa7357df98}} 
+\index{Zappy::GUI@{Zappy::GUI}!\_hasConnectionFailed@{\_hasConnectionFailed}}
+\index{\_hasConnectionFailed@{\_hasConnectionFailed}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{\_hasConnectionFailed}{\_hasConnectionFailed}}
+{\footnotesize\ttfamily bool Zappy\+::\+GUI\+::\+\_\+has\+Connection\+Failed = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00080}{80}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_a13f463ee42bbf593899cecbe60911701}\label{classZappy_1_1GUI_a13f463ee42bbf593899cecbe60911701}} 
+\index{Zappy::GUI@{Zappy::GUI}!\_ip@{\_ip}}
+\index{\_ip@{\_ip}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{\_ip}{\_ip}}
+{\footnotesize\ttfamily std\+::string Zappy\+::\+GUI\+::\+\_\+ip = \char`\"{}127.\+0.\+0.\+1\char`\"{}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00054}{54}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_ab406bc15868809b1e60c99aa9c1ff181}\label{classZappy_1_1GUI_ab406bc15868809b1e60c99aa9c1ff181}} 
+\index{Zappy::GUI@{Zappy::GUI}!\_ipRect@{\_ipRect}}
+\index{\_ipRect@{\_ipRect}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{\_ipRect}{\_ipRect}}
+{\footnotesize\ttfamily sf\+::\+Rectangle\+Shape Zappy\+::\+GUI\+::\+\_\+ip\+Rect\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00084}{84}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_ade8c814fadb342668c98cf31d3c4c5e7}\label{classZappy_1_1GUI_ade8c814fadb342668c98cf31d3c4c5e7}} 
+\index{Zappy::GUI@{Zappy::GUI}!\_ipSelected@{\_ipSelected}}
+\index{\_ipSelected@{\_ipSelected}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{\_ipSelected}{\_ipSelected}}
+{\footnotesize\ttfamily bool Zappy\+::\+GUI\+::\+\_\+ip\+Selected = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00082}{82}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_a051a9b09e43558f5ffee246bdeddb325}\label{classZappy_1_1GUI_a051a9b09e43558f5ffee246bdeddb325}} 
+\index{Zappy::GUI@{Zappy::GUI}!\_isEnding@{\_isEnding}}
+\index{\_isEnding@{\_isEnding}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{\_isEnding}{\_isEnding}}
+{\footnotesize\ttfamily bool Zappy\+::\+GUI\+::\+\_\+is\+Ending = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00072}{72}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_a18d88b96517ceac710680f523c9693dd}\label{classZappy_1_1GUI_a18d88b96517ceac710680f523c9693dd}} 
+\index{Zappy::GUI@{Zappy::GUI}!\_isOnConnectionPage@{\_isOnConnectionPage}}
+\index{\_isOnConnectionPage@{\_isOnConnectionPage}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{\_isOnConnectionPage}{\_isOnConnectionPage}}
+{\footnotesize\ttfamily bool Zappy\+::\+GUI\+::\+\_\+is\+On\+Connection\+Page = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00079}{79}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_a9a0f4884cadb191c0c9d8d998061f5fe}\label{classZappy_1_1GUI_a9a0f4884cadb191c0c9d8d998061f5fe}} 
+\index{Zappy::GUI@{Zappy::GUI}!\_items@{\_items}}
+\index{\_items@{\_items}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{\_items}{\_items}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classZappy_1_1Items}{Items}}$>$ $>$ Zappy\+::\+GUI\+::\+\_\+items\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00041}{41}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_a200bb2b87628a2341bb66e3fac0b58a2}\label{classZappy_1_1GUI_a200bb2b87628a2341bb66e3fac0b58a2}} 
+\index{Zappy::GUI@{Zappy::GUI}!\_lastTeamAlive@{\_lastTeamAlive}}
+\index{\_lastTeamAlive@{\_lastTeamAlive}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{\_lastTeamAlive}{\_lastTeamAlive}}
+{\footnotesize\ttfamily std\+::string Zappy\+::\+GUI\+::\+\_\+last\+Team\+Alive\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00090}{90}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_a69a6a9173c2ec07af0abcd3cbdf588c4}\label{classZappy_1_1GUI_a69a6a9173c2ec07af0abcd3cbdf588c4}} 
+\index{Zappy::GUI@{Zappy::GUI}!\_map@{\_map}}
+\index{\_map@{\_map}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{\_map}{\_map}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classZappy_1_1Map}{Map}}$>$ Zappy\+::\+GUI\+::\+\_\+map\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00061}{61}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_afa837a5d0962962a65d95566fb0b9992}\label{classZappy_1_1GUI_afa837a5d0962962a65d95566fb0b9992}} 
+\index{Zappy::GUI@{Zappy::GUI}!\_mapSize@{\_mapSize}}
+\index{\_mapSize@{\_mapSize}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{\_mapSize}{\_mapSize}}
+{\footnotesize\ttfamily sf\+::\+Vector2i Zappy\+::\+GUI\+::\+\_\+map\+Size\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00065}{65}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_aec70c9fc263e2f9a40b9d57d12076247}\label{classZappy_1_1GUI_aec70c9fc263e2f9a40b9d57d12076247}} 
+\index{Zappy::GUI@{Zappy::GUI}!\_menuBg@{\_menuBg}}
+\index{\_menuBg@{\_menuBg}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{\_menuBg}{\_menuBg}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classZappy_1_1Drawable}{Drawable}} Zappy\+::\+GUI\+::\+\_\+menu\+Bg = \mbox{\hyperlink{classZappy_1_1Drawable}{Drawable}}(\char`\"{}assets/menu\+\_\+bg.\+jpg\char`\"{})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00075}{75}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_a2b7a100c23990118d496f47040bfa9b3}\label{classZappy_1_1GUI_a2b7a100c23990118d496f47040bfa9b3}} 
+\index{Zappy::GUI@{Zappy::GUI}!\_menuBgDark@{\_menuBgDark}}
+\index{\_menuBgDark@{\_menuBgDark}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{\_menuBgDark}{\_menuBgDark}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classZappy_1_1Drawable}{Drawable}} Zappy\+::\+GUI\+::\+\_\+menu\+Bg\+Dark = \mbox{\hyperlink{classZappy_1_1Drawable}{Drawable}}(\char`\"{}assets/menu\+\_\+bg\+\_\+dark.\+jpg\char`\"{})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00076}{76}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_a119b3723bac2faabe6686d1497748e9a}\label{classZappy_1_1GUI_a119b3723bac2faabe6686d1497748e9a}} 
+\index{Zappy::GUI@{Zappy::GUI}!\_menuButtons@{\_menuButtons}}
+\index{\_menuButtons@{\_menuButtons}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{\_menuButtons}{\_menuButtons}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classZappy_1_1Buttons}{Buttons}}$>$ $>$ Zappy\+::\+GUI\+::\+\_\+menu\+Buttons\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00077}{77}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_a482b4c0d3bbb3455333bdadec6e29e43}\label{classZappy_1_1GUI_a482b4c0d3bbb3455333bdadec6e29e43}} 
+\index{Zappy::GUI@{Zappy::GUI}!\_menuText@{\_menuText}}
+\index{\_menuText@{\_menuText}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{\_menuText}{\_menuText}}
+{\footnotesize\ttfamily sf\+::\+Text Zappy\+::\+GUI\+::\+\_\+menu\+Text\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00086}{86}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_ade5f4b2344164ad4e32f39c01c18c484}\label{classZappy_1_1GUI_ade5f4b2344164ad4e32f39c01c18c484}} 
+\index{Zappy::GUI@{Zappy::GUI}!\_mouse@{\_mouse}}
+\index{\_mouse@{\_mouse}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{\_mouse}{\_mouse}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classZappy_1_1MouseStatus}{Mouse\+Status}} Zappy\+::\+GUI\+::\+\_\+mouse = \mbox{\hyperlink{classZappy_1_1MouseStatus}{Mouse\+Status}}(false)\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00048}{48}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_ae543ac9e7178949a7d40cc0d2dfe1e6b}\label{classZappy_1_1GUI_ae543ac9e7178949a7d40cc0d2dfe1e6b}} 
+\index{Zappy::GUI@{Zappy::GUI}!\_networkInfo@{\_networkInfo}}
+\index{\_networkInfo@{\_networkInfo}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{\_networkInfo}{\_networkInfo}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classZappy_1_1Network}{Network}}$>$ Zappy\+::\+GUI\+::\+\_\+network\+Info\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00043}{43}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_ab43069d5a844dac6dc48473a887d7872}\label{classZappy_1_1GUI_ab43069d5a844dac6dc48473a887d7872}} 
+\index{Zappy::GUI@{Zappy::GUI}!\_oneShotAnimationTab@{\_oneShotAnimationTab}}
+\index{\_oneShotAnimationTab@{\_oneShotAnimationTab}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{\_oneShotAnimationTab}{\_oneShotAnimationTab}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classZappy_1_1OneShotAnimationPlayer}{One\+Shot\+Animation\+Player}}$>$ $>$ Zappy\+::\+GUI\+::\+\_\+one\+Shot\+Animation\+Tab\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00071}{71}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_abe2368885dc4309b261939ef54c04549}\label{classZappy_1_1GUI_abe2368885dc4309b261939ef54c04549}} 
+\index{Zappy::GUI@{Zappy::GUI}!\_playerNb@{\_playerNb}}
+\index{\_playerNb@{\_playerNb}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{\_playerNb}{\_playerNb}}
+{\footnotesize\ttfamily int Zappy\+::\+GUI\+::\+\_\+player\+Nb = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00064}{64}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_a2148d986690c87f220caa16e62a7d76e}\label{classZappy_1_1GUI_a2148d986690c87f220caa16e62a7d76e}} 
+\index{Zappy::GUI@{Zappy::GUI}!\_port@{\_port}}
+\index{\_port@{\_port}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{\_port}{\_port}}
+{\footnotesize\ttfamily size\+\_\+t Zappy\+::\+GUI\+::\+\_\+port = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00055}{55}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_af6f0c96f8c275033560e8c04c6284319}\label{classZappy_1_1GUI_af6f0c96f8c275033560e8c04c6284319}} 
+\index{Zappy::GUI@{Zappy::GUI}!\_portRect@{\_portRect}}
+\index{\_portRect@{\_portRect}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{\_portRect}{\_portRect}}
+{\footnotesize\ttfamily sf\+::\+Rectangle\+Shape Zappy\+::\+GUI\+::\+\_\+port\+Rect\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00085}{85}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_aa191e2481bc97691e8889da99a5cbe23}\label{classZappy_1_1GUI_aa191e2481bc97691e8889da99a5cbe23}} 
+\index{Zappy::GUI@{Zappy::GUI}!\_portSelected@{\_portSelected}}
+\index{\_portSelected@{\_portSelected}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{\_portSelected}{\_portSelected}}
+{\footnotesize\ttfamily bool Zappy\+::\+GUI\+::\+\_\+port\+Selected = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00081}{81}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_aea3c9c1f119b6039c6e6aa7d47d519d8}\label{classZappy_1_1GUI_aea3c9c1f119b6039c6e6aa7d47d519d8}} 
+\index{Zappy::GUI@{Zappy::GUI}!\_recieveThread@{\_recieveThread}}
+\index{\_recieveThread@{\_recieveThread}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{\_recieveThread}{\_recieveThread}}
+{\footnotesize\ttfamily std\+::thread Zappy\+::\+GUI\+::\+\_\+recieve\+Thread\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00060}{60}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_a12ccf7357811d0e309f95dd3d74c77a8}\label{classZappy_1_1GUI_a12ccf7357811d0e309f95dd3d74c77a8}} 
+\index{Zappy::GUI@{Zappy::GUI}!\_tileInfo@{\_tileInfo}}
+\index{\_tileInfo@{\_tileInfo}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{\_tileInfo}{\_tileInfo}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classZappy_1_1TileInfo}{Tile\+Info}}$>$ Zappy\+::\+GUI\+::\+\_\+tile\+Info\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00068}{68}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_a660787353a8506f0095d00d42d6e72ec}\label{classZappy_1_1GUI_a660787353a8506f0095d00d42d6e72ec}} 
+\index{Zappy::GUI@{Zappy::GUI}!\_TimeFont@{\_TimeFont}}
+\index{\_TimeFont@{\_TimeFont}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{\_TimeFont}{\_TimeFont}}
+{\footnotesize\ttfamily sf\+::\+Font Zappy\+::\+GUI\+::\+\_\+\+Time\+Font\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00047}{47}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_af3683df81eceeeac6e4fd6bae43aaca3}\label{classZappy_1_1GUI_af3683df81eceeeac6e4fd6bae43aaca3}} 
+\index{Zappy::GUI@{Zappy::GUI}!\_TimeText@{\_TimeText}}
+\index{\_TimeText@{\_TimeText}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{\_TimeText}{\_TimeText}}
+{\footnotesize\ttfamily sf\+::\+Text Zappy\+::\+GUI\+::\+\_\+\+Time\+Text\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00046}{46}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_a5a4e12e22fc83cb1e3dae7ff66528b3c}\label{classZappy_1_1GUI_a5a4e12e22fc83cb1e3dae7ff66528b3c}} 
+\index{Zappy::GUI@{Zappy::GUI}!\_timeUnit@{\_timeUnit}}
+\index{\_timeUnit@{\_timeUnit}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{\_timeUnit}{\_timeUnit}}
+{\footnotesize\ttfamily int Zappy\+::\+GUI\+::\+\_\+time\+Unit = 1\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00066}{66}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_aaf8b1b1b5fb252b525c8ef95031162c3}\label{classZappy_1_1GUI_aaf8b1b1b5fb252b525c8ef95031162c3}} 
+\index{Zappy::GUI@{Zappy::GUI}!\_tmpIp@{\_tmpIp}}
+\index{\_tmpIp@{\_tmpIp}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{\_tmpIp}{\_tmpIp}}
+{\footnotesize\ttfamily std\+::string Zappy\+::\+GUI\+::\+\_\+tmp\+Ip = \char`\"{}\char`\"{}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00088}{88}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_aeb8d87a1abb84cbbaeb3dfeb58056159}\label{classZappy_1_1GUI_aeb8d87a1abb84cbbaeb3dfeb58056159}} 
+\index{Zappy::GUI@{Zappy::GUI}!\_tmpPort@{\_tmpPort}}
+\index{\_tmpPort@{\_tmpPort}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{\_tmpPort}{\_tmpPort}}
+{\footnotesize\ttfamily std\+::string Zappy\+::\+GUI\+::\+\_\+tmp\+Port = \char`\"{}\char`\"{}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00089}{89}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_a86515a53899d3c71d3d6993363c46712}\label{classZappy_1_1GUI_a86515a53899d3c71d3d6993363c46712}} 
+\index{Zappy::GUI@{Zappy::GUI}!\_trantorianInfo@{\_trantorianInfo}}
+\index{\_trantorianInfo@{\_trantorianInfo}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{\_trantorianInfo}{\_trantorianInfo}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classZappy_1_1TrantorianInfo}{Trantorian\+Info}}$>$ Zappy\+::\+GUI\+::\+\_\+trantorian\+Info\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00069}{69}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_a9d7d86345ebfc56e55707de3298ddbbd}\label{classZappy_1_1GUI_a9d7d86345ebfc56e55707de3298ddbbd}} 
+\index{Zappy::GUI@{Zappy::GUI}!\_uiMouse@{\_uiMouse}}
+\index{\_uiMouse@{\_uiMouse}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{\_uiMouse}{\_uiMouse}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classZappy_1_1MouseStatus}{Mouse\+Status}} Zappy\+::\+GUI\+::\+\_\+ui\+Mouse = \mbox{\hyperlink{classZappy_1_1MouseStatus}{Mouse\+Status}}(true)\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00049}{49}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_a7de6e5fabfc13f5fddcd4d3d5af89d9c}\label{classZappy_1_1GUI_a7de6e5fabfc13f5fddcd4d3d5af89d9c}} 
+\index{Zappy::GUI@{Zappy::GUI}!\_view@{\_view}}
+\index{\_view@{\_view}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{\_view}{\_view}}
+{\footnotesize\ttfamily sf\+::\+View Zappy\+::\+GUI\+::\+\_\+view\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00045}{45}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_a837e342bc1ac9c450ad3e793ef578b96}\label{classZappy_1_1GUI_a837e342bc1ac9c450ad3e793ef578b96}} 
+\index{Zappy::GUI@{Zappy::GUI}!\_window@{\_window}}
+\index{\_window@{\_window}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{\_window}{\_window}}
+{\footnotesize\ttfamily sf\+::\+Render\+Window Zappy\+::\+GUI\+::\+\_\+window\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00044}{44}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_a802a7b4da739e44e428407bb559863b8}\label{classZappy_1_1GUI_a802a7b4da739e44e428407bb559863b8}} 
+\index{Zappy::GUI@{Zappy::GUI}!background@{background}}
+\index{background@{background}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{background}{background}}
+{\footnotesize\ttfamily sf\+::\+Vertex\+Array Zappy\+::\+GUI\+::background\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00050}{50}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_ae53fc9385ada4a1f0365ef375b189aff}\label{classZappy_1_1GUI_ae53fc9385ada4a1f0365ef375b189aff}} 
+\index{Zappy::GUI@{Zappy::GUI}!night@{night}}
+\index{night@{night}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{night}{night}}
+{\footnotesize\ttfamily bool Zappy\+::\+GUI\+::night = true\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00053}{53}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_a1efff3ea684965a08163b4a0c6dd9f36}\label{classZappy_1_1GUI_a1efff3ea684965a08163b4a0c6dd9f36}} 
+\index{Zappy::GUI@{Zappy::GUI}!sky@{sky}}
+\index{sky@{sky}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{sky}{sky}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classZappy_1_1Drawable}{Drawable}} Zappy\+::\+GUI\+::sky = \mbox{\hyperlink{classZappy_1_1Drawable}{Drawable}}(\char`\"{}assets/sky.\+jpg\char`\"{})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00057}{57}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_a8379a1e4911705b0b07351b6dfa8bb19}\label{classZappy_1_1GUI_a8379a1e4911705b0b07351b6dfa8bb19}} 
+\index{Zappy::GUI@{Zappy::GUI}!spritePaths@{spritePaths}}
+\index{spritePaths@{spritePaths}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{spritePaths}{spritePaths}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::string$>$ Zappy\+::\+GUI\+::sprite\+Paths\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00042}{42}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_a93a802dd63ac7b7eeaf8b64ba9cf717e}\label{classZappy_1_1GUI_a93a802dd63ac7b7eeaf8b64ba9cf717e}} 
+\index{Zappy::GUI@{Zappy::GUI}!tile@{tile}}
+\index{tile@{tile}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{tile}{tile}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classZappy_1_1Drawable}{Drawable}} Zappy\+::\+GUI\+::tile = \mbox{\hyperlink{classZappy_1_1Drawable}{Drawable}}(\char`\"{}assets/map.\+png\char`\"{})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00056}{56}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_a71cdce6c26e51cdca146ea6cd2dbe796}\label{classZappy_1_1GUI_a71cdce6c26e51cdca146ea6cd2dbe796}} 
+\index{Zappy::GUI@{Zappy::GUI}!tile\_scale@{tile\_scale}}
+\index{tile\_scale@{tile\_scale}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{tile\_scale}{tile\_scale}}
+{\footnotesize\ttfamily float Zappy\+::\+GUI\+::tile\+\_\+scale = 0.\+5\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00062}{62}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1GUI_aa7d14d9c35489896af3491af30aaa6fa}\label{classZappy_1_1GUI_aa7d14d9c35489896af3491af30aaa6fa}} 
+\index{Zappy::GUI@{Zappy::GUI}!time@{time}}
+\index{time@{time}!Zappy::GUI@{Zappy::GUI}}
+\doxysubsubsection{\texorpdfstring{time}{time}}
+{\footnotesize\ttfamily float Zappy\+::\+GUI\+::time = 6.\+0f\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{GUI_8hpp_source_l00052}{52}} of file \mbox{\hyperlink{GUI_8hpp_source}{GUI.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{GUI_8hpp}{GUI.\+hpp}}\item 
+\mbox{\hyperlink{GUI_8cpp}{GUI.\+cpp}}\end{DoxyCompactItemize}

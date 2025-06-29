@@ -1,0 +1,36 @@
+\hypertarget{Error_8hpp_source}{}\doxysection{Error.\+hpp}
+\label{Error_8hpp_source}\index{Error.hpp@{Error.hpp}}
+\mbox{\hyperlink{Error_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{Error_8hpp_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{Error_8hpp_source_l00002}00002\ \textcolor{comment}{**\ EPITECH\ PROJECT,\ 2025}}
+\DoxyCodeLine{\Hypertarget{Error_8hpp_source_l00003}00003\ \textcolor{comment}{**\ Zappy}}
+\DoxyCodeLine{\Hypertarget{Error_8hpp_source_l00004}00004\ \textcolor{comment}{**\ File\ description:}}
+\DoxyCodeLine{\Hypertarget{Error_8hpp_source_l00005}00005\ \textcolor{comment}{**\ Error\ header}}
+\DoxyCodeLine{\Hypertarget{Error_8hpp_source_l00006}00006\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{Error_8hpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{Error_8hpp_source_l00008}00008\ \textcolor{preprocessor}{\#ifndef\ ERROR\_H}}
+\DoxyCodeLine{\Hypertarget{Error_8hpp_source_l00009}00009\ \textcolor{preprocessor}{\ \ \ \ \#define\ ERROR\_H}}
+\DoxyCodeLine{\Hypertarget{Error_8hpp_source_l00010}00010\ \textcolor{preprocessor}{\ \ \ \ \#include\ <exception>}}
+\DoxyCodeLine{\Hypertarget{Error_8hpp_source_l00011}00011\ \textcolor{preprocessor}{\ \ \ \ \#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{Error_8hpp_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{Error_8hpp_source_l00013}00013\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceZappy}{Zappy}}}
+\DoxyCodeLine{\Hypertarget{Error_8hpp_source_l00014}00014\ \{}
+\DoxyCodeLine{\Hypertarget{Error_8hpp_source_l00015}\mbox{\hyperlink{classZappy_1_1Error}{00015}}\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classZappy_1_1Error}{Error}}\ :\ \textcolor{keyword}{public}\ std::exception}
+\DoxyCodeLine{\Hypertarget{Error_8hpp_source_l00016}00016\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{Error_8hpp_source_l00017}00017\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{Error_8hpp_source_l00018}\mbox{\hyperlink{classZappy_1_1Error_a4174e06b46ede2a8f9507b70a0b1a15f}{00018}}\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{classZappy_1_1Error_a4174e06b46ede2a8f9507b70a0b1a15f}{\_what}};}
+\DoxyCodeLine{\Hypertarget{Error_8hpp_source_l00019}\mbox{\hyperlink{classZappy_1_1Error_a02734ae86269cda0780d1434f940ccb9}{00019}}\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{classZappy_1_1Error_a02734ae86269cda0780d1434f940ccb9}{\_where}};}
+\DoxyCodeLine{\Hypertarget{Error_8hpp_source_l00020}00020\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{Error_8hpp_source_l00021}\mbox{\hyperlink{classZappy_1_1Error_a6ef78fe6fa37b7b82cd4af05fe3db83a}{00021}}\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classZappy_1_1Error_a6ef78fe6fa37b7b82cd4af05fe3db83a}{Error}}(\textcolor{keyword}{const}\ std::string\&\ \mbox{\hyperlink{classZappy_1_1Error_aa3f2e1be6aef0af2cedff311c62509f5}{what}},\ \textcolor{keyword}{const}\ std::string\&\ \mbox{\hyperlink{classZappy_1_1Error_a3e1b10abafb447ba2cf7ab89573115e9}{where}})\ :\ \mbox{\hyperlink{classZappy_1_1Error_a4174e06b46ede2a8f9507b70a0b1a15f}{\_what}}(\mbox{\hyperlink{classZappy_1_1Error_aa3f2e1be6aef0af2cedff311c62509f5}{what}}),\ \mbox{\hyperlink{classZappy_1_1Error_a02734ae86269cda0780d1434f940ccb9}{\_where}}(\mbox{\hyperlink{classZappy_1_1Error_a3e1b10abafb447ba2cf7ab89573115e9}{where}})\ \{\};}
+\DoxyCodeLine{\Hypertarget{Error_8hpp_source_l00022}\mbox{\hyperlink{classZappy_1_1Error_a02db89bd8d93a1259327aff01d7eb2c0}{00022}}\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classZappy_1_1Error_a02db89bd8d93a1259327aff01d7eb2c0}{\string~Error}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{\Hypertarget{Error_8hpp_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{Error_8hpp_source_l00029}\mbox{\hyperlink{classZappy_1_1Error_aa3f2e1be6aef0af2cedff311c62509f5}{00029}}\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{classZappy_1_1Error_aa3f2e1be6aef0af2cedff311c62509f5}{what}}()\ const\ noexcept\ \{\ \textcolor{keywordflow}{return}\ this-\/>\_what.c\_str();\ \};}
+\DoxyCodeLine{\Hypertarget{Error_8hpp_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{Error_8hpp_source_l00036}\mbox{\hyperlink{classZappy_1_1Error_a3e1b10abafb447ba2cf7ab89573115e9}{00036}}\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{classZappy_1_1Error_a3e1b10abafb447ba2cf7ab89573115e9}{where}}()\ const\ noexcept\ \{\ \textcolor{keywordflow}{return}\ this-\/>\_where.c\_str();\ \};}
+\DoxyCodeLine{\Hypertarget{Error_8hpp_source_l00037}00037\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{Error_8hpp_source_l00038}00038\ \}\ \textcolor{comment}{//\ namespace\ Zappy}}
+\DoxyCodeLine{\Hypertarget{Error_8hpp_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{Error_8hpp_source_l00040}00040\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ !ERROR\_H\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

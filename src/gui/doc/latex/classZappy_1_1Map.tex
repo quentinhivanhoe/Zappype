@@ -1,0 +1,368 @@
+\hypertarget{classZappy_1_1Map}{}\doxysection{Zappy\+::Map Class Reference}
+\label{classZappy_1_1Map}\index{Zappy::Map@{Zappy::Map}}
+
+
+{\ttfamily \#include $<$Map.\+hpp$>$}
+
+
+
+Collaboration diagram for Zappy\+::Map\+:
+% FIG 0
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classZappy_1_1Map_a327891ee0cad877d4d13520388e339ae}{Map}} (\mbox{\hyperlink{classZappy_1_1GUI}{GUI}} $\ast$gui, \mbox{\hyperlink{classVector2D}{Vector2D}} size=\mbox{\hyperlink{classVector2D}{Vector2D}}(5.\+0, 5.\+0))
+\item 
+\mbox{\hyperlink{classZappy_1_1Map_a29fca54cc6049da0fe990bfd23884cd4}{$\sim$\+Map}} ()
+\item 
+void \mbox{\hyperlink{classZappy_1_1Map_a736f4936e85be591d0fd1726adab9de3}{init}} ()
+\begin{DoxyCompactList}\small\item\em Create the components needed by the whole map. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classVector2D}{Vector2D}} \mbox{\hyperlink{classZappy_1_1Map_abb5b55242230d135281ca81f956516ca}{get\+Size}} () const
+\begin{DoxyCompactList}\small\item\em Get the Size object. \end{DoxyCompactList}\item 
+std\+::map$<$ std\+::string, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classZappy_1_1Team}{Team}} $>$ $>$ \mbox{\hyperlink{classZappy_1_1Map_a47fde01f9334f7d0a4c0ac9f988df5da}{get\+Teams}} () const
+\begin{DoxyCompactList}\small\item\em Get the Teams object. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classZappy_1_1Tile}{Tile}} $>$ $>$ $>$ \mbox{\hyperlink{classZappy_1_1Map_a1619cbe5a5195673673d604c9b105a3a}{get\+Tiles}} ()
+\begin{DoxyCompactList}\small\item\em Get the Tiles object. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classZappy_1_1Trantorian}{Trantorian}} $>$ \mbox{\hyperlink{classZappy_1_1Map_a9bbcd9fbaa6a76942c80b89906b3ecfe}{get\+Trantorian\+By\+ID}} (size\+\_\+t id)
+\begin{DoxyCompactList}\small\item\em Get the \mbox{\hyperlink{classZappy_1_1Trantorian}{Trantorian}} By I D object. \end{DoxyCompactList}\item 
+std\+::map$<$ size\+\_\+t, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classZappy_1_1Trantorian}{Trantorian}} $>$ $>$ \mbox{\hyperlink{classZappy_1_1Map_ac61ccbff4cfbdc12d85d0cd51214a403}{get\+All\+Trantorians}} () const
+\begin{DoxyCompactList}\small\item\em Get the All Trantorians object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1Map_a828af3fec59b58ed06d8a50b099c49e2}{add\+Trantorian}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classZappy_1_1Trantorian}{Trantorian}} $>$ trantorian)
+\begin{DoxyCompactList}\small\item\em Add a trantorian to the list of trantorians and to its respective team. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1Map_abd071896593d91800b67505c77c8857e}{add\+Egg}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classZappy_1_1Egg}{Egg}} $>$ egg)
+\begin{DoxyCompactList}\small\item\em Add a egg to the list of eggs and to its respective team. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1Map_aff18be1b29b4ddde074447d56abcff47}{remove\+Egg\+By\+Id}} (size\+\_\+t id)
+\begin{DoxyCompactList}\small\item\em Remove the egg from the tab. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classZappy_1_1Egg}{Egg}} $>$ \mbox{\hyperlink{classZappy_1_1Map_a1ad4940226a5bc95bb779e2a9136cd4f}{get\+Egg\+By\+Id}} (size\+\_\+t id)
+\begin{DoxyCompactList}\small\item\em Get the \mbox{\hyperlink{classZappy_1_1Egg}{Egg}} By Id object. \end{DoxyCompactList}\item 
+std\+::map$<$ size\+\_\+t, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classZappy_1_1Egg}{Egg}} $>$ $>$ \mbox{\hyperlink{classZappy_1_1Map_a8c7df680113fe2df22b04966fb926553}{get\+All\+Eggs}} () const
+\begin{DoxyCompactList}\small\item\em Get the All Eggs object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classZappy_1_1GUI}{GUI}} $\ast$ \mbox{\hyperlink{classZappy_1_1Map_a64fc9f3235c5c06d6c07acd3113b90bd}{\+\_\+gui}}
+\item 
+std\+::map$<$ std\+::string, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classZappy_1_1Team}{Team}} $>$ $>$ \mbox{\hyperlink{classZappy_1_1Map_a4004c115223b45127aa207ed91df8873}{\+\_\+teams}}
+\item 
+std\+::map$<$ size\+\_\+t, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classZappy_1_1Trantorian}{Trantorian}} $>$ $>$ \mbox{\hyperlink{classZappy_1_1Map_adb7ac82ed0e568e523e62d3ff447ee44}{\+\_\+trantorians}}
+\item 
+std\+::map$<$ size\+\_\+t, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classZappy_1_1Egg}{Egg}} $>$ $>$ \mbox{\hyperlink{classZappy_1_1Map_ad053ed5c49f4496049437f6692142a3e}{\+\_\+eggs}}
+\item 
+std\+::vector$<$ std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classZappy_1_1Tile}{Tile}} $>$ $>$ $>$ \mbox{\hyperlink{classZappy_1_1Map_a35e332f9d941f16424508c3b35fbdd78}{\+\_\+tiles}}
+\item 
+\mbox{\hyperlink{classVector2D}{Vector2D}} \mbox{\hyperlink{classZappy_1_1Map_acdb3719cfee13fcbdc4fa78a85a7a892}{\+\_\+size}}
+\item 
+float \mbox{\hyperlink{classZappy_1_1Map_a0d9fa6b9c011dfe106957c94f934d6dd}{\+\_\+tile\+Scale}} = 0.\+5 $\ast$ 3.\+07
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{Map_8hpp_source_l00023}{23}} of file \mbox{\hyperlink{Map_8hpp_source}{Map.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classZappy_1_1Map_a327891ee0cad877d4d13520388e339ae}\label{classZappy_1_1Map_a327891ee0cad877d4d13520388e339ae}} 
+\index{Zappy::Map@{Zappy::Map}!Map@{Map}}
+\index{Map@{Map}!Zappy::Map@{Zappy::Map}}
+\doxysubsubsection{\texorpdfstring{Map()}{Map()}}
+{\footnotesize\ttfamily Zappy\+::\+Map\+::\+Map (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classZappy_1_1GUI}{GUI}} $\ast$}]{gui,  }\item[{\mbox{\hyperlink{classVector2D}{Vector2D}}}]{size = {\ttfamily \mbox{\hyperlink{classVector2D}{Vector2D}}(5.0,~5.0)} }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{Map_8cpp_source_l00010}{10}} of file \mbox{\hyperlink{Map_8cpp_source}{Map.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1Map_a29fca54cc6049da0fe990bfd23884cd4}\label{classZappy_1_1Map_a29fca54cc6049da0fe990bfd23884cd4}} 
+\index{Zappy::Map@{Zappy::Map}!````~Map@{$\sim$Map}}
+\index{````~Map@{$\sim$Map}!Zappy::Map@{Zappy::Map}}
+\doxysubsubsection{\texorpdfstring{$\sim$Map()}{~Map()}}
+{\footnotesize\ttfamily Zappy\+::\+Map\+::$\sim$\+Map (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{Map_8cpp_source_l00017}{17}} of file \mbox{\hyperlink{Map_8cpp_source}{Map.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classZappy_1_1Map_abd071896593d91800b67505c77c8857e}\label{classZappy_1_1Map_abd071896593d91800b67505c77c8857e}} 
+\index{Zappy::Map@{Zappy::Map}!addEgg@{addEgg}}
+\index{addEgg@{addEgg}!Zappy::Map@{Zappy::Map}}
+\doxysubsubsection{\texorpdfstring{addEgg()}{addEgg()}}
+{\footnotesize\ttfamily void Zappy\+::\+Map\+::add\+Egg (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classZappy_1_1Egg}{Egg}} $>$}]{egg }\end{DoxyParamCaption})}
+
+
+
+Add a egg to the list of eggs and to its respective team. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em egg} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Map_8cpp_source_l00079}{79}} of file \mbox{\hyperlink{Map_8cpp_source}{Map.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1Map_a828af3fec59b58ed06d8a50b099c49e2}\label{classZappy_1_1Map_a828af3fec59b58ed06d8a50b099c49e2}} 
+\index{Zappy::Map@{Zappy::Map}!addTrantorian@{addTrantorian}}
+\index{addTrantorian@{addTrantorian}!Zappy::Map@{Zappy::Map}}
+\doxysubsubsection{\texorpdfstring{addTrantorian()}{addTrantorian()}}
+{\footnotesize\ttfamily void Zappy\+::\+Map\+::add\+Trantorian (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classZappy_1_1Trantorian}{Trantorian}} $>$}]{trantorian }\end{DoxyParamCaption})}
+
+
+
+Add a trantorian to the list of trantorians and to its respective team. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em trantorian} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Map_8cpp_source_l00071}{71}} of file \mbox{\hyperlink{Map_8cpp_source}{Map.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1Map_a8c7df680113fe2df22b04966fb926553}\label{classZappy_1_1Map_a8c7df680113fe2df22b04966fb926553}} 
+\index{Zappy::Map@{Zappy::Map}!getAllEggs@{getAllEggs}}
+\index{getAllEggs@{getAllEggs}!Zappy::Map@{Zappy::Map}}
+\doxysubsubsection{\texorpdfstring{getAllEggs()}{getAllEggs()}}
+{\footnotesize\ttfamily std\+::map$<$ size\+\_\+t, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classZappy_1_1Egg}{Egg}} $>$ $>$ Zappy\+::\+Map\+::get\+All\+Eggs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the All Eggs object. 
+
+\begin{DoxyReturn}{Returns}
+std\+::map$<$size\+\_\+t, std\+::shared\+\_\+ptr$<$\+Egg$>$$>$ 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Map_8hpp_source_l00113}{113}} of file \mbox{\hyperlink{Map_8hpp_source}{Map.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1Map_ac61ccbff4cfbdc12d85d0cd51214a403}\label{classZappy_1_1Map_ac61ccbff4cfbdc12d85d0cd51214a403}} 
+\index{Zappy::Map@{Zappy::Map}!getAllTrantorians@{getAllTrantorians}}
+\index{getAllTrantorians@{getAllTrantorians}!Zappy::Map@{Zappy::Map}}
+\doxysubsubsection{\texorpdfstring{getAllTrantorians()}{getAllTrantorians()}}
+{\footnotesize\ttfamily std\+::map$<$ size\+\_\+t, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classZappy_1_1Trantorian}{Trantorian}} $>$ $>$ Zappy\+::\+Map\+::get\+All\+Trantorians (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the All Trantorians object. 
+
+\begin{DoxyReturn}{Returns}
+std\+::map$<$size\+\_\+t, std\+::shared\+\_\+ptr$<$\+Trantorian$>$$>$ 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Map_8hpp_source_l00077}{77}} of file \mbox{\hyperlink{Map_8hpp_source}{Map.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1Map_a1ad4940226a5bc95bb779e2a9136cd4f}\label{classZappy_1_1Map_a1ad4940226a5bc95bb779e2a9136cd4f}} 
+\index{Zappy::Map@{Zappy::Map}!getEggById@{getEggById}}
+\index{getEggById@{getEggById}!Zappy::Map@{Zappy::Map}}
+\doxysubsubsection{\texorpdfstring{getEggById()}{getEggById()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classZappy_1_1Egg}{Egg}} $>$ Zappy\+::\+Map\+::get\+Egg\+By\+Id (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the \mbox{\hyperlink{classZappy_1_1Egg}{Egg}} By Id object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::shared\+\_\+ptr$<$\+Egg$>$ 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Map_8hpp_source_l00106}{106}} of file \mbox{\hyperlink{Map_8hpp_source}{Map.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1Map_abb5b55242230d135281ca81f956516ca}\label{classZappy_1_1Map_abb5b55242230d135281ca81f956516ca}} 
+\index{Zappy::Map@{Zappy::Map}!getSize@{getSize}}
+\index{getSize@{getSize}!Zappy::Map@{Zappy::Map}}
+\doxysubsubsection{\texorpdfstring{getSize()}{getSize()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classVector2D}{Vector2D}} Zappy\+::\+Map\+::get\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the Size object. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classVector2D}{Vector2D}} 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Map_8hpp_source_l00048}{48}} of file \mbox{\hyperlink{Map_8hpp_source}{Map.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1Map_a47fde01f9334f7d0a4c0ac9f988df5da}\label{classZappy_1_1Map_a47fde01f9334f7d0a4c0ac9f988df5da}} 
+\index{Zappy::Map@{Zappy::Map}!getTeams@{getTeams}}
+\index{getTeams@{getTeams}!Zappy::Map@{Zappy::Map}}
+\doxysubsubsection{\texorpdfstring{getTeams()}{getTeams()}}
+{\footnotesize\ttfamily std\+::map$<$ std\+::string, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classZappy_1_1Team}{Team}} $>$ $>$ Zappy\+::\+Map\+::get\+Teams (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the Teams object. 
+
+\begin{DoxyReturn}{Returns}
+std\+::map$<$std\+::string, std\+::shared\+\_\+ptr$<$\+Team$>$$>$ 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Map_8hpp_source_l00055}{55}} of file \mbox{\hyperlink{Map_8hpp_source}{Map.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1Map_a1619cbe5a5195673673d604c9b105a3a}\label{classZappy_1_1Map_a1619cbe5a5195673673d604c9b105a3a}} 
+\index{Zappy::Map@{Zappy::Map}!getTiles@{getTiles}}
+\index{getTiles@{getTiles}!Zappy::Map@{Zappy::Map}}
+\doxysubsubsection{\texorpdfstring{getTiles()}{getTiles()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classZappy_1_1Tile}{Tile}} $>$ $>$ $>$ Zappy\+::\+Map\+::get\+Tiles (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the Tiles object. 
+
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$std\+::vector$<$std\+::shared\+\_\+ptr$<$\+Tile$>$$>$$>$ 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Map_8hpp_source_l00062}{62}} of file \mbox{\hyperlink{Map_8hpp_source}{Map.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1Map_a9bbcd9fbaa6a76942c80b89906b3ecfe}\label{classZappy_1_1Map_a9bbcd9fbaa6a76942c80b89906b3ecfe}} 
+\index{Zappy::Map@{Zappy::Map}!getTrantorianByID@{getTrantorianByID}}
+\index{getTrantorianByID@{getTrantorianByID}!Zappy::Map@{Zappy::Map}}
+\doxysubsubsection{\texorpdfstring{getTrantorianByID()}{getTrantorianByID()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classZappy_1_1Trantorian}{Trantorian}} $>$ Zappy\+::\+Map\+::get\+Trantorian\+By\+ID (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the \mbox{\hyperlink{classZappy_1_1Trantorian}{Trantorian}} By I D object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::shared\+\_\+ptr$<$\+Trantorian$>$ 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Map_8hpp_source_l00070}{70}} of file \mbox{\hyperlink{Map_8hpp_source}{Map.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1Map_a736f4936e85be591d0fd1726adab9de3}\label{classZappy_1_1Map_a736f4936e85be591d0fd1726adab9de3}} 
+\index{Zappy::Map@{Zappy::Map}!init@{init}}
+\index{init@{init}!Zappy::Map@{Zappy::Map}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily void Zappy\+::\+Map\+::init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Create the components needed by the whole map. 
+
+
+
+Definition at line \mbox{\hyperlink{Map_8cpp_source_l00041}{41}} of file \mbox{\hyperlink{Map_8cpp_source}{Map.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1Map_aff18be1b29b4ddde074447d56abcff47}\label{classZappy_1_1Map_aff18be1b29b4ddde074447d56abcff47}} 
+\index{Zappy::Map@{Zappy::Map}!removeEggById@{removeEggById}}
+\index{removeEggById@{removeEggById}!Zappy::Map@{Zappy::Map}}
+\doxysubsubsection{\texorpdfstring{removeEggById()}{removeEggById()}}
+{\footnotesize\ttfamily void Zappy\+::\+Map\+::remove\+Egg\+By\+Id (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Remove the egg from the tab. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Map_8hpp_source_l00098}{98}} of file \mbox{\hyperlink{Map_8hpp_source}{Map.\+hpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classZappy_1_1Map_ad053ed5c49f4496049437f6692142a3e}\label{classZappy_1_1Map_ad053ed5c49f4496049437f6692142a3e}} 
+\index{Zappy::Map@{Zappy::Map}!\_eggs@{\_eggs}}
+\index{\_eggs@{\_eggs}!Zappy::Map@{Zappy::Map}}
+\doxysubsubsection{\texorpdfstring{\_eggs}{\_eggs}}
+{\footnotesize\ttfamily std\+::map$<$size\+\_\+t, std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classZappy_1_1Egg}{Egg}}$>$ $>$ Zappy\+::\+Map\+::\+\_\+eggs\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{Map_8hpp_source_l00029}{29}} of file \mbox{\hyperlink{Map_8hpp_source}{Map.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1Map_a64fc9f3235c5c06d6c07acd3113b90bd}\label{classZappy_1_1Map_a64fc9f3235c5c06d6c07acd3113b90bd}} 
+\index{Zappy::Map@{Zappy::Map}!\_gui@{\_gui}}
+\index{\_gui@{\_gui}!Zappy::Map@{Zappy::Map}}
+\doxysubsubsection{\texorpdfstring{\_gui}{\_gui}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classZappy_1_1GUI}{GUI}}$\ast$ Zappy\+::\+Map\+::\+\_\+gui\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{Map_8hpp_source_l00026}{26}} of file \mbox{\hyperlink{Map_8hpp_source}{Map.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1Map_acdb3719cfee13fcbdc4fa78a85a7a892}\label{classZappy_1_1Map_acdb3719cfee13fcbdc4fa78a85a7a892}} 
+\index{Zappy::Map@{Zappy::Map}!\_size@{\_size}}
+\index{\_size@{\_size}!Zappy::Map@{Zappy::Map}}
+\doxysubsubsection{\texorpdfstring{\_size}{\_size}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classVector2D}{Vector2D}} Zappy\+::\+Map\+::\+\_\+size\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{Map_8hpp_source_l00031}{31}} of file \mbox{\hyperlink{Map_8hpp_source}{Map.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1Map_a4004c115223b45127aa207ed91df8873}\label{classZappy_1_1Map_a4004c115223b45127aa207ed91df8873}} 
+\index{Zappy::Map@{Zappy::Map}!\_teams@{\_teams}}
+\index{\_teams@{\_teams}!Zappy::Map@{Zappy::Map}}
+\doxysubsubsection{\texorpdfstring{\_teams}{\_teams}}
+{\footnotesize\ttfamily std\+::map$<$std\+::string, std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classZappy_1_1Team}{Team}}$>$ $>$ Zappy\+::\+Map\+::\+\_\+teams\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{Map_8hpp_source_l00027}{27}} of file \mbox{\hyperlink{Map_8hpp_source}{Map.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1Map_a35e332f9d941f16424508c3b35fbdd78}\label{classZappy_1_1Map_a35e332f9d941f16424508c3b35fbdd78}} 
+\index{Zappy::Map@{Zappy::Map}!\_tiles@{\_tiles}}
+\index{\_tiles@{\_tiles}!Zappy::Map@{Zappy::Map}}
+\doxysubsubsection{\texorpdfstring{\_tiles}{\_tiles}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::vector$<$std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classZappy_1_1Tile}{Tile}}$>$ $>$ $>$ Zappy\+::\+Map\+::\+\_\+tiles\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{Map_8hpp_source_l00030}{30}} of file \mbox{\hyperlink{Map_8hpp_source}{Map.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1Map_a0d9fa6b9c011dfe106957c94f934d6dd}\label{classZappy_1_1Map_a0d9fa6b9c011dfe106957c94f934d6dd}} 
+\index{Zappy::Map@{Zappy::Map}!\_tileScale@{\_tileScale}}
+\index{\_tileScale@{\_tileScale}!Zappy::Map@{Zappy::Map}}
+\doxysubsubsection{\texorpdfstring{\_tileScale}{\_tileScale}}
+{\footnotesize\ttfamily float Zappy\+::\+Map\+::\+\_\+tile\+Scale = 0.\+5 $\ast$ 3.\+07\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{Map_8hpp_source_l00032}{32}} of file \mbox{\hyperlink{Map_8hpp_source}{Map.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1Map_adb7ac82ed0e568e523e62d3ff447ee44}\label{classZappy_1_1Map_adb7ac82ed0e568e523e62d3ff447ee44}} 
+\index{Zappy::Map@{Zappy::Map}!\_trantorians@{\_trantorians}}
+\index{\_trantorians@{\_trantorians}!Zappy::Map@{Zappy::Map}}
+\doxysubsubsection{\texorpdfstring{\_trantorians}{\_trantorians}}
+{\footnotesize\ttfamily std\+::map$<$size\+\_\+t, std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classZappy_1_1Trantorian}{Trantorian}}$>$ $>$ Zappy\+::\+Map\+::\+\_\+trantorians\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{Map_8hpp_source_l00028}{28}} of file \mbox{\hyperlink{Map_8hpp_source}{Map.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Map_8hpp}{Map.\+hpp}}\item 
+\mbox{\hyperlink{Map_8cpp}{Map.\+cpp}}\end{DoxyCompactItemize}

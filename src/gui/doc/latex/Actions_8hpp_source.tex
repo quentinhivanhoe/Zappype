@@ -1,0 +1,38 @@
+\hypertarget{Actions_8hpp_source}{}\doxysection{Actions.\+hpp}
+\label{Actions_8hpp_source}\index{Actions.hpp@{Actions.hpp}}
+\mbox{\hyperlink{Actions_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{Actions_8hpp_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{Actions_8hpp_source_l00002}00002\ \textcolor{comment}{**\ EPITECH\ PROJECT,\ 2025}}
+\DoxyCodeLine{\Hypertarget{Actions_8hpp_source_l00003}00003\ \textcolor{comment}{**\ B-\/YEP-\/400-\/RUN-\/4-\/1-\/zappy-\/loic.rabearivelo}}
+\DoxyCodeLine{\Hypertarget{Actions_8hpp_source_l00004}00004\ \textcolor{comment}{**\ File\ description:}}
+\DoxyCodeLine{\Hypertarget{Actions_8hpp_source_l00005}00005\ \textcolor{comment}{**\ Actions}}
+\DoxyCodeLine{\Hypertarget{Actions_8hpp_source_l00006}00006\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{Actions_8hpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{Actions_8hpp_source_l00008}00008\ \textcolor{preprocessor}{\#ifndef\ ACTIONS\_HPP\_}}
+\DoxyCodeLine{\Hypertarget{Actions_8hpp_source_l00009}00009\ \textcolor{preprocessor}{\ \ \ \ \#define\ ACTIONS\_HPP\_}}
+\DoxyCodeLine{\Hypertarget{Actions_8hpp_source_l00010}00010\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}iostream"{}}}
+\DoxyCodeLine{\Hypertarget{Actions_8hpp_source_l00011}00011\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}functional"{}}}
+\DoxyCodeLine{\Hypertarget{Actions_8hpp_source_l00012}00012\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceZappy}{Zappy}}\ \{}
+\DoxyCodeLine{\Hypertarget{Actions_8hpp_source_l00013}\mbox{\hyperlink{classZappy_1_1Actions}{00013}}\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classZappy_1_1Actions}{Actions}}}
+\DoxyCodeLine{\Hypertarget{Actions_8hpp_source_l00014}00014\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{Actions_8hpp_source_l00015}00015\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{Actions_8hpp_source_l00016}\mbox{\hyperlink{classZappy_1_1Actions_a73637ba38e8e27708ee429b367bbfd2c}{00016}}\ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{classZappy_1_1Actions_a73637ba38e8e27708ee429b367bbfd2c}{\_name}};}
+\DoxyCodeLine{\Hypertarget{Actions_8hpp_source_l00017}\mbox{\hyperlink{classZappy_1_1Actions_a642fecde31ca49cc64b069af44c3f92b}{00017}}\ \ \ \ \ \ \ \ \ std::function<\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&()>\ \mbox{\hyperlink{classZappy_1_1Actions_a642fecde31ca49cc64b069af44c3f92b}{\_function}};}
+\DoxyCodeLine{\Hypertarget{Actions_8hpp_source_l00018}00018\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{Actions_8hpp_source_l00019}00019\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Actions_a38c304a64d1de58b3dccbf2b9592c6b1}{Actions}}(\textcolor{comment}{/*\ args\ */});}
+\DoxyCodeLine{\Hypertarget{Actions_8hpp_source_l00020}00020\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Actions_a8365a369c31fefe51ef9ede113190f77}{\string~Actions}}();}
+\DoxyCodeLine{\Hypertarget{Actions_8hpp_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{Actions_8hpp_source_l00027}\mbox{\hyperlink{classZappy_1_1Actions_afc998d8e499ddb5506a6ee7d620f53e9}{00027}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ std::string\ \mbox{\hyperlink{classZappy_1_1Actions_afc998d8e499ddb5506a6ee7d620f53e9}{getName}}()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classZappy_1_1Actions_a73637ba38e8e27708ee429b367bbfd2c}{\_name}};\};}
+\DoxyCodeLine{\Hypertarget{Actions_8hpp_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{Actions_8hpp_source_l00034}\mbox{\hyperlink{classZappy_1_1Actions_a6381bf9efd25f77813a5a8c61b79f89a}{00034}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Actions_a6381bf9efd25f77813a5a8c61b79f89a}{setName}}(std::string\ name)\{this-\/>\_name\ =\ name;\};}
+\DoxyCodeLine{\Hypertarget{Actions_8hpp_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{Actions_8hpp_source_l00041}\mbox{\hyperlink{classZappy_1_1Actions_a55f10f5bbe45d337e454fc2e1b5ecc1a}{00041}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Actions_a55f10f5bbe45d337e454fc2e1b5ecc1a}{setFunction}}(std::function<\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&()>\ \mbox{\hyperlink{classZappy_1_1Actions_a7080bb063d73e2f3d320a7b838055480}{function}})\{this-\/>\mbox{\hyperlink{classZappy_1_1Actions_a642fecde31ca49cc64b069af44c3f92b}{\_function}}\ =\ \mbox{\hyperlink{classZappy_1_1Actions_a7080bb063d73e2f3d320a7b838055480}{function}};\};}
+\DoxyCodeLine{\Hypertarget{Actions_8hpp_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{Actions_8hpp_source_l00048}00048\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Actions_a7080bb063d73e2f3d320a7b838055480}{function}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ param);}
+\DoxyCodeLine{\Hypertarget{Actions_8hpp_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{Actions_8hpp_source_l00050}00050\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{Actions_8hpp_source_l00051}00051\ \}}
+\DoxyCodeLine{\Hypertarget{Actions_8hpp_source_l00052}00052\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ !ACTIONS\_HPP\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

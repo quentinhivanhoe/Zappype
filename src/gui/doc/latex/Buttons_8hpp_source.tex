@@ -1,0 +1,139 @@
+\hypertarget{Buttons_8hpp_source}{}\doxysection{Buttons.\+hpp}
+\label{Buttons_8hpp_source}\index{Buttons.hpp@{Buttons.hpp}}
+\mbox{\hyperlink{Buttons_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00002}00002\ \textcolor{comment}{**\ EPITECH\ PROJECT,\ 2025}}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00003}00003\ \textcolor{comment}{**\ Zappy}}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00004}00004\ \textcolor{comment}{**\ File\ description:}}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00005}00005\ \textcolor{comment}{**\ Button\ class}}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00006}00006\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00008}00008\ \textcolor{preprocessor}{\#ifndef\ BUTTON\_H}}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00009}00009\ \textcolor{preprocessor}{\ \ \ \ \#define\ BUTTON\_H}}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00010}00010\ \textcolor{preprocessor}{\ \ \ \ \#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00011}00011\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}\mbox{\hyperlink{MouseStatus_8hpp}{MouseStatus.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00012}00012\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}\mbox{\hyperlink{Clamp_8hpp}{Math/Clamp.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00013}00013\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}\mbox{\hyperlink{Error_8hpp}{Error.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00014}00014\ \textcolor{preprocessor}{\ \ \ \ \#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00015}00015\ \textcolor{preprocessor}{\ \ \ \ \#include\ <functional>}}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00017}00017\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceZappy}{Zappy}}}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00018}00018\ \{}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00019}00019\ \ \ \ \ \textcolor{keyword}{class\ }GUI;}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00020}\mbox{\hyperlink{classZappy_1_1Buttons}{00020}}\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classZappy_1_1Buttons}{Buttons}}}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00021}00021\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00022}00022\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00023}\mbox{\hyperlink{classZappy_1_1Buttons_acf9d768c4d50633c8074603d168ffb07}{00023}}\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classZappy_1_1GUI}{GUI}}\ *\mbox{\hyperlink{classZappy_1_1Buttons_acf9d768c4d50633c8074603d168ffb07}{\_gui}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00024}\mbox{\hyperlink{classZappy_1_1Buttons_af08e71be178a03c76caf2615e7aaaf51}{00024}}\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classZappy_1_1Buttons_af08e71be178a03c76caf2615e7aaaf51}{\_rotation}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00025}\mbox{\hyperlink{classZappy_1_1Buttons_a4253926cb887154f9414520aae22e1a7}{00025}}\ \ \ \ \ \ \ \ \ \ \ \ \ sf::Vector2f\ \mbox{\hyperlink{classZappy_1_1Buttons_a4253926cb887154f9414520aae22e1a7}{\_scale}}\ =\ \{1,\ 1\};}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00026}\mbox{\hyperlink{classZappy_1_1Buttons_aa61c6dd1d32c7bfd885edfe9ff5d5841}{00026}}\ \ \ \ \ \ \ \ \ \ \ \ \ sf::Vector2f\ \mbox{\hyperlink{classZappy_1_1Buttons_aa61c6dd1d32c7bfd885edfe9ff5d5841}{\_basePosition}}\ =\ \{100,\ 100\};}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00027}\mbox{\hyperlink{classZappy_1_1Buttons_a6da9ac33dc6a337632efdbe1f2d92570}{00027}}\ \ \ \ \ \ \ \ \ \ \ \ \ sf::Vector2f\ \mbox{\hyperlink{classZappy_1_1Buttons_a6da9ac33dc6a337632efdbe1f2d92570}{\_baseScale}}\ =\ \{1,\ 1\};}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00028}\mbox{\hyperlink{classZappy_1_1Buttons_aa4615f567fcc775adfec0a6b78e6806e}{00028}}\ \ \ \ \ \ \ \ \ \ \ \ \ sf::Vector2f\ \mbox{\hyperlink{classZappy_1_1Buttons_aa4615f567fcc775adfec0a6b78e6806e}{\_maxScale}}\ =\ \{1.15,\ 1.15\};}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00029}\mbox{\hyperlink{classZappy_1_1Buttons_a4e94a4d8788065f285633c6c26c2f191}{00029}}\ \ \ \ \ \ \ \ \ \ \ \ \ sf::Vector2f\ \mbox{\hyperlink{classZappy_1_1Buttons_a4e94a4d8788065f285633c6c26c2f191}{\_minScale}}\ =\ \{0.85,\ 0.85\};}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00030}\mbox{\hyperlink{classZappy_1_1Buttons_afbe504bf7797c6ed0d02259d14587268}{00030}}\ \ \ \ \ \ \ \ \ \ \ \ \ sf::Vector2f\ \mbox{\hyperlink{classZappy_1_1Buttons_afbe504bf7797c6ed0d02259d14587268}{\_position}}\ =\ \{100,\ 100\};}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00031}\mbox{\hyperlink{classZappy_1_1Buttons_a0be83d65b2cc0ae90da7b7930b38c520}{00031}}\ \ \ \ \ \ \ \ \ \ \ \ \ sf::Vector2f\ \mbox{\hyperlink{classZappy_1_1Buttons_a0be83d65b2cc0ae90da7b7930b38c520}{\_size}}\ =\ \{100,\ 100\};}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00032}\mbox{\hyperlink{classZappy_1_1Buttons_afb5282ead021e898f9b5249e02da9eaa}{00032}}\ \ \ \ \ \ \ \ \ \ \ \ \ sf::Vector2f\ \mbox{\hyperlink{classZappy_1_1Buttons_afb5282ead021e898f9b5249e02da9eaa}{\_titlePositionOffset}}\ =\ \{0,\ 0\};}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00033}\mbox{\hyperlink{classZappy_1_1Buttons_a4eed78e4b5f8d6060f2932c883bcb8d3}{00033}}\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classZappy_1_1Buttons_a4eed78e4b5f8d6060f2932c883bcb8d3}{\_characterSize}}\ =\ 30;}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00034}\mbox{\hyperlink{classZappy_1_1Buttons_af85e79dd2225798c473e49b3b91ab0f1}{00034}}\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classZappy_1_1Buttons_af85e79dd2225798c473e49b3b91ab0f1}{\_active}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00036}\mbox{\hyperlink{classZappy_1_1Buttons_af50dbae8a5979291bacf4e31485eb246}{00036}}\ \ \ \ \ \ \ \ \ \ \ \ \ sf::Text\ \mbox{\hyperlink{classZappy_1_1Buttons_af50dbae8a5979291bacf4e31485eb246}{\_title}};}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00037}\mbox{\hyperlink{classZappy_1_1Buttons_aec2e6a8bc6228d56edc8316e3487f06b}{00037}}\ \ \ \ \ \ \ \ \ \ \ \ \ sf::Font\ \mbox{\hyperlink{classZappy_1_1Buttons_aec2e6a8bc6228d56edc8316e3487f06b}{\_font}};}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00038}\mbox{\hyperlink{classZappy_1_1Buttons_ac2e11487e44d5a357e321e76268da51f}{00038}}\ \ \ \ \ \ \ \ \ \ \ \ \ sf::RectangleShape\ \mbox{\hyperlink{classZappy_1_1Buttons_ac2e11487e44d5a357e321e76268da51f}{\_bg}};}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00039}\mbox{\hyperlink{classZappy_1_1Buttons_ab298e31ac5238daaeb7749be2fae59c4}{00039}}\ \ \ \ \ \ \ \ \ \ \ \ \ sf::Color\ \mbox{\hyperlink{classZappy_1_1Buttons_ab298e31ac5238daaeb7749be2fae59c4}{\_fillColor}};}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00040}\mbox{\hyperlink{classZappy_1_1Buttons_acd1540cb7001424ed9246287b9b98dbe}{00040}}\ \ \ \ \ \ \ \ \ \ \ \ \ sf::Color\ \mbox{\hyperlink{classZappy_1_1Buttons_acd1540cb7001424ed9246287b9b98dbe}{\_outlineColor}};}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00042}\mbox{\hyperlink{classZappy_1_1Buttons_a41fa287ff94d6c5fe506a761f7c9f7af}{00042}}\ \ \ \ \ \ \ \ \ \ \ \ \ void\ (\mbox{\hyperlink{classZappy_1_1GUI}{GUI}}::*\ \mbox{\hyperlink{classZappy_1_1Buttons_a41fa287ff94d6c5fe506a761f7c9f7af}{\_function}})()\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00043}00043\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Buttons}{Buttons}}(\mbox{\hyperlink{classZappy_1_1GUI}{GUI}}\ *gui\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00045}\mbox{\hyperlink{classZappy_1_1Buttons_aef04c13be39086c88e46431addc446f9}{00045}}\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classZappy_1_1Buttons_aef04c13be39086c88e46431addc446f9}{\string~Buttons}}()\ \{\ std::cout\ <<\ \textcolor{stringliteral}{"{}Button\ destructor"{}}\ <<\ std::endl;\ \};}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Buttons}{Buttons}}\ \&\mbox{\hyperlink{classZappy_1_1Buttons_abb64a9aeb9c15b3c5e155751f15869e8}{operator()}}();}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Buttons}{Buttons}}\ \&\mbox{\hyperlink{classZappy_1_1Buttons_ad799790fa744c96394b2f5d505f3b6d2}{function}}();}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Getters}}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00067}\mbox{\hyperlink{classZappy_1_1Buttons_ac121f6af1aa8d927966958ec0e218b70}{00067}}\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ sf::Vector2f\ \mbox{\hyperlink{classZappy_1_1Buttons_ac121f6af1aa8d927966958ec0e218b70}{getPosition}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classZappy_1_1Buttons_afbe504bf7797c6ed0d02259d14587268}{\_position}};\ \};}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00074}\mbox{\hyperlink{classZappy_1_1Buttons_a1cf4a87b17de593e730db296fe68da7f}{00074}}\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ sf::Vector2f\ \mbox{\hyperlink{classZappy_1_1Buttons_a1cf4a87b17de593e730db296fe68da7f}{getTitlePositionOffset}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classZappy_1_1Buttons_afb5282ead021e898f9b5249e02da9eaa}{\_titlePositionOffset}};\ \};}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00081}\mbox{\hyperlink{classZappy_1_1Buttons_a2774c920a9604b22f3ea91e08f40f8d3}{00081}}\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ sf::Vector2f\ \mbox{\hyperlink{classZappy_1_1Buttons_a2774c920a9604b22f3ea91e08f40f8d3}{getSize}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classZappy_1_1Buttons_a0be83d65b2cc0ae90da7b7930b38c520}{\_size}};\ \};}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00088}\mbox{\hyperlink{classZappy_1_1Buttons_a4f855b52edd9ab8d39b74b0f464dd639}{00088}}\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ sf::Vector2f\ \mbox{\hyperlink{classZappy_1_1Buttons_a4f855b52edd9ab8d39b74b0f464dd639}{getScale}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classZappy_1_1Buttons_a4253926cb887154f9414520aae22e1a7}{\_scale}};\ \};}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00095}\mbox{\hyperlink{classZappy_1_1Buttons_a8c2eba42bae4ae0a5798120e930caf04}{00095}}\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ sf::Vector2f\ \mbox{\hyperlink{classZappy_1_1Buttons_a8c2eba42bae4ae0a5798120e930caf04}{getBaseScale}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classZappy_1_1Buttons_a6da9ac33dc6a337632efdbe1f2d92570}{\_baseScale}};\ \};}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00102}\mbox{\hyperlink{classZappy_1_1Buttons_ab076aae1a9a9f94ae854f89fca0d3edd}{00102}}\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ sf::Vector2f\ \mbox{\hyperlink{classZappy_1_1Buttons_ab076aae1a9a9f94ae854f89fca0d3edd}{getMaxScale}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classZappy_1_1Buttons_aa4615f567fcc775adfec0a6b78e6806e}{\_maxScale}};\ \};}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00109}\mbox{\hyperlink{classZappy_1_1Buttons_aea4437c1501cafea4f49c29a5c5e6b74}{00109}}\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ sf::Vector2f\ \mbox{\hyperlink{classZappy_1_1Buttons_aea4437c1501cafea4f49c29a5c5e6b74}{getMinScale}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classZappy_1_1Buttons_a4e94a4d8788065f285633c6c26c2f191}{\_minScale}};\ \};}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00110}00110\ }
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00116}\mbox{\hyperlink{classZappy_1_1Buttons_a8b1328dab83fe88f3a63372e02bf8ff7}{00116}}\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classZappy_1_1Buttons_a8b1328dab83fe88f3a63372e02bf8ff7}{getCharacterSize}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classZappy_1_1Buttons_a4eed78e4b5f8d6060f2932c883bcb8d3}{\_characterSize}};\ \};}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00117}00117\ }
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00123}\mbox{\hyperlink{classZappy_1_1Buttons_aeb715b429e53d5e32dad6e518f47d1d2}{00123}}\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classZappy_1_1Buttons_aeb715b429e53d5e32dad6e518f47d1d2}{getRotation}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classZappy_1_1Buttons_af08e71be178a03c76caf2615e7aaaf51}{\_rotation}};\ \};}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00124}00124\ }
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00130}\mbox{\hyperlink{classZappy_1_1Buttons_ad5a3b36c17efe63e51a84bd4f8774210}{00130}}\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ std::string\ \mbox{\hyperlink{classZappy_1_1Buttons_ad5a3b36c17efe63e51a84bd4f8774210}{getTitle}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ this-\/>\_title.getString();\ \};}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00131}00131\ }
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00137}\mbox{\hyperlink{classZappy_1_1Buttons_a7166ff835fcaa71009353381896fc132}{00137}}\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ sf::Text\ \&\mbox{\hyperlink{classZappy_1_1Buttons_a7166ff835fcaa71009353381896fc132}{getTitleComponent}}()\ \{\ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classZappy_1_1Buttons_af50dbae8a5979291bacf4e31485eb246}{\_title}};\ \};}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00138}00138\ }
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00144}\mbox{\hyperlink{classZappy_1_1Buttons_ad3d44cebf58232a134bbeb5e2433051d}{00144}}\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ sf::Font\ \&\mbox{\hyperlink{classZappy_1_1Buttons_ad3d44cebf58232a134bbeb5e2433051d}{getFontComponent}}()\ \{\ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classZappy_1_1Buttons_aec2e6a8bc6228d56edc8316e3487f06b}{\_font}};\ \};}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00145}00145\ }
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00151}\mbox{\hyperlink{classZappy_1_1Buttons_a254a3b4cd3a9c19b247b854d2fa6bf68}{00151}}\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ sf::RectangleShape\ \&\mbox{\hyperlink{classZappy_1_1Buttons_a254a3b4cd3a9c19b247b854d2fa6bf68}{getBgComponent}}()\ \{\ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classZappy_1_1Buttons_ac2e11487e44d5a357e321e76268da51f}{\_bg}};\ \};}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00152}00152\ }
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00158}\mbox{\hyperlink{classZappy_1_1Buttons_ac70da995461d2f9b02517273a61b8f18}{00158}}\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ sf::Color\ \mbox{\hyperlink{classZappy_1_1Buttons_ac70da995461d2f9b02517273a61b8f18}{getFillColor}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classZappy_1_1Buttons_ab298e31ac5238daaeb7749be2fae59c4}{\_fillColor}};\ \};}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00159}00159\ }
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00165}\mbox{\hyperlink{classZappy_1_1Buttons_a131064ac1a15a17bb4a8ee29b2510903}{00165}}\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ sf::Color\ \mbox{\hyperlink{classZappy_1_1Buttons_a131064ac1a15a17bb4a8ee29b2510903}{getOutlineColor}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classZappy_1_1Buttons_acd1540cb7001424ed9246287b9b98dbe}{\_outlineColor}};\ \};}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00166}00166\ }
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00172}\mbox{\hyperlink{classZappy_1_1Buttons_a25b421ab68fcc867cb7e1c2a0314f57a}{00172}}\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ sf::Vector2f\ \mbox{\hyperlink{classZappy_1_1Buttons_a25b421ab68fcc867cb7e1c2a0314f57a}{getBasePosition}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classZappy_1_1Buttons_aa61c6dd1d32c7bfd885edfe9ff5d5841}{\_basePosition}};\ \};}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00173}00173\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00174}00174\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Setters}}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00175}00175\ }
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00182}00182\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Buttons}{Buttons}}\ \&\mbox{\hyperlink{classZappy_1_1Buttons_aac200fd2b384cc1fdeb212c9c9b8e99a}{setPosition}}(sf::Vector2f\ position);}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00183}00183\ }
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00184}00184\ }
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00191}00191\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Buttons}{Buttons}}\ \&\mbox{\hyperlink{classZappy_1_1Buttons_a96597c2214b724436839b1e876d0020f}{setTitlePositionOffset}}(sf::Vector2f\ position);}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00192}00192\ }
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00199}00199\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Buttons}{Buttons}}\ \&\mbox{\hyperlink{classZappy_1_1Buttons_a9d3bddab135c9f1f2a7a8a6ccfd80861}{setSize}}(sf::Vector2f\ size);}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00200}00200\ }
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00207}00207\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Buttons}{Buttons}}\ \&\mbox{\hyperlink{classZappy_1_1Buttons_a0df7240ab7dc2585bf37e09403d0c001}{setRotation}}(\textcolor{keywordtype}{float}\ rotation);}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00208}00208\ }
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00215}00215\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Buttons}{Buttons}}\ \&\mbox{\hyperlink{classZappy_1_1Buttons_aeaa8c73cb131cabfdf252560a73a59e0}{setScale}}(sf::Vector2f\ scale);}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00216}00216\ }
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00223}00223\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Buttons}{Buttons}}\ \&\mbox{\hyperlink{classZappy_1_1Buttons_a5163e1dcd666a14a8edbc631afac4c94}{setBaseScale}}(sf::Vector2f\ scale);}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00224}00224\ }
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00231}00231\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Buttons}{Buttons}}\ \&\mbox{\hyperlink{classZappy_1_1Buttons_ab55422acd00df96016adf1453fa657f8}{setMinScale}}(sf::Vector2f\ scale);}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00232}00232\ }
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00239}00239\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Buttons}{Buttons}}\ \&\mbox{\hyperlink{classZappy_1_1Buttons_ab815cde324788f40a89fbec6787bfc01}{setMaxScale}}(sf::Vector2f\ scale);}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00240}00240\ }
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00247}00247\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Buttons}{Buttons}}\ \&\mbox{\hyperlink{classZappy_1_1Buttons_a1e3024774119fd1c72e76e144193debc}{setCharacterSize}}(\textcolor{keywordtype}{int}\ size);}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00248}00248\ }
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00255}00255\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Buttons}{Buttons}}\ \&\mbox{\hyperlink{classZappy_1_1Buttons_afc744c9be99bfa6ba85bc89b41519325}{setTitle}}(\textcolor{keyword}{const}\ std::string\&\ title);}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00256}00256\ }
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00263}00263\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Buttons}{Buttons}}\ \&\mbox{\hyperlink{classZappy_1_1Buttons_a07e45c4f58e95c02d46cf76519df2482}{setBgOutlineColor}}(sf::Color\ color);}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00264}00264\ }
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00271}00271\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Buttons}{Buttons}}\ \&\mbox{\hyperlink{classZappy_1_1Buttons_a2e01ba4539872fb55ac556f03e9b7cda}{setBgFillColor}}(sf::Color\ color);}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00272}00272\ }
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00279}00279\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Buttons}{Buttons}}\ \&\mbox{\hyperlink{classZappy_1_1Buttons_af0eb68a8640f28bd4169f6bc81a80035}{setTextFillColor}}(sf::Color\ color);}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00280}00280\ }
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00287}00287\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Buttons}{Buttons}}\ \&\mbox{\hyperlink{classZappy_1_1Buttons_a967b6d32198ab856fa83e5e43cdf5b0c}{setTextOutlineColor}}(sf::Color\ color);}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00288}00288\ }
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00295}00295\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Buttons}{Buttons}}\ \&\mbox{\hyperlink{classZappy_1_1Buttons_a938d9937532acbe7a7dbd19be8d47076}{setFunction}}(\textcolor{keywordtype}{void}\ (\mbox{\hyperlink{classZappy_1_1GUI}{GUI}}::\ *\mbox{\hyperlink{classZappy_1_1Buttons_ad799790fa744c96394b2f5d505f3b6d2}{function}})());}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00296}00296\ }
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00303}00303\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Buttons}{Buttons}}\ \&\mbox{\hyperlink{classZappy_1_1Buttons_a6a3c89fa3eaf68aa1d6a7dbfbbb42e79}{setBasePosition}}(sf::Vector2f\ pos);}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00304}00304\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00311}00311\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Buttons}{Buttons}}\ \&\mbox{\hyperlink{classZappy_1_1Buttons_ac621323795ef0edfe2adc65390713168}{rotateClockWise}}(\textcolor{keywordtype}{float}\ step);}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00312}00312\ }
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00319}00319\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Buttons}{Buttons}}\ \&\mbox{\hyperlink{classZappy_1_1Buttons_a3f4e178352df7d166c3691fcfb9191ac}{rotateCounterClockWise}}(\textcolor{keywordtype}{float}\ step);}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00320}00320\ }
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00327}00327\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Buttons}{Buttons}}\ \&\mbox{\hyperlink{classZappy_1_1Buttons_aacbcd1fec1a96b729ee00455182325a3}{scaleUp}}(\textcolor{keywordtype}{float}\ step);}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00328}00328\ }
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00335}00335\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Buttons}{Buttons}}\ \&\mbox{\hyperlink{classZappy_1_1Buttons_a249a0c13f98daa21f7c729c3d3470080}{scaleDown}}(\textcolor{keywordtype}{float}\ step);}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00336}00336\ }
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00342}00342\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Buttons_af59fb1ca3a48b8a5c0883a1aa44a109e}{render}}(sf::RenderWindow\ \&window)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00343}00343\ }
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00349}00349\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Buttons_a169238af338f9ca3a155a79a744cb235}{update}}(\mbox{\hyperlink{classZappy_1_1MouseStatus}{MouseStatus}}\ mouse);}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00350}00350\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00351}00351\ \}\ \textcolor{comment}{//\ namespace\ Zappy}}
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00352}00352\ }
+\DoxyCodeLine{\Hypertarget{Buttons_8hpp_source_l00353}00353\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ !BUTTON\_H\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

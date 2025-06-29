@@ -1,0 +1,734 @@
+\hypertarget{GUI_8cpp_source}{}\doxysection{GUI.\+cpp}
+\label{GUI_8cpp_source}\index{GUI.cpp@{GUI.cpp}}
+\mbox{\hyperlink{GUI_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00002}00002\ \textcolor{comment}{**\ EPITECH\ PROJECT,\ 2025}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00003}00003\ \textcolor{comment}{**\ B-\/YEP-\/400-\/RUN-\/4-\/1-\/zappy-\/loic.rabearivelo}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00004}00004\ \textcolor{comment}{**\ File\ description:\ }}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00005}00005\ \textcolor{comment}{**\ GUI}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00006}00006\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}../includes/GUI.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00009}\mbox{\hyperlink{classZappy_1_1GUI_ae78093746a7c0e69876d496cdcb67b26}{00009}}\ \mbox{\hyperlink{classZappy_1_1GUI_ae78093746a7c0e69876d496cdcb67b26}{Zappy::GUI::GUI}}()}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00010}00010\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00011}00011\ \ \ \ \ this-\/>\mbox{\hyperlink{classZappy_1_1GUI_a837e342bc1ac9c450ad3e793ef578b96}{\_window}}.create(sf::VideoMode(1920,\ 1080,\ 8),\ \textcolor{stringliteral}{"{}Zappy\ GUI"{}},\ sf::Style::Close);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00012}00012\ \ \ \ \ this-\/>\mbox{\hyperlink{classZappy_1_1GUI_a61d50c4e74513ea506bcb0d1fa14cb03}{runMenu}}();}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00013}00013\ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00015}\mbox{\hyperlink{classZappy_1_1GUI_a4b6525fd6a58f0030cc92f8b06446f45}{00015}}\ \mbox{\hyperlink{classZappy_1_1GUI_a4b6525fd6a58f0030cc92f8b06446f45}{Zappy::GUI::\string~GUI}}()}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00016}00016\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00017}00017\ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00019}\mbox{\hyperlink{classZappy_1_1GUI_abef60844ae750145830be9656746bf25}{00019}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1GUI_abef60844ae750145830be9656746bf25}{Zappy::GUI::drawText}}(\textcolor{keyword}{const}\ std::string\&\ \textcolor{keywordtype}{string},\ sf::Vector2f\ position,\ sf::Color\ color,\ \textcolor{keywordtype}{int}\ characterSize,\ sf::RenderWindow\ \&window)}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00020}00020\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00021}00021\ \ \ \ \ this-\/>\_menuText.setString(\textcolor{keywordtype}{string});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00022}00022\ \ \ \ \ this-\/>\_menuText.setPosition(position);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00023}00023\ \ \ \ \ this-\/>\_menuText.setFillColor(color);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00024}00024\ \ \ \ \ this-\/>\_menuText.setCharacterSize(characterSize);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00025}00025\ \ \ \ \ window.draw(this-\/>\_menuText);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00026}00026\ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00028}\mbox{\hyperlink{classZappy_1_1GUI_a1c9f8fa602a44a84cca490871c06ade3}{00028}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1GUI_a1c9f8fa602a44a84cca490871c06ade3}{Zappy::GUI::initConnectionFields}}()}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00029}00029\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00030}00030\ \ \ \ \ this-\/>\_ipRect.setSize(\{600,\ 150\});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00031}00031\ \ \ \ \ this-\/>\_ipRect.setPosition(\{400,\ 250\});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00032}00032\ \ \ \ \ this-\/>\_ipRect.setOrigin(\{300,\ 75\});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00033}00033\ \ \ \ \ this-\/>\_ipRect.setFillColor(sf::Color(255,\ 255,\ 255,\ 150));}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00034}00034\ \ \ \ \ this-\/>\_ipRect.setOutlineColor(sf::Color(255,\ 255,\ 255));}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00035}00035\ \ \ \ \ this-\/>\_ipRect.setOutlineThickness(2);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00036}00036\ \ \ \ \ this-\/>\_portRect.setSize(\{600,\ 150\});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00037}00037\ \ \ \ \ this-\/>\_portRect.setPosition(\{400,\ 550\});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00038}00038\ \ \ \ \ this-\/>\_portRect.setOrigin(\{300,\ 75\});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00039}00039\ \ \ \ \ this-\/>\_portRect.setFillColor(sf::Color(255,\ 255,\ 255,\ 150));}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00040}00040\ \ \ \ \ this-\/>\_portRect.setOutlineColor(sf::Color(255,\ 255,\ 255));}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00041}00041\ \ \ \ \ this-\/>\_portRect.setOutlineThickness(2);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00042}00042\ \ \ \ \ this-\/>\_font.loadFromFile(\textcolor{stringliteral}{"{}assets/arial.ttf"{}});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00043}00043\ \ \ \ \ this-\/>\_menuText.setFont(this-\/>\_font);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00044}00044\ \ \ \ \ this-\/>initEndScreenButtons();}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00045}00045\ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00047}\mbox{\hyperlink{classZappy_1_1GUI_a61d50c4e74513ea506bcb0d1fa14cb03}{00047}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1GUI_a61d50c4e74513ea506bcb0d1fa14cb03}{Zappy::GUI::runMenu}}()}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00048}00048\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00049}00049\ \ \ \ \ this-\/>initConnectionFields();}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00050}00050\ \ \ \ \ this-\/>initMenuButtons();}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00051}00051\ \ \ \ \ this-\/>initMenuConnectionButtons();}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00052}00052\ \ \ \ \ \textcolor{keywordflow}{while}\ (this-\/>\_window.isOpen())\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00053}00053\ \ \ \ \ \ \ \ \ this-\/>\_window.setView(this-\/>\_window.getDefaultView());}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00054}00054\ \ \ \ \ \ \ \ \ this-\/>handleMenuEvents();}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00055}00055\ \ \ \ \ \ \ \ \ this-\/>\_uiMouse.update(this-\/>\_window);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00056}00056\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>\_isOnConnectionPage)}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>manageConnectionPage();}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00058}00058\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>manageMenuPage();}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00060}00060\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00061}00061\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00062}00062\ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00064}\mbox{\hyperlink{classZappy_1_1GUI_a5aca46fff0c863efd65ec56fae840a02}{00064}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1GUI_a5aca46fff0c863efd65ec56fae840a02}{Zappy::GUI::initMenuButtons}}()}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00065}00065\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00066}00066\ \ \ \ \ std::shared\_ptr<Buttons>\ startButton\ =\ std::make\_shared<Buttons>(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00067}00067\ \ \ \ \ startButton-\/>setSize(\{400,\ 150\});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00068}00068\ \ \ \ \ startButton-\/>setPosition(\{960,\ 600\});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00069}00069\ \ \ \ \ startButton-\/>setMinScale(\{0.95,\ 0.95\});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00070}00070\ \ \ \ \ startButton-\/>setMaxScale(\{1.05,\ 1.05\});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00071}00071\ \ \ \ \ startButton-\/>setBgFillColor(sf::Color(230,\ 230,\ 230));}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00072}00072\ \ \ \ \ startButton-\/>setBgOutlineColor(sf::Color(150,\ 150,\ 150));}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00073}00073\ \ \ \ \ startButton-\/>setTitle(\textcolor{stringliteral}{"{}START"{}});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00074}00074\ \ \ \ \ startButton-\/>setTextFillColor(sf::Color::Black);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00075}00075\ \ \ \ \ startButton-\/>setTextOutlineColor(sf::Color::Black);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00076}00076\ \ \ \ \ startButton-\/>setTitlePositionOffset(\{0,\ -\/20\});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00077}00077\ \ \ \ \ startButton-\/>setCharacterSize(80);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00078}00078\ \ \ \ \ startButton-\/>setFunction(\&\mbox{\hyperlink{classZappy_1_1GUI_ae94bef7eeaacd5ace24665802ace7101}{GUI::goToConnectionPage}});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00079}00079\ \ \ \ \ this-\/>\_menuButtons.push\_back(startButton);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00080}00080\ \ \ \ \ std::shared\_ptr<Buttons>\ quitButton\ =\ std::make\_shared<Buttons>(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00081}00081\ \ \ \ \ quitButton-\/>setSize(\{400,\ 150\});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00082}00082\ \ \ \ \ quitButton-\/>setPosition(\{960,\ 800\});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00083}00083\ \ \ \ \ quitButton-\/>setMinScale(\{0.95,\ 0.95\});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00084}00084\ \ \ \ \ quitButton-\/>setMaxScale(\{1.05,\ 1.05\});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00085}00085\ \ \ \ \ quitButton-\/>setBgFillColor(sf::Color(230,\ 230,\ 230));}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00086}00086\ \ \ \ \ quitButton-\/>setBgOutlineColor(sf::Color(150,\ 150,\ 150));}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00087}00087\ \ \ \ \ quitButton-\/>setTitle(\textcolor{stringliteral}{"{}QUIT"{}});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00088}00088\ \ \ \ \ quitButton-\/>setTextFillColor(sf::Color::Black);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00089}00089\ \ \ \ \ quitButton-\/>setTextOutlineColor(sf::Color::Black);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00090}00090\ \ \ \ \ quitButton-\/>setTitlePositionOffset(\{0,\ -\/20\});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00091}00091\ \ \ \ \ quitButton-\/>setCharacterSize(80);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00092}00092\ \ \ \ \ quitButton-\/>setFunction(\&\mbox{\hyperlink{classZappy_1_1GUI_aaac05f52631ff8bc32a95c80ba8f44a0}{GUI::quit}});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00093}00093\ \ \ \ \ this-\/>\_menuButtons.push\_back(quitButton);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00094}00094\ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00096}\mbox{\hyperlink{classZappy_1_1GUI_a3b7e24bf5f5a06cba2b0768a5073df17}{00096}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1GUI_a3b7e24bf5f5a06cba2b0768a5073df17}{Zappy::GUI::initMenuConnectionButtons}}()}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00097}00097\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00098}00098\ \ \ \ \ std::shared\_ptr<Buttons>\ goBackButton\ =\ std::make\_shared<Buttons>(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00099}00099\ \ \ \ \ goBackButton-\/>setSize(\{200,\ 100\});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00100}00100\ \ \ \ \ goBackButton-\/>setPosition(\{1920\ -\/\ 30\ -\/\ 100,\ 1080\ -\/\ 30\ -\/\ 50\});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00101}00101\ \ \ \ \ goBackButton-\/>setMinScale(\{0.95,\ 0.95\});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00102}00102\ \ \ \ \ goBackButton-\/>setMaxScale(\{1.05,\ 1.05\});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00103}00103\ \ \ \ \ goBackButton-\/>setBgFillColor(sf::Color(230,\ 230,\ 230,\ 150));}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00104}00104\ \ \ \ \ goBackButton-\/>setBgOutlineColor(sf::Color::White);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00105}00105\ \ \ \ \ goBackButton-\/>setTitle(\textcolor{stringliteral}{"{}RETURN"{}});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00106}00106\ \ \ \ \ goBackButton-\/>setTextFillColor(sf::Color::Black);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00107}00107\ \ \ \ \ goBackButton-\/>setTextOutlineColor(sf::Color::Black);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00108}00108\ \ \ \ \ goBackButton-\/>setTitlePositionOffset(\{0,\ -\/20\});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00109}00109\ \ \ \ \ goBackButton-\/>setCharacterSize(30);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00110}00110\ \ \ \ \ goBackButton-\/>setFunction(\&\mbox{\hyperlink{classZappy_1_1GUI_aa3743b9957e7d3a059c18ed70258215f}{GUI::goBackToMenu}});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00111}00111\ \ \ \ \ this-\/>\_connectionButtons.push\_back(goBackButton);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00112}00112\ \ \ \ \ std::shared\_ptr<Buttons>\ confirmButton\ =\ std::make\_shared<Buttons>(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00113}00113\ \ \ \ \ confirmButton-\/>setSize(\{510,\ 150\});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00114}00114\ \ \ \ \ confirmButton-\/>setPosition(\{360,\ 1080\ -\/\ 30\ -\/\ 75\});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00115}00115\ \ \ \ \ confirmButton-\/>setMinScale(\{0.95,\ 0.95\});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00116}00116\ \ \ \ \ confirmButton-\/>setMaxScale(\{1.05,\ 1.05\});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00117}00117\ \ \ \ \ confirmButton-\/>setBgFillColor(sf::Color(230,\ 230,\ 230,\ 150));}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00118}00118\ \ \ \ \ confirmButton-\/>setBgOutlineColor(sf::Color::White);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00119}00119\ \ \ \ \ confirmButton-\/>setTitle(\textcolor{stringliteral}{"{}Connect"{}});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00120}00120\ \ \ \ \ confirmButton-\/>setTextFillColor(sf::Color::Black);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00121}00121\ \ \ \ \ confirmButton-\/>setTextOutlineColor(sf::Color::Black);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00122}00122\ \ \ \ \ confirmButton-\/>setTitlePositionOffset(\{0,\ -\/20\});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00123}00123\ \ \ \ \ confirmButton-\/>setCharacterSize(50);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00124}00124\ \ \ \ \ confirmButton-\/>setFunction(\&\mbox{\hyperlink{classZappy_1_1GUI_ab8f0d597419840891dbe50ac8076c248}{GUI::connect}});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00125}00125\ \ \ \ \ this-\/>\_connectionButtons.push\_back(confirmButton);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00126}00126\ \ \ \ \ std::shared\_ptr<Buttons>\ selectIpButton\ =\ std::make\_shared<Buttons>(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00127}00127\ \ \ \ \ selectIpButton-\/>setSize(\{510,\ 150\});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00128}00128\ \ \ \ \ selectIpButton-\/>setPosition(\{1010,\ 250\});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00129}00129\ \ \ \ \ selectIpButton-\/>setMinScale(\{0.95,\ 0.95\});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00130}00130\ \ \ \ \ selectIpButton-\/>setMaxScale(\{1.05,\ 1.05\});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00131}00131\ \ \ \ \ selectIpButton-\/>setBgFillColor(sf::Color(230,\ 230,\ 230,\ 150));}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00132}00132\ \ \ \ \ selectIpButton-\/>setBgOutlineColor(sf::Color::White);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00133}00133\ \ \ \ \ selectIpButton-\/>setTitle(\textcolor{stringliteral}{"{}Select"{}});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00134}00134\ \ \ \ \ selectIpButton-\/>setTextFillColor(sf::Color::Black);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00135}00135\ \ \ \ \ selectIpButton-\/>setTextOutlineColor(sf::Color::Black);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00136}00136\ \ \ \ \ selectIpButton-\/>setTitlePositionOffset(\{0,\ -\/20\});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00137}00137\ \ \ \ \ selectIpButton-\/>setCharacterSize(50);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00138}00138\ \ \ \ \ selectIpButton-\/>setFunction(\&\mbox{\hyperlink{classZappy_1_1GUI_a3c5ebfc34dd401eba7f2891fdf9ec7a7}{GUI::selectIp}});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00139}00139\ \ \ \ \ this-\/>\_connectionButtons.push\_back(selectIpButton);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00140}00140\ \ \ \ \ std::shared\_ptr<Buttons>\ confirmIpButton\ =\ std::make\_shared<Buttons>(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00141}00141\ \ \ \ \ confirmIpButton-\/>setSize(\{510,\ 150\});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00142}00142\ \ \ \ \ confirmIpButton-\/>setPosition(\{1580,\ 250\});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00143}00143\ \ \ \ \ confirmIpButton-\/>setMinScale(\{0.95,\ 0.95\});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00144}00144\ \ \ \ \ confirmIpButton-\/>setMaxScale(\{1.05,\ 1.05\});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00145}00145\ \ \ \ \ confirmIpButton-\/>setBgFillColor(sf::Color(230,\ 230,\ 230,\ 150));}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00146}00146\ \ \ \ \ confirmIpButton-\/>setBgOutlineColor(sf::Color::White);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00147}00147\ \ \ \ \ confirmIpButton-\/>setTitle(\textcolor{stringliteral}{"{}Confirm"{}});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00148}00148\ \ \ \ \ confirmIpButton-\/>setTextFillColor(sf::Color::Black);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00149}00149\ \ \ \ \ confirmIpButton-\/>setTextOutlineColor(sf::Color::Black);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00150}00150\ \ \ \ \ confirmIpButton-\/>setTitlePositionOffset(\{0,\ -\/20\});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00151}00151\ \ \ \ \ confirmIpButton-\/>setCharacterSize(50);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00152}00152\ \ \ \ \ confirmIpButton-\/>setFunction(\&\mbox{\hyperlink{classZappy_1_1GUI_ab0eb8e6aa925893a89d443f2dbc5e9c5}{GUI::confirmIp}});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00153}00153\ \ \ \ \ this-\/>\_connectionButtons.push\_back(confirmIpButton);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00154}00154\ \ \ \ \ std::shared\_ptr<Buttons>\ selectPortButton\ =\ std::make\_shared<Buttons>(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00155}00155\ \ \ \ \ selectPortButton-\/>setSize(\{510,\ 150\});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00156}00156\ \ \ \ \ selectPortButton-\/>setPosition(\{1010,\ 550\});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00157}00157\ \ \ \ \ selectPortButton-\/>setMinScale(\{0.95,\ 0.95\});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00158}00158\ \ \ \ \ selectPortButton-\/>setMaxScale(\{1.05,\ 1.05\});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00159}00159\ \ \ \ \ selectPortButton-\/>setBgFillColor(sf::Color(230,\ 230,\ 230,\ 150));}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00160}00160\ \ \ \ \ selectPortButton-\/>setBgOutlineColor(sf::Color::White);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00161}00161\ \ \ \ \ selectPortButton-\/>setTitle(\textcolor{stringliteral}{"{}Select"{}});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00162}00162\ \ \ \ \ selectPortButton-\/>setTextFillColor(sf::Color::Black);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00163}00163\ \ \ \ \ selectPortButton-\/>setTextOutlineColor(sf::Color::Black);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00164}00164\ \ \ \ \ selectPortButton-\/>setTitlePositionOffset(\{0,\ -\/20\});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00165}00165\ \ \ \ \ selectPortButton-\/>setCharacterSize(50);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00166}00166\ \ \ \ \ selectPortButton-\/>setFunction(\&\mbox{\hyperlink{classZappy_1_1GUI_af270c8f771dafd9c077b1c7982cca37a}{GUI::selectPort}});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00167}00167\ \ \ \ \ this-\/>\_connectionButtons.push\_back(selectPortButton);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00168}00168\ \ \ \ \ std::shared\_ptr<Buttons>\ confirmPortButton\ =\ std::make\_shared<Buttons>(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00169}00169\ \ \ \ \ confirmPortButton-\/>setSize(\{510,\ 150\});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00170}00170\ \ \ \ \ confirmPortButton-\/>setPosition(\{1580,\ 550\});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00171}00171\ \ \ \ \ confirmPortButton-\/>setMinScale(\{0.95,\ 0.95\});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00172}00172\ \ \ \ \ confirmPortButton-\/>setMaxScale(\{1.05,\ 1.05\});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00173}00173\ \ \ \ \ confirmPortButton-\/>setBgFillColor(sf::Color(230,\ 230,\ 230,\ 150));}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00174}00174\ \ \ \ \ confirmPortButton-\/>setBgOutlineColor(sf::Color::White);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00175}00175\ \ \ \ \ confirmPortButton-\/>setTitle(\textcolor{stringliteral}{"{}Confirm"{}});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00176}00176\ \ \ \ \ confirmPortButton-\/>setTextFillColor(sf::Color::Black);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00177}00177\ \ \ \ \ confirmPortButton-\/>setTextOutlineColor(sf::Color::Black);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00178}00178\ \ \ \ \ confirmPortButton-\/>setTitlePositionOffset(\{0,\ -\/20\});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00179}00179\ \ \ \ \ confirmPortButton-\/>setCharacterSize(50);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00180}00180\ \ \ \ \ confirmPortButton-\/>setFunction(\&\mbox{\hyperlink{classZappy_1_1GUI_ad32561a3aca1ae0d26a7a98d8307afd5}{GUI::confirmPort}});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00181}00181\ \ \ \ \ this-\/>\_connectionButtons.push\_back(confirmPortButton);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00182}00182\ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00183}00183\ }
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00184}\mbox{\hyperlink{classZappy_1_1GUI_ab8f0d597419840891dbe50ac8076c248}{00184}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1GUI_ab8f0d597419840891dbe50ac8076c248}{Zappy::GUI::connect}}()}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00185}00185\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00186}00186\ \ \ \ \ this-\/>\_ipSelected\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00187}00187\ \ \ \ \ this-\/>\_portSelected\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00188}00188\ \ \ \ \ this-\/>\_hasConnectionFailed\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00189}00189\ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>\_tmpIp.empty()\ ||\ this-\/>\_tmpPort.empty())}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00190}00190\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00191}00191\ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00192}00192\ \ \ \ \ \ \ \ \ this-\/>\_networkInfo\ =\ std::make\_shared<Network>(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00193}00193\ \ \ \ \ \ \ \ \ this-\/>\_networkInfo-\/>establishConnection(this-\/>\_tmpIp,\ std::stoi(this-\/>\_tmpPort));}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00194}00194\ \ \ \ \ \ \ \ \ this-\/>runGame();}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00195}00195\ \ \ \ \ \ \ \ \ this-\/>\_isOnConnectionPage\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00196}00196\ \ \ \ \ \ \ \ \ this-\/>\_networkInfo.reset();}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00197}00197\ \ \ \ \ \}\ \textcolor{keywordflow}{catch}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classZappy_1_1Error}{Error}}\&\ e)\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00198}00198\ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Zappy\ Exception\ -\/\ [From\ :\ "{}}\ <<\ e.\mbox{\hyperlink{classZappy_1_1Error_a3e1b10abafb447ba2cf7ab89573115e9}{where}}()\ <<\ \textcolor{stringliteral}{"{}]\ -\/\ ["{}}\ <<\ e.\mbox{\hyperlink{classZappy_1_1Error_aa3f2e1be6aef0af2cedff311c62509f5}{what}}()\ <<\ \textcolor{stringliteral}{"{}]"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00199}00199\ \ \ \ \ \ \ \ \ this-\/>\_hasConnectionFailed\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00200}00200\ \ \ \ \ \ \ \ \ this-\/>\_isOnConnectionPage\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00201}00201\ \ \ \ \ \ \ \ \ this-\/>\_networkInfo.reset();}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00202}00202\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00203}00203\ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00204}00204\ }
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00205}\mbox{\hyperlink{classZappy_1_1GUI_a3c5ebfc34dd401eba7f2891fdf9ec7a7}{00205}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1GUI_a3c5ebfc34dd401eba7f2891fdf9ec7a7}{Zappy::GUI::selectIp}}()}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00206}00206\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00207}00207\ \ \ \ \ this-\/>\_ipSelected\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00208}00208\ \ \ \ \ this-\/>\_portSelected\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00209}00209\ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00210}00210\ }
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00211}\mbox{\hyperlink{classZappy_1_1GUI_ab0eb8e6aa925893a89d443f2dbc5e9c5}{00211}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1GUI_ab0eb8e6aa925893a89d443f2dbc5e9c5}{Zappy::GUI::confirmIp}}()}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00212}00212\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00213}00213\ \ \ \ \ this-\/>\_ipSelected\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00214}00214\ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00215}00215\ }
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00216}\mbox{\hyperlink{classZappy_1_1GUI_af270c8f771dafd9c077b1c7982cca37a}{00216}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1GUI_af270c8f771dafd9c077b1c7982cca37a}{Zappy::GUI::selectPort}}()}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00217}00217\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00218}00218\ \ \ \ \ this-\/>\_ipSelected\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00219}00219\ \ \ \ \ this-\/>\_portSelected\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00220}00220\ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00221}00221\ }
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00222}\mbox{\hyperlink{classZappy_1_1GUI_ad32561a3aca1ae0d26a7a98d8307afd5}{00222}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1GUI_ad32561a3aca1ae0d26a7a98d8307afd5}{Zappy::GUI::confirmPort}}()}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00223}00223\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00224}00224\ \ \ \ \ this-\/>\_portSelected\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00225}00225\ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00226}00226\ }
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00227}00227\ }
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00228}\mbox{\hyperlink{classZappy_1_1GUI_aaac05f52631ff8bc32a95c80ba8f44a0}{00228}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1GUI_aaac05f52631ff8bc32a95c80ba8f44a0}{Zappy::GUI::quit}}()}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00229}00229\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00230}00230\ \ \ \ \ this-\/>\_window.close();}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00231}00231\ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00232}00232\ }
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00233}\mbox{\hyperlink{classZappy_1_1GUI_aa3743b9957e7d3a059c18ed70258215f}{00233}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1GUI_aa3743b9957e7d3a059c18ed70258215f}{Zappy::GUI::goBackToMenu}}()}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00234}00234\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00235}00235\ \ \ \ \ this-\/>\_hasConnectionFailed\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00236}00236\ \ \ \ \ this-\/>\_isOnConnectionPage\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00237}00237\ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00238}00238\ }
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00239}\mbox{\hyperlink{classZappy_1_1GUI_ae94bef7eeaacd5ace24665802ace7101}{00239}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1GUI_ae94bef7eeaacd5ace24665802ace7101}{Zappy::GUI::goToConnectionPage}}()}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00240}00240\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00241}00241\ \ \ \ \ this-\/>\_isOnConnectionPage\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00242}00242\ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00243}00243\ }
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00244}\mbox{\hyperlink{classZappy_1_1GUI_a2861030006879fa7bb7e37baf0803600}{00244}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1GUI_a2861030006879fa7bb7e37baf0803600}{Zappy::GUI::renderIpAndPort}}()}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00245}00245\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00246}00246\ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>\_tmpIp.empty())}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00247}00247\ \ \ \ \ \ \ \ \ this-\/>drawText(\textcolor{stringliteral}{"{}255.255.255.255"{}},\ \{120,\ 210\},\ sf::Color(0,\ 0,\ 0,\ 50),\ 60,\ this-\/>\_window);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00248}00248\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00249}00249\ \ \ \ \ \ \ \ \ this-\/>drawText(this-\/>\_tmpIp,\ \{120,\ 210\},\ sf::Color::Black,\ 60,\ this-\/>\_window);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00250}00250\ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>\_tmpPort.empty())}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00251}00251\ \ \ \ \ \ \ \ \ this-\/>drawText(\textcolor{stringliteral}{"{}8000"{}},\ \{120,\ 510\},\ sf::Color(0,\ 0,\ 0,\ 50),\ 60,\ this-\/>\_window);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00252}00252\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00253}00253\ \ \ \ \ \ \ \ \ this-\/>drawText(this-\/>\_tmpPort,\ \{120,\ 510\},\ sf::Color::Black,\ 60,\ this-\/>\_window);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00254}00254\ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00255}00255\ }
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00256}\mbox{\hyperlink{classZappy_1_1GUI_a3837df65ae2fbe68190758ed0746f1f9}{00256}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1GUI_a3837df65ae2fbe68190758ed0746f1f9}{Zappy::GUI::manageMenuPage}}()}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00257}00257\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00258}00258\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ button\ :\ this-\/>\_menuButtons)}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00259}00259\ \ \ \ \ \ \ \ \ button-\/>update(this-\/>\_uiMouse);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00260}00260\ \ \ \ \ this-\/>\_window.clear(sf::Color::White);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00261}00261\ \ \ \ \ this-\/>\_window.draw(this-\/>\_menuBg.getSprite());}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00262}00262\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ button\ :\ this-\/>\_menuButtons)}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00263}00263\ \ \ \ \ \ \ \ \ button-\/>render(this-\/>\_window);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00264}00264\ \ \ \ \ this-\/>\_window.display();}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00265}00265\ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00266}00266\ }
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00267}\mbox{\hyperlink{classZappy_1_1GUI_a1c27fdc30bc1fc977189c3db58bf61e7}{00267}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1GUI_a1c27fdc30bc1fc977189c3db58bf61e7}{Zappy::GUI::manageConnectionPage}}()}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00268}00268\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00269}00269\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ button\ :\ this-\/>\_connectionButtons)}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00270}00270\ \ \ \ \ \ \ \ \ button-\/>update(this-\/>\_uiMouse);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00271}00271\ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>\_ipSelected)}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00272}00272\ \ \ \ \ \ \ \ \ this-\/>\_ipRect.setFillColor(sf::Color(255,\ 255,\ 255,\ 200));}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00273}00273\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00274}00274\ \ \ \ \ \ \ \ \ this-\/>\_ipRect.setFillColor(sf::Color(255,\ 255,\ 255,\ 150));}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00275}00275\ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>\_portSelected)}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00276}00276\ \ \ \ \ \ \ \ \ this-\/>\_portRect.setFillColor(sf::Color(255,\ 255,\ 255,\ 200));}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00277}00277\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00278}00278\ \ \ \ \ \ \ \ \ this-\/>\_portRect.setFillColor(sf::Color(255,\ 255,\ 255,\ 150));}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00279}00279\ \ \ \ \ this-\/>\_window.clear(sf::Color::White);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00280}00280\ \ \ \ \ this-\/>\_window.draw(this-\/>\_menuBgDark.getSprite());}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00281}00281\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ button\ :\ this-\/>\_connectionButtons)}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00282}00282\ \ \ \ \ \ \ \ \ button-\/>render(this-\/>\_window);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00283}00283\ \ \ \ \ this-\/>\_window.draw(this-\/>\_ipRect);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00284}00284\ \ \ \ \ this-\/>\_window.draw(this-\/>\_portRect);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00285}00285\ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>\_hasConnectionFailed)}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00286}00286\ \ \ \ \ \ \ \ \ this-\/>drawText(\textcolor{stringliteral}{"{}*Connection\ refused."{}},\ \{120,\ 750\},\ sf::Color::Red,\ 60,\ this-\/>\_window);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00287}00287\ \ \ \ \ this-\/>renderIpAndPort();}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00288}00288\ \ \ \ \ this-\/>\_window.display();}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00289}00289\ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00290}00290\ }
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00291}\mbox{\hyperlink{classZappy_1_1GUI_a1b26eea07f223956c95ad79e08989a31}{00291}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1GUI_a1b26eea07f223956c95ad79e08989a31}{Zappy::GUI::runGame}}()}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00292}00292\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00293}00293\ \ \ \ \ this-\/>\_networkInfo-\/>initProcess();}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00294}00294\ \ \ \ \ std::srand(std::time(0));}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00295}00295\ \ \ \ \ this-\/>\_recieveThread\ =\ std::thread(\&\mbox{\hyperlink{classZappy_1_1Network_abe0252d5b820ded7c65ceceb7cf4505c}{Network::recieveFromServer}},\ this-\/>\_networkInfo);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00296}00296\ \ \ \ \ this-\/>background\ =\ sf::VertexArray(sf::Quads,\ 4);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00297}00297\ \ \ \ \ background[0].position\ =\ sf::Vector2f(0,\ 0);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00298}00298\ \ \ \ \ background[1].position\ =\ sf::Vector2f(this-\/>\_window.getSize().x,\ 0);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00299}00299\ \ \ \ \ background[2].position\ =\ sf::Vector2f(this-\/>\_window.getSize().x,\ this-\/>\_window.getSize().y);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00300}00300\ \ \ \ \ background[3].position\ =\ sf::Vector2f(0,\ this-\/>\_window.getSize().y);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00301}00301\ \ \ \ \ this-\/>sky.getSprite().setPosition(0,\ 0);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00302}00302\ \ \ \ \ this-\/>\_TimeFont.loadFromFile(\textcolor{stringliteral}{"{}assets/fonts/clock.ttf"{}});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00303}00303\ \ \ \ \ this-\/>\_TimeText\ =\ sf::Text();}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00304}00304\ \ \ \ \ this-\/>\_TimeText.setFont(this-\/>\_TimeFont);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00305}00305\ \ \ \ \ this-\/>\_TimeText.setPosition(sf::Vector2f(1700,\ 10));}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00306}00306\ \ \ \ \ this-\/>\_TimeText.setScale(sf::Vector2f(2.0,\ 2.0));}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00307}00307\ \ \ \ \ this-\/>init();}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00308}00308\ \ \ \ \ this-\/>run();}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00309}00309\ \ \ \ \ this-\/>\_recieveThread.join();}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00310}00310\ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00311}00311\ }
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00312}\mbox{\hyperlink{classZappy_1_1GUI_ad0ce3e3a0ec702695cf2348576457aa2}{00312}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1GUI_ad0ce3e3a0ec702695cf2348576457aa2}{Zappy::GUI::updateClock}}()}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00313}00313\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00314}00314\ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>time\ <\ 0.0f)\ this-\/>time\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00315}00315\ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>time\ >=\ 24.0f)\ this-\/>time\ =\ 23.9999f;}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00316}00316\ \ \ \ \ \textcolor{keywordtype}{int}\ hours\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(this-\/>time);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00317}00317\ \ \ \ \ \textcolor{keywordtype}{float}\ fractionalHours\ =\ this-\/>time\ -\/\ hours;}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00318}00318\ \ \ \ \ \textcolor{keywordtype}{int}\ minutes\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(fractionalHours\ *\ 60);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00319}00319\ \ \ \ \ \textcolor{keywordtype}{float}\ fractionalMinutes\ =\ fractionalHours\ *\ 60\ -\/\ minutes;}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00320}00320\ \ \ \ \ \textcolor{keywordtype}{int}\ seconds\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(std::round(fractionalMinutes\ *\ 60));}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00321}00321\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00322}00322\ \ \ \ \ \textcolor{keywordflow}{if}\ (seconds\ ==\ 60)\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00323}00323\ \ \ \ \ \ \ \ \ seconds\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00324}00324\ \ \ \ \ \ \ \ \ minutes++;}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00325}00325\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00326}00326\ \ \ \ \ \textcolor{keywordflow}{if}\ (minutes\ ==\ 60)\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00327}00327\ \ \ \ \ \ \ \ \ minutes\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00328}00328\ \ \ \ \ \ \ \ \ hours\ =\ (hours\ +\ 1)\ \%\ 24;}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00329}00329\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00330}00330\ \ \ \ \ std::ostringstream\ oss;}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00331}00331\ \ \ \ \ oss\ <<\ std::setfill(\textcolor{charliteral}{'0'})\ <<\ std::setw(2)\ <<\ hours\ <<\ \textcolor{stringliteral}{"{}:"{}}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00332}00332\ \ \ \ \ \ \ \ \ <<\ std::setfill(\textcolor{charliteral}{'0'})\ <<\ std::setw(2)\ <<\ minutes\ <<\ \textcolor{stringliteral}{"{}:"{}}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00333}00333\ \ \ \ \ \ \ \ \ <<\ std::setfill(\textcolor{charliteral}{'0'})\ <<\ std::setw(2)\ <<\ seconds;}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00334}00334\ }
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00335}00335\ \ \ \ \ this-\/>\_TimeText.setString(oss.str());}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00336}00336\ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00337}00337\ }
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00338}\mbox{\hyperlink{classZappy_1_1GUI_aa011d3fc7da9b3efccb047654d4a212d}{00338}}\ sf::Color\ \mbox{\hyperlink{classZappy_1_1GUI_aa011d3fc7da9b3efccb047654d4a212d}{Zappy::GUI::lerpColor}}(\textcolor{keyword}{const}\ sf::Color\ \&a,\ sf::Color\ \&b,\ \textcolor{keywordtype}{float}\ t)}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00339}00339\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00340}00340\ \ \ \ \ \textcolor{keywordflow}{return}\ sf::Color(}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00341}00341\ \ \ \ \ \ \ \ \ a.r\ +\ t\ *\ (b.r\ -\/\ a.r),}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00342}00342\ \ \ \ \ \ \ \ \ a.g\ +\ t\ *\ (b.g\ -\/\ a.g),}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00343}00343\ \ \ \ \ \ \ \ \ a.b\ +\ t\ *\ (b.b\ -\/\ a.b)}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00344}00344\ \ \ \ \ );}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00345}00345\ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00346}00346\ }
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00347}\mbox{\hyperlink{classZappy_1_1GUI_a4cdbdbe772b7ad2064abe5b61b69e158}{00347}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1GUI_a4cdbdbe772b7ad2064abe5b61b69e158}{Zappy::GUI::updateSky}}()}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00348}00348\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00349}00349\ \ \ \ \ sf::Color\ dawnColor(150,\ 180,\ 255);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00350}00350\ \ \ \ \ sf::Color\ noonColor(135,\ 206,\ 235);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00351}00351\ \ \ \ \ sf::Color\ duskColor(255,\ 100,\ 50);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00352}00352\ \ \ \ \ sf::Color\ nightColor(10,\ 10,\ 30);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00353}00353\ \ \ \ \ sf::Color\ dawnBottom(100,\ 100,\ 180);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00354}00354\ \ \ \ \ sf::Color\ noonBottom(200,\ 220,\ 255);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00355}00355\ \ \ \ \ sf::Color\ duskBottom(255,\ 150,\ 80);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00356}00356\ \ \ \ \ sf::Color\ nightBottom(10,\ 20,\ 40);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00357}00357\ \ \ \ \ sf::Color\ Bottom;}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00358}00358\ \ \ \ \ sf::Color\ Top;}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00359}00359\ }
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00360}00360\ \ \ \ \ \textcolor{keywordtype}{float}\ timeElapsed\ =\ this-\/>\_clock.getElapsedTime().asSeconds();}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00361}00361\ \ \ \ \ this-\/>time\ =\ timeElapsed\ *\ 0.1f;}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00362}00362\ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>time\ >\ 24.f)\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00363}00363\ \ \ \ \ \ \ \ \ this-\/>time\ -\/=\ 24;}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00364}00364\ \ \ \ \ \ \ \ \ this-\/>\_clock.restart();}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00365}00365\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00366}00366\ \ \ \ \ \textcolor{keywordflow}{if}\ (time\ <\ 6.f)\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00367}00367\ \ \ \ \ \ \ \ \ Top\ =\ lerpColor(nightColor,\ dawnColor,\ time\ /\ 6.f);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00368}00368\ \ \ \ \ \ \ \ \ Bottom\ =\ lerpColor(nightBottom,\ dawnBottom,\ time\ /\ 6.f);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00369}00369\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (time\ <\ 12.f)\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00370}00370\ \ \ \ \ \ \ \ \ this-\/>night\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00371}00371\ \ \ \ \ \ \ \ \ Top\ =\ lerpColor(dawnColor,\ noonColor,\ (time\ -\/\ 6.f)\ /\ 6.f);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00372}00372\ \ \ \ \ \ \ \ \ Bottom\ =\ lerpColor(dawnBottom,\ noonBottom,\ (time\ -\/\ 6.f)\ /\ 6.f);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00373}00373\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (time\ <\ 18.f)\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00374}00374\ \ \ \ \ \ \ \ \ Top\ =\ lerpColor(noonColor,\ duskColor,\ (time\ -\/\ 12.f)\ /\ 6.f);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00375}00375\ \ \ \ \ \ \ \ \ Bottom\ =\ lerpColor(noonColor,\ duskBottom,\ (time\ -\/\ 12.f)/\ 6.f);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00376}00376\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (time\ <\ 20.f)\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00377}00377\ \ \ \ \ \ \ \ \ Top\ =\ lerpColor(duskColor,\ nightColor,\ (time\ -\/\ 18.f)\ /\ 2.f);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00378}00378\ \ \ \ \ \ \ \ \ Bottom\ =\ lerpColor(duskBottom,\ nightBottom,\ (time\ -\/\ 18.f)\ /\ 2.f);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00379}00379\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00380}00380\ \ \ \ \ \ \ \ \ Top\ =\ lerpColor(nightColor,\ dawnColor,\ (time\ -\/\ 20.f)\ /\ 4.f);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00381}00381\ \ \ \ \ \ \ \ \ Bottom\ =\ lerpColor(nightBottom,\ dawnBottom,\ (time\ -\/\ 20.F)\ /\ 4.f);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00382}00382\ \ \ \ \ \ \ \ \ this-\/>night\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00383}00383\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00384}00384\ \ \ \ \ background[0].color\ =\ Top;}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00385}00385\ \ \ \ \ background[1].color\ =\ Top;}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00386}00386\ \ \ \ \ background[2].color\ =\ Bottom;}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00387}00387\ \ \ \ \ background[3].color\ =\ Bottom;}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00388}00388\ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00389}00389\ }
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00390}\mbox{\hyperlink{classZappy_1_1GUI_a608af6b972bd787a2f07185ce6b8d0eb}{00390}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1GUI_a608af6b972bd787a2f07185ce6b8d0eb}{Zappy::GUI::quitGameToMenu}}()}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00391}00391\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00392}00392\ \ \ \ \ this-\/>\_gameIsRunning\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00393}00393\ \ \ \ \ this-\/>\_lastTeamAlive\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00394}00394\ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00395}00395\ }
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00396}\mbox{\hyperlink{classZappy_1_1GUI_a424ceb7779068347804ea89f22dd41be}{00396}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1GUI_a424ceb7779068347804ea89f22dd41be}{Zappy::GUI::initEndScreenButtons}}()}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00397}00397\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00398}00398\ \ \ \ \ std::shared\_ptr<Buttons>\ backToMenuButton\ =\ std::make\_shared<Buttons>(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00399}00399\ \ \ \ \ backToMenuButton-\/>setSize(\{400,\ 150\});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00400}00400\ \ \ \ \ backToMenuButton-\/>setPosition(\{960,\ 600\});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00401}00401\ \ \ \ \ backToMenuButton-\/>setMinScale(\{0.95,\ 0.95\});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00402}00402\ \ \ \ \ backToMenuButton-\/>setMaxScale(\{1.05,\ 1.05\});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00403}00403\ \ \ \ \ backToMenuButton-\/>setBgFillColor(sf::Color(230,\ 230,\ 230));}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00404}00404\ \ \ \ \ backToMenuButton-\/>setBgOutlineColor(sf::Color(150,\ 150,\ 150));}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00405}00405\ \ \ \ \ backToMenuButton-\/>setTitle(\textcolor{stringliteral}{"{}MENU"{}});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00406}00406\ \ \ \ \ backToMenuButton-\/>setTextFillColor(sf::Color::Black);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00407}00407\ \ \ \ \ backToMenuButton-\/>setTextOutlineColor(sf::Color::Black);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00408}00408\ \ \ \ \ backToMenuButton-\/>setTitlePositionOffset(\{0,\ -\/20\});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00409}00409\ \ \ \ \ backToMenuButton-\/>setCharacterSize(80);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00410}00410\ \ \ \ \ backToMenuButton-\/>setFunction(\&\mbox{\hyperlink{classZappy_1_1GUI_a608af6b972bd787a2f07185ce6b8d0eb}{GUI::quitGameToMenu}});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00411}00411\ \ \ \ \ this-\/>\_endScreenButtons.push\_back(backToMenuButton);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00412}00412\ \ \ \ \ std::shared\_ptr<Buttons>\ quitButton\ =\ std::make\_shared<Buttons>(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00413}00413\ \ \ \ \ quitButton-\/>setSize(\{400,\ 150\});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00414}00414\ \ \ \ \ quitButton-\/>setPosition(\{960,\ 800\});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00415}00415\ \ \ \ \ quitButton-\/>setMinScale(\{0.95,\ 0.95\});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00416}00416\ \ \ \ \ quitButton-\/>setMaxScale(\{1.05,\ 1.05\});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00417}00417\ \ \ \ \ quitButton-\/>setBgFillColor(sf::Color(230,\ 230,\ 230));}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00418}00418\ \ \ \ \ quitButton-\/>setBgOutlineColor(sf::Color(150,\ 150,\ 150));}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00419}00419\ \ \ \ \ quitButton-\/>setTitle(\textcolor{stringliteral}{"{}QUIT"{}});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00420}00420\ \ \ \ \ quitButton-\/>setTextFillColor(sf::Color::Black);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00421}00421\ \ \ \ \ quitButton-\/>setTextOutlineColor(sf::Color::Black);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00422}00422\ \ \ \ \ quitButton-\/>setTitlePositionOffset(\{0,\ -\/20\});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00423}00423\ \ \ \ \ quitButton-\/>setCharacterSize(80);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00424}00424\ \ \ \ \ quitButton-\/>setFunction(\&\mbox{\hyperlink{classZappy_1_1GUI_aaac05f52631ff8bc32a95c80ba8f44a0}{GUI::quit}});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00425}00425\ \ \ \ \ this-\/>\_endScreenButtons.push\_back(quitButton);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00426}00426\ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00427}00427\ }
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00428}\mbox{\hyperlink{classZappy_1_1GUI_ac0e5ba7653bd6622c1a0b67c0265d673}{00428}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1GUI_ac0e5ba7653bd6622c1a0b67c0265d673}{Zappy::GUI::init}}()}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00429}00429\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00430}00430\ \ \ \ \ initPaths();}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00431}00431\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 8;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00432}00432\ \ \ \ \ \ \ \ \ this-\/>\_items.push\_back(std::make\_shared<Items>(this-\/>spritePaths[i],\ i));}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00433}00433\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00434}00434\ \ \ \ \ this-\/>\_tileInfo\ =\ std::make\_shared<TileInfo>(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00435}00435\ \ \ \ \ this-\/>\_trantorianInfo\ =\ std::make\_shared<TrantorianInfo>(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00436}00436\ \ \ \ \ this-\/>\_broadcastTab\ =\ std::make\_shared<BroadCastTab>();}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00437}00437\ \ \ \ \ this-\/>\_view\ =\ sf::View(sf::FloatRect(0,\ 0,\ this-\/>\_window.getSize().x,\ this-\/>\_window.getSize().y));}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00438}00438\ \ \ \ \ this-\/>\_window.setView(this-\/>\_view);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00439}00439\ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00440}00440\ }
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00441}\mbox{\hyperlink{classZappy_1_1GUI_a8223cd161bf0c89a5e90b0b738a48f3a}{00441}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1GUI_a8223cd161bf0c89a5e90b0b738a48f3a}{Zappy::GUI::initPaths}}()}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00442}00442\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00443}00443\ \ \ \ \ this-\/>spritePaths.push\_back(\textcolor{stringliteral}{"{}assets/egg\_filled.png"{}});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00444}00444\ \ \ \ \ this-\/>spritePaths.push\_back(\textcolor{stringliteral}{"{}assets/meat.png"{}});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00445}00445\ \ \ \ \ this-\/>spritePaths.push\_back(\textcolor{stringliteral}{"{}assets/Gray\_Cristal.png"{}});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00446}00446\ \ \ \ \ this-\/>spritePaths.push\_back(\textcolor{stringliteral}{"{}assets/Green\_Cristal.png"{}});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00447}00447\ \ \ \ \ this-\/>spritePaths.push\_back(\textcolor{stringliteral}{"{}assets/Red\_Cristal.png"{}});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00448}00448\ \ \ \ \ this-\/>spritePaths.push\_back(\textcolor{stringliteral}{"{}assets/Yellow\_Cristal.png"{}});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00449}00449\ \ \ \ \ this-\/>spritePaths.push\_back(\textcolor{stringliteral}{"{}assets/Blue\_Cristal.png"{}});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00450}00450\ \ \ \ \ this-\/>spritePaths.push\_back(\textcolor{stringliteral}{"{}assets/Orange\_Cristal.png"{}});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00451}00451\ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00452}00452\ }
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00453}\mbox{\hyperlink{classZappy_1_1GUI_af54975720ede407e3aef801cb7e7ba42}{00453}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1GUI_af54975720ede407e3aef801cb7e7ba42}{Zappy::GUI::handleMenuEvents}}()}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00454}00454\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00455}00455\ \ \ \ \ sf::Event\ event;}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00456}00456\ \ \ \ \ \textcolor{keywordflow}{while}\ (this-\/>\_window.pollEvent(event))\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00457}00457\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (event.type\ ==\ sf::Event::Closed)}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00458}00458\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\_window.close();}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00459}00459\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (event.type\ ==\ sf::Event::TextEntered)\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00460}00460\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ letter\ =\ \textcolor{keyword}{event}.text.unicode;}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00461}00461\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>\_ipSelected)\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00462}00462\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (letter\ ==\ \textcolor{charliteral}{'\(\backslash\)b'}\ \&\&\ !this-\/>\_tmpIp.empty())}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00463}00463\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\_tmpIp.pop\_back();}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00464}00464\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classZappy_1_1Parser_ac4f72d89bb990954bd56022bc81f56dc}{Parser::isNum}}(\{letter\})\ ||\ letter\ ==\ \textcolor{charliteral}{'.'})\{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00465}00465\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>\_tmpIp.size()\ >=\ 15)}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00466}00466\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\_tmpIp.pop\_back();}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00467}00467\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\_tmpIp\ +=\ \{letter\};}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00468}00468\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00469}00469\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00470}00470\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>\_portSelected)\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00471}00471\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (letter\ ==\ \textcolor{charliteral}{'\(\backslash\)b'}\ \&\&\ !this-\/>\_tmpPort.empty())}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00472}00472\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\_tmpPort.pop\_back();}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00473}00473\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classZappy_1_1Parser_ac4f72d89bb990954bd56022bc81f56dc}{Parser::isNum}}(\{letter\}))\{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00474}00474\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>\_tmpPort.size()\ >=\ 4)}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00475}00475\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\_tmpPort.pop\_back();}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00476}00476\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\_tmpPort\ +=\ \{letter\};}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00477}00477\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00478}00478\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00479}00479\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00480}00480\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00481}00481\ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00482}00482\ }
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00483}\mbox{\hyperlink{classZappy_1_1GUI_ab069f5bb268b451c616927906f9f5220}{00483}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1GUI_ab069f5bb268b451c616927906f9f5220}{Zappy::GUI::handleWindowEvents}}(\ \ )}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00484}00484\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00485}00485\ \ \ \ \ \textcolor{keywordflow}{while}\ (this-\/>\_window.pollEvent(this-\/>\_event))\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00486}00486\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>\_event.type\ ==\ sf::Event::Closed)}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00487}00487\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\_window.close();}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00488}00488\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00489}00489\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\_gameIsRunning\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00490}00490\ \ \ \ \ \ \ \ \ zoomScroll();}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00491}00491\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Keyboard::isKeyPressed(sf::Keyboard::Tab))\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00492}00492\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\_tileInfo-\/>setTile(\textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00493}00493\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00494}00494\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00495}00495\ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00496}00496\ }
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00497}\mbox{\hyperlink{classZappy_1_1GUI_adc8c53a2bf43e26f1c8d48ce8b825ce7}{00497}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1GUI_adc8c53a2bf43e26f1c8d48ce8b825ce7}{Zappy::GUI::zoomScroll}}()}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00498}00498\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00499}00499\ \ \ \ \ \textcolor{keywordflow}{if}\ (\_event.type\ ==\ sf::Event::MouseWheelScrolled)\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00500}00500\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_event.mouseWheelScroll.wheel\ ==\ sf::Mouse::VerticalWheel)\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00501}00501\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ zoomFactor\ =\ 1.1f;}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00502}00502\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_event.mouseWheelScroll.delta\ >\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00503}00503\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\_view.zoom(1.f\ /\ zoomFactor);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00504}00504\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00505}00505\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\_view.zoom(zoomFactor);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00506}00506\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00507}00507\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00508}00508\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00509}00509\ \ \ \ \ this-\/>\_view.setSize(vclamp(this-\/>\_view.getSize(),\ sf::Vector2f(1920/2,\ 1080/2),\ sf::Vector2f(1920\ *\ 1.5,\ 1080\ *\ 1.5)));}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00510}00510\ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00511}00511\ }
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00512}\mbox{\hyperlink{classZappy_1_1GUI_a562a5d5e3ef95e339b263d6ffe68b2f5}{00512}}\ sf::Vector2f\ \mbox{\hyperlink{classZappy_1_1GUI_a562a5d5e3ef95e339b263d6ffe68b2f5}{Zappy::GUI::vclamp}}(sf::Vector2f\ val,\ sf::Vector2f\ min,\ sf::Vector2f\ max)}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00513}00513\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00514}00514\ \ \ \ \ \textcolor{keywordflow}{if}(val.x\ <\ min.x)}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00515}00515\ \ \ \ \ \ \ \ \ val.x\ =\ min.x;}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00516}00516\ \ \ \ \ \textcolor{keywordflow}{if}(val.y\ <\ min.y)}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00517}00517\ \ \ \ \ \ \ \ \ val.y\ =\ min.y;}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00518}00518\ \ \ \ \ \textcolor{keywordflow}{if}(val.x\ >\ max.x)}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00519}00519\ \ \ \ \ \ \ \ \ val.x\ =\ max.x;}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00520}00520\ \ \ \ \ \textcolor{keywordflow}{if}(val.y\ >\ max.y)}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00521}00521\ \ \ \ \ \ \ \ \ val.y\ =\ max.y;}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00522}00522\ }
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00523}00523\ \ \ \ \ \textcolor{keywordflow}{return}\ val;}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00524}00524\ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00525}00525\ }
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00526}\mbox{\hyperlink{classZappy_1_1GUI_abe20a16cf9160b2f641feb2d69227839}{00526}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1GUI_abe20a16cf9160b2f641feb2d69227839}{Zappy::GUI::touchView}}()}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00527}00527\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00528}00528\ \ \ \ \ sf::Vector2f\ pos\ =\ sf::Vector2f(0,\ 0);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00529}00529\ }
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00530}00530\ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00531}00531\ \ \ \ \ \ \ \ \ pos.y\ -\/=\ 15;}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00532}00532\ \ \ \ \ \ \ \ \ this-\/>\_view.move(pos);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00533}00533\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00534}00534\ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00535}00535\ \ \ \ \ \ \ \ \ pos.y\ +=\ 15;}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00536}00536\ \ \ \ \ \ \ \ \ this-\/>\_view.move(pos);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00537}00537\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00538}00538\ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00539}00539\ \ \ \ \ \ \ \ \ pos.x\ -\/=\ 15;}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00540}00540\ \ \ \ \ \ \ \ \ this-\/>\_view.move(pos);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00541}00541\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00542}00542\ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00543}00543\ \ \ \ \ \ \ \ \ pos.x\ +=\ 15;}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00544}00544\ \ \ \ \ \ \ \ \ this-\/>\_view.move(pos);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00545}00545\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00546}00546\ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00547}00547\ }
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00548}\mbox{\hyperlink{classZappy_1_1GUI_a1c44b94f33ad1b12b63d69208e26e2cf}{00548}}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classZappy_1_1GUI_a1c44b94f33ad1b12b63d69208e26e2cf}{Zappy::GUI::get\_dist\_to\_cam}}(sf::View\ view,\ \mbox{\hyperlink{classVector2D}{Vector2D}}\ pos)}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00549}00549\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00550}00550\ \ \ \ \ \textcolor{keywordflow}{return}\ (sqrt(pow(view.getCenter().x\ -\/\ pos.\mbox{\hyperlink{classVector2D_a5957acade3579baa63807d625316d557}{getX}}(),\ 2)\ +\ pow(view.getCenter().y\ -\/\ pos.\mbox{\hyperlink{classVector2D_a4ae19b97cfbc35850b9717a25ea83104}{getY}}(),\ 2)));}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00551}00551\ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00552}00552\ }
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00553}\mbox{\hyperlink{classZappy_1_1GUI_a435566243a2c9ccd016f5781aeaea94d}{00553}}\ sf::Vector2i\ \mbox{\hyperlink{classZappy_1_1GUI_a435566243a2c9ccd016f5781aeaea94d}{Zappy::GUI::getCenterTilePos}}(\textcolor{keywordtype}{float}\ px,\ \textcolor{keywordtype}{float}\ py,\ \textcolor{keywordtype}{float}\ originX,\ \textcolor{keywordtype}{float}\ originY,\ \textcolor{keywordtype}{float}\ tileWidth,\ \textcolor{keywordtype}{float}\ tileHeight)}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00554}00554\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00555}00555\ \ \ \ \ \textcolor{keywordtype}{int}\ rectIndexX\ =\ (originX\ /\ tileWidth)\ -\/\ (px\ /\ tileWidth);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00556}00556\ \ \ \ \ \textcolor{keywordtype}{int}\ rectIndexY\ =\ (py\ /\ tileHeight)\ -\/\ (originY\ /\ tileHeight);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00557}00557\ \ \ \ \ sf::Vector2i\ finalIndex(0,\ 0);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00558}00558\ \ \ \ \ finalIndex\ +=\ sf::Vector2i(1,\ 1)\ *\ rectIndexY;}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00559}00559\ \ \ \ \ finalIndex.x\ +=\ rectIndexX;}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00560}00560\ \ \ \ \ finalIndex.y\ -\/=\ rectIndexX;}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00561}00561\ \ \ \ \ \textcolor{keywordflow}{return}\ finalIndex;}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00562}00562\ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00563}00563\ }
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00564}\mbox{\hyperlink{classZappy_1_1GUI_aeea648a7de2f0367216188ee73033771}{00564}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1GUI_aeea648a7de2f0367216188ee73033771}{Zappy::GUI::update}}()}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00565}00565\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00566}00566\ \ \ \ \ \textcolor{keywordflow}{while}\ (this-\/>\_window.isOpen()\ \&\&\ this-\/>\_gameIsRunning)\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00567}00567\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>\_framerateClock.getElapsedTime().asMicroseconds()\ <\ 1000000\ /\ 60)}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00568}00568\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00569}00569\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!this-\/>\_window.isOpen())}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00570}00570\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00571}00571\ \ \ \ \ \ \ \ \ this-\/>\_framerateClock.restart();}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00572}00572\ \ \ \ \ \ \ \ \ this-\/>\_mouse.update(this-\/>\_window);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00573}00573\ \ \ \ \ \ \ \ \ this-\/>\_uiMouse.update(this-\/>\_window);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00574}00574\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>\_isEnding)}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00575}00575\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00576}00576\ \ \ \ \ \ \ \ \ this-\/>\_tileInfo-\/>update(this-\/>\_uiMouse);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00577}00577\ \ \ \ \ \ \ \ \ this-\/>\_trantorianInfo-\/>update(this-\/>\_uiMouse);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00578}00578\ \ \ \ \ \ \ \ \ this-\/>\_broadcastTab-\/>update();}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00579}00579\ \ \ \ \ \ \ \ \ this-\/>updateTrantor();}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00580}00580\ \ \ \ \ \ \ \ \ this-\/>handleTileButtons();}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00581}00581\ \ \ \ \ \ \ \ \ this-\/>updateSky();}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00582}00582\ \ \ \ \ \ \ \ \ touchView();}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00583}00583\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00584}00584\ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00585}00585\ }
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00586}\mbox{\hyperlink{classZappy_1_1GUI_a561279ec0c4db4b2ba5b7089f6d1410c}{00586}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1GUI_a561279ec0c4db4b2ba5b7089f6d1410c}{Zappy::GUI::manageEndOfGame}}()}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00587}00587\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00588}00588\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ button\ :\ this-\/>\_endScreenButtons)}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00589}00589\ \ \ \ \ \ \ \ \ button-\/>update(this-\/>\_uiMouse);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00590}00590\ \ \ \ \ this-\/>\_window.setView(this-\/>\_window.getDefaultView());}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00591}00591\ \ \ \ \ this-\/>\_window.clear(sf::Color::Black);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00592}00592\ \ \ \ \ this-\/>\_window.draw(this-\/>\_menuBgDark.getSprite());}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00593}00593\ \ \ \ \ \textcolor{keywordflow}{if}\ (!this-\/>\_lastTeamAlive.empty())}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00594}00594\ \ \ \ \ \ \ \ \ this-\/>drawText(this-\/>\_lastTeamAlive\ +\ \textcolor{stringliteral}{"{}\ won\ the\ game\ !"{}},\ \{500,\ 200\},\ sf::Color::White,\ 100,\ this-\/>\_window);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00595}00595\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00596}00596\ \ \ \ \ \ \ \ \ this-\/>drawText(\textcolor{stringliteral}{"{}nobody\ won\ ...?"{}},\ \{500,\ 500\},\ sf::Color::White,\ 100,\ this-\/>\_window);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00597}00597\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ button\ :\ this-\/>\_endScreenButtons)}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00598}00598\ \ \ \ \ \ \ \ \ button-\/>render(this-\/>\_window);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00599}00599\ \ \ \ \ this-\/>\_window.display();}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00600}00600\ }
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00601}00601\ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00602}00602\ }
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00603}\mbox{\hyperlink{classZappy_1_1GUI_a2d39ad9628f44de403264570b026e1aa}{00603}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1GUI_a2d39ad9628f44de403264570b026e1aa}{Zappy::GUI::run}}()}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00604}00604\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00605}00605\ \ \ \ \ this-\/>\_gameIsRunning\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00606}00606\ \ \ \ \ this-\/>\_isEnding\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00607}00607\ \ \ \ \ std::thread\ updateThread\ =\ std::thread(\&\mbox{\hyperlink{classZappy_1_1GUI_aeea648a7de2f0367216188ee73033771}{GUI::update}},\ \textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00608}00608\ \ \ \ \ \textcolor{keywordflow}{while}\ (this-\/>\_window.isOpen()\ \&\&\ this-\/>\_gameIsRunning)\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00609}00609\ \ \ \ \ \ \ \ \ this-\/>handleWindowEvents();}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00610}00610\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>\_isEnding)\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00611}00611\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>manageEndOfGame();}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00612}00612\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00613}00613\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00614}00614\ \ \ \ \ \ \ \ \ this-\/>\_window.clear(sf::Color::Black);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00615}00615\ \ \ \ \ \ \ \ \ this-\/>\_window.setView(this-\/>\_window.getDefaultView());}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00616}00616\ \ \ \ \ \ \ \ \ this-\/>\_window.draw(this-\/>background);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00617}00617\ \ \ \ \ \ \ \ \ this-\/>\_effect.runDraw(this-\/>\_window,\ night,\ time);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00618}00618\ \ \ \ \ \ \ \ \ this-\/>updateClock();}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00619}00619\ \ \ \ \ \ \ \ \ this-\/>\_window.draw(this-\/>\_TimeText);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00620}00620\ \ \ \ \ \ \ \ \ this-\/>\_window.setView(this-\/>\_view);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00621}00621\ \ \ \ \ \ \ \ \ this-\/>display\_map();}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00622}00622\ \ \ \ \ \ \ \ \ this-\/>display\_eggs();}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00623}00623\ \ \ \ \ \ \ \ \ this-\/>display\_trantor();}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00624}00624\ \ \ \ \ \ \ \ \ this-\/>displayOneShotAnimation();}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00625}00625\ \ \ \ \ \ \ \ \ this-\/>\_window.setView(this-\/>\_window.getDefaultView());}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00626}00626\ \ \ \ \ \ \ \ \ this-\/>\_trantorianInfo-\/>render(this-\/>\_window);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00627}00627\ \ \ \ \ \ \ \ \ this-\/>\_tileInfo-\/>render(this-\/>\_window);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00628}00628\ \ \ \ \ \ \ \ \ this-\/>\_broadcastTab-\/>render(this-\/>\_window);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00629}00629\ \ \ \ \ \ \ \ \ this-\/>\_window.setView(this-\/>\_view);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00630}00630\ \ \ \ \ \ \ \ \ this-\/>\_window.display();}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00631}00631\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00632}00632\ \ \ \ \ updateThread.join();}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00633}00633\ \ \ \ \ this-\/>\_networkInfo-\/>shutDown();}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00634}00634\ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00635}00635\ }
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00636}\mbox{\hyperlink{classZappy_1_1GUI_ab44a00061c443c5855ccd14f8e2520f1}{00636}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1GUI_ab44a00061c443c5855ccd14f8e2520f1}{Zappy::GUI::handleTileButtons}}()}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00637}00637\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00638}00638\ \ \ \ \ sf::Vector2f\ size\ =\ \{392,\ 225\};}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00639}00639\ \ \ \ \ sf::Vector2f\ pos\ =\ this-\/>\_map-\/>getTiles()[0][0]-\/>getTile()-\/>getSprite().getPosition();}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00640}00640\ \ \ \ \ pos.y\ +=\ 55;}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00641}00641\ \ \ \ \ sf::Vector2f\ viewPos\ =\ this-\/>\_view.getCenter();}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00642}00642\ \ \ \ \ sf::Vector2i\ targetTileIndex\ =\ this-\/>getCenterTilePos(viewPos.x,\ viewPos.y,\ pos.x\ +\ (size.x\ /\ 2),\ pos.y\ +\ (size.y\ /\ 2),\ size.x,\ size.y);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00643}00643\ \ \ \ \ targetTileIndex.x\ -\/=\ 6;}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00644}00644\ \ \ \ \ targetTileIndex.y\ -\/=\ 6;}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00645}00645\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ targetTileIndex.y;\ j\ <\ this-\/>getMap()-\/>getSize().getY()\ \&\&\ j\ <\ targetTileIndex.y\ +\ 16;\ j++)\{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00646}00646\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (j\ <\ 0)}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00647}00647\ \ \ \ \ \ \ \ \ \ \ \ \ j\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00648}00648\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ targetTileIndex.x;\ i\ <\ this-\/>getMap()-\/>getSize().getX()\ \&\&\ i\ <\ targetTileIndex.x\ +\ 16;\ i++)\{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00649}00649\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ <\ 0)}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00650}00650\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ i\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00651}00651\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>\_tileInfo-\/>getTile()\ ==\ this-\/>\_map-\/>getTiles()[j][i])}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00652}00652\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\_map-\/>getTiles()[j][i]-\/>getTile()-\/>getSprite().setColor(sf::Color(255,\ 255,\ 100));}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00653}00653\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00654}00654\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\_map-\/>getTiles()[j][i]-\/>getTile()-\/>getSprite().setColor(sf::Color::White);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00655}00655\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\_map-\/>getTiles()[j][i]-\/>getButton()-\/>update(this-\/>\_mouse);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00656}00656\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00657}00657\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00658}00658\ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00659}00659\ }
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00660}\mbox{\hyperlink{classZappy_1_1GUI_ac8d65f6a5585599a325a63912cb3e5fa}{00660}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1GUI_ac8d65f6a5585599a325a63912cb3e5fa}{Zappy::GUI::display\_map}}()}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00661}00661\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00662}00662\ \ \ \ \ sf::Vector2f\ size\ =\ \{392,\ 225\};}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00663}00663\ \ \ \ \ sf::Vector2f\ pos\ =\ this-\/>\_map-\/>getTiles()[0][0]-\/>getTile()-\/>getSprite().getPosition();}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00664}00664\ \ \ \ \ pos.y\ +=\ 55;}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00665}00665\ \ \ \ \ sf::Vector2f\ viewPos\ =\ this-\/>\_view.getCenter();}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00666}00666\ \ \ \ \ sf::Vector2i\ targetTileIndex\ =\ this-\/>getCenterTilePos(viewPos.x,\ viewPos.y,\ pos.x\ +\ (size.x\ /\ 2),\ pos.y\ +\ (size.y\ /\ 2),\ size.x,\ size.y);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00667}00667\ \ \ \ \ targetTileIndex.x\ -\/=\ 6;}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00668}00668\ \ \ \ \ targetTileIndex.y\ -\/=\ 6;}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00669}00669\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ targetTileIndex.y;\ j\ <\ this-\/>getMap()-\/>getSize().getY()\ \&\&\ j\ <\ targetTileIndex.y\ +\ 16;\ j++)\{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00670}00670\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (j\ <\ 0)}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00671}00671\ \ \ \ \ \ \ \ \ \ \ \ \ j\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00672}00672\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ targetTileIndex.x;\ i\ <\ this-\/>getMap()-\/>getSize().getX()\ \&\&\ i\ <\ targetTileIndex.x\ +\ 16;\ i++)\{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00673}00673\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ <\ 0)}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00674}00674\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ i\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00675}00675\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\_window.draw(\_map-\/>getTiles()[j][i]-\/>getTile()-\/>getSprite());}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00676}00676\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ k\ =\ 1;\ k\ <\ 8;\ k++)\{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00677}00677\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>\_map-\/>getTiles()[j][i].get()-\/>getItems()[k]\ >\ 0)\{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00678}00678\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\_items[k]-\/>getSprite()-\/>getSprite().setPosition(this-\/>\_map-\/>getTiles()[j][i]-\/>getCenter().getX()\ +\ this-\/>\_map-\/>getTiles()[j][i]-\/>getOffsetsList()[k].getX(),\ }
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00679}00679\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\_map-\/>getTiles()[j][i]-\/>getCenter().getY()\ +\ this-\/>\_map-\/>getTiles()[j][i]-\/>getOffsetsList()[k].getY()\ +\ 70);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00680}00680\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\_window.draw(this-\/>\_items[k]-\/>getSprite()-\/>getSprite());}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00681}00681\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00682}00682\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00683}00683\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00684}00684\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00685}00685\ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00686}00686\ }
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00687}\mbox{\hyperlink{classZappy_1_1GUI_a037dfd3cea0f35a0992f1a5536d779c3}{00687}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1GUI_a037dfd3cea0f35a0992f1a5536d779c3}{Zappy::GUI::display\_sky}}()}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00688}00688\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00689}00689\ \ \ \ \ this-\/>\_window.draw(this-\/>sky.getSprite());}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00690}00690\ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00691}00691\ }
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00692}\mbox{\hyperlink{classZappy_1_1GUI_abce8c364d536f47f729a341c7cd1da03}{00692}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1GUI_abce8c364d536f47f729a341c7cd1da03}{Zappy::GUI::updateTrantor}}()}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00693}00693\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00694}00694\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ trantorian:\ this-\/>getMap()-\/>getAllTrantorians())\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00695}00695\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!trantorian.second)}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00696}00696\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00697}00697\ \ \ \ \ \ \ \ \ trantorian.second-\/>updateTrantorSprite();}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00698}00698\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00699}00699\ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00700}00700\ }
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00701}\mbox{\hyperlink{classZappy_1_1GUI_a19c3dc6a3e0575a3a591523aaa454d4a}{00701}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1GUI_a19c3dc6a3e0575a3a591523aaa454d4a}{Zappy::GUI::display\_trantor}}()}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00702}00702\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00703}00703\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ trantorian:\ this-\/>getMap()-\/>getAllTrantorians())\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00704}00704\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!trantorian.second)}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00705}00705\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00706}00706\ \ \ \ \ \ \ \ \ this-\/>\_window.draw(trantorian.second-\/>getSprite()-\/>getSprite());}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00707}00707\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00708}00708\ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00709}00709\ }
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00710}\mbox{\hyperlink{classZappy_1_1GUI_af1b2e33c5efe75df032eec7e065ddc88}{00710}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1GUI_af1b2e33c5efe75df032eec7e065ddc88}{Zappy::GUI::display\_eggs}}()}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00711}00711\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00712}00712\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ egg:\ this-\/>getMap()-\/>getAllEggs())\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00713}00713\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!egg.second)}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00714}00714\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00715}00715\ \ \ \ \ \ \ \ \ this-\/>\_window.draw(egg.second-\/>getDrawable()-\/>getSprite());}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00716}00716\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00717}00717\ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00718}00718\ }
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00719}\mbox{\hyperlink{classZappy_1_1GUI_a433a8ff82965b9c7410ebe6e2584bc08}{00719}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1GUI_a433a8ff82965b9c7410ebe6e2584bc08}{Zappy::GUI::displayOneShotAnimation}}()}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00720}00720\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00721}00721\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ this-\/>\_oneShotAnimationTab.size();\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00722}00722\ \ \ \ \ \ \ \ \ this-\/>\_oneShotAnimationTab[i]-\/>update();}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00723}00723\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>\_oneShotAnimationTab[i]-\/>isAlive())}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00724}00724\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\_window.draw(this-\/>\_oneShotAnimationTab[i]-\/>getDrawable()-\/>getSprite());}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00725}00725\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!this-\/>\_oneShotAnimationTab[i]-\/>isAlive())}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00726}00726\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\_oneShotAnimationTab.erase(this-\/>\_oneShotAnimationTab.begin()\ +\ i);}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00727}00727\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{GUI_8cpp_source_l00728}00728\ \}}
+
+\end{DoxyCode}
