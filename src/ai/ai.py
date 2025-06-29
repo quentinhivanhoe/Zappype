@@ -67,7 +67,7 @@ import random
 import subprocess
 import os
 
-ELAPSED_SLEEP = 0.2
+ELAPSED_SLEEP = 0
 INVENTORY_ITEM = 6
 ai = None
 
