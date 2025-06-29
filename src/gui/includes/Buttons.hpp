@@ -42,7 +42,7 @@ namespace Zappy
             void (GUI::* _function)() = nullptr;
         public:
             Buttons(GUI *gui = nullptr);
-            virtual inline ~Buttons() { std::cout << "Button destructor" << std::endl; };
+            virtual inline ~Buttons() = default;
             
             /**
              * @brief Operator () that calls the function of the button

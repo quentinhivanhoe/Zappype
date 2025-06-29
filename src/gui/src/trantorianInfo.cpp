@@ -62,7 +62,7 @@ void Zappy::TrantorianInfo::render(sf::RenderWindow &window)
     this->drawText("TRANTORIAN #" + std::to_string(this->_trantorian->getID()), this->_anchorPos + this->_pos + sf::Vector2f(360, 20), sf::Color::Black, 30, window);
     this->drawText("Team: " + this->_trantorian->getTeamName(), this->_anchorPos + this->_pos + sf::Vector2f(330, 70), sf::Color::Black, 30, window);
     this->drawText("Level: " + std::to_string(this->_trantorian->getLevel()), this->_anchorPos + this->_pos + sf::Vector2f(330, 110), sf::Color::Black, 30, window);
-    this->drawText("State: idling", this->_anchorPos + this->_pos + sf::Vector2f(330, 150), sf::Color::Black, 30, window);
+    this->drawText("State: " + this->_trantorian->getState(), this->_anchorPos + this->_pos + sf::Vector2f(330, 150), sf::Color::Black, 30, window);
     this->drawText("Position: " + std::to_string(this->_trantorian->getTilePos().x) + " - " + std::to_string(this->_trantorian->getTilePos().y), this->_anchorPos + this->_pos + sf::Vector2f(330, 190), sf::Color::Black, 30, window);
     this->drawText("Direction: " + std::to_string(this->_trantorian->getDirection()), this->_anchorPos + this->_pos + sf::Vector2f(330, 230), sf::Color::Black, 30, window);
     this->drawText("Inventory: ", this->_anchorPos + this->_pos + sf::Vector2f(330, 270), sf::Color::Black, 30, window);

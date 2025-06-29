@@ -10,7 +10,7 @@
 int main([[maybe_unused]]int argc, [[maybe_unused]]char **argv)
 {
     try {
-        Zappy::Core core;
+        Zappy::Core core(argc, argv);
     } catch(const Zappy::Error &e) {
         std::cerr << "Zappy Exception - [From : " << e.where() << "] - [" << e.what() << "]" << std::endl;
     }

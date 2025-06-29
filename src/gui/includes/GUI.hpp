@@ -38,6 +38,7 @@ namespace Zappy
     class GUI
     {
         private:
+            bool _isDebugging;
             std::vector<std::shared_ptr<Items>> _items;
             std::vector<std::string> spritePaths;
             std::shared_ptr<Network> _networkInfo;
@@ -89,7 +90,7 @@ namespace Zappy
             std::string _tmpPort = "";
             std::string _lastTeamAlive;
         public:
-            GUI();
+            GUI(bool isDebugging = false);
             ~GUI();
 
             /**
@@ -480,6 +481,13 @@ namespace Zappy
              */
             inline void addToAnimationTab(std::shared_ptr<OneShotAnimationPlayer> animation) { this->_oneShotAnimationTab.push_back(animation); }; 
 
+            /**
+             * @brief Return the debugging state of the GUI
+             * 
+             * @return true 
+             * @return false 
+             */
+            inline bool isDebugging() const { return this->_isDebugging; };
     };
 }
 

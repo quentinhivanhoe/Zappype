@@ -6,8 +6,9 @@
 */
 #include "../includes/GUI.hpp"
 
-Zappy::GUI::GUI()
+Zappy::GUI::GUI(bool isDebugging)
 {
+    this->_isDebugging = isDebugging;
     this->_window.create(sf::VideoMode(1920, 1080, 8), "Zappy GUI", sf::Style::Close);
     this->runMenu();
 }
@@ -195,7 +196,8 @@ void Zappy::GUI::connect()
         this->_isOnConnectionPage = false;
         this->_networkInfo.reset();
     } catch(const Error& e) {
-        std::cerr << "Zappy Exception - [From : " << e.where() << "] - [" << e.what() << "]" << std::endl;
+        if (this->_isDebugging)
+            std::cerr << "Zappy Exception - [From : " << e.where() << "] - [" << e.what() << "]" << std::endl;
         this->_hasConnectionFailed = true;
         this->_isOnConnectionPage = true;
         this->_networkInfo.reset();
