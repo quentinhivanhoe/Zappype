@@ -1,0 +1,64 @@
+\hypertarget{DrawRandom_8hpp_source}{}\doxysection{Draw\+Random.\+hpp}
+\label{DrawRandom_8hpp_source}\index{DrawRandom.hpp@{DrawRandom.hpp}}
+\mbox{\hyperlink{DrawRandom_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{DrawRandom_8hpp_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{DrawRandom_8hpp_source_l00002}00002\ \textcolor{comment}{**\ EPITECH\ PROJECT,\ 2025}}
+\DoxyCodeLine{\Hypertarget{DrawRandom_8hpp_source_l00003}00003\ \textcolor{comment}{**\ GUI}}
+\DoxyCodeLine{\Hypertarget{DrawRandom_8hpp_source_l00004}00004\ \textcolor{comment}{**\ File\ description:}}
+\DoxyCodeLine{\Hypertarget{DrawRandom_8hpp_source_l00005}00005\ \textcolor{comment}{**\ DrawRandom}}
+\DoxyCodeLine{\Hypertarget{DrawRandom_8hpp_source_l00006}00006\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{DrawRandom_8hpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{DrawRandom_8hpp_source_l00008}00008\ \textcolor{preprocessor}{\#ifndef\ DRAWRANDOM\_HPP\_}}
+\DoxyCodeLine{\Hypertarget{DrawRandom_8hpp_source_l00009}00009\ \textcolor{preprocessor}{\ \ \ \ \#define\ DRAWRANDOM\_HPP\_}}
+\DoxyCodeLine{\Hypertarget{DrawRandom_8hpp_source_l00010}00010\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}iostream"{}}}
+\DoxyCodeLine{\Hypertarget{DrawRandom_8hpp_source_l00011}00011\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}memory"{}}}
+\DoxyCodeLine{\Hypertarget{DrawRandom_8hpp_source_l00012}00012\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}\mbox{\hyperlink{Drawable_8hpp}{Drawable.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{DrawRandom_8hpp_source_l00013}00013\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceZappy}{Zappy}}}
+\DoxyCodeLine{\Hypertarget{DrawRandom_8hpp_source_l00014}00014\ \{}
+\DoxyCodeLine{\Hypertarget{DrawRandom_8hpp_source_l00015}\mbox{\hyperlink{classZappy_1_1DrawRandom}{00015}}\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classZappy_1_1DrawRandom}{DrawRandom}}}
+\DoxyCodeLine{\Hypertarget{DrawRandom_8hpp_source_l00016}00016\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DrawRandom_8hpp_source_l00017}00017\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{DrawRandom_8hpp_source_l00018}\mbox{\hyperlink{classZappy_1_1DrawRandom_a40d85b7ab87c8877f9bdac8ae33eef26}{00018}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classZappy_1_1DrawRandom_a40d85b7ab87c8877f9bdac8ae33eef26}{\_number}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{DrawRandom_8hpp_source_l00019}\mbox{\hyperlink{classZappy_1_1DrawRandom_a4be7d32597cceeb0c70f89bcb5fe9db2}{00019}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classZappy_1_1DrawRandom_a4be7d32597cceeb0c70f89bcb5fe9db2}{\_starNb}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{DrawRandom_8hpp_source_l00020}\mbox{\hyperlink{classZappy_1_1DrawRandom_ade31aa66fec0a439c5f9bb29d0bcb2ed}{00020}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classZappy_1_1DrawRandom_ade31aa66fec0a439c5f9bb29d0bcb2ed}{\_cloudNb}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{DrawRandom_8hpp_source_l00021}\mbox{\hyperlink{classZappy_1_1DrawRandom_acf76a54cc529931b1b3c74ce1692239c}{00021}}\ \ \ \ \ \ \ \ \ std::shared\_ptr<Drawable>\ \mbox{\hyperlink{classZappy_1_1DrawRandom_acf76a54cc529931b1b3c74ce1692239c}{\_sprite}};}
+\DoxyCodeLine{\Hypertarget{DrawRandom_8hpp_source_l00022}\mbox{\hyperlink{classZappy_1_1DrawRandom_ae1ac8d53698d2b2bf8bed9a152485c89}{00022}}\ \ \ \ \ \ \ \ \ std::shared\_ptr<Drawable>\ \mbox{\hyperlink{classZappy_1_1DrawRandom_ae1ac8d53698d2b2bf8bed9a152485c89}{\_star}};}
+\DoxyCodeLine{\Hypertarget{DrawRandom_8hpp_source_l00023}\mbox{\hyperlink{classZappy_1_1DrawRandom_a9f9ff694f2e587c636ee2a59b2d8b1c1}{00023}}\ \ \ \ \ \ \ \ \ std::shared\_ptr<Drawable>\ \mbox{\hyperlink{classZappy_1_1DrawRandom_a9f9ff694f2e587c636ee2a59b2d8b1c1}{\_moon}};}
+\DoxyCodeLine{\Hypertarget{DrawRandom_8hpp_source_l00024}\mbox{\hyperlink{classZappy_1_1DrawRandom_a16cb78d21cd99a0c7587067e5b06ed2a}{00024}}\ \ \ \ \ \ \ \ \ std::shared\_ptr<Drawable>\ \mbox{\hyperlink{classZappy_1_1DrawRandom_a16cb78d21cd99a0c7587067e5b06ed2a}{\_sun}};}
+\DoxyCodeLine{\Hypertarget{DrawRandom_8hpp_source_l00025}\mbox{\hyperlink{classZappy_1_1DrawRandom_add63b863c07b5ca19406818a2550f3ba}{00025}}\ \ \ \ \ \ \ \ \ std::vector<std::shared\_ptr<Drawable>>\ \ \mbox{\hyperlink{classZappy_1_1DrawRandom_add63b863c07b5ca19406818a2550f3ba}{\_cloud}};}
+\DoxyCodeLine{\Hypertarget{DrawRandom_8hpp_source_l00026}\mbox{\hyperlink{classZappy_1_1DrawRandom_a36bb5e5f9688fb355ad47519956474ec}{00026}}\ \ \ \ \ \ \ \ \ std::vector<sf::Vector2f>\ \mbox{\hyperlink{classZappy_1_1DrawRandom_a36bb5e5f9688fb355ad47519956474ec}{\_refreshPos}};}
+\DoxyCodeLine{\Hypertarget{DrawRandom_8hpp_source_l00027}\mbox{\hyperlink{classZappy_1_1DrawRandom_a0b81193e81f4d7135a0790f0353f8885}{00027}}\ \ \ \ \ \ \ \ \ std::vector<sf::Vector2f>\ \mbox{\hyperlink{classZappy_1_1DrawRandom_a0b81193e81f4d7135a0790f0353f8885}{\_cloudPositionsFront}};}
+\DoxyCodeLine{\Hypertarget{DrawRandom_8hpp_source_l00028}\mbox{\hyperlink{classZappy_1_1DrawRandom_a1442c9d6de1df70df32d6bdc7240363f}{00028}}\ \ \ \ \ \ \ \ \ std::vector<sf::Vector2f>\ \mbox{\hyperlink{classZappy_1_1DrawRandom_a1442c9d6de1df70df32d6bdc7240363f}{\_cloudPositionsBack}};}
+\DoxyCodeLine{\Hypertarget{DrawRandom_8hpp_source_l00029}\mbox{\hyperlink{classZappy_1_1DrawRandom_a091e8bc448d60ad09ce390b798ccef1d}{00029}}\ \ \ \ \ \ \ \ \ std::vector<int>\ \mbox{\hyperlink{classZappy_1_1DrawRandom_a091e8bc448d60ad09ce390b798ccef1d}{\_cloudIndicesFront}};}
+\DoxyCodeLine{\Hypertarget{DrawRandom_8hpp_source_l00030}\mbox{\hyperlink{classZappy_1_1DrawRandom_a205c2c24ab4222b370319413b5ea3e63}{00030}}\ \ \ \ \ \ \ \ \ std::vector<int>\ \mbox{\hyperlink{classZappy_1_1DrawRandom_a205c2c24ab4222b370319413b5ea3e63}{\_cloudIndicesBack}};}
+\DoxyCodeLine{\Hypertarget{DrawRandom_8hpp_source_l00031}\mbox{\hyperlink{classZappy_1_1DrawRandom_a497f9689be5224cc6b5789b532d9b91b}{00031}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classZappy_1_1DrawRandom_a497f9689be5224cc6b5789b532d9b91b}{\_cloudsInitialized}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{DrawRandom_8hpp_source_l00032}00032\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{DrawRandom_8hpp_source_l00033}00033\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classZappy_1_1DrawRandom}{DrawRandom}}(std::string\ filePath,\ \textcolor{keywordtype}{int}\ number,\ \textcolor{keywordtype}{float}\ scale);}
+\DoxyCodeLine{\Hypertarget{DrawRandom_8hpp_source_l00034}00034\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classZappy_1_1DrawRandom}{DrawRandom}}(\textcolor{keywordtype}{int}\ starNb,\ \textcolor{keywordtype}{int}\ cloudNb,\ \textcolor{keywordtype}{float}\ starScale,\ \textcolor{keywordtype}{float}\ cloudScale);}
+\DoxyCodeLine{\Hypertarget{DrawRandom_8hpp_source_l00035}00035\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classZappy_1_1DrawRandom_a78947cc6976b53c1da2ab980437174ff}{\string~DrawRandom}}();}
+\DoxyCodeLine{\Hypertarget{DrawRandom_8hpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{DrawRandom_8hpp_source_l00045}00045\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1DrawRandom_a7050075d2b6e2779a1dafa179ed9c70d}{fadeSprite}}(sf::RenderWindow\ \&window,\ \textcolor{keywordtype}{float}\ time,\ \textcolor{keywordtype}{float}\ fadeSpeed,\ std::shared\_ptr<Drawable>\ sprite);}
+\DoxyCodeLine{\Hypertarget{DrawRandom_8hpp_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{DrawRandom_8hpp_source_l00055}00055\ \ \ \ \ \ \ \ \ sf::Vector2f\ \mbox{\hyperlink{classZappy_1_1DrawRandom_a097f29b0fc6db9a05c8c06ab796eb3a0}{lerp}}(sf::Vector2f\ pos,\ sf::Vector2f\ \mbox{\hyperlink{classZappy_1_1DrawRandom_a097f29b0fc6db9a05c8c06ab796eb3a0}{lerp}},\ \textcolor{keywordtype}{float}\ speed);}
+\DoxyCodeLine{\Hypertarget{DrawRandom_8hpp_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{DrawRandom_8hpp_source_l00066}00066\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classZappy_1_1DrawRandom_af4f9a4fd88f34153d3dd00be14498882}{run}}(sf::RenderWindow\ \&window,\ \textcolor{keywordtype}{bool}\ night,\ \textcolor{keywordtype}{float}\ time,\ \textcolor{keywordtype}{bool}\ fade);}
+\DoxyCodeLine{\Hypertarget{DrawRandom_8hpp_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{DrawRandom_8hpp_source_l00076}00076\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classZappy_1_1DrawRandom_acd386cecec801529ed1723ba1f60e80a}{runStar}}(sf::RenderWindow\ \&window,\ \textcolor{keywordtype}{float}\ time,\ \textcolor{keywordtype}{bool}\ fade);}
+\DoxyCodeLine{\Hypertarget{DrawRandom_8hpp_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{DrawRandom_8hpp_source_l00086}00086\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classZappy_1_1DrawRandom_a83ecc406f2988992d56e900d11b3cce3}{runCloud}}(sf::RenderWindow\ \&window,\ \textcolor{keywordtype}{float}\ time,\ \textcolor{keywordtype}{bool}\ fade);}
+\DoxyCodeLine{\Hypertarget{DrawRandom_8hpp_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{DrawRandom_8hpp_source_l00095}00095\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1DrawRandom_afd7c6a21865c299aaf58f9dd2a9aa3ea}{runDraw}}(sf::RenderWindow\ \&window,\ \textcolor{keywordtype}{bool}\ night,\ \textcolor{keywordtype}{float}\ time);}
+\DoxyCodeLine{\Hypertarget{DrawRandom_8hpp_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{DrawRandom_8hpp_source_l00104}00104\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1DrawRandom_a4189b49a55327b47f183e6549da1d303}{drawMoonSun}}(sf::RenderWindow\ \&window,\ \textcolor{keywordtype}{bool}\ night,\ \textcolor{keywordtype}{float}\ time);}
+\DoxyCodeLine{\Hypertarget{DrawRandom_8hpp_source_l00105}00105\ }
+\DoxyCodeLine{\Hypertarget{DrawRandom_8hpp_source_l00111}\mbox{\hyperlink{classZappy_1_1DrawRandom_a02701db91f9d3e0ad98fceb4a38ddf82}{00111}}\ \ \ \ \ \ \ \ \ std::shared\_ptr<Drawable>\ \mbox{\hyperlink{classZappy_1_1DrawRandom_a02701db91f9d3e0ad98fceb4a38ddf82}{getSprite}}()\ \{\textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classZappy_1_1DrawRandom_acf76a54cc529931b1b3c74ce1692239c}{\_sprite}};\};}
+\DoxyCodeLine{\Hypertarget{DrawRandom_8hpp_source_l00112}00112\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{DrawRandom_8hpp_source_l00113}00113\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{DrawRandom_8hpp_source_l00114}00114\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{DrawRandom_8hpp_source_l00115}00115\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{DrawRandom_8hpp_source_l00116}00116\ \}}
+\DoxyCodeLine{\Hypertarget{DrawRandom_8hpp_source_l00117}00117\ }
+\DoxyCodeLine{\Hypertarget{DrawRandom_8hpp_source_l00118}00118\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ !DRAWRANDOM\_HPP\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

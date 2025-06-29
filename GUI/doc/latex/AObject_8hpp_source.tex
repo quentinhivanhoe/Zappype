@@ -1,0 +1,47 @@
+\hypertarget{AObject_8hpp_source}{}\doxysection{AObject.\+hpp}
+\label{AObject_8hpp_source}\index{AObject.hpp@{AObject.hpp}}
+\mbox{\hyperlink{AObject_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{AObject_8hpp_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{AObject_8hpp_source_l00002}00002\ \textcolor{comment}{**\ EPITECH\ PROJECT,\ 2025}}
+\DoxyCodeLine{\Hypertarget{AObject_8hpp_source_l00003}00003\ \textcolor{comment}{**\ B-\/YEP-\/400-\/RUN-\/4-\/1-\/zappy-\/loic.rabearivelo}}
+\DoxyCodeLine{\Hypertarget{AObject_8hpp_source_l00004}00004\ \textcolor{comment}{**\ File\ description:}}
+\DoxyCodeLine{\Hypertarget{AObject_8hpp_source_l00005}00005\ \textcolor{comment}{**\ AObject}}
+\DoxyCodeLine{\Hypertarget{AObject_8hpp_source_l00006}00006\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{AObject_8hpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{AObject_8hpp_source_l00008}00008\ \textcolor{preprocessor}{\#ifndef\ AOBJECT\_HPP\_}}
+\DoxyCodeLine{\Hypertarget{AObject_8hpp_source_l00009}00009\ \textcolor{preprocessor}{\ \ \ \ \#define\ AOBJECT\_HPP\_}}
+\DoxyCodeLine{\Hypertarget{AObject_8hpp_source_l00010}00010\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}../Interfaces/IObject.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{AObject_8hpp_source_l00011}00011\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}SFML/Graphics.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{AObject_8hpp_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{AObject_8hpp_source_l00013}\mbox{\hyperlink{namespaceZappy}{00013}}\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceZappy}{Zappy}}}
+\DoxyCodeLine{\Hypertarget{AObject_8hpp_source_l00014}00014\ \{}
+\DoxyCodeLine{\Hypertarget{AObject_8hpp_source_l00015}\mbox{\hyperlink{classZappy_1_1AObject}{00015}}\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classZappy_1_1AObject}{AObject}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classZappy_1_1IObject}{IObject}}}
+\DoxyCodeLine{\Hypertarget{AObject_8hpp_source_l00016}00016\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{AObject_8hpp_source_l00017}00017\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{AObject_8hpp_source_l00018}\mbox{\hyperlink{classZappy_1_1AObject_ae23ed2cb4b3221c30ab3ec3709a6c58f}{00018}}\ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{classZappy_1_1AObject_ae23ed2cb4b3221c30ab3ec3709a6c58f}{\_type}};}
+\DoxyCodeLine{\Hypertarget{AObject_8hpp_source_l00019}\mbox{\hyperlink{classZappy_1_1AObject_a29a24d094a3e040e50fcd08c631dde4f}{00019}}\ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{classZappy_1_1AObject_a29a24d094a3e040e50fcd08c631dde4f}{\_name}};}
+\DoxyCodeLine{\Hypertarget{AObject_8hpp_source_l00020}\mbox{\hyperlink{classZappy_1_1AObject_a09968f4ef96fc1ea9da370f0e9aa2c1d}{00020}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classZappy_1_1AObject_a09968f4ef96fc1ea9da370f0e9aa2c1d}{\_density}};}
+\DoxyCodeLine{\Hypertarget{AObject_8hpp_source_l00021}\mbox{\hyperlink{classZappy_1_1AObject_a3a10d3f1b156faddb68043e9fdabdb2f}{00021}}\ \ \ \ \ \ \ \ \ sf::RectangleShape\ \mbox{\hyperlink{classZappy_1_1AObject_a3a10d3f1b156faddb68043e9fdabdb2f}{shape}};}
+\DoxyCodeLine{\Hypertarget{AObject_8hpp_source_l00022}\mbox{\hyperlink{classZappy_1_1AObject_ade5fee66733741913e65096e529565eb}{00022}}\ \ \ \ \ \ \ \ \ sf::Color\ \mbox{\hyperlink{classZappy_1_1AObject_ade5fee66733741913e65096e529565eb}{color}};}
+\DoxyCodeLine{\Hypertarget{AObject_8hpp_source_l00023}00023\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{AObject_8hpp_source_l00024}00024\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classZappy_1_1AObject_ab490f4907c2277e65192dc16b783a6fe}{AObject}}(\textcolor{comment}{/*\ args\ */});}
+\DoxyCodeLine{\Hypertarget{AObject_8hpp_source_l00025}00025\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classZappy_1_1AObject_a9449a47fef2eba40add76faf21ce5aab}{\string~AObject}}();}
+\DoxyCodeLine{\Hypertarget{AObject_8hpp_source_l00031}\mbox{\hyperlink{classZappy_1_1AObject_ab82fe980a5f82bd208ccaf3eb5a9e765}{00031}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ std::string\ \mbox{\hyperlink{classZappy_1_1AObject_ab82fe980a5f82bd208ccaf3eb5a9e765}{getType}}()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classZappy_1_1AObject_ae23ed2cb4b3221c30ab3ec3709a6c58f}{\_type}};\};}
+\DoxyCodeLine{\Hypertarget{AObject_8hpp_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{AObject_8hpp_source_l00038}\mbox{\hyperlink{classZappy_1_1AObject_a10ccc305712230e6747b899366a1c955}{00038}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ std::string\ \mbox{\hyperlink{classZappy_1_1AObject_a10ccc305712230e6747b899366a1c955}{getName}}()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classZappy_1_1AObject_a29a24d094a3e040e50fcd08c631dde4f}{\_name}};\};}
+\DoxyCodeLine{\Hypertarget{AObject_8hpp_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{AObject_8hpp_source_l00045}\mbox{\hyperlink{classZappy_1_1AObject_a5ea363f62b72936655fd63427daa6629}{00045}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classZappy_1_1AObject_a5ea363f62b72936655fd63427daa6629}{getDensity}}()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classZappy_1_1AObject_a09968f4ef96fc1ea9da370f0e9aa2c1d}{\_density}};\};}
+\DoxyCodeLine{\Hypertarget{AObject_8hpp_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{AObject_8hpp_source_l00052}\mbox{\hyperlink{classZappy_1_1AObject_aab320662de3d23ff72040a818fa77331}{00052}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1AObject_aab320662de3d23ff72040a818fa77331}{setType}}(std::string\ type)\ \{this-\/>\_type\ =\ type;\};}
+\DoxyCodeLine{\Hypertarget{AObject_8hpp_source_l00053}00053\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{AObject_8hpp_source_l00059}\mbox{\hyperlink{classZappy_1_1AObject_a9e869232a05c55e9d9e9e5a251223ff8}{00059}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1AObject_a9e869232a05c55e9d9e9e5a251223ff8}{setName}}(std::string\ name)\ \{this-\/>\_name\ =\ name;\};}
+\DoxyCodeLine{\Hypertarget{AObject_8hpp_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{AObject_8hpp_source_l00066}\mbox{\hyperlink{classZappy_1_1AObject_ab7553aa63e0ea76d579ade136ea4c674}{00066}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1AObject_ab7553aa63e0ea76d579ade136ea4c674}{setDensity}}(\textcolor{keywordtype}{double}\ density)\ \{this-\/>\_density\ =\ density;\};}
+\DoxyCodeLine{\Hypertarget{AObject_8hpp_source_l00067}00067\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{AObject_8hpp_source_l00068}00068\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{AObject_8hpp_source_l00069}00069\ \}}
+\DoxyCodeLine{\Hypertarget{AObject_8hpp_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{AObject_8hpp_source_l00071}00071\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ !AOBJECT\_HPP\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

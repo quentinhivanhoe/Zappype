@@ -1,0 +1,378 @@
+\hypertarget{classZappy_1_1TrantorianInfo}{}\doxysection{Zappy\+::Trantorian\+Info Class Reference}
+\label{classZappy_1_1TrantorianInfo}\index{Zappy::TrantorianInfo@{Zappy::TrantorianInfo}}
+
+
+{\ttfamily \#include $<$Trantorian\+Info.\+hpp$>$}
+
+
+
+Collaboration diagram for Zappy\+::Trantorian\+Info\+:
+% FIG 0
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classZappy_1_1TrantorianInfo_a911d21f49566ab7076e3e6f5d3c3cde0}{Trantorian\+Info}} (\mbox{\hyperlink{classZappy_1_1GUI}{GUI}} $\ast$gui)
+\item 
+\mbox{\hyperlink{classZappy_1_1TrantorianInfo_ae86095040c3a30c3284eada2bfc06a14}{$\sim$\+Trantorian\+Info}} ()=default
+\item 
+void \mbox{\hyperlink{classZappy_1_1TrantorianInfo_aa7b3d265aa130779d5af4716f01f82cd}{update}} (\mbox{\hyperlink{classZappy_1_1MouseStatus}{Mouse\+Status}} mouse)
+\begin{DoxyCompactList}\small\item\em Update the \mbox{\hyperlink{classZappy_1_1Trantorian}{Trantorian}} info. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1TrantorianInfo_a6a68643a5b058213b1edea9e7d4b73ad}{render}} (sf\+::\+Render\+Window \&window)
+\begin{DoxyCompactList}\small\item\em Draw the \mbox{\hyperlink{classZappy_1_1Trantorian}{Trantorian}} Info. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1TrantorianInfo_a54639bfdcd90f27443371d7d00414e86}{set\+Trantorian}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classZappy_1_1Trantorian}{Trantorian}} $>$ trantorian)
+\begin{DoxyCompactList}\small\item\em Set the \mbox{\hyperlink{classZappy_1_1Trantorian}{Trantorian}} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1TrantorianInfo_aed7290b6b2e6a71e769a491ee5687f32}{draw\+Text}} (const std\+::string \&string, sf\+::\+Vector2f position, sf\+::\+Color color, int character\+Size, sf\+::\+Render\+Window \&window)
+\begin{DoxyCompactList}\small\item\em Draw a text in the window with the given parameters. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1TrantorianInfo_a647d26a2915845109cb1acade12a29e4}{hide}} ()
+\begin{DoxyCompactList}\small\item\em hide the trantorian info \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classZappy_1_1TrantorianInfo_af847b5ba2ba06449e8dce7a7ac1e1273}{is\+Hiding}} () const
+\begin{DoxyCompactList}\small\item\em Get the hiding state of the trantorian info. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZappy_1_1TrantorianInfo_aa291307d534564f5c120c49f418b6b8d}{manage\+Hiding}} ()
+\begin{DoxyCompactList}\small\item\em Manage the hiding state of the trantorian info. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classZappy_1_1Trantorian}{Trantorian}} $>$ \mbox{\hyperlink{classZappy_1_1TrantorianInfo_a193f8e08c3a88761ee14a257a936318a}{get\+Trantorian}} () const
+\begin{DoxyCompactList}\small\item\em Get the \mbox{\hyperlink{classZappy_1_1Trantorian}{Trantorian}} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classZappy_1_1GUI}{GUI}} $\ast$ \mbox{\hyperlink{classZappy_1_1TrantorianInfo_ada5e36af04294f305646feadffa4335c}{\+\_\+gui}}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classZappy_1_1Trantorian}{Trantorian}} $>$ \mbox{\hyperlink{classZappy_1_1TrantorianInfo_af73f33ee18725e0d09f839a8d81e6db6}{\+\_\+trantorian}} = nullptr
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classZappy_1_1Trantorian}{Trantorian}} $>$ \mbox{\hyperlink{classZappy_1_1TrantorianInfo_a9894c30e3fd26253c4636e4be9d182ca}{\+\_\+next\+Trantorian}} = nullptr
+\item 
+sf\+::\+Rectangle\+Shape \mbox{\hyperlink{classZappy_1_1TrantorianInfo_a1d070dcab9f9d76428e4b436349870db}{\+\_\+bg}}
+\item 
+sf\+::\+Rectangle\+Shape \mbox{\hyperlink{classZappy_1_1TrantorianInfo_ab786cdfc7d116aa3e77014c4d702e9a7}{\+\_\+title\+Bar\+Bg}}
+\item 
+sf\+::\+Text \mbox{\hyperlink{classZappy_1_1TrantorianInfo_a7a599230289de9d4649cb735a8ea4c1d}{\+\_\+text}}
+\item 
+sf\+::\+Font \mbox{\hyperlink{classZappy_1_1TrantorianInfo_aa7a3faa301e0ff8d91cfad80e4ac16b0}{\+\_\+font}}
+\item 
+sf\+::\+Vector2f \mbox{\hyperlink{classZappy_1_1TrantorianInfo_acda1127468bf0928bfc0e221d6b2051e}{\+\_\+unselected\+Pos}}
+\item 
+sf\+::\+Vector2f \mbox{\hyperlink{classZappy_1_1TrantorianInfo_a8c3fcd1b3d42001ff89baab85ef1d6c0}{\+\_\+selected\+Pos}}
+\item 
+sf\+::\+Vector2f \mbox{\hyperlink{classZappy_1_1TrantorianInfo_ad337c04f4caa32c678d25b713d573544}{\+\_\+pos}}
+\item 
+sf\+::\+Vector2f \mbox{\hyperlink{classZappy_1_1TrantorianInfo_a1afbe4520a4355e69b481626ca6d48a7}{\+\_\+anchor\+Pos}}
+\item 
+bool \mbox{\hyperlink{classZappy_1_1TrantorianInfo_a4cb0e4ae89b33ad8e66b49d96b0d7c60}{\+\_\+hiding}} = false
+\item 
+float \mbox{\hyperlink{classZappy_1_1TrantorianInfo_a9e346cb64303552a0a6f77ce7aeaae02}{\+\_\+growing\+Nb}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{TrantorianInfo_8hpp_source_l00021}{21}} of file \mbox{\hyperlink{TrantorianInfo_8hpp_source}{Trantorian\+Info.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classZappy_1_1TrantorianInfo_a911d21f49566ab7076e3e6f5d3c3cde0}\label{classZappy_1_1TrantorianInfo_a911d21f49566ab7076e3e6f5d3c3cde0}} 
+\index{Zappy::TrantorianInfo@{Zappy::TrantorianInfo}!TrantorianInfo@{TrantorianInfo}}
+\index{TrantorianInfo@{TrantorianInfo}!Zappy::TrantorianInfo@{Zappy::TrantorianInfo}}
+\doxysubsubsection{\texorpdfstring{TrantorianInfo()}{TrantorianInfo()}}
+{\footnotesize\ttfamily Zappy\+::\+Trantorian\+Info\+::\+Trantorian\+Info (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classZappy_1_1GUI}{GUI}} $\ast$}]{gui }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{trantorianInfo_8cpp_source_l00010}{10}} of file \mbox{\hyperlink{trantorianInfo_8cpp_source}{trantorian\+Info.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1TrantorianInfo_ae86095040c3a30c3284eada2bfc06a14}\label{classZappy_1_1TrantorianInfo_ae86095040c3a30c3284eada2bfc06a14}} 
+\index{Zappy::TrantorianInfo@{Zappy::TrantorianInfo}!````~TrantorianInfo@{$\sim$TrantorianInfo}}
+\index{````~TrantorianInfo@{$\sim$TrantorianInfo}!Zappy::TrantorianInfo@{Zappy::TrantorianInfo}}
+\doxysubsubsection{\texorpdfstring{$\sim$TrantorianInfo()}{~TrantorianInfo()}}
+{\footnotesize\ttfamily Zappy\+::\+Trantorian\+Info\+::$\sim$\+Trantorian\+Info (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classZappy_1_1TrantorianInfo_aed7290b6b2e6a71e769a491ee5687f32}\label{classZappy_1_1TrantorianInfo_aed7290b6b2e6a71e769a491ee5687f32}} 
+\index{Zappy::TrantorianInfo@{Zappy::TrantorianInfo}!drawText@{drawText}}
+\index{drawText@{drawText}!Zappy::TrantorianInfo@{Zappy::TrantorianInfo}}
+\doxysubsubsection{\texorpdfstring{drawText()}{drawText()}}
+{\footnotesize\ttfamily void Zappy\+::\+Trantorian\+Info\+::draw\+Text (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{string,  }\item[{sf\+::\+Vector2f}]{position,  }\item[{sf\+::\+Color}]{color,  }\item[{int}]{character\+Size,  }\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})}
+
+
+
+Draw a text in the window with the given parameters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em string} & \\
+\hline
+{\em position} & \\
+\hline
+{\em color} & \\
+\hline
+{\em character\+Size} & \\
+\hline
+{\em window} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{trantorianInfo_8cpp_source_l00078}{78}} of file \mbox{\hyperlink{trantorianInfo_8cpp_source}{trantorian\+Info.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1TrantorianInfo_a193f8e08c3a88761ee14a257a936318a}\label{classZappy_1_1TrantorianInfo_a193f8e08c3a88761ee14a257a936318a}} 
+\index{Zappy::TrantorianInfo@{Zappy::TrantorianInfo}!getTrantorian@{getTrantorian}}
+\index{getTrantorian@{getTrantorian}!Zappy::TrantorianInfo@{Zappy::TrantorianInfo}}
+\doxysubsubsection{\texorpdfstring{getTrantorian()}{getTrantorian()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classZappy_1_1Trantorian}{Trantorian}} $>$ Zappy\+::\+Trantorian\+Info\+::get\+Trantorian (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the \mbox{\hyperlink{classZappy_1_1Trantorian}{Trantorian}} object. 
+
+\begin{DoxyReturn}{Returns}
+std\+::shared\+\_\+ptr$<$\+Trantorian$>$ 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{TrantorianInfo_8hpp_source_l00098}{98}} of file \mbox{\hyperlink{TrantorianInfo_8hpp_source}{Trantorian\+Info.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1TrantorianInfo_a647d26a2915845109cb1acade12a29e4}\label{classZappy_1_1TrantorianInfo_a647d26a2915845109cb1acade12a29e4}} 
+\index{Zappy::TrantorianInfo@{Zappy::TrantorianInfo}!hide@{hide}}
+\index{hide@{hide}!Zappy::TrantorianInfo@{Zappy::TrantorianInfo}}
+\doxysubsubsection{\texorpdfstring{hide()}{hide()}}
+{\footnotesize\ttfamily void Zappy\+::\+Trantorian\+Info\+::hide (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+hide the trantorian info 
+
+
+
+Definition at line \mbox{\hyperlink{TrantorianInfo_8hpp_source_l00077}{77}} of file \mbox{\hyperlink{TrantorianInfo_8hpp_source}{Trantorian\+Info.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1TrantorianInfo_af847b5ba2ba06449e8dce7a7ac1e1273}\label{classZappy_1_1TrantorianInfo_af847b5ba2ba06449e8dce7a7ac1e1273}} 
+\index{Zappy::TrantorianInfo@{Zappy::TrantorianInfo}!isHiding@{isHiding}}
+\index{isHiding@{isHiding}!Zappy::TrantorianInfo@{Zappy::TrantorianInfo}}
+\doxysubsubsection{\texorpdfstring{isHiding()}{isHiding()}}
+{\footnotesize\ttfamily bool Zappy\+::\+Trantorian\+Info\+::is\+Hiding (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the hiding state of the trantorian info. 
+
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{TrantorianInfo_8hpp_source_l00085}{85}} of file \mbox{\hyperlink{TrantorianInfo_8hpp_source}{Trantorian\+Info.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1TrantorianInfo_aa291307d534564f5c120c49f418b6b8d}\label{classZappy_1_1TrantorianInfo_aa291307d534564f5c120c49f418b6b8d}} 
+\index{Zappy::TrantorianInfo@{Zappy::TrantorianInfo}!manageHiding@{manageHiding}}
+\index{manageHiding@{manageHiding}!Zappy::TrantorianInfo@{Zappy::TrantorianInfo}}
+\doxysubsubsection{\texorpdfstring{manageHiding()}{manageHiding()}}
+{\footnotesize\ttfamily void Zappy\+::\+Trantorian\+Info\+::manage\+Hiding (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Manage the hiding state of the trantorian info. 
+
+
+
+Definition at line \mbox{\hyperlink{trantorianInfo_8cpp_source_l00031}{31}} of file \mbox{\hyperlink{trantorianInfo_8cpp_source}{trantorian\+Info.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1TrantorianInfo_a6a68643a5b058213b1edea9e7d4b73ad}\label{classZappy_1_1TrantorianInfo_a6a68643a5b058213b1edea9e7d4b73ad}} 
+\index{Zappy::TrantorianInfo@{Zappy::TrantorianInfo}!render@{render}}
+\index{render@{render}!Zappy::TrantorianInfo@{Zappy::TrantorianInfo}}
+\doxysubsubsection{\texorpdfstring{render()}{render()}}
+{\footnotesize\ttfamily void Zappy\+::\+Trantorian\+Info\+::render (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})}
+
+
+
+Draw the \mbox{\hyperlink{classZappy_1_1Trantorian}{Trantorian}} Info. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{trantorianInfo_8cpp_source_l00056}{56}} of file \mbox{\hyperlink{trantorianInfo_8cpp_source}{trantorian\+Info.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1TrantorianInfo_a54639bfdcd90f27443371d7d00414e86}\label{classZappy_1_1TrantorianInfo_a54639bfdcd90f27443371d7d00414e86}} 
+\index{Zappy::TrantorianInfo@{Zappy::TrantorianInfo}!setTrantorian@{setTrantorian}}
+\index{setTrantorian@{setTrantorian}!Zappy::TrantorianInfo@{Zappy::TrantorianInfo}}
+\doxysubsubsection{\texorpdfstring{setTrantorian()}{setTrantorian()}}
+{\footnotesize\ttfamily void Zappy\+::\+Trantorian\+Info\+::set\+Trantorian (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classZappy_1_1Trantorian}{Trantorian}} $>$}]{trantorian }\end{DoxyParamCaption})}
+
+
+
+Set the \mbox{\hyperlink{classZappy_1_1Trantorian}{Trantorian}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em trantorian} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{trantorianInfo_8cpp_source_l00087}{87}} of file \mbox{\hyperlink{trantorianInfo_8cpp_source}{trantorian\+Info.\+cpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1TrantorianInfo_aa7b3d265aa130779d5af4716f01f82cd}\label{classZappy_1_1TrantorianInfo_aa7b3d265aa130779d5af4716f01f82cd}} 
+\index{Zappy::TrantorianInfo@{Zappy::TrantorianInfo}!update@{update}}
+\index{update@{update}!Zappy::TrantorianInfo@{Zappy::TrantorianInfo}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Zappy\+::\+Trantorian\+Info\+::update (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classZappy_1_1MouseStatus}{Zappy\+::\+Mouse\+Status}}}]{mouse }\end{DoxyParamCaption})}
+
+
+
+Update the \mbox{\hyperlink{classZappy_1_1Trantorian}{Trantorian}} info. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mouse} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{trantorianInfo_8cpp_source_l00043}{43}} of file \mbox{\hyperlink{trantorianInfo_8cpp_source}{trantorian\+Info.\+cpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classZappy_1_1TrantorianInfo_a1afbe4520a4355e69b481626ca6d48a7}\label{classZappy_1_1TrantorianInfo_a1afbe4520a4355e69b481626ca6d48a7}} 
+\index{Zappy::TrantorianInfo@{Zappy::TrantorianInfo}!\_anchorPos@{\_anchorPos}}
+\index{\_anchorPos@{\_anchorPos}!Zappy::TrantorianInfo@{Zappy::TrantorianInfo}}
+\doxysubsubsection{\texorpdfstring{\_anchorPos}{\_anchorPos}}
+{\footnotesize\ttfamily sf\+::\+Vector2f Zappy\+::\+Trantorian\+Info\+::\+\_\+anchor\+Pos\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{TrantorianInfo_8hpp_source_l00034}{34}} of file \mbox{\hyperlink{TrantorianInfo_8hpp_source}{Trantorian\+Info.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1TrantorianInfo_a1d070dcab9f9d76428e4b436349870db}\label{classZappy_1_1TrantorianInfo_a1d070dcab9f9d76428e4b436349870db}} 
+\index{Zappy::TrantorianInfo@{Zappy::TrantorianInfo}!\_bg@{\_bg}}
+\index{\_bg@{\_bg}!Zappy::TrantorianInfo@{Zappy::TrantorianInfo}}
+\doxysubsubsection{\texorpdfstring{\_bg}{\_bg}}
+{\footnotesize\ttfamily sf\+::\+Rectangle\+Shape Zappy\+::\+Trantorian\+Info\+::\+\_\+bg\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{TrantorianInfo_8hpp_source_l00027}{27}} of file \mbox{\hyperlink{TrantorianInfo_8hpp_source}{Trantorian\+Info.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1TrantorianInfo_aa7a3faa301e0ff8d91cfad80e4ac16b0}\label{classZappy_1_1TrantorianInfo_aa7a3faa301e0ff8d91cfad80e4ac16b0}} 
+\index{Zappy::TrantorianInfo@{Zappy::TrantorianInfo}!\_font@{\_font}}
+\index{\_font@{\_font}!Zappy::TrantorianInfo@{Zappy::TrantorianInfo}}
+\doxysubsubsection{\texorpdfstring{\_font}{\_font}}
+{\footnotesize\ttfamily sf\+::\+Font Zappy\+::\+Trantorian\+Info\+::\+\_\+font\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{TrantorianInfo_8hpp_source_l00030}{30}} of file \mbox{\hyperlink{TrantorianInfo_8hpp_source}{Trantorian\+Info.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1TrantorianInfo_a9e346cb64303552a0a6f77ce7aeaae02}\label{classZappy_1_1TrantorianInfo_a9e346cb64303552a0a6f77ce7aeaae02}} 
+\index{Zappy::TrantorianInfo@{Zappy::TrantorianInfo}!\_growingNb@{\_growingNb}}
+\index{\_growingNb@{\_growingNb}!Zappy::TrantorianInfo@{Zappy::TrantorianInfo}}
+\doxysubsubsection{\texorpdfstring{\_growingNb}{\_growingNb}}
+{\footnotesize\ttfamily float Zappy\+::\+Trantorian\+Info\+::\+\_\+growing\+Nb\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{TrantorianInfo_8hpp_source_l00036}{36}} of file \mbox{\hyperlink{TrantorianInfo_8hpp_source}{Trantorian\+Info.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1TrantorianInfo_ada5e36af04294f305646feadffa4335c}\label{classZappy_1_1TrantorianInfo_ada5e36af04294f305646feadffa4335c}} 
+\index{Zappy::TrantorianInfo@{Zappy::TrantorianInfo}!\_gui@{\_gui}}
+\index{\_gui@{\_gui}!Zappy::TrantorianInfo@{Zappy::TrantorianInfo}}
+\doxysubsubsection{\texorpdfstring{\_gui}{\_gui}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classZappy_1_1GUI}{GUI}}$\ast$ Zappy\+::\+Trantorian\+Info\+::\+\_\+gui\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{TrantorianInfo_8hpp_source_l00024}{24}} of file \mbox{\hyperlink{TrantorianInfo_8hpp_source}{Trantorian\+Info.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1TrantorianInfo_a4cb0e4ae89b33ad8e66b49d96b0d7c60}\label{classZappy_1_1TrantorianInfo_a4cb0e4ae89b33ad8e66b49d96b0d7c60}} 
+\index{Zappy::TrantorianInfo@{Zappy::TrantorianInfo}!\_hiding@{\_hiding}}
+\index{\_hiding@{\_hiding}!Zappy::TrantorianInfo@{Zappy::TrantorianInfo}}
+\doxysubsubsection{\texorpdfstring{\_hiding}{\_hiding}}
+{\footnotesize\ttfamily bool Zappy\+::\+Trantorian\+Info\+::\+\_\+hiding = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{TrantorianInfo_8hpp_source_l00035}{35}} of file \mbox{\hyperlink{TrantorianInfo_8hpp_source}{Trantorian\+Info.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1TrantorianInfo_a9894c30e3fd26253c4636e4be9d182ca}\label{classZappy_1_1TrantorianInfo_a9894c30e3fd26253c4636e4be9d182ca}} 
+\index{Zappy::TrantorianInfo@{Zappy::TrantorianInfo}!\_nextTrantorian@{\_nextTrantorian}}
+\index{\_nextTrantorian@{\_nextTrantorian}!Zappy::TrantorianInfo@{Zappy::TrantorianInfo}}
+\doxysubsubsection{\texorpdfstring{\_nextTrantorian}{\_nextTrantorian}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classZappy_1_1Trantorian}{Trantorian}}$>$ Zappy\+::\+Trantorian\+Info\+::\+\_\+next\+Trantorian = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{TrantorianInfo_8hpp_source_l00026}{26}} of file \mbox{\hyperlink{TrantorianInfo_8hpp_source}{Trantorian\+Info.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1TrantorianInfo_ad337c04f4caa32c678d25b713d573544}\label{classZappy_1_1TrantorianInfo_ad337c04f4caa32c678d25b713d573544}} 
+\index{Zappy::TrantorianInfo@{Zappy::TrantorianInfo}!\_pos@{\_pos}}
+\index{\_pos@{\_pos}!Zappy::TrantorianInfo@{Zappy::TrantorianInfo}}
+\doxysubsubsection{\texorpdfstring{\_pos}{\_pos}}
+{\footnotesize\ttfamily sf\+::\+Vector2f Zappy\+::\+Trantorian\+Info\+::\+\_\+pos\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{TrantorianInfo_8hpp_source_l00033}{33}} of file \mbox{\hyperlink{TrantorianInfo_8hpp_source}{Trantorian\+Info.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1TrantorianInfo_a8c3fcd1b3d42001ff89baab85ef1d6c0}\label{classZappy_1_1TrantorianInfo_a8c3fcd1b3d42001ff89baab85ef1d6c0}} 
+\index{Zappy::TrantorianInfo@{Zappy::TrantorianInfo}!\_selectedPos@{\_selectedPos}}
+\index{\_selectedPos@{\_selectedPos}!Zappy::TrantorianInfo@{Zappy::TrantorianInfo}}
+\doxysubsubsection{\texorpdfstring{\_selectedPos}{\_selectedPos}}
+{\footnotesize\ttfamily sf\+::\+Vector2f Zappy\+::\+Trantorian\+Info\+::\+\_\+selected\+Pos\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{TrantorianInfo_8hpp_source_l00032}{32}} of file \mbox{\hyperlink{TrantorianInfo_8hpp_source}{Trantorian\+Info.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1TrantorianInfo_a7a599230289de9d4649cb735a8ea4c1d}\label{classZappy_1_1TrantorianInfo_a7a599230289de9d4649cb735a8ea4c1d}} 
+\index{Zappy::TrantorianInfo@{Zappy::TrantorianInfo}!\_text@{\_text}}
+\index{\_text@{\_text}!Zappy::TrantorianInfo@{Zappy::TrantorianInfo}}
+\doxysubsubsection{\texorpdfstring{\_text}{\_text}}
+{\footnotesize\ttfamily sf\+::\+Text Zappy\+::\+Trantorian\+Info\+::\+\_\+text\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{TrantorianInfo_8hpp_source_l00029}{29}} of file \mbox{\hyperlink{TrantorianInfo_8hpp_source}{Trantorian\+Info.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1TrantorianInfo_ab786cdfc7d116aa3e77014c4d702e9a7}\label{classZappy_1_1TrantorianInfo_ab786cdfc7d116aa3e77014c4d702e9a7}} 
+\index{Zappy::TrantorianInfo@{Zappy::TrantorianInfo}!\_titleBarBg@{\_titleBarBg}}
+\index{\_titleBarBg@{\_titleBarBg}!Zappy::TrantorianInfo@{Zappy::TrantorianInfo}}
+\doxysubsubsection{\texorpdfstring{\_titleBarBg}{\_titleBarBg}}
+{\footnotesize\ttfamily sf\+::\+Rectangle\+Shape Zappy\+::\+Trantorian\+Info\+::\+\_\+title\+Bar\+Bg\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{TrantorianInfo_8hpp_source_l00028}{28}} of file \mbox{\hyperlink{TrantorianInfo_8hpp_source}{Trantorian\+Info.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1TrantorianInfo_af73f33ee18725e0d09f839a8d81e6db6}\label{classZappy_1_1TrantorianInfo_af73f33ee18725e0d09f839a8d81e6db6}} 
+\index{Zappy::TrantorianInfo@{Zappy::TrantorianInfo}!\_trantorian@{\_trantorian}}
+\index{\_trantorian@{\_trantorian}!Zappy::TrantorianInfo@{Zappy::TrantorianInfo}}
+\doxysubsubsection{\texorpdfstring{\_trantorian}{\_trantorian}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classZappy_1_1Trantorian}{Trantorian}}$>$ Zappy\+::\+Trantorian\+Info\+::\+\_\+trantorian = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{TrantorianInfo_8hpp_source_l00025}{25}} of file \mbox{\hyperlink{TrantorianInfo_8hpp_source}{Trantorian\+Info.\+hpp}}.
+
+\mbox{\Hypertarget{classZappy_1_1TrantorianInfo_acda1127468bf0928bfc0e221d6b2051e}\label{classZappy_1_1TrantorianInfo_acda1127468bf0928bfc0e221d6b2051e}} 
+\index{Zappy::TrantorianInfo@{Zappy::TrantorianInfo}!\_unselectedPos@{\_unselectedPos}}
+\index{\_unselectedPos@{\_unselectedPos}!Zappy::TrantorianInfo@{Zappy::TrantorianInfo}}
+\doxysubsubsection{\texorpdfstring{\_unselectedPos}{\_unselectedPos}}
+{\footnotesize\ttfamily sf\+::\+Vector2f Zappy\+::\+Trantorian\+Info\+::\+\_\+unselected\+Pos\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{TrantorianInfo_8hpp_source_l00031}{31}} of file \mbox{\hyperlink{TrantorianInfo_8hpp_source}{Trantorian\+Info.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{TrantorianInfo_8hpp}{Trantorian\+Info.\+hpp}}\item 
+\mbox{\hyperlink{trantorianInfo_8cpp}{trantorian\+Info.\+cpp}}\end{DoxyCompactItemize}

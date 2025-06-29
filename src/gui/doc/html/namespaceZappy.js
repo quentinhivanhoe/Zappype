@@ -1,0 +1,46 @@
+var namespaceZappy =
+[
+    [ "Actions", "classZappy_1_1Actions.html", "classZappy_1_1Actions" ],
+    [ "AObject", "classZappy_1_1AObject.html", "classZappy_1_1AObject" ],
+    [ "BroadCastTab", "classZappy_1_1BroadCastTab.html", "classZappy_1_1BroadCastTab" ],
+    [ "Buttons", "classZappy_1_1Buttons.html", "classZappy_1_1Buttons" ],
+    [ "Core", "classZappy_1_1Core.html", "classZappy_1_1Core" ],
+    [ "Drawable", "classZappy_1_1Drawable.html", "classZappy_1_1Drawable" ],
+    [ "DrawRandom", "classZappy_1_1DrawRandom.html", "classZappy_1_1DrawRandom" ],
+    [ "Egg", "classZappy_1_1Egg.html", "classZappy_1_1Egg" ],
+    [ "Error", "classZappy_1_1Error.html", "classZappy_1_1Error" ],
+    [ "GUI", "classZappy_1_1GUI.html", "classZappy_1_1GUI" ],
+    [ "IObject", "classZappy_1_1IObject.html", "classZappy_1_1IObject" ],
+    [ "Items", "classZappy_1_1Items.html", "classZappy_1_1Items" ],
+    [ "Map", "classZappy_1_1Map.html", "classZappy_1_1Map" ],
+    [ "MouseStatus", "classZappy_1_1MouseStatus.html", "classZappy_1_1MouseStatus" ],
+    [ "Network", "classZappy_1_1Network.html", "classZappy_1_1Network" ],
+    [ "OneShotAnimationPlayer", "classZappy_1_1OneShotAnimationPlayer.html", "classZappy_1_1OneShotAnimationPlayer" ],
+    [ "Parser", "classZappy_1_1Parser.html", "classZappy_1_1Parser" ],
+    [ "Stones", "classZappy_1_1Stones.html", "classZappy_1_1Stones" ],
+    [ "Team", "classZappy_1_1Team.html", "classZappy_1_1Team" ],
+    [ "Tile", "classZappy_1_1Tile.html", "classZappy_1_1Tile" ],
+    [ "TileButtons", "classZappy_1_1TileButtons.html", "classZappy_1_1TileButtons" ],
+    [ "TileInfo", "classZappy_1_1TileInfo.html", "classZappy_1_1TileInfo" ],
+    [ "TrantorButtons", "classZappy_1_1TrantorButtons.html", "classZappy_1_1TrantorButtons" ],
+    [ "Trantorian", "classZappy_1_1Trantorian.html", "classZappy_1_1Trantorian" ],
+    [ "TrantorianInfo", "classZappy_1_1TrantorianInfo.html", "classZappy_1_1TrantorianInfo" ],
+    [ "Item", "namespaceZappy.html#a1c44af85d003dd823a82c7ae89a1a7ec", [
+      [ "EGG", "namespaceZappy.html#a1c44af85d003dd823a82c7ae89a1a7eca32dc0c28c366b16a880c6812c03d7207", null ],
+      [ "FOOD", "namespaceZappy.html#a1c44af85d003dd823a82c7ae89a1a7eca920e9b0d8e14e9d806ae943f19fdd049", null ],
+      [ "LINEMATE", "namespaceZappy.html#a1c44af85d003dd823a82c7ae89a1a7eca47e48dfb5ab68ae87ea7c4ba3333c008", null ],
+      [ "DERAUMERE", "namespaceZappy.html#a1c44af85d003dd823a82c7ae89a1a7eca60fd36310ca43eea55c678c433613f30", null ],
+      [ "SIBUR", "namespaceZappy.html#a1c44af85d003dd823a82c7ae89a1a7eca0c93175eeae01621d51f93e3180f0d9f", null ],
+      [ "MENDIANE", "namespaceZappy.html#a1c44af85d003dd823a82c7ae89a1a7ecad0ab22052afb7a4848e098ca063b42db", null ],
+      [ "PHIRAS", "namespaceZappy.html#a1c44af85d003dd823a82c7ae89a1a7eca8aaf6ca726fb0dd420679f34434c6e68", null ],
+      [ "THYSTAME", "namespaceZappy.html#a1c44af85d003dd823a82c7ae89a1a7eca16005c5ea9382e807472eff155f64025", null ]
+    ] ],
+    [ "StoneType", "namespaceZappy.html#a46fb11d653075a8a64ab5301e939013b", [
+      [ "LINEMATE", "namespaceZappy.html#a1c44af85d003dd823a82c7ae89a1a7eca47e48dfb5ab68ae87ea7c4ba3333c008", null ],
+      [ "DERAUMERE", "namespaceZappy.html#a1c44af85d003dd823a82c7ae89a1a7eca60fd36310ca43eea55c678c433613f30", null ],
+      [ "SIBUR", "namespaceZappy.html#a1c44af85d003dd823a82c7ae89a1a7eca0c93175eeae01621d51f93e3180f0d9f", null ],
+      [ "MENDIANE", "namespaceZappy.html#a1c44af85d003dd823a82c7ae89a1a7ecad0ab22052afb7a4848e098ca063b42db", null ],
+      [ "PHIRAS", "namespaceZappy.html#a1c44af85d003dd823a82c7ae89a1a7eca8aaf6ca726fb0dd420679f34434c6e68", null ],
+      [ "THYSTAME", "namespaceZappy.html#a1c44af85d003dd823a82c7ae89a1a7eca16005c5ea9382e807472eff155f64025", null ]
+    ] ]
+];

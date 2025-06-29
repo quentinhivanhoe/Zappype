@@ -1,0 +1,314 @@
+\hypertarget{Network_8cpp_source}{}\doxysection{Network.\+cpp}
+\label{Network_8cpp_source}\index{Network.cpp@{Network.cpp}}
+\mbox{\hyperlink{Network_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00002}00002\ \textcolor{comment}{**\ EPITECH\ PROJECT,\ 2025}}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00003}00003\ \textcolor{comment}{**\ B-\/YEP-\/400-\/RUN-\/4-\/1-\/zappy-\/loic.rabearivelo}}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00004}00004\ \textcolor{comment}{**\ File\ description:}}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00005}00005\ \textcolor{comment}{**\ Network}}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00006}00006\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00008}00008\ \textcolor{preprocessor}{\#include\ "{}../includes/Network.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00009}00009\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00010}\mbox{\hyperlink{classZappy_1_1Network_a59d785653db4e0fa1465f7587d18c207}{00010}}\ \mbox{\hyperlink{classZappy_1_1Network_a59d785653db4e0fa1465f7587d18c207}{Zappy::Network::Network}}(\mbox{\hyperlink{classZappy_1_1GUI}{Zappy::GUI}}\ *gui)}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00011}00011\ \{}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00012}00012\ \ \ \ \ \textcolor{keywordflow}{if}\ (!gui)}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00013}00013\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classZappy_1_1Error}{Error}}(\textcolor{stringliteral}{"{}Gui\ not\ provided"{}},\ \textcolor{stringliteral}{"{}Network\ init"{}});}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00014}00014\ \ \ \ \ this-\/>\mbox{\hyperlink{classZappy_1_1Network_ab46e365433168163b2ab1ab7ee71422a}{\_gui}}\ =\ gui;}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00015}00015\ \ \ \ \ this-\/>\mbox{\hyperlink{classZappy_1_1Network_aef9c5055dbe9b9c37b06818b0eb2c5a7}{\_mapSize}}\ =\ \{-\/1,\ -\/1\};}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00016}00016\ \ \ \ \ this-\/>\mbox{\hyperlink{classZappy_1_1Network_adfe358d31ae80c69320267805a26ee90}{\_playerNb}}\ =\ -\/1;}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00017}00017\ \}}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00019}\mbox{\hyperlink{classZappy_1_1Network_ad25cecfd315a20d5b3205a30554564ed}{00019}}\ \mbox{\hyperlink{classZappy_1_1Network_ad25cecfd315a20d5b3205a30554564ed}{Zappy::Network::\string~Network}}()}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00020}00020\ \{}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00021}00021\ \ \ \ \ this-\/>\_socket.disconnect();}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00022}00022\ \}}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00024}\mbox{\hyperlink{classZappy_1_1Network_ab90284abfaac1dbdce423440bba70579}{00024}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Network_ab90284abfaac1dbdce423440bba70579}{Zappy::Network::send}}(std::string\ message)}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00025}00025\ \{}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00026}00026\ \ \ \ \ sf::Socket::Status\ status\ =\ this-\/>\_socket.send(message.c\_str(),\ message.size());}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00027}00027\ \ \ \ \ \textcolor{keywordflow}{if}\ (status\ ==\ sf::Socket::Partial)}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00028}00028\ \ \ \ \ \ \ \ \ status\ =\ this-\/>\_socket.send(message.c\_str(),\ message.size());}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00029}00029\ \ \ \ \ \textcolor{keywordflow}{if}\ (status\ !=\ sf::Socket::Done)}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00030}00030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classZappy_1_1Error}{Error}}(\textcolor{stringliteral}{"{}Error"{}},\ \textcolor{stringliteral}{"{}Network\ Send\ function"{}});}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00031}00031\ \}}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00033}\mbox{\hyperlink{classZappy_1_1Network_a65b5f17801b603b61695c998eb54a306}{00033}}\ std::string\ \mbox{\hyperlink{classZappy_1_1Network_a65b5f17801b603b61695c998eb54a306}{Zappy::Network::receive}}(\textcolor{keywordtype}{bool}\ isBlocking)}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00034}00034\ \{}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00035}00035\ \ \ \ \ std::array<char,\ 4096>\ recievedArray;}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00036}00036\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ nb\_bytes;}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00037}00037\ \ \ \ \ this-\/>\_socket.setBlocking(isBlocking);}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00038}00038\ \ \ \ \ \textcolor{keywordflow}{if}\ (\_socket.receive(recievedArray.data(),\ recievedArray.size(),\ nb\_bytes)\ ==\ sf::Socket::Done)\ \{}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00039}00039\ \ \ \ \ \ \ \ \ recievedArray[nb\_bytes]\ =\ \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00040}00040\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::string(recievedArray.data());}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00041}00041\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00042}00042\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00043}00043\ \}}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00045}\mbox{\hyperlink{classZappy_1_1Network_acbb405b5efddac3de1ffd5f17e9524d5}{00045}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Network_acbb405b5efddac3de1ffd5f17e9524d5}{Zappy::Network::establishConnection}}(std::string\ ip,\ \textcolor{keywordtype}{size\_t}\ socket)}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00046}00046\ \{}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00047}00047\ \ \ \ \ sf::IpAddress\ ipAddress(ip);}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00048}00048\ \ \ \ \ this-\/>\_status\ =\ \_socket.connect(ipAddress,\ socket);}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00049}00049\ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>\_status\ !=\ sf::Socket::Done)}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00050}00050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classZappy_1_1Error}{Error}}(\textcolor{stringliteral}{"{}Error"{}},\ \textcolor{stringliteral}{"{}Network\ Init\ function"{}});}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00051}00051\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}WELCOME\ MESSAGE\ FROM\ SERVER:"{}}\ <<\ this-\/>receive()\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00052}00052\ \}}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00054}\mbox{\hyperlink{classZappy_1_1Network_aa659da0abde145d513161652fe5ce873}{00054}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Network_aa659da0abde145d513161652fe5ce873}{Zappy::Network::initProcess}}()}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00055}00055\ \{}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00056}00056\ \ \ \ \ this-\/>askToServer(\textcolor{stringliteral}{"{}Team"{}},\ \{\});}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00057}00057\ \ \ \ \ this-\/>askToServer(\textcolor{stringliteral}{"{}PlayerNb"{}},\ \{\});}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00058}00058\ \ \ \ \ this-\/>askToServer(\textcolor{stringliteral}{"{}EggNb"{}},\ \{\});}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00059}00059\ \ \ \ \ this-\/>askToServer(\textcolor{stringliteral}{"{}MapSize"{}},\ \{\});}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00060}00060\ \ \ \ \ this-\/>\_gui-\/>initMap(this-\/>\_mapSize.x,\ this-\/>\_mapSize.y);}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00061}00061\ \ \ \ \ this-\/>askToServer(\textcolor{stringliteral}{"{}MapContent"{}},\ \{\});}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00062}00062\ \ \ \ \ this-\/>askToServer(\textcolor{stringliteral}{"{}PlayersInfo"{}},\ \{\});}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00063}00063\ \ \ \ \ this-\/>askToServer(\textcolor{stringliteral}{"{}EggsInfo"{}},\ \{\});}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00064}00064\ \}}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00066}\mbox{\hyperlink{classZappy_1_1Network_abe0252d5b820ded7c65ceceb7cf4505c}{00066}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Network_abe0252d5b820ded7c65ceceb7cf4505c}{Zappy::Network::recieveFromServer}}()}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00067}00067\ \{}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00068}00068\ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Parser}{Parser}}\ parser;}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00069}00069\ \ \ \ \ sf::Clock\ clock;}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00070}00070\ \ \ \ \ \textcolor{keywordflow}{while}\ (!this-\/>\_isShuttingDown)\ \{}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00071}00071\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (clock.getElapsedTime().asSeconds()\ >\ 10)\ \{}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ clock.restart();}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>send(\textcolor{stringliteral}{"{}mct\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00074}00074\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00075}00075\ \ \ \ \ \ \ \ \ std::string\ recievedString\ =\ this-\/>receive(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00076}00076\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!recievedString.empty())\ \{}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::string>\ tab\ =\ \mbox{\hyperlink{classZappy_1_1Parser_a6a9f98ca40a329a516011fccb947249c}{Parser::splitLine}}(recievedString,\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ tab.size();\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::string>\ args\ =\ \mbox{\hyperlink{classZappy_1_1Parser_aec9f21f3ae75fe711bc8a17e32c9630a}{Parser::parseLine}}(tab[i],\ \textcolor{charliteral}{'\ '});}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ parser.\mbox{\hyperlink{classZappy_1_1Parser_ab38f56b8404cc5c3644a6c37e5efe9d8}{manageResponse}}(args,\ \textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00082}00082\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00083}00083\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00084}00084\ \ \ \ \ this-\/>\_socket.disconnect();}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00085}00085\ \}}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00087}\mbox{\hyperlink{classZappy_1_1Network_a775a93de5a1c93d1706c10a4e73b3048}{00087}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Network_a775a93de5a1c93d1706c10a4e73b3048}{Zappy::Network::askToServer}}(\textcolor{keyword}{const}\ std::string\&\ command,\ std::vector<int>\ args)}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00088}00088\ \{}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00089}00089\ \ \ \ \ std::map<std::string,\ void\ (\mbox{\hyperlink{classZappy_1_1Network}{Network}}::\ *)()>\ funcTabNoArgs\ =\ \{}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00090}00090\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}Team"{}},\ \&\mbox{\hyperlink{classZappy_1_1Network_af3f6ffa7e1c0d2e6f4f536ab0ca1bffc}{Network::askTeam}}\},}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00091}00091\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}PlayerNb"{}},\ \&\mbox{\hyperlink{classZappy_1_1Network_ab80d2038353fc9d8870881b590831ce8}{Network::askPlayerNb}}\},}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00092}00092\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}EggNb"{}},\ \&\mbox{\hyperlink{classZappy_1_1Network_ad1ea8a9ced172a4daeae09ce7b10379d}{Network::askEggNb}}\},}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00093}00093\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}PlayersInfo"{}},\ \&\mbox{\hyperlink{classZappy_1_1Network_a19ac0c6e2804997a6f44859324d011ee}{Network::askPlayersInfo}}\},}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00094}00094\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}MapSize"{}},\ \&\mbox{\hyperlink{classZappy_1_1Network_a9559939d3a8c38e7316d794428a997c9}{Network::askMapSize}}\},}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00095}00095\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}MapContent"{}},\ \&\mbox{\hyperlink{classZappy_1_1Network_a7384b59051b6b662ffda80e816f29c1d}{Network::askMapContent}}\},}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00096}00096\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}TimeUnitRequest"{}},\ \&\mbox{\hyperlink{classZappy_1_1Network_a7fff69f00e20a22b110d2e3ec53208bd}{Network::askTimeUnitRequest}}\},}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00097}00097\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}EggsInfo"{}},\ \&\mbox{\hyperlink{classZappy_1_1Network_aaac23fa048f492bfbb70a3b15eaff24c}{Network::askEggsInfo}}\},}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00098}00098\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00099}00099\ \ \ \ \ std::map<std::string,\ void\ (\mbox{\hyperlink{classZappy_1_1Network}{Network}}::\ *)(std::vector<std::string>)>\ funcTabWithArgs\ =\ \{}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00100}00100\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}TileContent"{}},\ \&\mbox{\hyperlink{classZappy_1_1Network_a403b92d93aae81ba9b1ec6022ed3381c}{Network::askTileContent}}\},}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00101}00101\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}PlayerPos"{}},\ \&\mbox{\hyperlink{classZappy_1_1Network_a166b64508358640c49719bb9fb0e114e}{Network::askPlayerPos}}\},}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00102}00102\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}PlayerLevel"{}},\ \&\mbox{\hyperlink{classZappy_1_1Network_ad2a442ac35cb8fb2d5c6ea8873aa80af}{Network::askPlayerLevel}}\},}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00103}00103\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}PlayerInventory"{}},\ \&\mbox{\hyperlink{classZappy_1_1Network_abbaf1fb1163e67b417c66ca12d72ee65}{Network::askPlayerInventory}}\},}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00104}00104\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}TimeUnitModif"{}},\ \&\mbox{\hyperlink{classZappy_1_1Network_ad9a0acd61a5ed8cfceffcebc3c298c63}{Network::askTimeUnitModif}}\},}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00105}00105\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00106}00106\ }
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00107}00107\ \ \ \ \ \textcolor{keywordflow}{if}\ (args.empty()\ \&\&\ funcTabNoArgs[command])}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00108}00108\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (this-\/>*funcTabNoArgs[command])();}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00109}00109\ \ \ \ \ \textcolor{keywordflow}{if}\ (!args.empty()\ \&\&\ funcTabWithArgs[command])}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00110}00110\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (this-\/>*funcTabWithArgs[command])(\mbox{\hyperlink{classZappy_1_1Parser_ada77ef6591d2879ca15d1b0a7c2c6789}{Parser::argsToString}}(args));}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00111}00111\ \}}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00113}\mbox{\hyperlink{classZappy_1_1Network_af3f6ffa7e1c0d2e6f4f536ab0ca1bffc}{00113}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Network_af3f6ffa7e1c0d2e6f4f536ab0ca1bffc}{Zappy::Network::askTeam}}()}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00114}00114\ \{}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00115}00115\ \ \ \ \ this-\/>send(\textcolor{stringliteral}{"{}GRAPHIC\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00116}00116\ \ \ \ \ [[maybe\_unused]]\ std::string\ recievedString\ =\ this-\/>receive();}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00117}00117\ \ \ \ \ \textcolor{keywordflow}{if}\ (recievedString\ ==\ \textcolor{stringliteral}{"{}Maximum\ number\ of\ GUI\ clients\ reached.\(\backslash\)n"{}})}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00118}00118\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classZappy_1_1Error}{Error}}(\textcolor{stringliteral}{"{}Server\ slot\ full"{}},\ \textcolor{stringliteral}{"{}Network\ Init\ function"{}});}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00120}00120\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}[DEBUG\ from\ GUI]\ Authentification\ sucess"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00121}00121\ \}}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00123}\mbox{\hyperlink{classZappy_1_1Network_ab80d2038353fc9d8870881b590831ce8}{00123}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Network_ab80d2038353fc9d8870881b590831ce8}{Zappy::Network::askPlayerNb}}()}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00124}00124\ \{}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00125}00125\ \ \ \ \ this-\/>send(\textcolor{stringliteral}{"{}pnu\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00126}00126\ \ \ \ \ std::string\ recievedString\ =\ this-\/>receive();}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00127}00127\ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Parser}{Parser}}\ parser;}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00128}00128\ \ \ \ \ std::vector<std::string>\ args\ =\ \mbox{\hyperlink{classZappy_1_1Parser_aec9f21f3ae75fe711bc8a17e32c9630a}{Parser::parseLine}}(recievedString,\ \textcolor{charliteral}{'\ '});}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00129}00129\ \ \ \ \ parser.\mbox{\hyperlink{classZappy_1_1Parser_ab38f56b8404cc5c3644a6c37e5efe9d8}{manageResponse}}(args,\ \textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00130}00130\ \}}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00131}00131\ }
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00132}\mbox{\hyperlink{classZappy_1_1Network_ad1ea8a9ced172a4daeae09ce7b10379d}{00132}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Network_ad1ea8a9ced172a4daeae09ce7b10379d}{Zappy::Network::askEggNb}}()}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00133}00133\ \{}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00134}00134\ \ \ \ \ this-\/>send(\textcolor{stringliteral}{"{}enu\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00135}00135\ \ \ \ \ std::string\ recievedString\ =\ this-\/>receive();}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00136}00136\ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Parser}{Parser}}\ parser;}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00137}00137\ \ \ \ \ std::vector<std::string>\ args\ =\ \mbox{\hyperlink{classZappy_1_1Parser_aec9f21f3ae75fe711bc8a17e32c9630a}{Parser::parseLine}}(recievedString,\ \textcolor{charliteral}{'\ '});}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00138}00138\ \ \ \ \ parser.\mbox{\hyperlink{classZappy_1_1Parser_ab38f56b8404cc5c3644a6c37e5efe9d8}{manageResponse}}(args,\ \textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00139}00139\ \}}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00140}00140\ }
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00141}\mbox{\hyperlink{classZappy_1_1Network_a19ac0c6e2804997a6f44859324d011ee}{00141}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Network_a19ac0c6e2804997a6f44859324d011ee}{Zappy::Network::askPlayersInfo}}()}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00142}00142\ \{}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00143}00143\ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>\_playerNb\ <=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00144}00144\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Must\ have\ player\ number\ set\ before\ asking\ for\ players\ info."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00145}00145\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00146}00146\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00147}00147\ \ \ \ \ this-\/>send(\textcolor{stringliteral}{"{}pls\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00148}00148\ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Parser}{Parser}}\ parser;}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00149}00149\ \ \ \ \ std::string\ playersInfo\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00150}00150\ \ \ \ \ \textcolor{keywordflow}{while}\ (\textcolor{keyword}{true})\ \{}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00151}00151\ \ \ \ \ \ \ \ \ std::string\ recievedString\ =\ this-\/>receive(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00152}00152\ \ \ \ \ \ \ \ \ playersInfo.append(recievedString);}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00153}00153\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(\mbox{\hyperlink{classZappy_1_1Parser_a61fc1fc5521102d210609e5e7b553634}{Parser::nbOccur}}(playersInfo,\ \textcolor{stringliteral}{"{}pls"{}}))\ >=\ this-\/>\_playerNb)}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00154}00154\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00155}00155\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00156}00156\ \ \ \ \ std::vector<std::string>\ tab\ =\ \mbox{\hyperlink{classZappy_1_1Parser_a6a9f98ca40a329a516011fccb947249c}{Parser::splitLine}}(playersInfo,\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00157}00157\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ tab.size();\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00158}00158\ \ \ \ \ \ \ \ \ std::vector<std::string>\ args\ =\ \mbox{\hyperlink{classZappy_1_1Parser_aec9f21f3ae75fe711bc8a17e32c9630a}{Parser::parseLine}}(tab[i],\ \textcolor{charliteral}{'\ '});}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00159}00159\ \ \ \ \ \ \ \ \ parser.\mbox{\hyperlink{classZappy_1_1Parser_ab38f56b8404cc5c3644a6c37e5efe9d8}{manageResponse}}(args,\ \textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00160}00160\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00161}00161\ \}}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00162}00162\ }
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00163}\mbox{\hyperlink{classZappy_1_1Network_aaac23fa048f492bfbb70a3b15eaff24c}{00163}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Network_aaac23fa048f492bfbb70a3b15eaff24c}{Zappy::Network::askEggsInfo}}()}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00164}00164\ \{}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00165}00165\ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>\_eggNb\ <=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00166}00166\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Must\ have\ player\ number\ set\ before\ asking\ for\ players\ info."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00167}00167\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00168}00168\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00169}00169\ \ \ \ \ this-\/>send(\textcolor{stringliteral}{"{}els\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00170}00170\ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Parser}{Parser}}\ parser;}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00171}00171\ \ \ \ \ std::string\ eggsInfo\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00172}00172\ \ \ \ \ \textcolor{keywordflow}{while}\ (\textcolor{keyword}{true})\ \{}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00173}00173\ \ \ \ \ \ \ \ \ std::string\ recievedString\ =\ this-\/>receive(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00174}00174\ \ \ \ \ \ \ \ \ eggsInfo.append(recievedString);}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00175}00175\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(\mbox{\hyperlink{classZappy_1_1Parser_a61fc1fc5521102d210609e5e7b553634}{Parser::nbOccur}}(eggsInfo,\ \textcolor{stringliteral}{"{}els"{}}))\ >=\ this-\/>\_eggNb)}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00176}00176\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00177}00177\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00178}00178\ \ \ \ \ std::vector<std::string>\ tab\ =\ \mbox{\hyperlink{classZappy_1_1Parser_a6a9f98ca40a329a516011fccb947249c}{Parser::splitLine}}(eggsInfo,\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00179}00179\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ tab.size();\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00180}00180\ \ \ \ \ \ \ \ \ std::vector<std::string>\ args\ =\ \mbox{\hyperlink{classZappy_1_1Parser_aec9f21f3ae75fe711bc8a17e32c9630a}{Parser::parseLine}}(tab[i],\ \textcolor{charliteral}{'\ '});}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00181}00181\ \ \ \ \ \ \ \ \ parser.\mbox{\hyperlink{classZappy_1_1Parser_ab38f56b8404cc5c3644a6c37e5efe9d8}{manageResponse}}(args,\ \textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00182}00182\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00183}00183\ \}}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00184}00184\ }
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00185}\mbox{\hyperlink{classZappy_1_1Network_a9559939d3a8c38e7316d794428a997c9}{00185}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Network_a9559939d3a8c38e7316d794428a997c9}{Zappy::Network::askMapSize}}()}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00186}00186\ \{}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00187}00187\ \ \ \ \ this-\/>send(\textcolor{stringliteral}{"{}msz\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00188}00188\ \ \ \ \ std::string\ recievedString\ =\ this-\/>receive();}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00189}00189\ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Parser}{Parser}}\ parser;}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00190}00190\ \ \ \ \ std::vector<std::string>\ args\ =\ \mbox{\hyperlink{classZappy_1_1Parser_aec9f21f3ae75fe711bc8a17e32c9630a}{Parser::parseLine}}(recievedString,\ \textcolor{charliteral}{'\ '});}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00191}00191\ \ \ \ \ parser.\mbox{\hyperlink{classZappy_1_1Parser_ab38f56b8404cc5c3644a6c37e5efe9d8}{manageResponse}}(args,\ \textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00192}00192\ \}}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00193}00193\ }
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00194}\mbox{\hyperlink{classZappy_1_1Network_a7384b59051b6b662ffda80e816f29c1d}{00194}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Network_a7384b59051b6b662ffda80e816f29c1d}{Zappy::Network::askMapContent}}()}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00195}00195\ \{}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00196}00196\ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>\_mapSize.x\ <=\ 0\ ||\ this-\/>\_mapSize.y\ <=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00197}00197\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Must\ have\ map\ size\ set\ before\ asking\ for\ content."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00198}00198\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00199}00199\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00200}00200\ \ \ \ \ this-\/>send(\textcolor{stringliteral}{"{}mct\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00201}00201\ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Parser}{Parser}}\ parser;}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00202}00202\ \ \ \ \ std::string\ mapContent\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00203}00203\ \ \ \ \ \textcolor{keywordflow}{while}\ (\textcolor{keyword}{true})\ \{}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00204}00204\ \ \ \ \ \ \ \ \ std::string\ recievedString\ =\ this-\/>receive(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00205}00205\ \ \ \ \ \ \ \ \ mapContent.append(recievedString);}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00206}00206\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(\mbox{\hyperlink{classZappy_1_1Parser_a61fc1fc5521102d210609e5e7b553634}{Parser::nbOccur}}(mapContent,\ \textcolor{stringliteral}{"{}bct"{}}))\ >=\ this-\/>\_mapSize.x\ *\ this-\/>\_mapSize.y)}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00207}00207\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00208}00208\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00209}00209\ \ \ \ \ std::vector<std::string>\ tab\ =\ \mbox{\hyperlink{classZappy_1_1Parser_a6a9f98ca40a329a516011fccb947249c}{Parser::splitLine}}(mapContent,\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00210}00210\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ tab.size();\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00211}00211\ \ \ \ \ \ \ \ \ std::vector<std::string>\ args\ =\ \mbox{\hyperlink{classZappy_1_1Parser_aec9f21f3ae75fe711bc8a17e32c9630a}{Parser::parseLine}}(tab[i],\ \textcolor{charliteral}{'\ '});}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00212}00212\ \ \ \ \ \ \ \ \ parser.\mbox{\hyperlink{classZappy_1_1Parser_ab38f56b8404cc5c3644a6c37e5efe9d8}{manageResponse}}(args,\ \textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00213}00213\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00214}00214\ \}}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00215}00215\ }
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00216}\mbox{\hyperlink{classZappy_1_1Network_a7fff69f00e20a22b110d2e3ec53208bd}{00216}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Network_a7fff69f00e20a22b110d2e3ec53208bd}{Zappy::Network::askTimeUnitRequest}}()}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00217}00217\ \{}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00218}00218\ \ \ \ \ this-\/>send(\textcolor{stringliteral}{"{}sgt\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00219}00219\ \ \ \ \ std::string\ recievedString\ =\ this-\/>receive();}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00220}00220\ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Parser}{Parser}}\ parser;}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00221}00221\ \ \ \ \ std::vector<std::string>\ args\ =\ \mbox{\hyperlink{classZappy_1_1Parser_aec9f21f3ae75fe711bc8a17e32c9630a}{Parser::parseLine}}(recievedString,\ \textcolor{charliteral}{'\ '});}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00222}00222\ \ \ \ \ parser.\mbox{\hyperlink{classZappy_1_1Parser_ab38f56b8404cc5c3644a6c37e5efe9d8}{manageResponse}}(args,\ \textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00223}00223\ \}}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00224}00224\ }
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00225}\mbox{\hyperlink{classZappy_1_1Network_a403b92d93aae81ba9b1ec6022ed3381c}{00225}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Network_a403b92d93aae81ba9b1ec6022ed3381c}{Zappy::Network::askTileContent}}([[maybe\_unused]]\ std::vector<std::string>\ args)}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00226}00226\ \{}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00227}00227\ \ \ \ \ \textcolor{keywordflow}{if}\ (args.size()\ !=\ 2)\ \{}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00228}00228\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Wrong\ number\ of\ arguments"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00229}00229\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00230}00230\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00231}00231\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classZappy_1_1Parser_ac4f72d89bb990954bd56022bc81f56dc}{Parser::isNum}}(args[0])\ ||\ !\mbox{\hyperlink{classZappy_1_1Parser_ac4f72d89bb990954bd56022bc81f56dc}{Parser::isNum}}(args[1]))\ \{}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00232}00232\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Args\ must\ be\ positive\ numbers"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00233}00233\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00234}00234\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00235}00235\ \ \ \ \ this-\/>send(\textcolor{stringliteral}{"{}bct\ "{}}\ +\ args[0]\ +\ \textcolor{stringliteral}{"{}\ "{}}\ +\ args[1]\ +\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00236}00236\ \ \ \ \ std::string\ recievedString\ =\ this-\/>receive();}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00237}00237\ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Parser}{Parser}}\ parser;}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00238}00238\ \ \ \ \ std::vector<std::string>\ responseArgs\ =\ \mbox{\hyperlink{classZappy_1_1Parser_aec9f21f3ae75fe711bc8a17e32c9630a}{Parser::parseLine}}(recievedString,\ \textcolor{charliteral}{'\ '});}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00239}00239\ \ \ \ \ parser.\mbox{\hyperlink{classZappy_1_1Parser_ab38f56b8404cc5c3644a6c37e5efe9d8}{manageResponse}}(responseArgs,\ \textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00240}00240\ \}}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00241}00241\ }
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00242}\mbox{\hyperlink{classZappy_1_1Network_a166b64508358640c49719bb9fb0e114e}{00242}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Network_a166b64508358640c49719bb9fb0e114e}{Zappy::Network::askPlayerPos}}([[maybe\_unused]]\ std::vector<std::string>\ args)}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00243}00243\ \{}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00244}00244\ \ \ \ \ \textcolor{keywordflow}{if}\ (args.size()\ !=\ 1)\ \{}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00245}00245\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Wrong\ number\ of\ arguments"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00246}00246\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00247}00247\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00248}00248\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classZappy_1_1Parser_ac4f72d89bb990954bd56022bc81f56dc}{Parser::isNum}}(args[0]))\ \{}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00249}00249\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Args\ must\ be\ positive\ numbers"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00250}00250\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00251}00251\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00252}00252\ \ \ \ \ this-\/>send(\textcolor{stringliteral}{"{}ppo\ \#"{}}\ +\ args[0]\ +\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00253}00253\ \ \ \ \ std::string\ recievedString\ =\ this-\/>receive();}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00254}00254\ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Parser}{Parser}}\ parser;}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00255}00255\ \ \ \ \ std::vector<std::string>\ responseArgs\ =\ \mbox{\hyperlink{classZappy_1_1Parser_aec9f21f3ae75fe711bc8a17e32c9630a}{Parser::parseLine}}(recievedString,\ \textcolor{charliteral}{'\ '});}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00256}00256\ \ \ \ \ parser.\mbox{\hyperlink{classZappy_1_1Parser_ab38f56b8404cc5c3644a6c37e5efe9d8}{manageResponse}}(responseArgs,\ \textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00257}00257\ \}}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00258}00258\ }
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00259}\mbox{\hyperlink{classZappy_1_1Network_ad2a442ac35cb8fb2d5c6ea8873aa80af}{00259}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Network_ad2a442ac35cb8fb2d5c6ea8873aa80af}{Zappy::Network::askPlayerLevel}}([[maybe\_unused]]\ std::vector<std::string>\ args)}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00260}00260\ \{}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00261}00261\ \ \ \ \ \textcolor{keywordflow}{if}\ (args.size()\ !=\ 1)\ \{}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00262}00262\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Wrong\ number\ of\ arguments"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00263}00263\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00264}00264\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00265}00265\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classZappy_1_1Parser_ac4f72d89bb990954bd56022bc81f56dc}{Parser::isNum}}(args[0]))\ \{}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00266}00266\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Args\ must\ be\ positive\ numbers"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00267}00267\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00268}00268\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00269}00269\ \ \ \ \ this-\/>send(\textcolor{stringliteral}{"{}plv\ \#"{}}\ +\ args[0]\ +\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00270}00270\ \ \ \ \ std::string\ recievedString\ =\ this-\/>receive();}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00271}00271\ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Parser}{Parser}}\ parser;}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00272}00272\ \ \ \ \ std::vector<std::string>\ responseArgs\ =\ \mbox{\hyperlink{classZappy_1_1Parser_aec9f21f3ae75fe711bc8a17e32c9630a}{Parser::parseLine}}(recievedString,\ \textcolor{charliteral}{'\ '});}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00273}00273\ \ \ \ \ parser.\mbox{\hyperlink{classZappy_1_1Parser_ab38f56b8404cc5c3644a6c37e5efe9d8}{manageResponse}}(responseArgs,\ \textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00274}00274\ \}}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00275}00275\ }
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00276}\mbox{\hyperlink{classZappy_1_1Network_abbaf1fb1163e67b417c66ca12d72ee65}{00276}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Network_abbaf1fb1163e67b417c66ca12d72ee65}{Zappy::Network::askPlayerInventory}}([[maybe\_unused]]\ std::vector<std::string>\ args)}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00277}00277\ \{}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00278}00278\ \ \ \ \ \textcolor{keywordflow}{if}\ (args.size()\ !=\ 1)\ \{}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00279}00279\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Wrong\ number\ of\ arguments"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00280}00280\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00281}00281\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00282}00282\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classZappy_1_1Parser_ac4f72d89bb990954bd56022bc81f56dc}{Parser::isNum}}(args[0]))\ \{}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00283}00283\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Args\ must\ be\ positive\ numbers"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00284}00284\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00285}00285\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00286}00286\ \ \ \ \ this-\/>send(\textcolor{stringliteral}{"{}plin\ \#"{}}\ +\ args[0]\ +\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00287}00287\ \ \ \ \ std::string\ recievedString\ =\ this-\/>receive();}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00288}00288\ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Parser}{Parser}}\ parser;}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00289}00289\ \ \ \ \ std::vector<std::string>\ responseArgs\ =\ \mbox{\hyperlink{classZappy_1_1Parser_aec9f21f3ae75fe711bc8a17e32c9630a}{Parser::parseLine}}(recievedString,\ \textcolor{charliteral}{'\ '});}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00290}00290\ \ \ \ \ parser.\mbox{\hyperlink{classZappy_1_1Parser_ab38f56b8404cc5c3644a6c37e5efe9d8}{manageResponse}}(responseArgs,\ \textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00291}00291\ \}}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00292}00292\ }
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00293}\mbox{\hyperlink{classZappy_1_1Network_ad9a0acd61a5ed8cfceffcebc3c298c63}{00293}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Network_ad9a0acd61a5ed8cfceffcebc3c298c63}{Zappy::Network::askTimeUnitModif}}([[maybe\_unused]]\ std::vector<std::string>\ args)}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00294}00294\ \{}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00295}00295\ \ \ \ \ \textcolor{keywordflow}{if}\ (args.size()\ !=\ 1)\ \{}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00296}00296\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Wrong\ number\ of\ arguments"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00297}00297\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00298}00298\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00299}00299\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classZappy_1_1Parser_ac4f72d89bb990954bd56022bc81f56dc}{Parser::isNum}}(args[0]))\ \{}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00300}00300\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Args\ must\ be\ positive\ numbers"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00301}00301\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00302}00302\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00303}00303\ \ \ \ \ this-\/>send(\textcolor{stringliteral}{"{}sst\ "{}}\ +\ args[0]\ +\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00304}00304\ \ \ \ \ std::string\ recievedString\ =\ this-\/>receive();}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00305}00305\ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Parser}{Parser}}\ parser;}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00306}00306\ \ \ \ \ std::vector<std::string>\ responseArgs\ =\ \mbox{\hyperlink{classZappy_1_1Parser_aec9f21f3ae75fe711bc8a17e32c9630a}{Parser::parseLine}}(recievedString,\ \textcolor{charliteral}{'\ '});}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00307}00307\ \ \ \ \ parser.\mbox{\hyperlink{classZappy_1_1Parser_ab38f56b8404cc5c3644a6c37e5efe9d8}{manageResponse}}(responseArgs,\ \textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{Network_8cpp_source_l00308}00308\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,54 @@
+\hypertarget{Egg_8hpp_source}{}\doxysection{Egg.\+hpp}
+\label{Egg_8hpp_source}\index{Egg.hpp@{Egg.hpp}}
+\mbox{\hyperlink{Egg_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{Egg_8hpp_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{Egg_8hpp_source_l00002}00002\ \textcolor{comment}{**\ EPITECH\ PROJECT,\ 2025}}
+\DoxyCodeLine{\Hypertarget{Egg_8hpp_source_l00003}00003\ \textcolor{comment}{**\ Zappy}}
+\DoxyCodeLine{\Hypertarget{Egg_8hpp_source_l00004}00004\ \textcolor{comment}{**\ File\ description:}}
+\DoxyCodeLine{\Hypertarget{Egg_8hpp_source_l00005}00005\ \textcolor{comment}{**\ Egg\ header}}
+\DoxyCodeLine{\Hypertarget{Egg_8hpp_source_l00006}00006\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{Egg_8hpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{Egg_8hpp_source_l00008}00008\ \textcolor{preprocessor}{\#ifndef\ EGG\_H}}
+\DoxyCodeLine{\Hypertarget{Egg_8hpp_source_l00009}00009\ \textcolor{preprocessor}{\ \ \ \ \#define\ EGG\_H}}
+\DoxyCodeLine{\Hypertarget{Egg_8hpp_source_l00010}00010\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}\mbox{\hyperlink{Drawable_8hpp}{Drawable.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{Egg_8hpp_source_l00011}00011\ \textcolor{preprocessor}{\ \ \ \ \#include\ <memory>}}
+\DoxyCodeLine{\Hypertarget{Egg_8hpp_source_l00012}00012\ \textcolor{preprocessor}{\ \ \ \ \#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{Egg_8hpp_source_l00013}00013\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceZappy}{Zappy}}}
+\DoxyCodeLine{\Hypertarget{Egg_8hpp_source_l00014}00014\ \{}
+\DoxyCodeLine{\Hypertarget{Egg_8hpp_source_l00015}\mbox{\hyperlink{classZappy_1_1Egg}{00015}}\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classZappy_1_1Egg}{Egg}}}
+\DoxyCodeLine{\Hypertarget{Egg_8hpp_source_l00016}00016\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{Egg_8hpp_source_l00017}00017\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{Egg_8hpp_source_l00018}\mbox{\hyperlink{classZappy_1_1Egg_a64eee0f435e0e09d8a3e0b833b2a607b}{00018}}\ \ \ \ \ \ \ \ \ \ \ \ \ std::shared\_ptr<Drawable>\ \mbox{\hyperlink{classZappy_1_1Egg_a64eee0f435e0e09d8a3e0b833b2a607b}{\_drawable}};}
+\DoxyCodeLine{\Hypertarget{Egg_8hpp_source_l00019}\mbox{\hyperlink{classZappy_1_1Egg_afe4dd0f8f30170140a600721a7147a2d}{00019}}\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classZappy_1_1Egg_afe4dd0f8f30170140a600721a7147a2d}{\_id}};}
+\DoxyCodeLine{\Hypertarget{Egg_8hpp_source_l00020}\mbox{\hyperlink{classZappy_1_1Egg_ac7ff6abba38c23af715b8f150c04db51}{00020}}\ \ \ \ \ \ \ \ \ \ \ \ \ sf::Vector2f\ \mbox{\hyperlink{classZappy_1_1Egg_ac7ff6abba38c23af715b8f150c04db51}{\_pos}};}
+\DoxyCodeLine{\Hypertarget{Egg_8hpp_source_l00021}\mbox{\hyperlink{classZappy_1_1Egg_afc342efaaa52730611e4d9c223af3323}{00021}}\ \ \ \ \ \ \ \ \ \ \ \ \ sf::Vector2i\ \mbox{\hyperlink{classZappy_1_1Egg_afc342efaaa52730611e4d9c223af3323}{\_indexPos}};}
+\DoxyCodeLine{\Hypertarget{Egg_8hpp_source_l00022}\mbox{\hyperlink{classZappy_1_1Egg_a551d9b2a6352d681baeade28ae53d4bd}{00022}}\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{classZappy_1_1Egg_a551d9b2a6352d681baeade28ae53d4bd}{\_teamName}};}
+\DoxyCodeLine{\Hypertarget{Egg_8hpp_source_l00023}00023\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{Egg_8hpp_source_l00024}00024\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classZappy_1_1Egg}{Egg}}(\textcolor{keywordtype}{size\_t}\ \textcolor{keywordtype}{id}\ =\ 0,\ sf::Vector2i\ indexPos\ =\ \{0,\ 0\},\ \textcolor{keyword}{const}\ std::string\&\ teamName\ =\ \textcolor{stringliteral}{"{}default"{}});}
+\DoxyCodeLine{\Hypertarget{Egg_8hpp_source_l00025}\mbox{\hyperlink{classZappy_1_1Egg_ae24c4d318dfec913d25074055fe54532}{00025}}\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classZappy_1_1Egg_ae24c4d318dfec913d25074055fe54532}{\string~Egg}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{\Hypertarget{Egg_8hpp_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{Egg_8hpp_source_l00032}\mbox{\hyperlink{classZappy_1_1Egg_a0b787e6acd7e99706923bdda3ec604d7}{00032}}\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ std::shared\_ptr<Drawable>\ \mbox{\hyperlink{classZappy_1_1Egg_a0b787e6acd7e99706923bdda3ec604d7}{getDrawable}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classZappy_1_1Egg_a64eee0f435e0e09d8a3e0b833b2a607b}{\_drawable}};\ \};}
+\DoxyCodeLine{\Hypertarget{Egg_8hpp_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{Egg_8hpp_source_l00039}\mbox{\hyperlink{classZappy_1_1Egg_a563cc63cb44e25397e26f4f1306de0eb}{00039}}\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Egg_a563cc63cb44e25397e26f4f1306de0eb}{setId}}(\textcolor{keywordtype}{size\_t}\ \textcolor{keywordtype}{id})\ \{\ this-\/>\_id\ =\ id;\ \};}
+\DoxyCodeLine{\Hypertarget{Egg_8hpp_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{Egg_8hpp_source_l00046}\mbox{\hyperlink{classZappy_1_1Egg_abac121655c211b61e232dee6f2252011}{00046}}\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Egg_abac121655c211b61e232dee6f2252011}{setPos}}(sf::Vector2f\ pos)\ \{\ this-\/>\_pos\ =\ pos;\ \};}
+\DoxyCodeLine{\Hypertarget{Egg_8hpp_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{Egg_8hpp_source_l00053}\mbox{\hyperlink{classZappy_1_1Egg_a619c67229dbb38e1fef9d0b3bf0e165d}{00053}}\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Egg_a619c67229dbb38e1fef9d0b3bf0e165d}{setIndexPos}}(sf::Vector2i\ pos)\ \{\ this-\/>\_indexPos=\ pos;\ \};}
+\DoxyCodeLine{\Hypertarget{Egg_8hpp_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{Egg_8hpp_source_l00060}\mbox{\hyperlink{classZappy_1_1Egg_a6f7128c144c2e59807686661a0bb0f47}{00060}}\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classZappy_1_1Egg_a6f7128c144c2e59807686661a0bb0f47}{setTeamName}}(\textcolor{keyword}{const}\ std::string\&\ name)\ \{\ this-\/>\_teamName\ =\ name;\ \};}
+\DoxyCodeLine{\Hypertarget{Egg_8hpp_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{Egg_8hpp_source_l00067}\mbox{\hyperlink{classZappy_1_1Egg_a633f767af25ee0964da76bc5d2e6e532}{00067}}\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ sf::Vector2f\ \mbox{\hyperlink{classZappy_1_1Egg_a633f767af25ee0964da76bc5d2e6e532}{getPos}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classZappy_1_1Egg_ac7ff6abba38c23af715b8f150c04db51}{\_pos}};\ \};}
+\DoxyCodeLine{\Hypertarget{Egg_8hpp_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{Egg_8hpp_source_l00074}\mbox{\hyperlink{classZappy_1_1Egg_ac0c9e798820fc3ca1f6817fdde1833ee}{00074}}\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ sf::Vector2i\ \mbox{\hyperlink{classZappy_1_1Egg_ac0c9e798820fc3ca1f6817fdde1833ee}{getIndexPos}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classZappy_1_1Egg_afc342efaaa52730611e4d9c223af3323}{\_indexPos}};\ \};}
+\DoxyCodeLine{\Hypertarget{Egg_8hpp_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{Egg_8hpp_source_l00081}\mbox{\hyperlink{classZappy_1_1Egg_aa868de559c76f69bfd85b50999715818}{00081}}\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ std::string\ \mbox{\hyperlink{classZappy_1_1Egg_aa868de559c76f69bfd85b50999715818}{getTeamName}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classZappy_1_1Egg_a551d9b2a6352d681baeade28ae53d4bd}{\_teamName}};\ \};}
+\DoxyCodeLine{\Hypertarget{Egg_8hpp_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{Egg_8hpp_source_l00088}\mbox{\hyperlink{classZappy_1_1Egg_a7af15fb94894309842a677b210d7992d}{00088}}\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classZappy_1_1Egg_a7af15fb94894309842a677b210d7992d}{getId}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classZappy_1_1Egg_afe4dd0f8f30170140a600721a7147a2d}{\_id}};\ \};}
+\DoxyCodeLine{\Hypertarget{Egg_8hpp_source_l00089}00089\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{Egg_8hpp_source_l00090}00090\ \}\ \textcolor{comment}{//\ namespace\ Zappy}}
+\DoxyCodeLine{\Hypertarget{Egg_8hpp_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{Egg_8hpp_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{Egg_8hpp_source_l00093}00093\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ !EGG\_H\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}
