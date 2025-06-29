@@ -48,8 +48,9 @@ void Zappy::Network::establishConnection(std::string ip, size_t socket)
     this->_status = _socket.connect(ipAddress, socket);
     if (this->_status != sf::Socket::Done)
         throw Error("Error", "Network Init function");
+    std::string message = this->receive();
     if (this->_gui->isDebugging())
-        std::cout << "[DEBUG] WELCOME MESSAGE FROM SERVER:" << this->receive() << std::endl;
+        std::cout << "[DEBUG] WELCOME MESSAGE FROM SERVER:" << message << std::endl;
 }
 
 void Zappy::Network::initProcess()
