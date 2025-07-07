@@ -4,6 +4,59 @@
 ## File description:
 ## ai
 ##
+"""
+Zappy AI Bot
+
+EPITECH PROJECT 2025
+
+This module implements an autonomous AI agent that connects to a Zappy server
+and performs resource collection, leveling up, and breeding new processes
+to populate the server with AI-controlled clients.
+
+Classes:
+    Client
+        Manages the network socket communication with the server.
+
+    AI
+        Encapsulates the main AI logic, including state management,
+        resource collection, elevation (level up), and spawning new AI processes.
+
+Functions:
+    fillInventory(inventoryString)
+        Parses an inventory response string and updates the AI's inventory state.
+
+    checkElevationCondition(inventory, level)
+        Checks if the current inventory meets the requirements to level up.
+
+    formatLook(inventoryString)
+        Parses the response from the "Look" command into structured data.
+
+    detNearRessources(tile_tab, element)
+        Identifies the index of the nearest tile containing the desired element.
+
+    detPath(idx)
+        Generates a sequence of movement commands to reach a given tile index.
+
+    process_ai()
+        Entry point for launching the AI, parsing command-line arguments, and running the simulation loop.
+
+Constants:
+    ELAPSED_SLEEP (float)
+        Sleep duration between commands to avoid flooding the server.
+
+    INVENTORY_ITEM (int)
+        Number of resource types tracked in the inventory.
+
+    elevationCondition (dict)
+        Contains the leveling requirements for each level (resources and players).
+
+Usage Example:
+    python3 ai.py -p <port> -n <team> -h <host> [-d]
+
+Author:
+    Your Name <loic.rabearivelo@epitech.eu>
+"""
+
 
 import socket
 import sys
@@ -14,7 +67,7 @@ import random
 import subprocess
 import os
 
-ELAPSED_SLEEP = 0.2
+ELAPSED_SLEEP = 0
 INVENTORY_ITEM = 6
 ai = None
 
@@ -118,13 +171,40 @@ elevationCondition = {
 }
 
 class Client:
+    """
+    Handles the network connection and communication with the Zappy server.
+
+    Attributes:
+        port (int): Server port.
+        teamName (str): Team name for authentication.
+        ip (str): Server IP address.
+        clientSocket (socket.socket): TCP socket for communication.
+    """
+
     def __init__(self, port, teamName, ip):
+        """
+        Initializes the Client with connection parameters.
+
+        Args:
+            port (int): Server port.
+            teamName (str): Team name.
+            ip (str): Server IP or hostname.
+        """
         self.port = int(port)
         self.teamName = teamName
         self.ip = "127.0.0.1" if ip == "localhost" else ip
         self.clientSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-    def read(self, bufferSize=1024):
+    def read(self, bufferSize=1):
+        """
+        Reads data from the server socket until a newline is encountered.
+
+        Args:
+            bufferSize (int): Number of bytes to read per chunk.
+
+        Returns:
+            str or None: The received data or None if the connection is closed.
+        """
         try:
             data = ""
             while True:
@@ -139,19 +219,61 @@ class Client:
             return None
 
     def write(self, msg):
+        """
+        Sends a message to the server.
+
+        Args:
+            msg (str): Message to send.
+
+        Returns:
+            int: Number of bytes sent, or 0 on failure.
+        """
         try:
             return self.clientSocket.send(msg.encode())
         except:
             return 0
 
     def closeConnection(self):
+        """
+        Closes the connection to the server.
+        """
         self.clientSocket.close()
 
     def processConnection(self):
+        """
+        Establishes a connection to the server.
+        """
         self.clientSocket.connect((self.ip, self.port))
 
 class AI:
+    """
+    Implements the main AI logic for the Zappy bot, including state management,
+    resource collection, leveling up, and breeding new AI processes.
+
+    Attributes:
+        client (Client): Network client for server communication.
+        debug (bool): Enables debug output.
+        running (bool): Main loop control flag.
+        level (int): Current AI level.
+        food (int): Amount of food in inventory.
+        isDead (bool): Death state flag.
+        nbResToWait (int): Number of responses to wait for.
+        resArray (list): Stores responses from the server.
+        inventory (dict): Resource inventory.
+        takeFailed (bool): Indicates if the last take command failed.
+        cmd_resp_queue (list): Queue of commands and their responses.
+        isLeveling (bool): Indicates if the AI is currently leveling up.
+        lookInventory (list): Parsed result of the last "Look" command.
+        freeSlots (int): Number of available breeding slots.
+    """
+
     def __init__(self, args):
+        """
+        Initializes the AI with command-line arguments.
+
+        Args:
+            args (dict): Dictionary of arguments (port, team, host, debug).
+        """
         self.client = Client(args["port"], args["team"], args["host"])
         self.debug = args.get("debug", False)
         self.running = True
@@ -175,6 +297,9 @@ class AI:
         self.freeSlots = 0
 
     def receive_loop(self):
+        """
+        Continuously reads and prints messages from the server.
+        """
         while self.running:
             try:
                 data = self.client.read()
@@ -192,9 +317,12 @@ class AI:
     #     self.nbResToWait += 1
     #     self.cmd_resp_queue.append([command.strip(), None])
     def send_command(self, command):
-        # if not command.endswith('\n'):
-        #     command += '\n'
-        print(f"[SEND] {command.strip()}")
+        """
+        Sends a command to the server and queues it for response tracking.
+
+        Args:
+            command (str): Command to send.
+        """
         self.client.write(command)
         self.nbResToWait += 1
         time.sleep(ELAPSED_SLEEP)
@@ -203,6 +331,9 @@ class AI:
 
 
     def send_loop(self):
+        """
+        Reads user input from stdin and sends it to the server.
+        """
         while self.running:
             try:
                 msg = input()
@@ -214,6 +345,9 @@ class AI:
                 print(f"[ERROR] Send: {e}")
                 self.running = False
     def parse_response(self):
+        """
+        Parses and processes responses for all queued commands.
+        """
         for cmd, res in self.cmd_resp_queue:
             cmd = cmd.strip().lower()
             res = res.strip()
@@ -247,6 +381,12 @@ class AI:
             else:
                 print(f"[WARN] Unknown response '{cmd}' => {res}")
     def wait_all_resp(self):
+        """
+        Waits for all expected responses from the server and processes them.
+
+        Returns:
+            list: List of [command, response] pairs.
+        """
         self.resArray = []
         idx = 0
         while len(self.resArray) <= (self.nbResToWait - 1):
@@ -272,12 +412,18 @@ class AI:
         return result
 
     def setAllObjects(self):
+        """
+        Drops all resources from the inventory onto the current tile.
+        """
         for resource, quantity in self.inventory.items():
             if quantity > 0:
                 for _ in range(quantity):
                     self.send_command(f"Set {resource}\n")
 
     def collect_food(self):
+        """
+        Searches for and collects food from the nearest tile.
+        """
         self.send_command("Look\n")
         self.wait_all_resp()
         idx = detNearRessources(self.lookInventory, "food")
@@ -294,6 +440,9 @@ class AI:
         self.wait_all_resp()
 
     def try_level_up(self):
+        """
+        Attempts to level up by performing an incantation if requirements are met.
+        """
         print(f"[INFO] Attempting Level Up (Level {self.level})")
         self.setAllObjects()
         self.wait_all_resp()
@@ -326,6 +475,9 @@ class AI:
             print("[INFO] Incantation failed or not ready.")
 
     def collect_resources(self):
+        """
+        Searches for and collects required resources for the next level.
+        """
         required = elevationCondition[str(self.level)]["ressources"]
         for res, qty in required.items():
             if self.inventory.get(res, 0) < qty:
@@ -348,6 +500,9 @@ class AI:
                 return
 
     def breed(self):
+        """
+        Attempts to breed (fork) a new AI process if slots are available.
+        """
         self.send_command("Connect_nbr\n")
         self.wait_all_resp()
         if self.freeSlots <= 0:
@@ -361,6 +516,9 @@ class AI:
             print(f"[DEBUG] Free slots after breeding: {self.freeSlots}")
 
     def fork_new_ai(self):
+        """
+        Launches a new AI process in detached mode.
+        """
         cmd = [
             "./zappy_ai",
             "-h", self.client.ip,
@@ -384,6 +542,9 @@ class AI:
 
 
     def simulation(self):
+        """
+        Main simulation loop for the AI, handling state transitions and actions.
+        """
         welcome = self.client.read()
         if welcome.strip() != "WELCOME":
             print("[ERROR] Wrong connection's protocole.")
@@ -424,6 +585,12 @@ class AI:
                 time.sleep(ELAPSED_SLEEP)
 
 def fillInventory(inventoryString):
+    """
+    Parses the inventory response string and updates the AI's inventory.
+
+    Args:
+        inventoryString (str): Inventory response from the server.
+    """
     cleaned = inventoryString.strip().replace('[', '').replace(']', '').replace('\n', '')
     slots = cleaned.split(',')
 
@@ -441,6 +608,16 @@ def fillInventory(inventoryString):
                 ai.inventory[name] = qty
 
 def checkElevationCondition(inventory, level):
+    """
+    Checks if the current inventory meets the requirements to level up.
+
+    Args:
+        inventory (dict): Current inventory.
+        level (int): Current AI level.
+
+    Returns:
+        bool: True if requirements are met, False otherwise.
+    """
     required = elevationCondition[str(level)]["ressources"]
     if ai.debug:
         print(f"Level {level}")
@@ -450,6 +627,15 @@ def checkElevationCondition(inventory, level):
     return True
 
 def formatLook(inventoryString):
+    """
+    Parses the response from the "Look" command into structured data.
+
+    Args:
+        inventoryString (str): Look response from the server.
+
+    Returns:
+        list: List of dictionaries representing each tile's contents.
+    """
     cleaned = inventoryString.strip().replace('[', '').replace(']', '').replace('\n', '')
     tiles = cleaned.split(',')
 
@@ -476,6 +662,16 @@ def formatLook(inventoryString):
     return result
 
 def detNearRessources(tile_tab, element):
+    """
+    Identifies the index of the nearest tile containing the desired element.
+
+    Args:
+        tile_tab (list): List of tile dictionaries.
+        element (str): Resource or entity to search for.
+
+    Returns:
+        int: Index of the nearest tile, or -1 if not found.
+    """
     print(f"Looking for {element}")
     for i, tile in enumerate(tile_tab):
         if element in ["player", "food"]:
@@ -487,6 +683,15 @@ def detNearRessources(tile_tab, element):
     return -1
 
 def detPath(idx):
+    """
+    Generates a sequence of movement commands to reach a given tile index.
+
+    Args:
+        idx (int): Index of the target tile.
+
+    Returns:
+        list: List of movement commands as strings.
+    """
     path = []
     max_level = len(elevationCondition)
     for i in range(1, max_level + 1):
@@ -505,6 +710,10 @@ def detPath(idx):
     return path
 
 def process_ai():
+    """
+    Entry point for launching the AI, parsing command-line arguments,
+    and running the simulation loop.
+    """
     global ai
     argsTab = {}
     argv = sys.argv[1:]

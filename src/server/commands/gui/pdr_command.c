@@ -44,8 +44,10 @@ static void print_inv(int trn_id, int gui_id)
     client_t *client = get_client(trn_id);
     trn_t trn = {0};
 
-    if (!client)
+    if (!client) {
         fprintf(stderr, "NULL\n");
+        return;
+    }
     if (client->type == IA)
         trn = client->data.ia_client;
     dprintf(gui_id, "pin #%d %ld %ld %ld %ld %ld %ld %ld %ld %ld\n",
